@@ -47,7 +47,7 @@ expected:
     F145: Clearair Mechanical
   zoning: { rule: ZN-01, status: not_required }
   plans: { rule: PL-02, requirement: floor_plan }
-  tips: [TP-03]
+  tips: [TP-03, TP-05]   # TP-05 added by owner 2026-10-22 (built 1956)
   flags: []
   office_questions_include: [Q-8]
   form_entries:

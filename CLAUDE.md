@@ -4,7 +4,14 @@ A local web app that turns a NJ residential contractor's plain-language job desc
 
 ## Where we are
 
-Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **Next: build M1** per `docs/plans/m1-plan.md` (approved 2026-10-22): on branch `m1-rules-engine`, tests and fixtures first, then the engine. If an approved expected answer looks wrong while encoding it, stop and ask the owner; don't change it. Later milestones follow the same pattern: short plan in `docs/plans/`, owner approval, build (design doc §9).
+Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **M1 (rules engine) is built** on branch `m1-rules-engine` per `docs/plans/m1-plan.md`: all tests pass; four test-doc conflicts were decided by the owner (2026-10-22, recorded in `docs/test-jobs-v1.md`). **Next: owner reviews M1** (`docs/rules-reference.md`, `docs/reports/m1-test-report.txt`, demo runs), then merge to `main` and write the M2 plan. If an approved expected answer looks wrong, stop and ask the owner; don't change it. Later milestones follow the same pattern: short plan in `docs/plans/`, owner approval, build (design doc §9).
+
+## Commands
+
+- `npm test`: engine, question-selection, rule-file and determinism tests (`npm run test:report` for the verbose list)
+- `npm run determine -- J-01` (add `--before` for facts before follow-ups): a test job's determinations in plain language
+- `npm run render-rules`: regenerate `docs/rules-reference.md` from `rules/` after any rule edit
+- `npm run typecheck`
 
 ## Product decisions (settled; don't relitigate)
 

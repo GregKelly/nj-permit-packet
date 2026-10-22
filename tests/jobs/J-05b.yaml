@@ -15,13 +15,16 @@ work_items:
   - { id: alarms, kind: smoke_co_alarm, label: Smoke and CO alarms in the new bedroom }
 
 expected_questions:
-  - alarms.power
+  - alarms.power   # Smoke and CO alarms in the new bedroom: hardwired or battery?
+  - bedroom.fuel_appliance_nearby   # added by owner 2026-10-22, as in J-04
 
 answers:
   alarms.power: battery
+  bedroom.fuel_appliance_nearby: "no"
 
 # "KB-11 no longer applies, so electrical becomes FULL (KB-13). The job tier, forms and form entries
-# are unchanged; only the electrical item's tier and reason change."
+# are unchanged; only the electrical item's tier and reason change." Owner 2026-10-22: the F120
+# Devices count follows CQ-07 and becomes 6.
 expected:
   outcome: permit
   job_tier: FULL
@@ -51,5 +54,5 @@ expected:
       use_group: R-5
       est_cost: 1200
       lines:
-        - { line: Devices, count: 5 }   # as written in the test doc ("form entries unchanged")
+        - { line: Devices, count: 6 }   # owner 2026-10-22: CQ-07 counts every device installed
   fill_ins: []

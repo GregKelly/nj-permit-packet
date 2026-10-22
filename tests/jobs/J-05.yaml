@@ -19,9 +19,11 @@ work_items:
 
 expected_questions:
   - alarms.power   # Smoke and CO alarms in the new bedroom: hardwired or battery?
+  - bedroom.fuel_appliance_nearby   # added by owner 2026-10-22, as in J-04
 
 answers:
   alarms.power: battery
+  bedroom.fuel_appliance_nearby: "no"
 
 expected:
   outcome: permit

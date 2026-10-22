@@ -16,8 +16,10 @@ work_items:
   - { id: range, kind: appliance, label: 36in pro gas range in the same spot; bigger gas line from the meter, appliance: range, fuel: gas, fuel_change: "no", gas_line_change: "yes" }
   - { id: hood, kind: range_hood, label: "Range hood, 900 cfm, ducted outside", action: replace, cfm: 900 }
 
-expected_questions: []
-answers: {}
+expected_questions:
+  - hood.cfm_increase   # added by owner 2026-10-22: is the new hood more powerful than the old one? (KB-15)
+answers:
+  hood.cfm_increase: "yes"
 
 expected:
   outcome: permit
