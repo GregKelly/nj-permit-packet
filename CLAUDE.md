@@ -4,7 +4,7 @@ A local web app that turns a NJ residential contractor's plain-language job desc
 
 ## Where we are
 
-Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **Next: M1** (rule files, fact schema, engine, test fixtures); start with a short M1 plan for owner approval, then build on a branch, tests first (design doc §9).
+Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **Next: build M1** per `docs/plans/m1-plan.md` (approved 2026-10-22): on branch `m1-rules-engine`, tests and fixtures first, then the engine. If an approved expected answer looks wrong while encoding it, stop and ask the owner; don't change it. Later milestones follow the same pattern: short plan in `docs/plans/`, owner approval, build (design doc §9).
 
 ## Product decisions (settled; don't relitigate)
 
