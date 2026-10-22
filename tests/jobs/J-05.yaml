@@ -1,0 +1,56 @@
+id: J-05
+title: Basement guest bedroom with new egress window
+description: >
+  Turning the back half of the basement at 9 Highland Pl into a guest bedroom. Frame two walls,
+  drywall, carpet. 3 outlets and 2 ceiling lights off the existing basement circuit, which has plenty
+  of room. Cutting a new egress window with a window well on the side of the house since there's no
+  window big enough now. $26k, electrical about $1,200.
+
+property: { municipality: Maplewood, address: 9 Highland Pl, prop_class: "2", year_built: 1948, dwelling_type: detached_1f }
+costs: { total: 26000, electrical: 1200 }
+
+work_items:
+  - { id: framing, kind: partitions, label: "Frame two walls, drywall" }
+  - { id: carpet, kind: finishes, label: Carpet, element: flooring }
+  - { id: bedroom, kind: habitable_space, label: Basement guest bedroom, bedroom: "yes" }
+  - { id: egress, kind: egress_window, label: New egress window with window well (foundation cut) }
+  - { id: electrical, kind: electrical, label: 3 outlets and 2 ceiling lights off the existing basement circuit, action: add, devices: 5, new_circuit: none }
+  - { id: alarms, kind: smoke_co_alarm, label: Smoke and CO alarms in the new bedroom }
+
+expected_questions:
+  - alarms.power   # Smoke and CO alarms in the new bedroom: hardwired or battery?
+
+answers:
+  alarms.power: battery
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    framing:    { rule: FB-01, tier: MW }
+    carpet:     { rule: KB-02, tier: OM }
+    bedroom:    { rule: FB-04, tier: FULL }
+    egress:     { rule: FB-05, tier: FULL }
+    electrical: { rule: KB-11, tier: MW }   # FB-07 -> KB-11; boundary: 5 is the limit
+    alarms:     { rule: FB-08, tier: OM }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+    F120: Watts Electric LLC
+  zoning: { rule: ZN-02, status: required }
+  plans: { rule: PL-01, requirement: sealed }
+  tips: [TP-03, TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 24800, Electrical: 1200 }
+      total_cost: 26000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 24800, total_cost: 24800 }
+    F120:
+      use_group: R-5
+      est_cost: 1200
+      lines:
+        - { line: Devices, count: 5 }   # battery alarms aren't listed (OM)
+  fill_ins: []

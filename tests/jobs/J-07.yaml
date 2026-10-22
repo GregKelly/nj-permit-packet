@@ -1,0 +1,40 @@
+id: J-07
+title: Reroof on an attached twin, with skylights
+description: >
+  Reroof the left half of the twin at 103 Boyden Ave (shares a wall with the neighbor). Owner also
+  wants two skylights in the back slope. $22k.
+
+property: { municipality: Maplewood, address: 103 Boyden Ave, prop_class: "2", year_built: 1928, dwelling_type: attached }
+costs: { total: 22000 }
+
+work_items:
+  - { id: roof, kind: roof_covering, label: Reroof left half of the twin }
+  - { id: skylights, kind: skylight, label: Two skylights in the back slope, count: 2 }
+
+expected_questions:
+  - roof.existing_layers
+
+answers:
+  roof.existing_layers: one
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    roof:      { rule: RF-02, tier: MW }
+    skylights: { rule: RF-05, tier: FULL }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+  zoning: { rule: ZN-02, status: required }
+  plans: { rule: PL-01, requirement: sealed }
+  tips: [TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 22000 }
+      total_cost: 22000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation, Roofing], rehabilitation_cost: 22000, total_cost: 22000 }
+  fill_ins: []

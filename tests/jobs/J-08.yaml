@@ -1,0 +1,62 @@
+id: J-08
+title: Furnace and A/C swap, expired HVAC license
+description: >
+  Swap out the 20-year-old gas furnace and AC condenser at 66 Parker Ave for same-size units: 80k BTU
+  furnace, 3-ton AC. Condenser goes back on the same pad. New thermostat. Northside is doing it.
+  $14,500.
+
+team: { hvacr: northside }
+
+property: { municipality: Maplewood, address: 66 Parker Ave, prop_class: "2", year_built: 1994, dwelling_type: detached_1f }
+costs: { total: 14500 }
+
+work_items:
+  - { id: furnace, kind: hvac_equipment, label: "Gas furnace, 80k BTU, same size", equipment: furnace, action: replace, like_capacity: "yes", fuel_change: "no", fuel: gas }
+  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none }
+  - { id: thermostat, kind: hvac_component, label: New thermostat, component: thermostat }
+
+expected_questions:
+  - costs.electrical   # How much of the $14,500 is electrical work?
+
+answers:
+  costs.electrical: 500
+
+expected:
+  outcome: minor_work
+  job_tier: MW
+  items:
+    furnace:    { rule: HV-01, tier: MW }
+    condenser:  { rule: HV-11, tier: MW }   # test doc: "HV-01 / HV-11"
+    thermostat: { rule: HV-06, tier: OM }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F120: Watts Electric LLC
+    F145: Northside Heating & Cooling
+    F370: Northside Heating & Cooling
+  zoning: { rule: ZN-03, status: probably_not_required }
+  plans: { rule: PL-04, requirement: none }
+  tips: []
+  flags: [LC-03]
+  print_blocked: true
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Minor Work
+      cost_by_subcode: { Electrical: 500, Plumbing: 14000 }
+      total_cost: 14500
+    F120:
+      use_group: R-5
+      est_cost: 500
+      lines:
+        - { line: KW Central AC Unit, count: 1, size: null }
+        - { line: HP/KW Furnace, count: 1, size: null }
+    F145:
+      use_group: R-5
+      est_cost: 14000
+      heating_system: { work: Replacement, distribution: Hot Air, fuel: Gas }
+      lines:
+        - { line: Hot Air Furnace, count: 1 }
+        - { line: Other, label: "A/C condensing unit, 3-ton", count: 1 }
+    F370: { use_group: R-5 }
+  fill_ins:
+    - { form: F120, signer: Watts Electric LLC, details: [KW Central AC Unit size, HP/KW Furnace size] }

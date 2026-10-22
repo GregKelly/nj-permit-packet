@@ -1,0 +1,15 @@
+# Shared test profile (docs/test-jobs-v1.md, "Shared test profile").
+# People, companies and license numbers are fictional.
+
+applicant:
+  name: Hollis Building Co. LLC
+  hic_registration: 13VH00000001
+
+subcontractors:
+  watts:     { trade: electrical, name: Watts Electric LLC,          license: 34EB00000101, expires: 2027-06-30 }
+  sutton:    { trade: plumbing,   name: Sutton Plumbing & Heating,   license: 36BI00000202, expires: 2027-03-31 }
+  clearair:  { trade: hvacr,      name: Clearair Mechanical,         license: 19HC00000303, expires: 2027-08-31 }
+  northside: { trade: hvacr,      name: Northside Heating & Cooling, license: 19HC00000404, expires: 2026-09-30 }  # expired
+
+# Who does each trade unless a job says otherwise
+default_team: { electrical: watts, plumbing: sutton, hvacr: clearair }

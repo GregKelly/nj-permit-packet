@@ -1,0 +1,40 @@
+id: J-02
+title: Hall bath refresh (no permit)
+description: >
+  Hall bath refresh at 18 Elmwood Ave. Replace the vanity and toilet in the same spots, same plumbing.
+  New porcelain tile floor. New faucet and swap the shower valve, same location. Replace the vanity
+  light and the exhaust fan (existing fan already vents outside). Paint. About $14,000.
+
+property: { municipality: Maplewood, address: 18 Elmwood Ave, prop_class: "2", year_built: 1987, dwelling_type: detached_1f }
+costs: { total: 14000 }
+
+work_items:
+  - { id: vanity, kind: finishes, label: Replace vanity, element: vanity }
+  - { id: toilet, kind: fixture, label: "Replace toilet, same spot and plumbing", fixtures: { water_closet: 1 }, action: replace_same }
+  - { id: floor, kind: finishes, label: Porcelain tile floor, element: flooring }
+  - { id: valves, kind: faucet_valve, label: "New faucet; swap shower valve, same location" }
+  - { id: light, kind: electrical, label: Replace vanity light, action: replace_same, devices: 1 }
+  - { id: fan, kind: exhaust_fan, label: Replace exhaust fan (already vents outside), action: replace, vents_outdoors: "yes" }
+  - { id: paint, kind: finishes, label: Paint, element: paint }
+
+expected_questions: []
+answers: {}
+
+expected:
+  outcome: no_permit
+  job_tier: OM
+  items:
+    vanity: { rule: KB-01, tier: OM }
+    toilet: { rule: KB-06, tier: OM }
+    floor:  { rule: KB-02, tier: OM }
+    valves: { rule: KB-06, tier: OM }
+    light:  { rule: KB-10, tier: OM }
+    fan:    { rule: KB-17, tier: OM }
+    paint:  { rule: KB-03, tier: OM }
+  forms: {}
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-04, requirement: none }
+  tips: []
+  flags: []
+  form_entries: {}
+  fill_ins: []

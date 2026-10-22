@@ -1,0 +1,73 @@
+id: J-01
+title: Kitchen gut with wall removal
+description: >
+  Full kitchen gut at 34 Oakview Ave for the Morenos. Taking down the wall between the kitchen and
+  dining room. It's not load bearing, I checked from the basement, joists run parallel to it. New
+  cabinets, quartz counters, LVP floor, new drywall throughout. Moving the sink to the new island and
+  adding a dishwasher and disposal there. Electrical: two new 20A counter circuits, 8 recessed cans,
+  island outlets, about 18 devices total. Range stays where it is, same gas hookup. Contract is
+  $48,000: plumbing about $3,500, electrical about $5,500.
+
+property: { municipality: Maplewood, address: 34 Oakview Ave, prop_class: "2", year_built: 1925, dwelling_type: detached_1f }
+costs: { total: 48000, electrical: 5500, plumbing: 3500 }
+
+# Facts before follow-ups. Anything not stated is left out, which means `unknown`.
+work_items:
+  - { id: cabinets, kind: finishes, label: New cabinets, element: cabinets }
+  - { id: counters, kind: finishes, label: Quartz countertops, element: countertops }
+  - { id: floor, kind: finishes, label: LVP flooring, element: flooring }
+  - { id: drywall, kind: drywall, label: New drywall throughout, extent: 25_percent_or_more }
+  - { id: wall, kind: wall_change, label: Remove wall between kitchen and dining room, action: remove, bearing: "no" }
+  - id: island
+    kind: fixture
+    label: Sink moved to new island, with dishwasher and disposal on the new run
+    fixtures: { sink: 1, dishwasher: 1, disposal: 1 }
+    action: relocate
+  - { id: electrical, kind: electrical, label: "Two new 20A counter circuits, 8 recessed cans, island outlets", action: add, devices: 18, new_circuit: other }
+  - { id: range, kind: appliance, label: Range stays in place on the same gas hookup, appliance: range, fuel: gas, fuel_change: "no", gas_line_change: "no", electrical_change: "no" }
+
+expected_questions: []
+answers: {}
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    cabinets:   { rule: KB-01, tier: OM }
+    counters:   { rule: KB-01, tier: OM }
+    floor:      { rule: KB-02, tier: OM }
+    drywall:    { rule: KB-05, tier: MW }
+    wall:       { rule: KB-20, tier: MW }
+    island:     { rule: KB-08, tier: FULL }
+    electrical: { rule: KB-13, tier: FULL }
+    range:      { rule: KB-14, tier: OM }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+    F120: Watts Electric LLC
+    F130: Sutton Plumbing & Heating
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 39000, Electrical: 5500, Plumbing: 3500 }
+      total_cost: 48000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 39000, total_cost: 39000 }
+    F120:
+      use_group: R-5
+      est_cost: 5500
+      lines:
+        - { line: Devices, count: 18 }
+        - { line: KW Dishwasher/Disposal, count: 2, size: null }
+    F130:
+      use_group: R-5
+      est_cost: 3500
+      lines:
+        - { line: Sink, count: 1 }
+        - { line: Dishwasher, count: 1 }
+  fill_ins:
+    - { form: F120, signer: Watts Electric LLC, details: [KW Dishwasher/Disposal size] }
