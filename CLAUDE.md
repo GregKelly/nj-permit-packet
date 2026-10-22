@@ -4,7 +4,7 @@ A local web app that turns a NJ residential contractor's plain-language job desc
 
 ## Where we are
 
-Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs are drafted in `docs/test-jobs-v1.md` and are **awaiting owner review**. Next: confirm the tech approach with the owner, then build.
+Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **Next: M1** (rule files, fact schema, engine, test fixtures); start with a short M1 plan for owner approval, then build on a branch, tests first (design doc §9).
 
 ## Product decisions (settled; don't relitigate)
 
@@ -26,12 +26,9 @@ Product definition is done (see `product-brief.md`, and `docs/research-notes.md`
   - Licensed electrical/plumbing subcontractors sign their own F120/F130 sections.
 - Same input → same output. Build an automated test suite over the test jobs.
 
-## Tech approach (proposed; confirm with owner before scaffolding)
+## Tech approach (approved)
 
-- TypeScript + Next.js, running locally. Three tiers kept distinct: UI, a server layer (rules engine, Claude API calls, PDF filling), and SQLite for profile/subcontractors/jobs.
-- `pdf-lib` to fill the **official** fillable DCA PDFs (not lookalikes).
-- Claude API via the Anthropic SDK; use the current Claude models and check the `claude-api` skill before writing API code. API key from env (`ANTHROPIC_API_KEY`), never committed.
-- No Docker for now.
+See `docs/design-doc.md`, the source of truth for architecture, interfaces, testing and milestones. In short: TypeScript + Next.js running locally; a pure rules engine (`engine/`) over YAML rule files (`rules/`); `pdf-lib` filling the **official** DCA PDFs; SQLite; Claude API via the Anthropic SDK (check the `claude-api` skill before writing API code; key from `ANTHROPIC_API_KEY`, never committed). No Docker.
 
 ## Working with the owner
 
