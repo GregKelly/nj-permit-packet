@@ -1,0 +1,28 @@
+# Reviewer tips. Rules table §4.6. Never change the classification or forms,
+# never block printing. Tips show only when the trigger fact is known.
+type: tips
+rules:
+  - id: TP-01
+    title: Roof-over or third layer (RF-09)
+    when_item: { kind: roof_covering, existing_layers: two_or_more }
+    text: Code limits re-covering over existing roofing (IRC R908). Expect tear-off to be required if there are already two layers.
+
+  - id: TP-02
+    title: Range hood > 400 cfm (KB-16)
+    when_item: { kind: range_hood, cfm: { gt: 400 } }
+    text: Hoods over 400 cfm generally need make-up air (IRC M1503.6). Be ready to show how it's provided.
+
+  - id: TP-03
+    title: Basement made habitable (FB-03)
+    when_item: { kind: habitable_space }
+    text: Reviewers check ceiling height in finished basements. Note the clear height on the floor plan.
+
+  - id: TP-04
+    title: Fuel-fired appliance near new finished space (FB-11)
+    when_item: { kind: habitable_space, fuel_appliance_nearby: "yes" }
+    text: Show the furnace/water heater on the plan with clearances and combustion air.
+
+  - id: TP-05
+    title: Year built before 1978 (LC-04)
+    when_property: { year_built: { lt: 1978 } }
+    text: Lead-safe work practices may apply to disturbing painted surfaces.

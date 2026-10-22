@@ -1,0 +1,318 @@
+
+ RUN  v5.0.4 /Users/gregorykelly/Projects/nj-permit-packet
+
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > asks exactly the expected follow-up questions (before follow-ups) 9ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > zoning 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > plans 1ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > tips 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > flags 1ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > plans 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > tips 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > flags 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > zoning 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > plans 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > tips 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > flags 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > asks exactly the expected follow-up questions (before follow-ups) 2ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > zoning 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > plans 0ms
+ × tests/jobs.test.ts > J-04 · Full basement finish with bathroom > tips 4ms
+   → expected [ 'TP-03', 'TP-05' ] to deeply equal [ 'TP-03' ]
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > flags 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > shows the open questions for the office 0ms
+ × tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > asks exactly the expected follow-up questions (before follow-ups) 1ms
+   → expected [ 'alarms.power', …(1) ] to deeply equal [ 'alarms.power' ]
+ × tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > has nothing left to ask after the follow-ups 0ms
+   → expected [ 'bedroom.fuel_appliance_nearby' ] to deeply equal []
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > zoning 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > plans 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > tips 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > flags 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > cover checklist: details left for subs to fill in 0ms
+ × tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > asks exactly the expected follow-up questions (before follow-ups) 0ms
+   → expected [ 'alarms.power', …(1) ] to deeply equal [ 'alarms.power' ]
+ × tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > has nothing left to ask after the follow-ups 0ms
+   → expected [ 'bedroom.fuel_appliance_nearby' ] to deeply equal []
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > plans 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > tips 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > flags 0ms
+ × tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > form entries (work type, cost, quantities; fee boxes blank) 1ms
+   → expected { …(3) } to deeply equal { …(3) }
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > asks exactly the expected follow-up questions (before follow-ups) 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > plans 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > tips 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > flags 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > asks exactly the expected follow-up questions (before follow-ups) 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > zoning 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > plans 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > tips 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > flags 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > zoning 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > plans 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > tips 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > flags 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > zoning 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > plans 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > tips 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > flags 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > cover checklist: details left for subs to fill in 0ms
+ × tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > asks exactly the expected follow-up questions (before follow-ups) 1ms
+   → expected [ 'hood.cfm_increase' ] to deeply equal []
+ × tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > has nothing left to ask after the follow-ups 0ms
+   → expected [ 'hood.cfm_increase' ] to deeply equal []
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > zoning 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > plans 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > tips 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > flags 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/gaps.test.ts > out of scope > three or more units: stops with SC-01, no packet 1ms
+ ✓ tests/gaps.test.ts > out of scope > a town other than Maplewood: stops with SC-02 0ms
+ ✓ tests/gaps.test.ts > out of scope > homeowner doing their own trade work: stops with LC-05 0ms
+ ✓ tests/gaps.test.ts > out of scope > lead abatement: KB-24 flags "call the office" and stops 1ms
+ ✓ tests/gaps.test.ts > licensing and registration > missing HIC registration: LC-01 1ms
+ ✓ tests/gaps.test.ts > licensing and registration > no electrician in the directory for an F120 job: LC-02, F120 has no signer 1ms
+ ✓ tests/gaps.test.ts > licensing and registration > J-08 re-run with Clearair clears LC-03 and changes nothing else 3ms
+ ✓ tests/gaps.test.ts > licensing and registration > a license expiring today is still valid 1ms
+ ✓ tests/gaps.test.ts > structural and conversion work > bearing wall removal: KB-21, FULL, sealed plans 1ms
+ ✓ tests/gaps.test.ts > structural and conversion work > oil-to-gas furnace conversion: HV-02, FULL, gas piping on F130, load-calc flag 1ms
+ ✓ tests/gaps.test.ts > "don't know" answers take the conservative branch > bearing unknown: treated as bearing (KB-21) and says so 2ms
+ ✓ tests/gaps.test.ts > "don't know" answers take the conservative branch > window opening unknown: zoning treated as required (ZN-05) 4ms
+ ✓ tests/gaps.test.ts > items that match no rule > is an error, not a skip: the job cannot be classified and printing is blocked 2ms
+ ✓ tests/gaps.test.ts > question selection > a count is tested at the rule threshold (5 vs 6), not every number 3ms
+ ✓ tests/gaps.test.ts > question selection > a count that no rule compares is not asked 3ms
+ ✓ tests/gaps.test.ts > question selection > a missing total cost is asked 0ms
+ ✓ tests/gaps.test.ts > zoning assumptions are flippable in config, without code changes > A-13: interior alterations require zoning → J-01 needs zoning 20ms
+ ✓ tests/gaps.test.ts > zoning assumptions are flippable in config, without code changes > A-15: like-for-like exterior requires zoning → J-08 needs zoning 21ms
+ ✓ tests/rule-files.test.ts > rule files > all load and pass the checker 42ms
+ ✓ tests/rule-files.test.ts > rule files > contain every ID in the approved rules table 19ms
+ ✓ tests/rule-files.test.ts > rule files > have a stable version hash that changes when a rule changes 58ms
+ ✓ tests/determinism.test.ts > determinism > J-01: two runs with separately loaded rules are byte-identical 90ms
+ ✓ tests/determinism.test.ts > determinism > J-02: two runs with separately loaded rules are byte-identical 42ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a duplicate rule ID 10ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a reference to an assumption that does not exist 10ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a condition on a fact the work item kind does not have 11ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a condition value the fact cannot take 11ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a rule for a work item kind that does not exist 10ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a form that is not defined 10ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a rule file missing from the manifest 10ms
+ ✓ tests/determinism.test.ts > determinism > J-03: two runs with separately loaded rules are byte-identical 44ms
+ ✓ tests/determinism.test.ts > determinism > J-04: two runs with separately loaded rules are byte-identical 40ms
+ ✓ tests/determinism.test.ts > determinism > J-05: two runs with separately loaded rules are byte-identical 34ms
+ ✓ tests/determinism.test.ts > determinism > J-05b: two runs with separately loaded rules are byte-identical 34ms
+ ✓ tests/determinism.test.ts > determinism > J-06: two runs with separately loaded rules are byte-identical 32ms
+ ✓ tests/determinism.test.ts > determinism > J-07: two runs with separately loaded rules are byte-identical 32ms
+ ✓ tests/determinism.test.ts > determinism > J-08: two runs with separately loaded rules are byte-identical 34ms
+ ✓ tests/determinism.test.ts > determinism > J-09: two runs with separately loaded rules are byte-identical 34ms
+ ✓ tests/determinism.test.ts > determinism > J-10: two runs with separately loaded rules are byte-identical 33ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/jobs.test.ts > J-04 · Full basement finish with bathroom > tips
+AssertionError: expected [ 'TP-03', 'TP-05' ] to deeply equal [ 'TP-03' ]
+
+- Expected
++ Received
+
+  [
+    "TP-03",
++   "TP-05",
+  ]
+
+ ❯ tests/jobs.test.ts:52:33
+     50|
+     51|     it('tips', () => {
+     52|       expect(summarize(d).tips).toEqual(e.tips);
+       |                                 ^
+     53|     });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > asks exactly the expected follow-up questions (before follow-ups)
+ FAIL  tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > asks exactly the expected follow-up questions (before follow-ups)
+AssertionError: expected [ 'alarms.power', …(1) ] to deeply equal [ 'alarms.power' ]
+
+- Expected
++ Received
+
+  [
+    "alarms.power",
++   "bedroom.fuel_appliance_nearby",
+  ]
+
+ ❯ tests/jobs.test.ts:23:33
+     21|     it('asks exactly the expected follow-up questions (before follow-u…
+     22|       const asked = selectQuestions(job.before, rules, TODAY).map((q) …
+     23|       expect([...asked].sort()).toEqual([...job.expected_questions].so…
+       |                                 ^
+     24|     });
+     25|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > has nothing left to ask after the follow-ups
+ FAIL  tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > has nothing left to ask after the follow-ups
+AssertionError: expected [ 'bedroom.fuel_appliance_nearby' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "bedroom.fuel_appliance_nearby",
++ ]
+
+ ❯ tests/jobs.test.ts:27:45
+     25|
+     26|     it('has nothing left to ask after the follow-ups', () => {
+     27|       expect(d.questions.map((q) => q.key)).toEqual([]);
+       |                                             ^
+     28|     });
+     29|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > form entries (work type, cost, quantities; fee boxes blank)
+AssertionError: expected { …(3) } to deeply equal { …(3) }
+
+- Expected
++ Received
+
+@@ -18,11 +18,11 @@
+    },
+    "F120": {
+      "est_cost": 1200,
+      "lines": [
+        {
+-         "count": 5,
++         "count": 6,
+          "line": "Devices",
+        },
+      ],
+      "use_group": "R-5",
+    },
+
+ ❯ tests/jobs.test.ts:61:30
+     59|
+     60|     it('form entries (work type, cost, quantities; fee boxes blank)', …
+     61|       expect(d.form_entries).toEqual(e.form_entries);
+       |                              ^
+     62|     });
+     63|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > asks exactly the expected follow-up questions (before follow-ups)
+AssertionError: expected [ 'hood.cfm_increase' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "hood.cfm_increase",
++ ]
+
+ ❯ tests/jobs.test.ts:23:33
+     21|     it('asks exactly the expected follow-up questions (before follow-u…
+     22|       const asked = selectQuestions(job.before, rules, TODAY).map((q) …
+     23|       expect([...asked].sort()).toEqual([...job.expected_questions].so…
+       |                                 ^
+     24|     });
+     25|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > has nothing left to ask after the follow-ups
+AssertionError: expected [ 'hood.cfm_increase' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "hood.cfm_increase",
++ ]
+
+ ❯ tests/jobs.test.ts:27:45
+     25|
+     26|     it('has nothing left to ask after the follow-ups', () => {
+     27|       expect(d.questions.map((q) => q.key)).toEqual([]);
+       |                                             ^
+     28|     });
+     29|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  8 failed | 153 passed (161)
+   Start at  16:53:27
+   Duration  579ms (tests 82%, import 14%, transform 3%, worker 1%)
+

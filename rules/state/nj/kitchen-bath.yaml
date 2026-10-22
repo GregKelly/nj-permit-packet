@@ -1,0 +1,233 @@
+# Kitchen & bath rules. Rules table §2.1.
+#
+# How to read a rule:
+#   when:  which work items it applies to. `kind` is the work item kind; the other
+#          keys are that kind's facts (src/engine/facts.ts), or property.<fact>.
+#          A list of values means "any of these". {lte: 5} compares a number.
+#          A list of conditions (one per line starting with "-") means "any of these".
+#          Including `unknown` in a list is how a rule takes the conservative branch.
+#   then:  tier (OM / MW / FULL), forms the item adds, and whether it counts as an
+#          "alteration" for F100 §IIa (CQ-01).
+#   cases: used instead of `then` when one rule has more than one outcome; the
+#          first case that matches applies.
+# The first rule that matches a work item wins.
+type: item_rules
+group: KB
+title: Kitchen & bath
+rules:
+  - id: KB-01
+    title: Replace or install cabinets, vanities, countertops, bathroom accessories
+    when: { kind: finishes, element: [cabinets, vanity, countertops, bath_accessories] }
+    then: { tier: OM }
+    reason: Replacing or installing cabinets and similar non-structural furnishings is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.vii
+    assumptions: [A-3]
+    notes: Countertops aren't named in the code; treated as non-structural elements.
+
+  - id: KB-02
+    title: Replace or install flooring
+    when: { kind: finishes, element: flooring }
+    then: { tier: OM }
+    reason: Flooring is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.ix
+
+  - id: KB-03
+    title: Paint, wallpaper, trim, tile on walls
+    when: { kind: finishes, element: [paint, wallpaper, trim, wall_tile] }
+    then: { tier: OM }
+    reason: Painting, wallpapering, trim and wall tile are ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.i, iii, viii
+
+  - id: KB-04
+    title: Drywall/plaster on less than 25% of wall area
+    when: { kind: drywall, material: [drywall, plaster], extent: under_25_percent }
+    then: { tier: OM }
+    reason: Replacing less than 25% of the wall surface is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.ii
+
+  - id: KB-05
+    title: Drywall/plaster on 25% or more of wall area, or any paneling
+    when:
+      - { kind: drywall, extent: [25_percent_or_more, unknown] }
+      - { kind: drywall, material: paneling }
+    then: { tier: MW, forms: [F110] }
+    reason: Above 25% of the wall surface it isn't ordinary maintenance; renovation with no structural change is minor work.
+    citation: N.J.A.C. 5:23-2.7(c)1.ii; 5:23-2.17A(c)1.ii
+
+  - id: KB-06
+    title: Replace a sink, toilet, tub or shower with a similar fixture in the same location, same piping
+    when:
+      - { kind: fixture, action: replace_same }
+      - { kind: faucet_valve }
+    then: { tier: OM }
+    reason: Replacing a fixture in the same place on the same piping, or replacing faucets and valves, is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)2.x; faucets and valves (incl. shower valves) 2.7(c)2.vi–viii
+
+  - id: KB-07
+    title: Add a fixture in existing space, with no upsizing of water distribution, water service or house drain
+    when: { kind: fixture, action: add, upsizing_needed: "no" }
+    then: { tier: MW, forms: [F130], alteration: true }
+    reason: Adding a fixture without upsizing the water or drain system is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)2
+
+  - id: KB-08
+    title: Relocate a fixture (any change in piping arrangement)
+    when:
+      - { kind: fixture, action: [relocate, unknown] }
+      - { kind: fixture, action: add, upsizing_needed: ["yes", unknown] }
+      - { kind: piping, like_capacity: ["no", unknown] }
+    then: { tier: FULL, forms: [F130], alteration: true }
+    reason: Changing the piping arrangement is excluded from ordinary maintenance, and relocation isn't on the minor work list.
+    citation: N.J.A.C. 5:23-2.7(b)6.ii
+    office_questions: [Q-5]
+    notes: >
+      "Relocate" includes a new fixture on a new piping run (J-01 dishwasher at the island).
+      An added fixture that needs upsizing is outside KB-07, so it lands here too.
+
+  - id: KB-09
+    title: Replace existing piping with like-capacity piping
+    when: { kind: piping, like_capacity: "yes" }
+    then: { tier: MW, forms: [F130] }
+    reason: Replacing piping with like-capacity piping is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)2
+
+  - id: KB-10
+    title: Replace receptacles, switches or light fixtures like-for-like
+    when: { kind: electrical, action: replace_same }
+    then: { tier: OM }
+    reason: Like-for-like replacement of receptacles, switches and light fixtures is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)3.i
+    notes: GFCI/TR rules still apply (NEC 406.4(D)).
+
+  - id: KB-11
+    title: Add 5 or fewer outlets on existing circuits with adequate capacity
+    when: { kind: electrical, action: [add, unknown], new_circuit: none, devices: { lte: 5 } }
+    then: { tier: MW, forms: [F120], alteration: true }
+    reason: Up to 5 new outlets on existing circuits is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)4
+    notes: The new_circuit fact is "none" when the work stays on existing circuits with room for it.
+
+  - id: KB-12
+    title: New circuit for a range, oven, dryer or A/C
+    when:
+      - { kind: electrical, action: [add, unknown], new_circuit: appliance, devices: { lte: 5 } }
+      - { kind: appliance, fuel: electric, fuel_change: "no", electrical_change: ["yes", unknown] }
+      - { kind: appliance, fuel: gas, fuel_change: "no", gas_line_change: "no", electrical_change: ["yes", unknown] }
+    then: { tier: MW, forms: [F120], alteration: true }
+    reason: A new circuit incidental to installing a range, oven, dryer or A/C is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)4
+
+  - id: KB-13
+    title: Any other new circuits, more than 5 outlets, or a panel/service change
+    when:
+      - { kind: electrical, action: [add, unknown], new_circuit: [other, unknown] }
+      - { kind: electrical, action: [add, unknown], devices: [{ gt: 5 }, unknown] }
+      - { kind: service_change }
+    then: { tier: FULL, forms: [F120], alteration: true }
+    reason: New wiring beyond the minor work limits is excluded from ordinary maintenance and needs a permit before work starts.
+    citation: N.J.A.C. 5:23-2.7(b)6.iii
+    notes: Service upgrade needs utility coordination.
+
+  - id: KB-14
+    title: Replace dishwasher, range, oven or dryer; no change in fuel, pipe size, location or electrical
+    when:
+      - { kind: appliance, fuel: electric, fuel_change: "no", electrical_change: "no" }
+      - { kind: appliance, fuel: gas, fuel_change: "no", gas_line_change: "no", electrical_change: "no" }
+    then: { tier: OM }
+    reason: Replacing an appliance with no change to fuel, piping, location or wiring is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)2.xi, 3.iv, 5.vii–viii
+
+  - id: KB-15
+    title: "Replace range hood: ≤ 400 cfm (or no higher than existing), recirculating or vented independently outdoors"
+    when:
+      - { kind: range_hood, action: replace, cfm: { lte: 400 } }
+      - { kind: range_hood, action: replace, cfm_increase: "no" }
+    then: { tier: OM }
+    reason: Replacing a range hood at 400 cfm or less, or no higher than the existing one, is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)3.v, 5.vi
+
+  - id: KB-16
+    title: New hood, or hood > 400 cfm
+    when:
+      - { kind: range_hood, action: [new, unknown] }
+      - { kind: range_hood, cfm: [{ gt: 400 }, unknown], cfm_increase: ["yes", unknown] }
+    then: { tier: FULL, forms: [F120, F145], alteration: true }
+    reason: A new hood, or one over 400 cfm that's more powerful than the old one, isn't ordinary maintenance and may need make-up air.
+    citation: IRC M1503.6
+    assumptions: [A-4]
+    office_questions: [Q-6]
+
+  - id: KB-17
+    title: Replace bath exhaust fan, vented independently outdoors
+    when: { kind: exhaust_fan, action: replace, vents_outdoors: "yes" }
+    then: { tier: OM }
+    reason: Replacing an exhaust fan that already vents outdoors is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)5.ix
+
+  - id: KB-18
+    title: New bath exhaust fan where none existed
+    when:
+      - { kind: exhaust_fan, action: [new, unknown] }
+      - { kind: exhaust_fan, action: replace, vents_outdoors: ["no", unknown] }
+    cases:
+      - when: { cuts_framing: ["yes", unknown] }
+        then: { tier: MW, forms: [F120, F110], alteration: true }
+        reason: A new fan on an existing circuit is minor work; cutting wall or roof framing adds the building section.
+      - then: { tier: MW, forms: [F120], alteration: true }
+    reason: A new fan on an existing circuit is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)4
+    assumptions: [A-5]
+
+  - id: KB-19
+    title: New or relocated gas line (range, dryer)
+    when:
+      - { kind: gas_line }
+      - { kind: appliance, fuel: [gas, unknown], gas_line_change: ["yes", unknown] }
+      - { kind: appliance, fuel_change: ["yes", unknown] }
+    then: { tier: FULL, forms: [F130], alteration: true }
+    reason: New, moved or resized gas piping is excluded from ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(b)6.ii
+    assumptions: [A-6]
+    notes: F130 and F145 both list gas piping; v1 puts it on F130.
+
+  - id: KB-20
+    title: Remove or move a non-bearing wall
+    when: { kind: wall_change, bearing: "no" }
+    then: { tier: MW, forms: [F110], alteration: true }
+    reason: Reconfiguring space without altering primary structural members is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)1.ii
+    assumptions: [A-7]
+
+  - id: KB-21
+    title: Remove or cut a bearing wall, beam or post
+    when: { kind: wall_change, bearing: ["yes", unknown] }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: Cutting a load-bearing wall is excluded from ordinary maintenance and isn't minor work.
+    citation: N.J.A.C. 5:23-2.7(b)1–2; 5:23-2.17A(c)1.ii
+
+  - id: KB-22
+    title: Replace a window or door in the same opening, no change to size or framing
+    when: { kind: opening, action: replace_same }
+    then: { tier: OM }
+    reason: Replacing a window or door in the same opening is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.v
+    notes: If it's an egress window, the net clear opening can't shrink.
+
+  - id: KB-23
+    title: New or enlarged window/door opening
+    when: { kind: opening, action: [new, enlarge, unknown] }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: A new or enlarged opening alters structure (header).
+    citation: N.J.A.C. 5:23-2.7(b)2
+    assumptions: [A-7]
+    notes: Exterior work, so the zoning trigger applies.
+
+  - id: KB-24
+    title: Any work in a building with lead abatement
+    when: { kind: lead_abatement }
+    then:
+      tier: FULL
+      forms: [F110]
+      stop: Lead abatement is out of scope for v1. Call the construction office.
+    reason: Lead abatement work is excluded from both ordinary maintenance and minor work.
+    citation: N.J.A.C. 5:23-2.7(b)7; 5:23-2.17A(c)6

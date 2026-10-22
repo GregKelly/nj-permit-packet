@@ -1,0 +1,9 @@
+# Step 1 of the rules table (§1): is this a v1 job? Every scope rule must pass.
+type: scope
+title: Scope check (state)
+rules:
+  - id: SC-01
+    title: One- or two-family dwelling (use group R-3 / R-5)
+    property: { prop_class: "2", dwelling_type: [detached_1f, detached_2f, attached, unknown] }
+    message: Out of scope for v1. Permit Packet handles one- and two-family homes (R-3 / R-5) only.
+    source: Rules table §1 step 1

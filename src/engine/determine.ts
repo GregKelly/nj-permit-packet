@@ -1,7 +1,15 @@
+import { evaluate } from './core';
 import type { JobFacts } from './facts';
 import type { RuleSet } from './load';
+import { selectQuestions } from './questions';
 import type { Determinations } from './types';
-// Placeholder: written after the tests (M1 plan: tests first).
-export function determine(_facts: JobFacts, _rules: RuleSet, _today: string): Determinations {
-  throw new Error('not implemented yet');
+
+/**
+ * Facts in, determinations out. Same input → same output.
+ * `today` (YYYY-MM-DD) is passed in for the license-expiry check; the engine never reads the clock.
+ */
+export function determine(facts: JobFacts, rules: RuleSet, today: string): Determinations {
+  const { d } = evaluate(facts, rules, today);
+  d.questions = selectQuestions(facts, rules, today);
+  return d;
 }

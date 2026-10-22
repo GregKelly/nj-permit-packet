@@ -1,0 +1,8 @@
+type: scope
+title: Scope check (town)
+rules:
+  - id: SC-02
+    title: Property is in Maplewood
+    property: { municipality: Maplewood }
+    message: Out of scope for v1. Permit Packet covers Maplewood, NJ only.
+    source: Rules table §1 step 1; product brief (starting market)

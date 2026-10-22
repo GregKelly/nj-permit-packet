@@ -1,0 +1,111 @@
+# Finished basement rules. Rules table §2.2. See kitchen-bath.yaml for how to read a rule.
+# Basement electrical (FB-07) and bearing changes (FB-10) use the kitchen & bath
+# rules, so they appear here only as references and aren't duplicated.
+type: item_rules
+group: FB
+title: Finished basement
+rules:
+  - id: FB-01
+    title: Frame new non-bearing partitions; drywall; ceiling
+    when: { kind: partitions }
+    then: { tier: MW, forms: [F110], alteration: true }
+    reason: Renovation with no primary structural change is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)1.ii
+    assumptions: [A-7]
+    notes: Drywall here will almost always exceed 25% (KB-05 logic). Floor plan shows room uses, ceiling height, egress, smoke/CO alarm locations.
+
+  - id: FB-02
+    title: Insulation installed against interior finish (non-foam is ordinary maintenance; foam plastic isn't)
+    when: { kind: insulation }
+    cases:
+      - when: { type: non_foam }
+        then: { tier: OM }
+        reason: Non-foam insulation installed against interior finish is ordinary maintenance.
+      - then: { tier: MW, forms: [F110] }
+        reason: Foam plastic insulation isn't ordinary maintenance; it goes on the building section as minor work.
+    reason: Insulation is ordinary maintenance unless it's foam plastic.
+    citation: N.J.A.C. 5:23-2.7(c)1.xv
+
+  - id: FB-03
+    title: Space becomes habitable (family room, office, bedroom)
+    when: { kind: habitable_space, bedroom: "no" }
+    then: { tier: MW, forms: [F110], alteration: true }
+    reason: Making space habitable without structural change is minor work, same as FB-01.
+    citation: N.J.A.C. 5:23-2.17A(c)1.ii
+    assumptions: [A-7]
+    office_questions: [Q-7]
+    notes: "Flag: ceiling height for habitable space (IRC R305)."
+
+  - id: FB-04
+    title: A bedroom is created
+    when: { kind: habitable_space, bedroom: ["yes", unknown] }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: A bedroom needs an emergency escape and rescue opening, so it needs a permit before work starts.
+    citation: IRC R310
+    assumptions: [A-7]
+    notes: Plans must show the emergency escape opening. If no compliant window exists, see FB-05.
+
+  - id: FB-05
+    title: New or enlarged egress window / areaway (foundation cut)
+    when: { kind: egress_window }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: Cutting the foundation for an egress window alters structure.
+    citation: N.J.A.C. 5:23-2.7(b)2
+    notes: Exterior work, so the zoning trigger applies. May affect impervious coverage.
+
+  - id: FB-06
+    title: New bathroom (toilet, lav, shower)
+    when: { kind: new_bathroom }
+    cases:
+      - when: { ejector_pump: ["yes", unknown] }
+        then: { tier: FULL, forms: [F130], alteration: true }
+        reason: A below-grade toilet on an ejector pump (F130 "Sewer Pump" line) needs a permit before work starts.
+        assumptions: [A-8]
+      - when: { upsizing_needed: ["yes", unknown] }
+        then: { tier: FULL, forms: [F130], alteration: true }
+        reason: A new bathroom that upsizes the drain or water system isn't minor work.
+      - then: { tier: MW, forms: [F130], alteration: true }
+        reason: A new bathroom with no upsizing of the drain or water system is minor work.
+    reason: A new bathroom is minor work unless it upsizes the drain/water system or needs an ejector pump.
+    citation: N.J.A.C. 5:23-2.17A(c)2
+    office_questions: [Q-5]
+    notes: Bath fan and lights are separate electrical items (F120).
+
+  - id: FB-07
+    title: "Electrical: lights, outlets, circuits"
+    refers_to: [KB-10, KB-11, KB-12, KB-13]
+    notes: Classified by the kitchen & bath electrical rules. A basement finish usually exceeds 5 outlets, so usually FULL.
+
+  - id: FB-08
+    title: Smoke and CO alarms (hardwired is minor work; battery or plug-in is ordinary maintenance)
+    when: { kind: smoke_co_alarm }
+    cases:
+      - when: { power: [battery, plug_in] }
+        then: { tier: OM }
+        reason: Battery or plug-in alarms are ordinary maintenance.
+        citation: N.J.A.C. 5:23-2.7(c)4.iii–iv
+      - then: { tier: MW, forms: [F120], alteration: true }
+        reason: Hardwired alarms are minor work.
+        citation: N.J.A.C. 5:23-2.17A(c)5.i
+    reason: Alarms are minor work when hardwired, ordinary maintenance when battery or plug-in.
+    office_questions: [Q-8]
+    notes: Show on the floor plan. Hardwired alarms go on the F120 "Detectors" line.
+
+  - id: FB-09
+    title: Extend ductwork / add supply registers into new space
+    when: { kind: ductwork, action: [extend, unknown] }
+    then: { tier: MW, forms: [F145], alteration: true }
+    reason: Extending ductwork into new finished space is treated as minor work on the mechanical section.
+    citation: Repair or replacement is ordinary maintenance (HV-05), 2.7(c)5.iii
+    assumptions: [A-9]
+    notes: "Flag: furnace capacity for added conditioned space is the reviewer's call."
+
+  - id: FB-10
+    title: Bearing wall, post or beam changes
+    refers_to: [KB-21]
+    notes: Same as KB-21.
+
+  - id: FB-11
+    title: Fuel-fired appliance (furnace, water heater) is in or next to the new finished room
+    refers_to: [TP-04]
+    notes: Flag only, shown as tip TP-04. F145 only if the appliance itself is touched.

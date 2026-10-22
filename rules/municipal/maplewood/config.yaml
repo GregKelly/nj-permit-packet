@@ -1,0 +1,10 @@
+# Maplewood settings. The zoning flags are the flippable assumptions A-13 and
+# A-15 (CLAUDE.md): change true/false here, no code changes needed.
+type: config
+municipality: Maplewood
+zoning_office: Maplewood Zoning, 973-762-8120 ext. 5602
+flags:
+  # A-13. false = purely interior work needs no residential zoning application.
+  interior_alterations_require_zoning: false
+  # A-15. false = like-for-like exterior replacement gets a "probably not required, confirm" note.
+  exterior_like_for_like_requires_zoning: false

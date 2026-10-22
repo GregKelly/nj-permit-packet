@@ -1,0 +1,30 @@
+# Plans. Rules table §4.3. The first rule that applies wins, so a sealed-plan
+# requirement outranks a floor plan. Plans are flagged, never generated.
+type: plans
+rules:
+  - id: PL-01
+    title: Any structural item
+    when_rules: [KB-21, KB-23, FB-05, FB-10, RF-04, RF-05, RF-06]
+    requirement: sealed
+    message: Plans required, sealed by an NJ-licensed architect or engineer.
+
+  - id: PL-02
+    title: Space reconfiguration or new habitable space
+    when_rules: [KB-20, FB-01, FB-03, FB-04]
+    requirement: floor_plan
+    message: Floor plan required. An unsealed contractor sketch is assumed acceptable.
+    assumptions: [A-7]
+    office_questions: [Q-2]
+
+  - id: PL-03
+    title: New system or capacity change
+    when_rules: [HV-02, HV-03]
+    requirement: none
+    message: No plans required, but the office may ask for the equipment location and a load calculation.
+    office_questions: [Q-10]
+
+  - id: PL-04
+    title: Everything else (replacements, minor trade work)
+    otherwise: true
+    requirement: none
+    message: No plans needed.

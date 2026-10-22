@@ -1,0 +1,31 @@
+# Licensing and registration checks. Rules table §4.5.
+type: licensing
+rules:
+  - id: LC-01
+    title: Contractor profile missing HIC registration #
+    check: hic_missing
+    message: NJ home improvement contractors must be registered. Add your HIC # or exemption reason.
+    blocks_printing: false
+
+  - id: LC-02
+    title: F120/F130/F145 included but no matching licensed sub in the directory
+    check: sub_missing
+    message: Add the licensed {trade_person} who'll sign {form}.
+    blocks_printing: false
+
+  - id: LC-03
+    title: Sub's license expiry before today
+    check: license_expired
+    message: "{name}'s {trade} license expired {expires}. Printing is blocked until you update the license or pick another sub."
+    blocks_printing: true
+
+  - id: LC-04
+    title: Year built before 1978
+    refers_to: [TP-05]
+    notes: Info only, shown as tip TP-05. Not a permit item.
+
+  - id: LC-05
+    title: Owner is doing the trade work themselves
+    check: owner_trade_work
+    message: Out of scope for v1. The homeowner-exempt path isn't supported.
+    blocks_printing: true

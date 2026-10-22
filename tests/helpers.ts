@@ -32,7 +32,7 @@ export const profile: Profile = parse(readFileSync(JOBS_DIR + '_profile.yaml', '
 export function buildFacts(raw: Record<string, any>): JobFacts {
   const picks = { ...profile.default_team, ...(raw.team ?? {}) };
   const team: Record<string, unknown> = { applicant: profile.applicant };
-  for (const [trade, key] of Object.entries(picks)) {
+  for (const [trade, key] of Object.entries(picks) as [string, string | null][]) {
     if (key === null) continue;
     const { trade: _t, ...sub } = profile.subcontractors[key];
     team[trade] = sub;
