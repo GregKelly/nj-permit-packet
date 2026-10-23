@@ -1,0 +1,92 @@
+# F145 Mechanical Inspection Technical Section: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F145), 2026-10-23.
+# The equipment column is fields a (Water Heater) to k (Other), top to bottom.
+type: field_map
+form: F145
+fields:
+  # A. Identification
+  site.block: Block 1
+  site.lot: Lot
+  site.qualifier: fill_3
+  site.address: Work Site Location
+  site.address_2: Block 2                 # second Work Site line (misnamed in the PDF)
+  owner.name: Owner in Fee
+  owner.phone_area: Tel
+  owner.phone: undefined_3
+  owner.email: email
+  owner.address: Address
+  contractor.name: Contractor 1
+  contractor.phone_area: Tel_2
+  contractor.phone: undefined_4
+  contractor.address: Address_2
+  contractor.address_2: Contractor 2
+  contractor.email: email_2
+  contractor.license: Contractor License No
+  contractor.license_expires: Exp Date
+  contractor.hic: Home Improvement Contractor Registration No or Exemption Reason if applicable
+  contractor.fein: "Fed Emp #"
+  contractor.fax_area: Tel_3              # FAX area code (misnamed in the PDF)
+  contractor.fax: undefined_5
+  # C. Certification
+  certification.print_name: Print name here
+  # D. Technical site data
+  licensed_contractor: cb1
+  exempt_applicant: cb2
+  description: Row1
+  # B. Mechanical characteristics
+  use_group.r3: cb3                       # Use Group Present: [ ] R-3 OR [ ] R-5
+  use_group.r5: cb4
+  heating.new: cb5                        # Heating system work
+  heating.modification: cb6
+  heating.conversion: cb7a
+  heating.replacement: cb7b
+  heating.hydronic: cb8                   # Type
+  heating.hot_air: cb9
+  fuel.gas: cb10                          # Fuel type
+  fuel.oil: cb11
+  fuel.electric: cb12
+  fuel.solar: cb13
+  fuel.other: cb14
+  fuel.other_text: Other
+  est_cost: Est Cost of Mechanical Work
+  # Fixture/equipment numbers
+  water_heater.qty: a
+  fuel_oil_piping.qty: b
+  gas_piping.qty: c
+  steam_boiler.qty: d
+  hot_water_boiler.qty: e
+  hot_air_furnace.qty: f
+  oil_tank.qty: g
+  lpg_tank.qty: h
+  fireplace.qty: i
+  generator.qty: j
+  other.qty: k                            # Other (no box for a description: see `lines`)
+
+choices:
+  use_group:
+    R-3: use_group.r3
+    R-5: use_group.r5
+  heating_work:
+    New: heating.new
+    Modification: heating.modification
+    Conversion: heating.conversion
+    Replacement: heating.replacement
+  heating_distribution:
+    Hydronic: heating.hydronic
+    Hot Air: heating.hot_air
+  fuel:
+    Gas: fuel.gas
+    Oil: fuel.oil
+    Electric: fuel.electric
+    Solar: fuel.solar
+    # Any other fuel (e.g. Propane): the Other box, with the fuel written in.
+    other: { check: fuel.other, text: fuel.other_text }
+
+# An "Other" line's label has no box on this form, so it goes in the description.
+# The engine has one Boiler line; this form splits steam and hot water boilers,
+# so a boiler goes on Other, labelled, for the sub to confirm.
+lines:
+  Water Heater: { qty: water_heater.qty }
+  Hot Air Furnace: { qty: hot_air_furnace.qty }
+  Boiler: { qty: other.qty, fixed_label: Boiler }
+  Other: { qty: other.qty }

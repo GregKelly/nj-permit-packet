@@ -20,3 +20,4 @@ entries:
   - { id: A-19, text: "One- and two-family dwellings (incl. twins) are use group R-5 on the forms", confirm_with: Construction office }
   - { id: A-20, text: "With no Mechanical row on F100, F145 work is costed on the Plumbing row", confirm_with: Construction office (Q-11) }
   - { id: A-21, text: "F100 \"Alteration\" vs \"Renovation\" follows the Rehabilitation Subcode definitions (N.J.A.C. 5:23-6.3) as summarized in CQ-01", confirm_with: DCA Code Assistance }
+  - { id: A-22, text: "The office wants one original plus three copies of each completed form (DCA construction permit forms page)", confirm_with: Maplewood Construction Office }

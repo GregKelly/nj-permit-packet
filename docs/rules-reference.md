@@ -1,6 +1,6 @@
 # Rules reference
 
-*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `730ca4794050`.*
+*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `841675539455`.*
 
 This is the rule data the engine runs, in table form. The approved original is [rules-table-v1.md](rules-table-v1.md); the YAML is the source of truth from M1 on (design doc §4.2).
 
@@ -201,7 +201,7 @@ Config flags (`municipal/maplewood/config.yaml`): `interior_alterations_require_
 |---|---|---|---|
 | LC-01 | Contractor profile missing HIC registration | NJ home improvement contractors must be registered. Add your HIC | no |
 | LC-02 | F120/F130/F145 included but no matching licensed sub in the directory | Add the licensed {trade_person} who'll sign {form}. | no |
-| LC-03 | Sub's license expiry before today | {name}'s {trade} license expired {expires}. Printing is blocked until you update the license or pick another sub. | yes |
+| LC-03 | Sub's license expiry before today | {name}'s {trade} license expired {expires}. The office will likely reject their section, and they may not legally do or sign for this work until the license is renewed. Update the license or pick another sub before submitting. | no |
 | LC-04 | Year built before 1978 | *Shown as TP-05* | no |
 | LC-05 | Owner is doing the trade work themselves | Out of scope for v1. The homeowner-exempt path isn't supported. | yes |
 
@@ -215,7 +215,14 @@ Config flags (`municipal/maplewood/config.yaml`): `interior_alterations_require_
 | TP-04 | Fuel-fired appliance near new finished space (FB-11) | **habitable_space**, fuel_appliance_nearby: yes | Show the furnace/water heater on the plan with clearances and combustion air. |
 | TP-05 | Year built before 1978 (LC-04) | property: year_built: < 1978 | Lead-safe work practices may apply to disturbing painted surfaces. |
 
-## 9. Assumptions register
+## 9. Submitting the packet
+
+| ID | Line on the cover checklist | When | Source |
+|---|---|---|---|
+| SB-01 | Submit one original plus three copies of each completed form. | every packet | DCA construction permit forms page ⚠️ A-22 |
+| SB-02 | Bring at least two copies of the plans. | plans: sealed or floor_plan | N.J.A.C. 5:23-2.15(f)1 |
+
+## 10. Assumptions register
 
 | ID | Assumption | How to confirm |
 |---|---|---|
@@ -240,8 +247,9 @@ Config flags (`municipal/maplewood/config.yaml`): `interior_alterations_require_
 | A-19 | One- and two-family dwellings (incl. twins) are use group R-5 on the forms | Construction office |
 | A-20 | With no Mechanical row on F100, F145 work is costed on the Plumbing row | Construction office (Q-11) |
 | A-21 | F100 "Alteration" vs "Renovation" follows the Rehabilitation Subcode definitions (N.J.A.C. 5:23-6.3) as summarized in CQ-01 | DCA Code Assistance |
+| A-22 | The office wants one original plus three copies of each completed form (DCA construction permit forms page) | Maplewood Construction Office |
 
-## 10. Questions for the construction office
+## 11. Questions for the construction office
 
 | ID | Question | Status |
 |---|---|---|

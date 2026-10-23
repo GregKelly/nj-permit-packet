@@ -1,0 +1,81 @@
+# Expected boxes for each party, written out once. A job's expected entries
+# say `contractor: <key>` to include one of these blocks. Values are literal:
+# they come from tests/jobs/_profile.yaml as a person would copy them onto the form.
+
+# F100 §I Principal Contractor and page 2 Agent Section (the contractor applies as agent).
+f100_hollis:
+  contractor.name: Hollis Building Co. LLC
+  contractor.phone: 973-555-0101
+  contractor.address: 1800 Springfield Ave
+  contractor.address_2: Maplewood, NJ 07040
+  contractor.email: office@hollis.example
+  contractor.hic: 13VH00000001
+  contractor.fein: "000000001"          # the F100 box takes 9 digits, no dash
+  agent.is_contractor: true
+  agent.name: Hollis Building Co. LLC
+  agent.address: 1800 Springfield Ave
+  agent.city_state_zip: Maplewood, NJ 07040
+  agent.phone: 973-555-0101
+
+# Contractor boxes on a technical section: the party that signs it.
+hollis:
+  contractor.name: Hollis Building Co. LLC
+  contractor.phone_area: "973"
+  contractor.phone: 555-0101
+  contractor.address: 1800 Springfield Ave
+  contractor.address_2: Maplewood, NJ 07040
+  contractor.email: office@hollis.example
+  contractor.hic: 13VH00000001
+  contractor.fein: 00-0000001
+watts:
+  contractor.name: Watts Electric LLC
+  contractor.phone_area: "973"
+  contractor.phone: 555-0111
+  contractor.address: 88 Main St
+  contractor.address_2: Orange, NJ 07050
+  contractor.email: permits@watts.example
+  contractor.license: 34EB00000101
+  contractor.license_expires: 06/30/2027
+  licensed_contractor: true
+sutton:
+  contractor.name: Sutton Plumbing & Heating
+  contractor.phone_area: "973"
+  contractor.phone: 555-0122
+  contractor.address: 15 Irvington Ave
+  contractor.address_2: South Orange, NJ 07079
+  contractor.email: office@sutton.example
+  contractor.license: 36BI00000202
+  contractor.license_expires: 03/31/2027
+  licensed_contractor: true
+clearair:
+  contractor.name: Clearair Mechanical
+  contractor.phone_area: "973"
+  contractor.phone: 555-0133
+  contractor.address: 300 Morris Ave
+  contractor.address_2: Springfield, NJ 07081
+  contractor.email: service@clearair.example
+  contractor.license: 19HC00000303
+  contractor.license_expires: 08/31/2027
+  licensed_contractor: true
+northside:
+  contractor.name: Northside Heating & Cooling
+  contractor.phone_area: "973"
+  contractor.phone: 555-0144
+  contractor.address: 52 Bloomfield Ave
+  contractor.address_2: Montclair, NJ 07042
+  contractor.email: info@northside.example
+  contractor.license: 19HC00000404
+  contractor.license_expires: 09/30/2026
+  licensed_contractor: true
+
+# F370: the company verifying the chimney.
+f370_northside:
+  verifier.company: Northside Heating & Cooling
+  verifier.address: 52 Bloomfield Ave, Montclair, NJ 07042
+  verifier.phone_area: "973"
+  verifier.phone: 555-0144
+f370_clearair:
+  verifier.company: Clearair Mechanical
+  verifier.address: 300 Morris Ave, Springfield, NJ 07081
+  verifier.phone_area: "973"
+  verifier.phone: 555-0133

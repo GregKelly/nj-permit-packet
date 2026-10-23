@@ -3,13 +3,14 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { parse } from 'yaml';
 import { parseJobFacts, type Determinations, type JobFacts } from '../src/engine';
+import type { Contractor, Subcontractor } from '../src/packet/types';
 
 export const TODAY = '2026-10-22';
 const JOBS_DIR = new URL('./jobs/', import.meta.url).pathname;
 
 interface Profile {
-  applicant: { name: string; hic_registration: string | null };
-  subcontractors: Record<string, { trade: string; name: string; license: string; expires: string }>;
+  applicant: Contractor;
+  subcontractors: Record<string, Subcontractor>;
   default_team: Record<string, string>;
 }
 
@@ -31,11 +32,12 @@ export const profile: Profile = parse(readFileSync(JOBS_DIR + '_profile.yaml', '
 /** Build a fact list from a job's raw YAML, filling the team from the shared profile. */
 export function buildFacts(raw: Record<string, any>): JobFacts {
   const picks = { ...profile.default_team, ...(raw.team ?? {}) };
-  const team: Record<string, unknown> = { applicant: profile.applicant };
+  // The engine only needs names, registration and licenses; contact details are for the packet.
+  const team: Record<string, unknown> = { applicant: { name: profile.applicant.name, hic_registration: profile.applicant.hic_registration } };
   for (const [trade, key] of Object.entries(picks) as [string, string | null][]) {
     if (key === null) continue;
-    const { trade: _t, ...sub } = profile.subcontractors[key];
-    team[trade] = sub;
+    const { name, license, expires } = profile.subcontractors[key];
+    team[trade] = { name, license, expires };
   }
   return parseJobFacts({
     property: raw.property,

@@ -1,0 +1,73 @@
+# Packet inputs and expected form boxes for J-03 (tests/jobs/J-03.yaml).
+# See J-01.yaml for how these are written.
+id: J-03
+site: { block: "2205", lot: "31", zip: "07040" }
+owner:
+  name: Priya Raman
+  address: { street: 7 Tuscan Rd, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0163
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "2205"
+    site.lot: "31"
+    site.address: 7 Tuscan Rd
+    site.work_site: 7 Tuscan Rd, Maplewood, NJ 07040
+    owner.name: Priya Raman
+    owner.phone: 973-555-0163
+    owner.street: 7 Tuscan Rd
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $24,000 / $2,000 / $6,000 / $32,000
+    est_cost.building: $24,000
+    subcode.electrical: true
+    est_cost.electrical: $2,000
+    subcode.plumbing: true
+    est_cost.plumbing: $6,000
+    est_cost.total: $32,000
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "2205"
+    site.lot: "31"
+    site.address: 7 Tuscan Rd, Maplewood, NJ 07040
+    owner.name: Priya Raman
+    owner.phone_area: "973"
+    owner.phone: 555-0163
+    owner.address: 7 Tuscan Rd, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $24,000
+    est_cost.rehabilitation: "24,000"
+    est_cost.total: "24,000"
+    description: |-
+      Bigger window over the tub area
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "2,000"                       # $2,000 · Other "Radiant floor heat mat on new 20A GFCI circuit": 1
+    other.qty: "1"
+    # F120's Other line has no box for its label, so the label is marked in the description.
+    description: |-
+      Radiant floor heat mat on new 20A GFCI circuit (on the Other line)
+      See attached scope of work.
+  F130:
+    <<: *site_owner
+    contractor: sutton
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "6,000"                       # $6,000 · Shower 1 · Lavatory 2
+    shower.qty: "1"
+    lavatory.qty: "2"
+    description: |-
+      Walk-in tile shower replaces the tub
+      Double vanity replaces single (second lavatory added)
+      See attached scope of work.

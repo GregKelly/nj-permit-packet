@@ -1,0 +1,72 @@
+# Packet inputs and expected form boxes for J-08 (tests/jobs/J-08.yaml), as written
+# (Northside, license expired: the packet prints with the LC-03 warning).
+# See J-01.yaml for how these are written.
+id: J-08
+site: { block: "2911", lot: "5", zip: "07040" }
+owner:
+  name: Gail and Robert Feld
+  address: { street: 66 Parker Ave, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0168
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "2911"
+    site.lot: "5"
+    site.address: 66 Parker Ave
+    site.work_site: 66 Parker Ave, Maplewood, NJ 07040
+    owner.name: Gail and Robert Feld
+    owner.phone: 973-555-0168
+    owner.street: 66 Parker Ave
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.minor_work: true          # §IIa Minor Work
+    subcode.electrical: true                # §IIb $500 / $14,000 (mechanical, A-20) / $14,500
+    est_cost.electrical: $500
+    subcode.plumbing: true
+    est_cost.plumbing: $14,000
+    est_cost.total: $14,500
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "2911"
+    site.lot: "5"
+    site.address: 66 Parker Ave, Maplewood, NJ 07040
+    owner.name: Gail and Robert Feld
+    owner.phone_area: "973"
+    owner.phone: 555-0168
+    owner.address: 66 Parker Ave, Maplewood, NJ 07040
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "500"                         # $500 · KW Central AC Unit 1 (size blank) · HP/KW Furnace 1 (size blank)
+    kw_ac.qty: "1"
+    kw_ac.central_ac: true
+    hp_kw.qty: "1"
+    hp_kw.furnace: true
+    description: |-
+      Gas furnace, 80k BTU, same size
+      A/C condensing unit, 3-ton
+      See attached scope of work.
+  F145:
+    <<: *site_owner
+    contractor: northside
+    use_group.r5: true
+    est_cost: "14,000"                      # $14,000 · Replacement, Hot Air, Gas · Hot Air Furnace 1 · Other 1
+    heating.replacement: true
+    heating.hot_air: true
+    fuel.gas: true
+    hot_air_furnace.qty: "1"
+    other.qty: "1"
+    description: |-
+      Gas furnace, 80k BTU, same size
+      A/C condensing unit, 3-ton (on the Other line)
+      See attached scope of work.
+  F370:
+    contractor: f370_northside
+    site.block: "2911"
+    site.lot: "5"
+    site.address: 66 Parker Ave, Maplewood, NJ 07040
+    owner.name: Gail and Robert Feld

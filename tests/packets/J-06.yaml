@@ -1,0 +1,7 @@
+# Packet inputs for J-06 (tests/jobs/J-06.yaml): no permit, so no form boxes to check.
+# Owner and parcel details are fictional.
+id: J-06
+site: { block: "2104", lot: "3", zip: "07040" }
+owner:
+  name: Ruth and Ben Albers
+  address: { street: 41 Wyoming Ave, city: Maplewood, state: NJ, zip: "07040" }

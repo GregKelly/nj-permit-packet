@@ -1,0 +1,66 @@
+# Packet inputs and expected form boxes for J-10 (tests/jobs/J-10.yaml).
+# See J-01.yaml for how these are written.
+id: J-10
+site: { block: "2620", lot: "9", zip: "07040" }
+owner:
+  name: Lena Brooks
+  address: { street: 27 Prospect St, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0170
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "2620"
+    site.lot: "9"
+    site.address: 27 Prospect St
+    site.work_site: 27 Prospect St, Maplewood, NJ 07040
+    owner.name: Lena Brooks
+    owner.phone: 973-555-0170
+    owner.street: 27 Prospect St
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration (gas system extended, new equipment)
+    subcode.electrical: true                # §IIb $600 / $3,000 (gas + mechanical, A-20) / $3,600; no Building box (CQ-03)
+    est_cost.electrical: $600
+    subcode.plumbing: true
+    est_cost.plumbing: $3,000
+    est_cost.total: $3,600
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "2620"
+    site.lot: "9"
+    site.address: 27 Prospect St, Maplewood, NJ 07040
+    owner.name: Lena Brooks
+    owner.phone_area: "973"
+    owner.phone: 555-0170
+    owner.address: 27 Prospect St, Maplewood, NJ 07040
+  F130:
+    <<: *site_owner
+    contractor: sutton
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "1,200"                       # $1,200 · Gas piping 1
+    gas_piping.qty: "1"
+    description: |-
+      36in pro gas range in the same spot; bigger gas line from the meter
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "600"                         # $600 · Devices 1
+    devices.qty: "1"
+    description: |-
+      Range hood, 900 cfm, ducted outside
+      See attached scope of work.
+  F145:
+    <<: *site_owner
+    contractor: clearair
+    use_group.r5: true
+    est_cost: "1,800"                       # $1,800 · heating system blank · Other "Range hood, 900 cfm, ducted outside": 1
+    other.qty: "1"
+    description: |-
+      Range hood, 900 cfm, ducted outside (on the Other line)
+      See attached scope of work.

@@ -1,15 +1,29 @@
 # Shared test profile (docs/test-jobs-v1.md, "Shared test profile").
-# People, companies and license numbers are fictional.
+# People, companies and license numbers are fictional. Addresses, phones and
+# emails were added for the packet (M2): 555-01xx phone numbers and .example
+# email domains are reserved for made-up data.
 
 applicant:
   name: Hollis Building Co. LLC
   hic_registration: 13VH00000001
+  fein: 00-0000001
+  address: { street: 1800 Springfield Ave, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0101
+  email: office@hollis.example
 
 subcontractors:
-  watts:     { trade: electrical, name: Watts Electric LLC,          license: 34EB00000101, expires: 2027-06-30 }
-  sutton:    { trade: plumbing,   name: Sutton Plumbing & Heating,   license: 36BI00000202, expires: 2027-03-31 }
-  clearair:  { trade: hvacr,      name: Clearair Mechanical,         license: 19HC00000303, expires: 2027-08-31 }
-  northside: { trade: hvacr,      name: Northside Heating & Cooling, license: 19HC00000404, expires: 2026-09-30 }  # expired
+  watts:
+    { trade: electrical, name: Watts Electric LLC, license: 34EB00000101, expires: 2027-06-30,
+      address: { street: 88 Main St, city: Orange, state: NJ, zip: "07050" }, phone: 973-555-0111, email: permits@watts.example }
+  sutton:
+    { trade: plumbing, name: Sutton Plumbing & Heating, license: 36BI00000202, expires: 2027-03-31,
+      address: { street: 15 Irvington Ave, city: South Orange, state: NJ, zip: "07079" }, phone: 973-555-0122, email: office@sutton.example }
+  clearair:
+    { trade: hvacr, name: Clearair Mechanical, license: 19HC00000303, expires: 2027-08-31,
+      address: { street: 300 Morris Ave, city: Springfield, state: NJ, zip: "07081" }, phone: 973-555-0133, email: service@clearair.example }
+  northside:   # license expired
+    { trade: hvacr, name: Northside Heating & Cooling, license: 19HC00000404, expires: 2026-09-30,
+      address: { street: 52 Bloomfield Ave, city: Montclair, state: NJ, zip: "07042" }, phone: 973-555-0144, email: info@northside.example }
 
 # Who does each trade unless a job says otherwise
 default_team: { electrical: watts, plumbing: sutton, hvacr: clearair }

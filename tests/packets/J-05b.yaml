@@ -1,0 +1,60 @@
+# Packet inputs and expected form boxes for J-05b (tests/jobs/J-05b.yaml): same job with 4 outlets + 2 lights.
+# See J-01.yaml for how these are written.
+id: J-05b
+site: { block: "907", lot: "44", zip: "07040" }
+owner:
+  name: Marcus Bell
+  address: { street: 9 Highland Pl, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0165
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "907"
+    site.lot: "44"
+    site.address: 9 Highland Pl
+    site.work_site: 9 Highland Pl, Maplewood, NJ 07040
+    owner.name: Marcus Bell
+    owner.phone: 973-555-0165
+    owner.street: 9 Highland Pl
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $24,800 / $1,200 / $26,000
+    est_cost.building: $24,800
+    subcode.electrical: true
+    est_cost.electrical: $1,200
+    est_cost.total: $26,000
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "907"
+    site.lot: "44"
+    site.address: 9 Highland Pl, Maplewood, NJ 07040
+    owner.name: Marcus Bell
+    owner.phone_area: "973"
+    owner.phone: 555-0165
+    owner.address: 9 Highland Pl, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $24,800
+    est_cost.rehabilitation: "24,800"
+    est_cost.total: "24,800"
+    description: |-
+      Frame two walls, drywall
+      Basement guest bedroom
+      New egress window with window well (foundation cut)
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "1,200"                       # $1,200 · Devices 6 (changed 2026-10-22)
+    devices.qty: "6"
+    description: |-
+      4 outlets and 2 ceiling lights off the existing basement circuit
+      See attached scope of work.

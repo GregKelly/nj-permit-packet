@@ -1,0 +1,16 @@
+# Submitting the packet: lines for the cover checklist. Added with the M2 plan
+# (owner decision 2026-10-23): the packet holds one set; copies are printed
+# from the print dialog. Applies only to jobs that file a packet.
+type: submission
+rules:
+  - id: SB-01
+    title: Copies of the forms
+    text: Submit one original plus three copies of each completed form.
+    citation: DCA construction permit forms page
+    assumptions: [A-22]
+
+  - id: SB-02
+    title: Copies of the plans
+    when_plans: [sealed, floor_plan]
+    text: Bring at least two copies of the plans.
+    citation: N.J.A.C. 5:23-2.15(f)1

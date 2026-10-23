@@ -1,0 +1,94 @@
+# Packet inputs and expected form boxes for J-04 (tests/jobs/J-04.yaml).
+# See J-01.yaml for how these are written.
+id: J-04
+site: { block: "1810", lot: "12", qualifier: C0001, zip: "07040" }
+owner:
+  name: Dana Whitfield
+  address: { street: 52 Durand Rd, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0164
+  email: dana.w@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "1810"
+    site.lot: "12"
+    site.qualifier: C0001
+    site.address: 52 Durand Rd
+    site.work_site: 52 Durand Rd, Maplewood, NJ 07040
+    owner.name: Dana Whitfield
+    owner.phone: 973-555-0164
+    owner.email: dana.w@mail.example
+    owner.street: 52 Durand Rd
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $50,500 / $7,000 / $10,500 (incl. mechanical, A-20) / $68,000
+    est_cost.building: $50,500
+    subcode.electrical: true
+    est_cost.electrical: $7,000
+    subcode.plumbing: true
+    est_cost.plumbing: $10,500
+    est_cost.total: $68,000
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "1810"
+    site.lot: "12"
+    site.qualifier: C0001
+    site.address: 52 Durand Rd, Maplewood, NJ 07040
+    owner.name: Dana Whitfield
+    owner.phone_area: "973"
+    owner.phone: 555-0164
+    owner.email: dana.w@mail.example
+    owner.address: 52 Durand Rd, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $50,500
+    est_cost.rehabilitation: "50,500"
+    est_cost.total: "50,500"
+    description: |-
+      Framing, drywall, drop ceiling
+      Spray foam the rim joists
+      Family room, home office
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "7,000"                       # $7,000 · Devices 26 · Detectors 2, marked Smoke (A-18)
+    devices.qty: "26"
+    detectors.qty: "2"
+    detectors.smoke: true
+    description: |-
+      14 recessed lights and 12 outlets on new 20A circuits
+      2 hardwired smoke/CO combos tied into existing
+      See attached scope of work.
+  F130:
+    <<: *site_owner
+    contractor: sutton
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "9,000"                       # $9,000 · Water closet 1 · Lavatory 1 · Shower 1 · Sewer pump 1
+    water_closet.qty: "1"
+    lavatory.qty: "1"
+    shower.qty: "1"
+    sewer_pump.qty: "1"
+    description: |-
+      Basement bath: toilet, sink, shower, ejector pit
+      See attached scope of work.
+  F145:
+    <<: *site_owner
+    contractor: clearair
+    use_group.r5: true
+    est_cost: "1,500"                       # $1,500 · Modification to existing, Hot Air, fuel blank · Other 1
+    heating.modification: true
+    heating.hot_air: true
+    other.qty: "1"
+    description: |-
+      Supply duct extension, 3 runs (on the Other line)
+      See attached scope of work.

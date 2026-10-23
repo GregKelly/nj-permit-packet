@@ -1,0 +1,81 @@
+# F130 Plumbing Subcode Technical Section: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F130), 2026-10-23.
+# The quantity column is Row1 (Water Closet) to Row25 (Other), top to bottom.
+type: field_map
+form: F130
+fields:
+  # A. Identification
+  site.block: Block 1
+  site.lot: Lot
+  site.qualifier: fill_3
+  site.address: Work Site Location
+  site.address_2: Block 2                 # second Work Site line (misnamed in the PDF)
+  owner.name: Owner in Fee
+  owner.phone_area: Tel
+  owner.phone: undefined_2
+  owner.email: email
+  owner.address: Address
+  contractor.name: Contractor 1
+  contractor.phone_area: Tel_2
+  contractor.phone: undefined_3
+  contractor.address: Address_2
+  contractor.address_2: Contractor 2
+  contractor.email: email_2
+  contractor.license: Contractor License No
+  contractor.license_expires: Exp Date
+  contractor.hic: Home Improvement Contractor Registration No or Exemption Reason if applicable
+  contractor.fein: Federal Emp ID No
+  contractor.fax_area: FAX
+  contractor.fax: undefined_4
+  # C. Certification
+  certification.print_name: Print name here
+  # D. Technical site data
+  licensed_contractor: Check Box10
+  exempt_applicant: Check Box11
+  description: Description
+  # B. Plumbing characteristics
+  use_group.present: Present
+  use_group.proposed: Proposed
+  est_cost: Est Cost of Plumbing Work
+  # Fixture/equipment quantities
+  water_closet.qty: Row1
+  urinal_bidet.qty: Row2
+  bathtub.qty: Row3
+  lavatory.qty: Row4
+  shower.qty: Row5
+  floor_drain.qty: Row6
+  sink.qty: Row7
+  dishwasher.qty: Row8
+  drinking_fountain.qty: Row9
+  washing_machine.qty: Row10
+  hose_bibb.qty: Row11
+  water_heater.qty: Row12
+  fuel_oil_piping.qty: Row13
+  gas_piping.qty: Row14
+  lp_gas_tank.qty: Row15
+  steam_boiler.qty: Row16
+  hot_water_boiler.qty: Row17
+  sewer_pump.qty: Row18
+  interceptor.qty: Row19
+  backflow_preventer.qty: Row20
+  grease_trap.qty: Row21
+  sewer_connection.qty: Row22
+  water_service_connection.qty: Row23
+  stacks.qty: Row24
+  stacks.detail: Stacks
+  other.qty: Row25
+  other.label: Other
+
+lines:
+  Water closet: { qty: water_closet.qty }
+  Lavatory: { qty: lavatory.qty }
+  Sink: { qty: sink.qty }
+  Bathtub: { qty: bathtub.qty }
+  Shower: { qty: shower.qty }
+  Dishwasher: { qty: dishwasher.qty }
+  Washing machine: { qty: washing_machine.qty }
+  Floor drain: { qty: floor_drain.qty }
+  Hose bibb: { qty: hose_bibb.qty }
+  Sewer pump: { qty: sewer_pump.qty }
+  Gas piping: { qty: gas_piping.qty }
+  Other: { qty: other.qty, label: other.label }

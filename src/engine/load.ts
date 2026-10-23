@@ -186,6 +186,24 @@ const FILE_SCHEMAS = {
       ),
     })
     .strict(),
+  submission: z
+    .object({
+      type: z.literal('submission'),
+      rules: z.array(
+        z
+          .object({
+            id: Id,
+            title: z.string(),
+            text: z.string(),
+            /** Only when the plans requirement is one of these; otherwise always. */
+            when_plans: z.array(z.enum(['sealed', 'floor_plan', 'none'])).optional(),
+            citation: z.string().optional(),
+            assumptions: Ids,
+          })
+          .strict(),
+      ),
+    })
+    .strict(),
   assumptions: z
     .object({
       type: z.literal('assumptions'),
@@ -235,6 +253,7 @@ export type LineDef = Files['form_entries']['lines'][number];
 export type HeatingDef = Files['form_entries']['heating_system'][number];
 export type LicensingRule = z.infer<typeof LicensingRuleSchema>;
 export type TipRule = Files['tips']['rules'][number];
+export type SubmissionRule = Files['submission']['rules'][number];
 export type ZoningRule = Files['zoning']['rules'][number];
 export type Assumption = Files['assumptions']['entries'][number];
 export type OfficeQuestion = Files['office_questions']['entries'][number];
@@ -263,6 +282,7 @@ export interface RuleSet {
   heating: HeatingDef[];
   licensing: (LicensingRule | RefRule)[];
   tips: TipRule[];
+  submission: SubmissionRule[];
   zoning: ZoningRule[];
   assumptions: Map<string, Assumption>;
   officeQuestions: Map<string, OfficeQuestion>;
@@ -336,6 +356,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     heating: ofType('form_entries').flatMap((f) => f.data.heating_system),
     licensing: ofType('licensing').flatMap((f) => f.data.rules.map((r) => ('refers_to' in r ? { ...r, group: 'LC' } : r))),
     tips: ofType('tips').flatMap((f) => f.data.rules),
+    submission: ofType('submission').flatMap((f) => f.data.rules),
     zoning: ofType('zoning').flatMap((f) => f.data.rules),
     assumptions: new Map(ofType('assumptions').flatMap((f) => f.data.entries.map((a) => [a.id, a] as const))),
     officeQuestions: new Map(ofType('office_questions').flatMap((f) => f.data.entries.map((q) => [q.id, q] as const))),
@@ -353,6 +374,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     ...Object.values(ofType('form_entries').flatMap((f) => f.data.policies.map((p) => p.id))),
     ...rs.licensing.map((r) => r.id),
     ...rs.tips.map((r) => r.id),
+    ...rs.submission.map((r) => r.id),
     ...rs.zoning.map((r) => r.id),
     ...ofType('assumptions').flatMap((f) => f.data.entries.map((a) => a.id)),
     ...ofType('office_questions').flatMap((f) => f.data.entries.map((q) => q.id)),
@@ -416,6 +438,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     if (t.when_item) checkWhen(t.when_item, null, `tip ${t.id}`, errors, rs.thresholds);
     if (t.when_property) checkPropertyCond(t.when_property, `tip ${t.id}`, errors, rs.thresholds, true);
   }
+  for (const s of rs.submission) ref(`submission ${s.id}`, 'assumption', s.assumptions, rs.assumptions);
   for (const z of rs.zoning) {
     ref(`zoning ${z.id}`, 'assumption', z.assumptions, rs.assumptions);
     if (z.config_flag && !flags.has(z.config_flag)) errors.push(`zoning ${z.id}: config flag ${z.config_flag} isn't in config.yaml`);

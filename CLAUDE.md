@@ -4,13 +4,15 @@ A local web app that turns a NJ residential contractor's plain-language job desc
 
 ## Where we are
 
-Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **M1 (rules engine) is done**: accepted by the owner and merged to `main` (2026-10-23). Rules live in `rules/` (reviewed as `docs/rules-reference.md`); four test-doc conflicts were decided by the owner and recorded in `docs/test-jobs-v1.md`. **Next: write the M2 plan** (packet builder, design doc §9) in `docs/plans/m2-plan.md` for owner approval before building. If an approved expected answer looks wrong, stop and ask the owner; don't change it. Later milestones follow the same pattern: short plan in `docs/plans/`, owner approval, build (design doc §9).
+Product definition is done (see `product-brief.md`, and `docs/research-notes.md` for sources). The v1 rules table (`docs/rules-table-v1.md`) is **approved** (2026-10-22); its remaining open questions are for the construction office (§6). Ten test jobs with expected outputs (`docs/test-jobs-v1.md`) are **approved**. The technical design (`docs/design-doc.md`) is **approved** (2026-10-22). **M1 (rules engine) is done**: accepted by the owner and merged to `main` (2026-10-23). Rules live in `rules/` (reviewed as `docs/rules-reference.md`); four test-doc conflicts were decided by the owner and recorded in `docs/test-jobs-v1.md`. **The M2 plan (packet builder) is approved** (2026-10-23): `docs/plans/m2-plan.md`. **M2 (packet builder) is done**: accepted by the owner and merged to `main` (2026-10-23); see the plan's "Build notes". LC-03 now warns instead of blocking printing; copies lines are rules SB-01/SB-02 (A-22). Official forms, field maps and fingerprints live in `assets/forms/`; the builder is `src/packet/`. **Next:** the homeowner-does-own-trade-work path (replaces the LC-05 stop for a contractor's job), done rules-first with owner review; then M3 (AI layer). If an approved expected answer looks wrong, stop and ask the owner; don't change it. Later milestones follow the same pattern: short plan in `docs/plans/`, owner approval, build (design doc §9).
 
 ## Commands
 
-- `npm test`: engine, question-selection, rule-file and determinism tests (`npm run test:report` for the verbose list)
+- `npm test`: engine, question-selection, rule-file, packet (field read-back, pages, form fingerprints) and determinism tests (`npm run test:report` for the verbose list)
 - `npm run determine -- J-01` (add `--before` for facts before follow-ups): a test job's determinations in plain language
 - `npm run render-rules`: regenerate `docs/rules-reference.md` from `rules/` after any rule edit
+- `npm run packet -- J-01` (add `--hvacr clearair` etc. to swap a sub): writes the print-ready packet to `out/J-01.pdf`
+- `npm run form-proof -- F120`: proof sheet (every box labelled with its PDF field name) to check a field map; rerun after any form revision
 - `npm run typecheck`
 
 ## Product decisions (settled; don't relitigate)

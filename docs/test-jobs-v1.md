@@ -18,6 +18,10 @@
 3. **J-05b:** the F120 Devices count becomes **6** (CQ-07 counts every device installed). "Form entries unchanged" referred to tier, forms and costs.
 4. **J-10:** ask "Is the new hood more powerful than the old one?" (answer: Yes). KB-15 keeps its approved "or no higher than existing" branch, so the old hood's rating matters.
 
+**Changes after approval, M2** (owner decisions 2026-10-23, in the approved [M2 plan](plans/m2-plan.md); `tests/jobs/` carries the same changes)
+5. **J-08 / LC-03:** an expired subcontractor license **warns instead of blocking printing**. J-08 as written builds the full packet, with the LC-03 warning at the top of the cover checklist: the office will likely reject the section, and the sub may not legally do or sign for the work until the license is renewed. Re-running with Clearair still clears the flag and changes nothing else.
+6. **Copies (new rules SB-01, SB-02 and assumption A-22):** the cover checklist of every packet says "Submit one original plus three copies of each completed form"; when plans are flagged it adds "Bring at least two copies of the plans" (N.J.A.C. 5:23-2.15(f)1). The packet itself holds one set.
+
 ---
 
 ## Shared test profile
@@ -48,7 +52,7 @@ Building-section work (F110) is done by Hollis, which signs F110 as applicant. F
 | J-05 | Basement | FULL + zoning | Bedroom + new egress window; exactly 5 outlets (boundary) |
 | J-06 | Roof | **No permit** | Detached house; decking replaced; zoning "confirm" note |
 | J-07 | Roof | FULL + zoning | Attached twin (not detached) + skylights |
-| J-08 | HVAC | Minor work | Like-for-like swap; F370; **expired sub license** blocks printing |
+| J-08 | HVAC | Minor work | Like-for-like swap; F370; **expired sub license** warns (blocked printing until change 5) |
 | J-09 | HVAC | FULL + zoning | New mini-split; new outdoor unit; load calc flag only |
 | J-10 | Kitchen | FULL | Sounds cosmetic; gas upsizing + 900 cfm hood; OM costs excluded |
 
@@ -382,7 +386,7 @@ Like capacity, same location and fuel are all stated, so nothing else is asked.
 - **Zoning:** ZN-03 "probably not required, confirm" note (same-pad condenser)
 - **Plans:** none (PL-04)
 - **Tips:** none
-- **Flags:** **LC-03: Northside Heating & Cooling's HVACR license expired 2026-09-30. Printing is blocked** until the contractor updates the license or picks another sub. Re-running with Clearair clears the flag and changes nothing else.
+- **Flags:** **LC-03: Northside Heating & Cooling's HVACR license expired 2026-09-30.** ~~Printing is blocked until the contractor updates the license or picks another sub.~~ *Changed 2026-10-23 (change 5): the packet prints with the warning at the top of the cover checklist.* Re-running with Clearair clears the flag and changes nothing else.
 
 **Expected form entries** (fee boxes left blank, CQ-10)
 

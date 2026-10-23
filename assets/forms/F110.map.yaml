@@ -1,0 +1,60 @@
+# F110 Building Subcode Technical Section: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F110), 2026-10-23.
+# The fee column isn't fillable; the Job Summary is office use only.
+type: field_map
+form: F110
+fields:
+  # A. Identification
+  site.block: Block 1
+  site.lot: Lot
+  site.qualifier: fill_3
+  site.address: Work Site Location
+  site.address_2: Block 2                 # second Work Site line (misnamed in the PDF)
+  owner.name: Owner in Fee
+  owner.phone_area: Tel
+  owner.phone: undefined_2
+  owner.email: email
+  owner.address: Address
+  contractor.name: Contractor 1
+  contractor.phone_area: Tel_2
+  contractor.phone: undefined_3
+  contractor.address: Address_2
+  contractor.address_2: Contractor 2      # second contractor address line
+  contractor.email: email_2
+  contractor.license: Contractor License No or Builder Registration No
+  contractor.license_expires: Exp Date
+  contractor.hic: Home Improvement Contractor Registration No or Exemption Reason if applicable
+  contractor.fein: Federal Emp ID No
+  contractor.fax_area: FAX
+  contractor.fax: undefined_4
+  # C. Certification
+  certification.print_name: Print name here
+  # D. Technical site data
+  description: Row1
+  type.new_building: Check Box1
+  type.addition: Check Box2
+  type.rehabilitation: Check Box3
+  type.roofing: Check Box4
+  type.siding: Check Box5
+  type.fence: Check Box6
+  type.sign: Check Box7
+  type.pool: Check Box8
+  type.retaining_wall: Check Box9
+  type.asbestos: Check Box10
+  type.lead_abatement: Check Box11
+  type.radon: Check Box12
+  type.other: Check Box13
+  type.other_text: Other
+  type.demolition: Check Box14
+  # B. Building characteristics
+  use_group.present: Use Group Present
+  use_group.proposed: Proposed
+  est_cost.new_building: undefined_6
+  est_cost.rehabilitation: undefined_7
+  est_cost.total: undefined_8
+
+choices:
+  type_of_work:
+    Rehabilitation: type.rehabilitation
+    Roofing: type.roofing
+    Siding: type.siding

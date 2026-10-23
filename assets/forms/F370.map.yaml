@@ -1,0 +1,19 @@
+# F370 Chimney Verification: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F370), 2026-10-23.
+# The HVACR contractor verifies the chimney and completes the rest (type of
+# replacement, appliances, liner, verification statement) and signs.
+type: field_map
+form: F370
+fields:
+  site.block: BLOCK
+  site.lot: LOT
+  site.qualifier: QUALIFICATION CODE
+  site.address: Work Site Address
+  owner.name: Owner in Fee
+  verifier.person: Verifying Individual   # the person who checked the chimney: left for them
+  verifier.company: Company
+  verifier.address: Address
+  verifier.phone_area: Tel
+  verifier.phone: undefined
+  verifier.fax_area: Fax
+  verifier.fax: undefined_2

@@ -3,20 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Turns a NJ contractor's job description into a print-ready permit packet (M1: rules engine).",
+  "description": "Turns a NJ contractor's job description into a print-ready permit packet (M1: rules engine; M2: packet builder).",
   "scripts": {
     "test": "vitest run",
     "test:report": "vitest run --reporter=verbose",
     "typecheck": "tsc --noEmit",
     "determine": "tsx scripts/determine.ts",
-    "render-rules": "tsx scripts/render-rules.ts"
+    "render-rules": "tsx scripts/render-rules.ts",
+    "form-proof": "tsx scripts/form-proof.ts",
+    "packet": "tsx scripts/packet.ts"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.9.0",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.3.1",
     "yaml": "^2.8.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "pdfjs-dist": "^6.4.299",
     "tsx": "^4.23.15",
     "typescript": "^5.6.3",
     "vitest": "^5.0.4"
