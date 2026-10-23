@@ -1,6 +1,6 @@
 # M1 Plan: Rules engine
 
-*Status: Approved by Gregory Kelly, 2026-10-22 · Design doc §9, milestone M1*
+*Status: Approved by Gregory Kelly, 2026-10-22 · Built and accepted by Gregory Kelly, 2026-10-23 · Design doc §9, milestone M1*
 
 ## Goal
 
