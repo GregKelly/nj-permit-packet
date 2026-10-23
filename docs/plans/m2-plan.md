@@ -100,10 +100,10 @@ On a branch, `m2-packet-builder`. First the forms, proof sheets and field maps, 
 
 **Status.** Built on `m2-packet-builder`. All 218 tests pass, including field read-back for all nine MW/FULL jobs. Waiting for owner review.
 
-**Needs your decision** (no approved answer was changed; the packet uses my recommendation until you decide):
+**Decided by the owner (2026-10-23)** (no approved answer was changed):
 
-1. **"Other" lines on F120 and F145 have no box for their description.** The official forms print just "OTHER" (F120) and "Other" (F145) next to the count, with no write-in line (F130 has one). This affects the approved entries for J-03 (F120), and J-04, J-08, J-09 and J-10 (F145). The count goes on the Other row as expected. The description goes in that form's "Description of work" box, marked, for example "A/C condensing unit, 3-ton (on the Other line)". **Recommendation:** keep this. The alternative is to hand-write it next to the row, which the packet can't do neatly.
-2. **F370 has no use-group box.** The engine gives F370 a use group (R-5), but the form doesn't ask for one, so it isn't printed. The test doc's tables don't list F370 entries, so nothing approved is affected. **Recommendation:** leave as is.
+1. **"Other" lines on F120 and F145 have no box for their description.** The official forms print just "OTHER" (F120) and "Other" (F145) next to the count, with no write-in line (F130 has one). This affects the approved entries for J-03 (F120), and J-04, J-08, J-09 and J-10 (F145). The count goes on the Other row as expected. The description goes in that form's "Description of work" box, marked, for example "A/C condensing unit, 3-ton (on the Other line)". **Owner: keep this.**
+2. **F370 has no use-group box.** The engine gives F370 a use group (R-5), but the form doesn't ask for one, so it isn't printed. The test doc's tables don't list F370 entries, so nothing approved is affected. **Owner: leave it.**
 
 **Interpretations made while building** (flag any you disagree with):
 
