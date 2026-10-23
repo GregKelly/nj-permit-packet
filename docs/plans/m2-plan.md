@@ -1,6 +1,6 @@
 # M2 Plan: Packet builder
 
-*Status: Approved by Gregory Kelly, 2026-10-23 · Design doc §9, milestone M2*
+*Status: Approved by Gregory Kelly, 2026-10-23 · Built and accepted by Gregory Kelly, 2026-10-23 · Design doc §9, milestone M2*
 
 ## Goal
 
@@ -98,7 +98,7 @@ On a branch, `m2-packet-builder`. First the forms, proof sheets and field maps, 
 
 ## Build notes (2026-10-23)
 
-**Status.** Built on `m2-packet-builder`. All 218 tests pass, including field read-back for all nine MW/FULL jobs. Waiting for owner review.
+**Status.** Built on `m2-packet-builder`. All 218 tests pass, including field read-back for all nine MW/FULL jobs. Accepted by the owner and merged to `main` (2026-10-23).
 
 **Decided by the owner (2026-10-23)** (no approved answer was changed):
 
