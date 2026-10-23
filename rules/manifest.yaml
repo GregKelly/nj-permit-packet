@@ -1,0 +1,29 @@
+# Permit Packet rule data. Source of truth from M1 on (design doc §4.2); the
+# approved original is docs/rules-table-v1.md. Readable version: docs/rules-reference.md
+# (regenerate with `npm run render-rules`).
+#
+# Every rule file is listed here. State rules (state/nj) are kept apart from
+# town rules (municipal/maplewood) so another town can be added as new data.
+#
+# Item rules are checked in this file order, and in order within each file:
+# the first rule that matches a work item wins.
+type: manifest
+state: nj
+municipality: maplewood
+files:
+  - municipal/maplewood/config.yaml
+  - state/nj/scope.yaml
+  - municipal/maplewood/scope.yaml
+  - state/nj/kitchen-bath.yaml
+  - state/nj/basement.yaml
+  - state/nj/roof.yaml
+  - state/nj/hvac.yaml
+  - state/nj/forms.yaml
+  - state/nj/plans.yaml
+  - state/nj/form-entries.yaml
+  - state/nj/licensing.yaml
+  - state/nj/tips.yaml
+  - state/nj/assumptions.yaml
+  - municipal/maplewood/zoning.yaml
+  - municipal/maplewood/assumptions.yaml
+  - municipal/maplewood/office-questions.yaml

@@ -1,6 +1,6 @@
 # M1 Plan: Rules engine
 
-*Status: Approved by Gregory Kelly, 2026-10-22 · Design doc §9, milestone M1*
+*Status: Approved by Gregory Kelly, 2026-10-22 · Built and accepted by Gregory Kelly, 2026-10-23 · Design doc §9, milestone M1*
 
 ## Goal
 
@@ -48,3 +48,20 @@ Turn the approved rules table and test jobs into working, tested software: rule 
 On a branch, `m1-rules-engine`. Tests and fixtures first (all failing), then the engine until they pass, then the reference script and demo command. After your review, merge to `main`.
 
 **If a test job turns out to be wrong or ambiguous** while I'm encoding it, I won't change the expected answer myself. I'll stop and bring it to you, since expected answers change only with your review (design doc §7).
+
+## Build notes (2026-10-22)
+
+**Test doc conflicts, decided by the owner.** Four expected answers conflicted with the rules table or with each other (J-04 lead tip, J-05 furnace question, J-05b device count, J-10 hood question). The owner approved a fix for each; see "Changes after approval" in [test-jobs-v1.md](../test-jobs-v1.md).
+
+**Interpretations made while encoding** (no approved answer changed; flag any you disagree with):
+
+1. **Outdoor units.** HV-01 covers furnaces and boilers. A like-for-like condenser, heat pump or mini-split uses HV-11 (same spot) or HV-10 (moved), so J-08's condenser reports HV-11 (the test doc said "HV-01 / HV-11").
+2. **Pointer rules.** FB-07, FB-10, FB-11, RF-09 and LC-04 exist in the YAML as pointers to KB-10–13, KB-21, TP-04, TP-01 and TP-05, so no rule is written twice.
+3. **Scope check IDs.** The §1 scope check became SC-01 (one- or two-family home) and SC-02 (in Maplewood).
+4. **Which trade gets "total minus the others".** The first trade with a section, in the order building → mechanical → plumbing → electrical. That's what puts $14,000 on mechanical in J-08 and $15,100 in J-09. It stays blank until every other trade's cost is known.
+5. **Panel or service work is its own work item**, not a fact on every electrical item, so the engine doesn't ask about the panel on every job.
+6. **An added fixture that needs upsizing** goes to KB-08 (FULL); the table had no row for it.
+7. **Tips only show when their trigger is known** (e.g. TP-04 needs a "yes"). Classification rules still take the conservative branch on unknowns.
+8. **Questions:** each unknown fact is tried while the other unknowns stay unknown ("would knowing just this change the answer?").
+
+**Review material:** [rules-reference.md](../rules-reference.md), [m1-test-report.txt](../reports/m1-test-report.txt), and `npm run determine -- J-01` (add `--before` to see a job before follow-ups).

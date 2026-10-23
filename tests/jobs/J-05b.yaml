@@ -1,0 +1,58 @@
+id: J-05b
+title: "Boundary variant of J-05: 4 outlets + 2 lights (6)"
+variant_of: J-05
+description: Same job as J-05 with 4 outlets and 2 ceiling lights (6 devices) on the existing circuit.
+
+property: { municipality: Maplewood, address: 9 Highland Pl, prop_class: "2", year_built: 1948, dwelling_type: detached_1f }
+costs: { total: 26000, electrical: 1200 }
+
+work_items:
+  - { id: framing, kind: partitions, label: "Frame two walls, drywall" }
+  - { id: carpet, kind: finishes, label: Carpet, element: flooring }
+  - { id: bedroom, kind: habitable_space, label: Basement guest bedroom, bedroom: "yes" }
+  - { id: egress, kind: egress_window, label: New egress window with window well (foundation cut) }
+  - { id: electrical, kind: electrical, label: 4 outlets and 2 ceiling lights off the existing basement circuit, action: add, devices: 6, new_circuit: none }
+  - { id: alarms, kind: smoke_co_alarm, label: Smoke and CO alarms in the new bedroom }
+
+expected_questions:
+  - alarms.power   # Smoke and CO alarms in the new bedroom: hardwired or battery?
+  - bedroom.fuel_appliance_nearby   # added by owner 2026-10-22, as in J-04
+
+answers:
+  alarms.power: battery
+  bedroom.fuel_appliance_nearby: "no"
+
+# "KB-11 no longer applies, so electrical becomes FULL (KB-13). The job tier, forms and form entries
+# are unchanged; only the electrical item's tier and reason change." Owner 2026-10-22: the F120
+# Devices count follows CQ-07 and becomes 6.
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    framing:    { rule: FB-01, tier: MW }
+    carpet:     { rule: KB-02, tier: OM }
+    bedroom:    { rule: FB-04, tier: FULL }
+    egress:     { rule: FB-05, tier: FULL }
+    electrical: { rule: KB-13, tier: FULL }
+    alarms:     { rule: FB-08, tier: OM }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+    F120: Watts Electric LLC
+  zoning: { rule: ZN-02, status: required }
+  plans: { rule: PL-01, requirement: sealed }
+  tips: [TP-03, TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 24800, Electrical: 1200 }
+      total_cost: 26000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 24800, total_cost: 24800 }
+    F120:
+      use_group: R-5
+      est_cost: 1200
+      lines:
+        - { line: Devices, count: 6 }   # owner 2026-10-22: CQ-07 counts every device installed
+  fill_ins: []

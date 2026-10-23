@@ -1,0 +1,5 @@
+# Maplewood assumptions. Rules table §5. A-13 and A-15 are flippable in config.yaml.
+type: assumptions
+entries:
+  - { id: A-13, text: Purely interior work needs no zoning application (settled v1 assumption), confirm_with: "Maplewood Zoning, 973-762-8120 ext. 5602", config_flag: interior_alterations_require_zoning }
+  - { id: A-15, text: "Like-for-like exterior replacement needs no zoning permit (shown as a \"confirm with Zoning\" note)", confirm_with: "Maplewood Zoning, 973-762-8120 ext. 5602", config_flag: exterior_like_for_like_requires_zoning }

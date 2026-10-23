@@ -1,0 +1,22 @@
+# State-level assumptions. Rules table §5. Each is shown to the user when it affects a job.
+type: assumptions
+entries:
+  - { id: A-1, text: The LII copy of N.J.A.C. 5:23-2.7 / 2.17A is the current text, confirm_with: "Current N.J.A.C. on the OAL/LexisNexis NJ site, or DCA Code Assistance (609-292-7898)" }
+  - { id: A-2, text: Each licensed trade signs its own technical section (F120/F130/F145), confirm_with: Maplewood Construction Office }
+  - { id: A-3, text: "Countertops count as non-structural \"furnishings\" (ordinary maintenance)", confirm_with: DCA Code Assistance }
+  - { id: A-4, text: A new range hood over 400 cfm goes on F145 + F120, confirm_with: Construction office }
+  - { id: A-5, text: A new bath fan on an existing circuit is minor work, confirm_with: Construction office }
+  - { id: A-6, text: Gas piping goes on F130; water heaters go on F145 (both appear on both forms), confirm_with: "Construction office: which section they want for each" }
+  - { id: A-7, text: An unsealed contractor floor plan is acceptable for non-structural reconfiguration and basement finishes, confirm_with: Construction office (Q-2) }
+  - { id: A-8, text: A basement ejector pump pushes the bathroom to a full permit, confirm_with: Construction office }
+  - { id: A-9, text: Extending ductwork into new finished space is minor work on F145, confirm_with: Construction office }
+  - { id: A-10, text: Reroofing an attached dwelling is minor work (not a full permit), confirm_with: DCA Code Assistance }
+  - { id: A-11, text: Replacing decking/sheathing stays within "roof covering" repair, confirm_with: DCA Code Assistance }
+  - { id: A-12, text: Rearranging hydronic piping needs a full permit, confirm_with: Construction office }
+  - { id: A-14, text: F140 isn't needed for the four v1 project types in R-3/R-5, confirm_with: Construction office }
+  - { id: A-16, text: "The estimated cost on the permit is the contract value of the trades that have a section in the packet; trades with only ordinary-maintenance items are left out", confirm_with: Construction office }
+  - { id: A-17, text: "Quantity lines count every fixture/device installed for that trade in the job, including like-for-like ones", confirm_with: Construction office }
+  - { id: A-18, text: "Hardwired smoke/CO combination alarms go on the F120 Detectors line, marked Smoke", confirm_with: Construction office }
+  - { id: A-19, text: "One- and two-family dwellings (incl. twins) are use group R-5 on the forms", confirm_with: Construction office }
+  - { id: A-20, text: "With no Mechanical row on F100, F145 work is costed on the Plumbing row", confirm_with: Construction office (Q-11) }
+  - { id: A-21, text: "F100 \"Alteration\" vs \"Renovation\" follows the Rehabilitation Subcode definitions (N.J.A.C. 5:23-6.3) as summarized in CQ-01", confirm_with: DCA Code Assistance }

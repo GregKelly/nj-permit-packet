@@ -1,0 +1,50 @@
+# Forms and signers. Rules table §4.2. Packet order follows this file.
+# signer: applicant (the contractor), owner_or_agent, or the licensed trade
+# from the subcontractor directory (electrical, plumbing, hvacr).
+type: forms
+forms:
+  - id: F100
+    name: Construction Permit Application
+    signer: owner_or_agent
+    included: Every minor work or full permit job
+    notes: Owner, or the contractor as agent with our owner authorization page attached.
+  - id: F110
+    name: Building Subcode Technical Section
+    signer: applicant
+    included: Any building item (walls, drywall ≥ 25%, structural, openings, attached reroof)
+  - id: F120
+    name: Electrical Subcode Technical Section
+    signer: electrical
+    included: Any electrical item
+    assumptions: [A-2]
+    notes: Form has "Sign and Seal" and a Licensed/Exempt checkbox. Who signs it on HVAC swaps is Q-3 (see HV-01).
+  - id: F130
+    name: Plumbing Subcode Technical Section
+    signer: plumbing
+    included: Any plumbing item; gas piping (A-6)
+    assumptions: [A-2]
+  - id: F145
+    name: Mechanical Inspection Technical Section (R-3/R-5)
+    signer: hvacr
+    included: Furnace, boiler, A/C, water heater (A-6), fireplace, generator, fuel connections
+    assumptions: [A-2]
+  - id: F140
+    name: Fire Protection Subcode Technical Section
+    signer: none
+    included: Not used in v1 R-3/R-5 scope; F145 covers fuel-fired appliances there
+    assumptions: [A-14]
+  - id: F370
+    name: Chimney Verification
+    signer: hvacr
+    included: Replacing fuel-fired equipment (HV-01, HV-04)
+    office_questions: [Q-4]
+  - id: F390
+    name: Framing checklist
+    signer: none
+    included: Possibly basement finishes and new framing; not added in v1
+    office_questions: [Q-4]
+  - id: F392
+    name: Air-barrier checklist
+    signer: none
+    included: Possibly basement finishes and new framing; not added in v1
+    office_questions: [Q-4]

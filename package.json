@@ -1,0 +1,24 @@
+{
+  "name": "permit-packet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Turns a NJ contractor's job description into a print-ready permit packet (M1: rules engine).",
+  "scripts": {
+    "test": "vitest run",
+    "test:report": "vitest run --reporter=verbose",
+    "typecheck": "tsc --noEmit",
+    "determine": "tsx scripts/determine.ts",
+    "render-rules": "tsx scripts/render-rules.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.8.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3",
+    "vitest": "^5.0.4"
+  }
+}

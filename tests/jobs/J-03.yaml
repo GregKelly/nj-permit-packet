@@ -1,0 +1,75 @@
+id: J-03
+title: Primary bath with vague details
+description: >
+  Redo the primary bath at 7 Tuscan Rd. Rip out the tub, put in a walk-in tile shower. Double vanity
+  instead of the single. Heated floor. Owner wants a bigger window over the tub area. Budget $32k.
+
+property: { municipality: Maplewood, address: 7 Tuscan Rd, prop_class: "2", year_built: 1938, dwelling_type: detached_1f }
+costs: { total: 32000 }
+
+# The AI must not assume the drain moves or the window opening changes.
+work_items:
+  - { id: shower, kind: fixture, label: Walk-in tile shower replaces the tub, fixtures: { shower: 1 } }
+  - { id: lavs, kind: fixture, label: Double vanity replaces single (second lavatory added), fixtures: { lavatory: 2 }, action: add }
+  - { id: heated_floor, kind: electrical, label: Radiant floor heat mat, action: add, devices: 0, equipment: radiant_floor_heat }
+  - { id: window, kind: opening, label: Bigger window over the tub area, opening: window }
+  - { id: vanity, kind: finishes, label: Double vanity cabinet, element: vanity }
+  - { id: floor_tile, kind: finishes, label: Tile floor, element: flooring }
+  - { id: shower_tile, kind: finishes, label: Tile shower walls, element: wall_tile }
+
+expected_questions:
+  - shower.action            # Q1 Is the shower drain staying where the tub drain is?
+  - lavs.upsizing_needed     # Q2 Will the second sink need a bigger drain or water line?
+  - heated_floor.new_circuit # Q3 Is the heated floor on a new circuit?
+  - window.action            # Q4 Does the window opening change?
+  - costs.plumbing           # Q5 Cost split by trade?
+  - costs.electrical
+
+answers:
+  shower.action: relocate               # drain moves about 3 ft
+  lavs.upsizing_needed: "no"            # ties into the existing drain
+  heated_floor.new_circuit: other       # new 20A GFCI circuit; mat under 1 kW
+  heated_floor.label: Radiant floor heat mat on new 20A GFCI circuit
+  window.action: enlarge                # 30" -> 48" wide
+  costs.plumbing: 6000
+  costs.electrical: 2000
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    shower:       { rule: KB-08, tier: FULL }
+    lavs:         { rule: KB-07, tier: MW }
+    heated_floor: { rule: KB-13, tier: FULL }
+    window:       { rule: KB-23, tier: FULL }
+    vanity:       { rule: KB-01, tier: OM }
+    floor_tile:   { rule: KB-02, tier: OM }
+    shower_tile:  { rule: KB-03, tier: OM }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+    F120: Watts Electric LLC
+    F130: Sutton Plumbing & Heating
+  zoning: { rule: ZN-02, status: required }
+  plans: { rule: PL-01, requirement: sealed }
+  tips: [TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 24000, Electrical: 2000, Plumbing: 6000 }
+      total_cost: 32000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 24000, total_cost: 24000 }
+    F120:
+      use_group: R-5
+      est_cost: 2000
+      lines:
+        - { line: Other, label: Radiant floor heat mat on new 20A GFCI circuit, count: 1 }
+    F130:
+      use_group: R-5
+      est_cost: 6000
+      lines:
+        - { line: Lavatory, count: 2 }
+        - { line: Shower, count: 1 }
+  fill_ins: []

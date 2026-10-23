@@ -1,0 +1,126 @@
+# HVAC rules. Rules table §2.4. See kitchen-bath.yaml for how to read a rule.
+# Outdoor units (A/C condenser, heat pump, mini-split): like-for-like replacement
+# is HV-11 (same spot) or HV-10 (moved); HV-01 covers furnaces and boilers.
+type: item_rules
+group: HV
+title: HVAC
+rules:
+  - id: HV-01
+    title: Replace a furnace, low-pressure boiler, A/C unit or condenser with one of like capacity
+    when: { kind: hvac_equipment, equipment: [furnace, boiler], action: replace, like_capacity: "yes", fuel_change: "no" }
+    cases:
+      - when: { fuel: [gas, oil, propane, unknown] }
+        then: { tier: MW, forms: [F145, F120, F370] }
+        reason: Replacing heating equipment with like capacity is minor work; fuel-fired equipment needs the F370 chimney verification.
+      - then: { tier: MW, forms: [F145, F120] }
+    reason: Replacing heating equipment with like capacity is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)3; electrical 2.17A(c)4
+    office_questions: [Q-3, Q-4]
+
+  - id: HV-02
+    title: Replace with different capacity, or change fuel type (e.g. oil → gas)
+    when:
+      - { kind: hvac_equipment, action: replace, like_capacity: ["no", unknown] }
+      - { kind: hvac_equipment, equipment: [furnace, boiler], action: replace, fuel_change: ["yes", unknown] }
+      - { kind: water_heater, action: replace, like_capacity: ["no", unknown] }
+      - { kind: water_heater, action: replace, fuel_change: ["yes", unknown] }
+    cases:
+      - when: { kind: hvac_equipment, equipment: [furnace, boiler], fuel_change: ["yes", unknown], fuel: [gas, unknown] }
+        then: { tier: FULL, forms: [F145, F120, F130], alteration: true }
+        reason: A fuel conversion is outside "like capacity" minor work; the new gas line goes on the plumbing section.
+        assumptions: [A-6]
+      - when: { kind: water_heater, fuel_change: ["yes", unknown], fuel: [gas, unknown] }
+        then: { tier: FULL, forms: [F145, F130], alteration: true }
+        reason: A fuel conversion is outside "like capacity" minor work; the new gas line goes on the plumbing section.
+        assumptions: [A-6]
+      - when: { kind: water_heater }
+        then: { tier: FULL, forms: [F145], alteration: true }
+      - then: { tier: FULL, forms: [F145, F120], alteration: true }
+    reason: Different capacity or a fuel change is outside "like capacity" minor work.
+    citation: Outside N.J.A.C. 5:23-2.17A(c)3
+    office_questions: [Q-10]
+    notes: Oil tank removal is flagged separately (out of scope).
+
+  - id: HV-03
+    title: New system where none existed (central A/C, heat pump, mini-split)
+    when:
+      - { kind: hvac_equipment, action: [new, unknown] }
+      - { kind: water_heater, action: [new, unknown] }
+    cases:
+      - when: { cuts_framing: ["yes", unknown] }
+        then: { tier: FULL, forms: [F145, F120, F110], alteration: true }
+        reason: A new system isn't a replacement, so it isn't minor work; cutting wall or roof framing adds the building section.
+      - then: { tier: FULL, forms: [F145, F120], alteration: true }
+    reason: A new system isn't a replacement, so it isn't minor work.
+    citation: Not within N.J.A.C. 5:23-2.17A(c)3
+    office_questions: [Q-10]
+    notes: Line-set and vent holes don't count as cutting framing. A new outdoor unit is exterior, so zoning applies (setbacks).
+
+  - id: HV-04
+    title: Replace a water heater with like capacity
+    when: { kind: water_heater, action: replace, like_capacity: "yes", fuel_change: "no" }
+    cases:
+      - when: { fuel: [gas, oil, propane, unknown] }
+        then: { tier: MW, forms: [F145, F370] }
+      - then: { tier: MW, forms: [F145] }
+    reason: Replacing a water heater with like capacity is minor work.
+    citation: N.J.A.C. 5:23-2.17A(c)2
+    assumptions: [A-6]
+    notes: Water heater appears on both F130 and F145; v1 uses F145.
+
+  - id: HV-05
+    title: Repair or replace ductwork
+    when: { kind: ductwork, action: repair_replace }
+    then: { tier: OM }
+    reason: Repairing or replacing ductwork is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)5.iii
+
+  - id: HV-06
+    title: Replace motors, pumps, fans of same capacity; repair A/C; replace controls/thermostats
+    when: { kind: hvac_component }
+    then: { tier: OM }
+    reason: Like-for-like motors, pumps and fans, A/C repair, and controls are ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)5.i, iv, v
+
+  - id: HV-07
+    title: Repair or replace heating supply/return piping or radiators, no rearrangement
+    when: { kind: hydronic_piping, action: repair_replace }
+    then: { tier: OM }
+    reason: Repairing heating piping or radiators without rearranging them is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)5.ii
+
+  - id: HV-08
+    title: Rearrange hydronic piping or add zones
+    when: { kind: hydronic_piping, action: [rearrange, unknown] }
+    then: { tier: FULL, forms: [F145], alteration: true }
+    reason: Rearranging hydronic piping is on neither the ordinary maintenance nor the minor work list.
+    assumptions: [A-12]
+
+  - id: HV-09
+    title: New or modified chimney/vent; direct-vent conversion
+    when: { kind: chimney_vent }
+    cases:
+      - when: { action: liquid_liner }
+        then: { tier: OM }
+        reason: A liquid-applied chimney liner is ordinary maintenance.
+        citation: N.J.A.C. 5:23-2.7(c)5.x
+      - when: { new_penetration: ["yes", unknown] }
+        then: { tier: FULL, forms: [F145, F110], alteration: true }
+        reason: A new or modified chimney or vent needs a permit; a new wall or roof penetration adds the building section.
+      - then: { tier: FULL, forms: [F145], alteration: true }
+    reason: A new or modified chimney or vent needs a permit before work starts.
+
+  - id: HV-10
+    title: Condenser relocated to a new spot
+    when: { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split], action: replace, like_capacity: "yes", same_location: ["no", unknown] }
+    then: { tier: FULL, forms: [F145, F120], alteration: true }
+    reason: Moving an outdoor unit isn't a like-for-like replacement.
+    notes: Exterior, so zoning applies (setbacks). Site sketch.
+
+  - id: HV-11
+    title: Like-for-like condenser in the same location
+    when: { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split], action: replace, like_capacity: "yes", same_location: "yes" }
+    then: { tier: MW, forms: [F145, F120] }
+    reason: Replacing an outdoor unit with like capacity in the same spot is minor work (as HV-01).
+    citation: N.J.A.C. 5:23-2.17A(c)3
+    notes: "Zoning: like-for-like, so ZN-03 note."

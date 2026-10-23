@@ -1,0 +1,81 @@
+id: J-04
+title: Full basement finish with bathroom
+description: >
+  Finish the basement at 52 Durand Rd: family room, home office, full bath. Framing, drywall, drop
+  ceiling. Bath gets a toilet, sink and shower. Toilet needs an ejector pit since the main drain is
+  above the slab. About 14 recessed lights and 12 outlets on new 20A circuits, plus 2 hardwired
+  smoke/CO combos tied into the existing ones upstairs. Extend 3 supply runs off the existing trunk.
+  Spray foam the rim joists. Ceiling is 7'2" to the joists. $68k total: plumbing $9k, electrical $7k,
+  HVAC $1.5k.
+
+property: { municipality: Maplewood, address: 52 Durand Rd, prop_class: "2", year_built: 1956, dwelling_type: detached_1f }
+costs: { total: 68000, plumbing: 9000, electrical: 7000, mechanical: 1500 }
+
+work_items:
+  - { id: framing, kind: partitions, label: "Framing, drywall, drop ceiling" }
+  - { id: foam, kind: insulation, label: Spray foam the rim joists, type: foam }
+  - { id: rooms, kind: habitable_space, label: "Family room, home office" }
+  - { id: bath, kind: new_bathroom, label: "Basement bath: toilet, sink, shower, ejector pit", fixtures: { water_closet: 1, lavatory: 1, shower: 1 }, ejector_pump: "yes" }
+  - { id: electrical, kind: electrical, label: "14 recessed lights and 12 outlets on new 20A circuits", action: add, devices: 26, new_circuit: other }
+  - { id: alarms, kind: smoke_co_alarm, label: 2 hardwired smoke/CO combos tied into existing, power: hardwired, count: 2 }
+  - { id: ducts, kind: ductwork, label: "Supply duct extension, 3 runs", action: extend }
+
+expected_questions:
+  - rooms.bedroom                # Will any finished room be used as a bedroom?
+  - rooms.fuel_appliance_nearby  # Is the furnace or water heater in or next to the finished rooms?
+
+answers:
+  rooms.bedroom: "no"
+  rooms.fuel_appliance_nearby: "no"   # separate unfinished utility room
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    framing:    { rule: FB-01, tier: MW }
+    foam:       { rule: FB-02, tier: MW }
+    rooms:      { rule: FB-03, tier: MW }
+    bath:       { rule: FB-06, tier: FULL }
+    electrical: { rule: KB-13, tier: FULL }   # FB-07 -> KB-13
+    alarms:     { rule: FB-08, tier: MW }
+    ducts:      { rule: FB-09, tier: MW }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F110: Hollis Building Co. LLC
+    F120: Watts Electric LLC
+    F130: Sutton Plumbing & Heating
+    F145: Clearair Mechanical
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-03, TP-05]   # TP-05 added by owner 2026-10-22 (built 1956)
+  flags: []
+  office_questions_include: [Q-8]
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 50500, Electrical: 7000, Plumbing: 10500 }
+      total_cost: 68000
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 50500, total_cost: 50500 }
+    F120:
+      use_group: R-5
+      est_cost: 7000
+      lines:
+        - { line: Devices, count: 26 }
+        - { line: Detectors, count: 2, marker: Smoke }
+    F130:
+      use_group: R-5
+      est_cost: 9000
+      lines:
+        - { line: Water closet, count: 1 }
+        - { line: Lavatory, count: 1 }
+        - { line: Shower, count: 1 }
+        - { line: Sewer pump, count: 1 }
+    F145:
+      use_group: R-5
+      est_cost: 1500
+      heating_system: { work: Modification, distribution: Hot Air, fuel: null }
+      lines:
+        - { line: Other, label: "Supply duct extension, 3 runs", count: 1 }
+  fill_ins:
+    - { form: F145, signer: Clearair Mechanical, details: [Heating system fuel] }

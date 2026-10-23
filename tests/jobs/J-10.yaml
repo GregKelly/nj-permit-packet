@@ -1,0 +1,64 @@
+id: J-10
+title: "\"Cosmetic\" kitchen with a pro range"
+description: >
+  Kitchen refresh at 27 Prospect St. Paint the existing cabinets, new quartz counters and backsplash.
+  Swapping the 30" range for a 36" pro gas range in the same spot, which needs a bigger gas line from
+  the meter. Replacing the old recirculating hood with a 900 cfm hood ducted outside through the back
+  wall. Total $21,000: gas line $1,200, electrical $600, hood and ductwork $1,800.
+
+property: { municipality: Maplewood, address: 27 Prospect St, prop_class: "2", year_built: 1979, dwelling_type: detached_1f }
+costs: { total: 21000, plumbing: 1200, electrical: 600, mechanical: 1800 }
+
+work_items:
+  - { id: paint, kind: finishes, label: Paint existing cabinets, element: paint }
+  - { id: counters, kind: finishes, label: Quartz counters, element: countertops }
+  - { id: backsplash, kind: finishes, label: Backsplash, element: wall_tile }
+  - { id: range, kind: appliance, label: 36in pro gas range in the same spot; bigger gas line from the meter, appliance: range, fuel: gas, fuel_change: "no", gas_line_change: "yes" }
+  - { id: hood, kind: range_hood, label: "Range hood, 900 cfm, ducted outside", action: replace, cfm: 900 }
+
+expected_questions:
+  - hood.cfm_increase   # added by owner 2026-10-22: is the new hood more powerful than the old one? (KB-15)
+answers:
+  hood.cfm_increase: "yes"
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    paint:      { rule: KB-03, tier: OM }
+    counters:   { rule: KB-01, tier: OM }
+    backsplash: { rule: KB-03, tier: OM }
+    range:      { rule: KB-19, tier: FULL }
+    hood:       { rule: KB-16, tier: FULL }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F120: Watts Electric LLC
+    F130: Sutton Plumbing & Heating
+    F145: Clearair Mechanical
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-04, requirement: none }
+  tips: [TP-02]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Electrical: 600, Plumbing: 3000 }
+      total_cost: 3600
+    F120:
+      use_group: R-5
+      est_cost: 600
+      lines:
+        - { line: Devices, count: 1 }
+    F130:
+      use_group: R-5
+      est_cost: 1200
+      lines:
+        - { line: Gas piping, count: 1 }
+    F145:
+      use_group: R-5
+      est_cost: 1800
+      heating_system: null
+      lines:
+        - { line: Other, label: "Range hood, 900 cfm, ducted outside", count: 1 }
+  fill_ins: []

@@ -1,0 +1,52 @@
+id: J-09
+title: New ductless mini-split
+description: >
+  Install a 3-zone ductless mini-split at 15 Midland Blvd, cooling only. House has steam radiators,
+  owner is keeping those for heat. Outdoor unit on a new pad in the side yard, line sets run up the
+  outside wall. New 30A circuit for the condenser. Clearair is installing. $16k.
+
+property: { municipality: Maplewood, address: 15 Midland Blvd, prop_class: "2", year_built: 1931, dwelling_type: detached_1f }
+costs: { total: 16000 }
+
+work_items:
+  # cuts_framing: no. Only line-set holes, which don't count per the HV-03 wording, so it isn't asked.
+  - { id: minisplit, kind: hvac_equipment, label: "Ductless mini-split, 1 outdoor + 3 indoor units", equipment: mini_split, action: new, fuel: none, cuts_framing: "no" }
+
+expected_questions:
+  - costs.electrical   # How much of the $16,000 is electrical work?
+
+answers:
+  costs.electrical: 900
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    minisplit: { rule: HV-03, tier: FULL }
+  forms:
+    F100: Owner, or Hollis Building Co. LLC as agent
+    F120: Watts Electric LLC
+    F145: Clearair Mechanical
+  zoning: { rule: ZN-02, status: required }
+  plans: { rule: PL-03, requirement: none }
+  tips: [TP-05]
+  flags: []
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Electrical: 900, Plumbing: 15100 }
+      total_cost: 16000
+    F120:
+      use_group: R-5
+      est_cost: 900
+      lines:
+        - { line: KW Mini Split, count: 1, size: null }
+    F145:
+      use_group: R-5
+      est_cost: 15100
+      heating_system: null
+      lines:
+        - { line: Other, label: "Ductless mini-split, 1 outdoor + 3 indoor units", count: 1 }
+  fill_ins:
+    - { form: F120, signer: Watts Electric LLC, details: [KW Mini Split size] }

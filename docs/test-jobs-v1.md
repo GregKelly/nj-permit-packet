@@ -12,6 +12,12 @@
 - People, companies and license numbers are fictional.
 - No fees are calculated (owner decision 2026-10-22). Each job instead lists what gets written on the forms: work type, estimated cost by subcode, and quantity lines, per §4.4 of the rules table (CQ-01 to CQ-10).
 
+**Changes after approval** (owner decisions 2026-10-22, found while encoding the tests in M1; the automated fixtures in `tests/jobs/` carry the same changes)
+1. **J-04:** tips are TP-03 **and TP-05**. The house was built in 1956, so the lead-safe tip applies, as in the other pre-1978 jobs.
+2. **J-05 / J-05b:** also ask "Is the furnace or water heater in or next to the finished rooms?" (answer: No), consistent with J-04.
+3. **J-05b:** the F120 Devices count becomes **6** (CQ-07 counts every device installed). "Form entries unchanged" referred to tier, forms and costs.
+4. **J-10:** ask "Is the new hood more powerful than the old one?" (answer: Yes). KB-15 keeps its approved "or no higher than existing" branch, so the old hood's rating matters.
+
 ---
 
 ## Shared test profile
@@ -211,7 +217,7 @@ The AI must **not** assume the drain moves or the window opening changes before 
 - **Forms & signers:** F100 · F110 (Hollis) · F120 (Watts) · F130 (Sutton) · F145 (Clearair)
 - **Zoning:** not required (ZN-01)
 - **Plans:** floor plan, unsealed acceptable (PL-02, ⚠️ A-7)
-- **Tips:** TP-03 (ceiling height)
+- **Tips:** TP-03 (ceiling height), TP-05 (built 1956) *(TP-05 added 2026-10-22)*
 - **Flags:** none. Q-8 (interconnected alarms) shown as an open question.
 
 **Expected form entries** (fee boxes left blank, CQ-10)
@@ -243,6 +249,7 @@ The AI must **not** assume the drain moves or the window opening changes before 
 | # | Question | Answer | Leads to |
 |---|---|---|---|
 | 1 | Smoke and CO alarms in the new bedroom: hardwired or battery? | Battery | FB-08 → OM |
+| 2 | Is the furnace or water heater in or next to the finished rooms? *(added 2026-10-22)* | No | Not TP-04 |
 
 **Confirmed facts → determinations**
 
@@ -272,7 +279,7 @@ The AI must **not** assume the drain moves or the window opening changes before 
 | F110 | Type of work · Rehabilitation cost | Rehabilitation · $24,800 |
 | F120 | Est. cost · Devices | $1,200 · 5 (battery alarms aren't listed: OM) |
 
-**Variant J-05b (boundary):** same job with **4 outlets + 2 lights (6)**. KB-11 no longer applies, so electrical becomes FULL (KB-13). The job tier, forms and form entries are unchanged; only the electrical item's tier and reason change.
+**Variant J-05b (boundary):** same job with **4 outlets + 2 lights (6)**. KB-11 no longer applies, so electrical becomes FULL (KB-13). The job tier, forms and costs are unchanged; the electrical item's tier and reason change, and the F120 Devices count becomes 6 *(clarified 2026-10-22)*.
 
 ---
 
@@ -444,7 +451,7 @@ Like capacity, same location and fuel are all stated, so nothing else is asked.
 **Description (input):**
 > Kitchen refresh at 27 Prospect St. Paint the existing cabinets, new quartz counters and backsplash. Swapping the 30" range for a 36" pro gas range in the same spot, which needs a bigger gas line from the meter. Replacing the old recirculating hood with a 900 cfm hood ducted outside through the back wall. Total $21,000: gas line $1,200, electrical $600, hood and ductwork $1,800.
 
-**Follow-up questions expected:** none required. (The hood duct penetration isn't an "opening" for zoning, per the ZN-02 wording.)
+**Follow-up questions expected:** "Is the new hood more powerful than the old one?" → Yes, so not KB-15 *(added 2026-10-22)*. (The hood duct penetration isn't an "opening" for zoning, per the ZN-02 wording.)
 
 **Confirmed facts → determinations**
 

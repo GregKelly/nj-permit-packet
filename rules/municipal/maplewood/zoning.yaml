@@ -1,0 +1,60 @@
+# Maplewood zoning prior approval. Rules table §4.1. Ch. 271; owner decisions 2026-10-22.
+# The engine checks ZN-02 first, then ZN-03, then falls back to ZN-01.
+# `triggers` match work items the same way item rules do.
+type: zoning
+rules:
+  - id: ZN-01
+    title: All work items are interior
+    role: interior
+    status: not_required
+    config_flag: interior_alterations_require_zoning
+    message: No zoning application needed for interior work.
+    assumptions: [A-13]
+
+  - id: ZN-02
+    title: Exterior work that changes footprint, height, openings, outdoor equipment or lot coverage
+    role: exterior_change
+    status: required
+    triggers:
+      # Openings: new or enlarged windows, doors, skylights, egress areaways.
+      # Small duct, vent and line-set penetrations aren't openings.
+      - { kind: opening, opening: [window, exterior_door], action: [new, enlarge, unknown] }
+      - { kind: egress_window }
+      - { kind: skylight }
+      # Height
+      - { kind: roof_shape_change }
+      # New or relocated outdoor equipment
+      - { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split], action: [new, unknown] }
+      - { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split], action: replace, same_location: ["no", unknown] }
+    message: Zoning permit required before submitting the construction permit.
+    checklist:
+      - Maplewood residential zoning application
+      - Survey to scale showing the work
+      - Impervious coverage calculation
+      - $50 zoning fee
+      - Zoning approval before submitting this packet
+    citation: Maplewood Code Ch. 271; Maplewood residential zoning application
+
+  - id: ZN-03
+    title: Exterior work that is like-for-like replacement
+    role: exterior_like_for_like
+    status: probably_not_required
+    config_flag: exterior_like_for_like_requires_zoning
+    triggers:
+      - { kind: [roof_covering, roof_decking, gutters, siding] }
+      - { kind: opening, opening: [window, exterior_door], action: replace_same }
+      - { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split], action: replace, same_location: "yes" }
+    message: Zoning permit probably not required for like-for-like replacement. Confirm with Maplewood Zoning, 973-762-8120 ext. 5602.
+    assumptions: [A-15]
+
+  - id: ZN-04
+    title: Job is ordinary maintenance only, but ZN-02 applies
+    role: zoning_only
+    message: No construction permit, but a zoning permit applies.
+    notes: The outcome becomes "zoning_only" and the app prints that sheet instead of a packet.
+
+  - id: ZN-05
+    title: Zoning trigger fact is unknown
+    role: unknown_trigger
+    message: Treated as needing zoning because a fact wasn't known. Change it if you confirm otherwise.
+    notes: Ask first; if still unknown, ZN-02 applies (conservative branch).

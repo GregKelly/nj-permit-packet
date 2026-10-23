@@ -1,0 +1,122 @@
+# What the contractor fills in: work type, cost and quantities. Rules table §4.4.
+# No fee calculation in v1 (owner decision 2026-10-22): fee boxes stay blank.
+type: form_entries
+
+policies:
+  - id: CQ-01
+    title: F100 §IIa Proposed work
+    rule: >
+      Exactly one box. Minor Work if the job tier is MW. Otherwise Alteration if any permitted item
+      rearranges space, adds or removes a door, window or skylight, extends or rearranges a system,
+      adds fixtures or equipment, or touches structure (rules marked `alteration: true`); else Renovation.
+    assumptions: [A-21]
+
+  - id: CQ-02
+    title: F100 §IIb Subcodes + Est. Cost
+    rule: >
+      Check each subcode that has a section in the packet and enter that trade's cost; Total Cost = sum.
+      F100 has no Mechanical row, so F145 cost goes on the Plumbing row.
+    assumptions: [A-20]
+    office_questions: [Q-11]
+    # F100 row → trades whose cost goes on it
+    f100_rows:
+      Building: [building]
+      Electrical: [electrical]
+      Plumbing: [plumbing, mechanical]
+
+  - id: CQ-03
+    title: Which costs count
+    rule: >
+      Only trades with a section in the packet. A trade whose items are all ordinary maintenance is
+      left out. One trade takes the remainder of the total when its own cost isn't stated: the first
+      of these that has a section. Any other missing trade cost is asked.
+    assumptions: [A-16]
+    remainder_order: [building, mechanical, plumbing, electrical]
+
+  - id: CQ-04
+    title: Tech section "Est. Cost of … Work"
+    rule: That trade's cost. On F110, the Rehabilitation line and the Total line (New Bldg. blank).
+    trade_forms: { building: F110, electrical: F120, plumbing: F130, mechanical: F145 }
+
+  - id: CQ-05
+    title: F110 Type of work
+    rule: Rehabilitation for interior or alteration work; Roofing for roof items; Siding for siding; check all that apply.
+    order: [Rehabilitation, Roofing, Siding]
+
+  - id: CQ-06
+    title: Use group (F100 §VII, every tech section)
+    rule: R-5 for one- and two-family dwellings, present and proposed.
+    assumptions: [A-19]
+    use_group: R-5
+
+  - id: CQ-07
+    title: Quantity lines (F120 devices/detectors/kW items, F130 fixtures, F145 equipment)
+    rule: >
+      One count per form line, covering every fixture, device or appliance installed for that trade
+      in the job, including like-for-like ones once the section is in the packet. Items with no form
+      line go on "Other" with a short label. See `lines` below.
+    assumptions: [A-17]
+
+  - id: CQ-08
+    title: Size columns and other equipment details
+    rule: >
+      Fill in when the contractor gave the detail. Otherwise leave blank and add "fill in sizes/details"
+      for that subcontractor on the cover checklist. No follow-up question.
+
+  - id: CQ-09
+    title: F145 Heating system checkboxes
+    rule: >
+      New / Replacement / Conversion / Modification, Hydronic / Hot Air, and fuel, from the HVAC facts.
+      Leave blank for cooling-only work. See `heating_system` below.
+
+  - id: CQ-10
+    title: All "Fee (Office Use Only)" boxes, surcharges, F100 §V
+    rule: Left blank.
+
+# CQ-07 quantity lines, in form order. An item counts toward a line when it matches `when`
+# (and, if given, was classified by one of `when_rules`), and only if that form is in the packet.
+# count: a number, {fact: <name>} (that fact's value) or {fixtures: [types]} (sum of those fixtures).
+# sized: the line has a size column (CQ-08). label: item = an "Other" line labelled with the item.
+# item_adds_form: count it only when the item's own rule added this form (e.g. gas piping on a fuel conversion).
+lines:
+  - { form: F120, line: Devices, when: { kind: electrical }, count: { fact: devices } }
+  - { form: F120, line: Devices, when: { kind: range_hood }, count: 1 }
+  - { form: F120, line: Detectors, when: { kind: smoke_co_alarm, power: hardwired }, count: { fact: count }, marker: Smoke, assumptions: [A-18] }
+  - { form: F120, line: KW Range, when: { kind: appliance, appliance: [range, oven, cooktop], fuel: electric }, count: 1, sized: true }
+  - { form: F120, line: KW Dryer, when: { kind: appliance, appliance: dryer, fuel: electric }, count: 1, sized: true }
+  - { form: F120, line: KW Dishwasher/Disposal, when: { kind: fixture }, count: { fixtures: [dishwasher, disposal] }, sized: true }
+  - { form: F120, line: KW Central AC Unit, when: { kind: hvac_equipment, equipment: [ac_condenser, heat_pump] }, count: 1, sized: true }
+  - { form: F120, line: KW Mini Split, when: { kind: hvac_equipment, equipment: mini_split }, count: 1, sized: true }
+  - { form: F120, line: HP/KW Furnace, when: { kind: hvac_equipment, equipment: furnace }, count: 1, sized: true }
+  - { form: F120, line: Other, when: { kind: electrical, equipment: [radiant_floor_heat, other] }, count: 1, label: item }
+
+  - { form: F130, line: Water closet, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [water_closet] } }
+  - { form: F130, line: Lavatory, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [lavatory] } }
+  - { form: F130, line: Sink, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [sink] } }
+  - { form: F130, line: Bathtub, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [bathtub] } }
+  - { form: F130, line: Shower, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [shower] } }
+  - { form: F130, line: Dishwasher, when: { kind: fixture }, count: { fixtures: [dishwasher] } }
+  - { form: F130, line: Washing machine, when: { kind: fixture }, count: { fixtures: [washing_machine] } }
+  - { form: F130, line: Floor drain, when: { kind: [fixture, new_bathroom] }, count: { fixtures: [floor_drain] } }
+  - { form: F130, line: Hose bibb, when: { kind: fixture }, count: { fixtures: [hose_bibb] } }
+  - { form: F130, line: Sewer pump, when: { kind: new_bathroom, ejector_pump: "yes" }, count: 1 }
+  - { form: F130, line: Gas piping, when: { kind: [appliance, gas_line, hvac_equipment, water_heater] }, when_rules: [KB-19, HV-02], count: 1, item_adds_form: true }
+
+  - { form: F145, line: Hot Air Furnace, when: { kind: hvac_equipment, equipment: furnace }, count: 1 }
+  - { form: F145, line: Boiler, when: { kind: hvac_equipment, equipment: boiler }, count: 1 }
+  - { form: F145, line: Water Heater, when: { kind: water_heater }, count: 1 }
+  - { form: F145, line: Other, when: { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split] }, count: 1, label: item }
+  - { form: F145, line: Other, when: { kind: range_hood }, count: 1, label: item }
+  - { form: F145, line: Other, when: { kind: ductwork, action: extend }, count: 1, label: item }
+
+# CQ-09: the first entry that matches any work item sets the F145 heating system boxes.
+# Fuel comes from the item's `fuel` fact; when it isn't known, it's left for the sub (CQ-08).
+heating_system:
+  - { when: { kind: hvac_equipment, equipment: furnace, action: [new, unknown] }, work: New, distribution: Hot Air }
+  - { when: { kind: hvac_equipment, equipment: furnace, action: replace, fuel_change: "yes" }, work: Conversion, distribution: Hot Air }
+  - { when: { kind: hvac_equipment, equipment: furnace, action: replace }, work: Replacement, distribution: Hot Air }
+  - { when: { kind: hvac_equipment, equipment: boiler, action: [new, unknown] }, work: New, distribution: Hydronic }
+  - { when: { kind: hvac_equipment, equipment: boiler, action: replace, fuel_change: "yes" }, work: Conversion, distribution: Hydronic }
+  - { when: { kind: hvac_equipment, equipment: boiler, action: replace }, work: Replacement, distribution: Hydronic }
+  - { when: { kind: ductwork, action: extend }, work: Modification, distribution: Hot Air }
+  - { when: { kind: hydronic_piping, action: rearrange }, work: Modification, distribution: Hydronic }

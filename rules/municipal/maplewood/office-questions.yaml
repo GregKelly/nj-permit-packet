@@ -1,0 +1,15 @@
+# Open questions for the Maplewood Construction Office. Rules table §6.
+# Q-1 and Q-9 were resolved by the owner (2026-10-22) and are kept for traceability.
+type: office_questions
+entries:
+  - { id: Q-1, status: resolved, text: "Like-for-like exterior work and zoning. Resolved: zoning only for footprint, height, openings, outdoor equipment or lot coverage (ZN-02/03)." }
+  - { id: Q-2, text: "When is an unsealed contractor sketch accepted (wall moves, basement finish), and when must plans be sealed?" }
+  - { id: Q-3, text: "For an A/C or furnace swap, who signs F120: an electrician, or the HVACR contractor?" }
+  - { id: Q-4, text: "Do they want F370 on every fuel-fired replacement, and F390/F392 on basement finishes?" }
+  - { id: Q-5, text: Do they want a plumbing riser diagram for relocated or added fixtures? }
+  - { id: Q-6, text: "Make-up air for range hoods over 400 cfm: what do they need to see?" }
+  - { id: Q-7, text: Minimum ceiling height they enforce for finished basements. }
+  - { id: Q-8, text: Do they require hardwired interconnected smoke/CO alarms when a basement is finished? }
+  - { id: Q-9, status: resolved, text: "Reviewer-style warnings. Resolved: included as non-blocking tips (§4.6)." }
+  - { id: Q-10, text: "For new or resized HVAC, do they want a Manual J load calculation?" }
+  - { id: Q-11, text: "F100 has no Mechanical row in §IIb. Where do they want the cost of F145 work: the Plumbing row, or written in?" }

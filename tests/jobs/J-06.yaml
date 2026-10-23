@@ -1,0 +1,36 @@
+id: J-06
+title: Roof replacement, detached house (no permit)
+description: >
+  Tear off and replace the roof at 41 Wyoming Ave, single family. Architectural shingles, new ice and
+  water shield, replace a few sheets of rotted plywood. New gutters and leaders. $18,500.
+
+property: { municipality: Maplewood, address: 41 Wyoming Ave, prop_class: "2", year_built: 1912, dwelling_type: detached_1f }
+costs: { total: 18500 }
+
+work_items:
+  - { id: roof, kind: roof_covering, label: "Tear off; architectural shingles and ice and water shield" }
+  - { id: decking, kind: roof_decking, label: Replace a few sheets of rotted plywood }
+  - { id: gutters, kind: gutters, label: New gutters and leaders }
+
+expected_questions:
+  - decking.rafters_touched   # Any rafter or structural repairs, skylights, or roofline changes?
+  - roof.existing_layers      # How many layers of roofing are on there now?
+
+answers:
+  decking.rafters_touched: "no"
+  roof.existing_layers: one
+
+expected:
+  outcome: no_permit
+  job_tier: OM
+  items:
+    roof:    { rule: RF-01, tier: OM }
+    decking: { rule: RF-03, tier: OM }
+    gutters: { rule: RF-07, tier: OM }
+  forms: {}
+  zoning: { rule: ZN-03, status: probably_not_required }
+  plans: { rule: PL-04, requirement: none }
+  tips: [TP-05]
+  flags: []
+  form_entries: {}
+  fill_ins: []

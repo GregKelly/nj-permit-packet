@@ -1,0 +1,77 @@
+# Roof replacement rules. Rules table §2.3. See kitchen-bath.yaml for how to read a rule.
+type: item_rules
+group: RF
+title: Roof replacement
+rules:
+  - id: RF-01
+    title: Repair or replace existing roof covering on a detached one- or two-family dwelling
+    when: { kind: roof_covering, property.dwelling_type: [detached_1f, detached_2f] }
+    then: { tier: OM }
+    reason: Re-roofing a detached one- or two-family home is ordinary maintenance. No permit.
+    citation: N.J.A.C. 5:23-2.7(c)1.x
+
+  - id: RF-02
+    title: Same, on an attached dwelling (twin, townhouse)
+    when: { kind: roof_covering, property.dwelling_type: [attached, unknown] }
+    then: { tier: MW, forms: [F110], f110_work: Roofing }
+    reason: The roofing exemption covers detached dwellings only; re-roofing an attached dwelling is renovation with no structural change, so minor work.
+    citation: N.J.A.C. 5:23-2.7(c)1.x; 5:23-2.17A(c)1.ii
+    assumptions: [A-10]
+
+  - id: RF-03
+    title: Replace damaged sheathing/decking in addition to the covering
+    when: { kind: roof_decking, rafters_touched: "no" }
+    cases:
+      - when: { property.dwelling_type: [detached_1f, detached_2f] }
+        then: { tier: OM }
+        reason: Decking is treated as part of the roof covering repair, which is ordinary maintenance on a detached home.
+      - then: { tier: MW, forms: [F110], f110_work: Roofing }
+        reason: Decking is treated as part of the roof covering repair, which is minor work on an attached home.
+    reason: Same tier as the roof covering (RF-01/RF-02) unless rafters are touched.
+    citation: Code doesn't address decking explicitly
+    assumptions: [A-11]
+
+  - id: RF-04
+    title: Repair or replace rafters, joists or ridge (any structural member)
+    when:
+      - { kind: roof_structure }
+      - { kind: roof_decking, rafters_touched: ["yes", unknown] }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: Work on roof structural members isn't ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(b)2, (b)4
+
+  - id: RF-05
+    title: Add a skylight or other new roof opening
+    when: { kind: skylight }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: A new roof opening cuts structural members.
+    citation: N.J.A.C. 5:23-2.7(b)2
+    notes: Exterior, so zoning applies.
+
+  - id: RF-06
+    title: Change roof shape, pitch or height; add a dormer
+    when: { kind: roof_shape_change }
+    then: { tier: FULL, forms: [F110], alteration: true }
+    reason: Changing the roof shape is structural, and height/bulk is a zoning matter.
+    citation: N.J.A.C. 5:23-2.7(b)2
+    notes: Zoning applies.
+
+  - id: RF-07
+    title: Replace gutters and leaders
+    when: { kind: gutters }
+    then: { tier: OM }
+    reason: Gutters and leaders are ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.xvi
+
+  - id: RF-08
+    title: Replace siding (not polypropylene)
+    when: { kind: siding, material: other }
+    then: { tier: OM }
+    reason: Replacing siding other than polypropylene is ordinary maintenance.
+    citation: N.J.A.C. 5:23-2.7(c)1.xi
+    notes: Polypropylene siding matches no rule, so the app says "call the office".
+
+  - id: RF-09
+    title: Third layer of roofing / roof-over existing
+    refers_to: [TP-01]
+    notes: Not a permit question; non-blocking tip TP-01 (IRC R908).
