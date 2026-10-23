@@ -1,6 +1,6 @@
 # Rules reference
 
-*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `1bb9b2a237ea`.*
+*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `730ca4794050`.*
 
 This is the rule data the engine runs, in table form. The approved original is [rules-table-v1.md](rules-table-v1.md); the YAML is the source of truth from M1 on (design doc §4.2).
 
@@ -23,7 +23,7 @@ This is the rule data the engine runs, in table form. The approved original is [
 
 | ID | Rule | Applies when | Result | Reason / citation / notes |
 |---|---|---|---|---|
-| KB-01 | Replace or install cabinets, vanities, countertops, bathroom accessories | **finishes**, element: cabinets or vanity or countertops or bath_accessories | **OM** | Replacing or installing cabinets and similar non-structural furnishings is ordinary maintenance.<br>*N.J.A.C. 5:23-2.7(c)1.vii*<br>Countertops aren't named in the code; treated as non-structural elements.<br>⚠️ A-3 |
+| KB-01 | Replace or install cabinets, vanities, countertops, bathroom accessories | **finishes**, element: cabinets or vanity or countertops or bath_accessories | if element: countertops: **OM**<br>otherwise: **OM** | Replacing or installing cabinets and similar non-structural furnishings is ordinary maintenance.<br>*N.J.A.C. 5:23-2.7(c)1.vii*<br>Countertops aren't named in the code; treated as non-structural elements.<br>⚠️ A-3 |
 | KB-02 | Replace or install flooring | **finishes**, element: flooring | **OM** | Flooring is ordinary maintenance.<br>*N.J.A.C. 5:23-2.7(c)1.ix* |
 | KB-03 | Paint, wallpaper, trim, tile on walls | **finishes**, element: paint or wallpaper or trim or wall_tile | **OM** | Painting, wallpapering, trim and wall tile are ordinary maintenance.<br>*N.J.A.C. 5:23-2.7(c)1.i, iii, viii* |
 | KB-04 | Drywall/plaster on less than 25% of wall area | **drywall**, material: drywall or plaster, extent: under_25_percent | **OM** | Replacing less than 25% of the wall surface is ordinary maintenance.<br>*N.J.A.C. 5:23-2.7(c)1.ii* |
@@ -118,7 +118,7 @@ Config flags (`municipal/maplewood/config.yaml`): `interior_alterations_require_
 |---|---|---|---|---|
 | F100 | Construction Permit Application | Every minor work or full permit job | owner_or_agent | Owner, or the contractor as agent with our owner authorization page attached. |
 | F110 | Building Subcode Technical Section | Any building item (walls, drywall ≥ 25%, structural, openings, attached reroof) | applicant |  |
-| F120 | Electrical Subcode Technical Section | Any electrical item | electrical | Form has "Sign and Seal" and a Licensed/Exempt checkbox. ⚠️ A-2, Q-3 |
+| F120 | Electrical Subcode Technical Section | Any electrical item | electrical | Form has "Sign and Seal" and a Licensed/Exempt checkbox. Who signs it on HVAC swaps is Q-3 (see HV-01). ⚠️ A-2 |
 | F130 | Plumbing Subcode Technical Section | Any plumbing item; gas piping (A-6) | plumbing | ⚠️ A-2 |
 | F145 | Mechanical Inspection Technical Section (R-3/R-5) | Furnace, boiler, A/C, water heater (A-6), fireplace, generator, fuel connections | hvacr | ⚠️ A-2 |
 | F140 | Fire Protection Subcode Technical Section | Not used in v1 R-3/R-5 scope; F145 covers fuel-fired appliances there | none | ⚠️ A-14 |

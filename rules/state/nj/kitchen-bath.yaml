@@ -18,10 +18,13 @@ rules:
   - id: KB-01
     title: Replace or install cabinets, vanities, countertops, bathroom accessories
     when: { kind: finishes, element: [cabinets, vanity, countertops, bath_accessories] }
-    then: { tier: OM }
+    cases:
+      - when: { element: countertops }
+        then: { tier: OM }
+        assumptions: [A-3]
+      - then: { tier: OM }
     reason: Replacing or installing cabinets and similar non-structural furnishings is ordinary maintenance.
     citation: N.J.A.C. 5:23-2.7(c)1.vii
-    assumptions: [A-3]
     notes: Countertops aren't named in the code; treated as non-structural elements.
 
   - id: KB-02
