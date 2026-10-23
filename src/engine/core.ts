@@ -48,6 +48,7 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
     zoning: null,
     plans: null,
     tips: [],
+    submission: [],
     flags: [],
     form_entries: {},
     fill_ins: [],
@@ -110,6 +111,10 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   // Reviewer tips (non-blocking).
   d.tips = tips(classified, property, rules);
 
+  // Submitting the packet (cover checklist).
+  const submission = tier === 'OM' ? [] : rules.submission.filter((s) => !s.when_plans || s.when_plans.includes(d.plans!.requirement));
+  d.submission = submission.map((s) => ({ id: s.id, text: s.text }));
+
   // 9. Work type, cost and quantities.
   const entries = tier === 'OM' ? null : formEntries(facts, classified, permitted, d.forms, formDefs, rules, tier);
   if (entries) {
@@ -139,6 +144,7 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   d.plans?.assumptions.forEach((a) => assumptionIds.add(a));
   for (const q of rules.plans.find((p) => p.id === d.plans?.rule_id)?.office_questions ?? []) questionIds.add(q);
   entries?.assumptions.forEach((a) => assumptionIds.add(a));
+  submission.forEach((s) => s.assumptions.forEach((a) => assumptionIds.add(a)));
   entries?.officeQuestions.forEach((q) => questionIds.add(q));
 
   d.assumptions_applied = sortIds([...assumptionIds]).map((id) => {

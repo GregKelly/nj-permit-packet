@@ -1,0 +1,53 @@
+# Packet inputs and expected form boxes for J-07 (tests/jobs/J-07.yaml).
+# See J-01.yaml for how these are written.
+id: J-07
+site: { block: "3302", lot: "18", qualifier: "02", zip: "07040" }
+owner:
+  name: Teresa Okafor
+  address: { street: 103 Boyden Ave, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0167
+  email: tokafor@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "3302"
+    site.lot: "18"
+    site.qualifier: "02"
+    site.address: 103 Boyden Ave
+    site.work_site: 103 Boyden Ave, Maplewood, NJ 07040
+    owner.name: Teresa Okafor
+    owner.phone: 973-555-0167
+    owner.email: tokafor@mail.example
+    owner.street: 103 Boyden Ave
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration (new skylight openings)
+    subcode.building: true                  # §IIb $22,000 / $22,000
+    est_cost.building: $22,000
+    est_cost.total: $22,000
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "3302"
+    site.lot: "18"
+    site.qualifier: "02"
+    site.address: 103 Boyden Ave, Maplewood, NJ 07040
+    owner.name: Teresa Okafor
+    owner.phone_area: "973"
+    owner.phone: 555-0167
+    owner.email: tokafor@mail.example
+    owner.address: 103 Boyden Ave, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation + Roofing · $22,000
+    type.roofing: true
+    est_cost.rehabilitation: "22,000"
+    est_cost.total: "22,000"
+    description: |-
+      Reroof left half of the twin
+      Two skylights in the back slope
+      See attached scope of work.

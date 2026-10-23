@@ -16,8 +16,9 @@ rules:
   - id: LC-03
     title: Sub's license expiry before today
     check: license_expired
-    message: "{name}'s {trade} license expired {expires}. Printing is blocked until you update the license or pick another sub."
-    blocks_printing: true
+    # Warns instead of blocking printing (owner decision 2026-10-23, M2 plan decision 2).
+    message: "{name}'s {trade} license expired {expires}. The office will likely reject their section, and they may not legally do or sign for this work until the license is renewed. Update the license or pick another sub before submitting."
+    blocks_printing: false
 
   - id: LC-04
     title: Year built before 1978

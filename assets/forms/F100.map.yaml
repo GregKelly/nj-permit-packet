@@ -1,0 +1,92 @@
+# F100 Construction Permit Application: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F100), 2026-10-23.
+# Page 1 is printed sideways in the PDF (landscape); page 3 is office use only.
+# Fields not listed here are never filled (fees, plan review, office use, §IV, §VI).
+type: field_map
+form: F100
+fields:
+  # Top line
+  site.block: Block
+  site.lot: Lot
+  site.qualifier: Qualifier
+  site.address: Address Site
+  # §I Identification
+  site.work_site: Proposed Work Site
+  owner.name: Owner in Fee
+  owner.phone: Owner Telephone
+  owner.email: Owner eMail
+  owner.street: Owner Address
+  owner.municipality: Owner Muni
+  owner.zip: Owner Zip
+  ownership.public: Public          # one-character box: "X"
+  ownership.private: Private        # one-character box: "X"
+  contractor.name: Princ Contractor
+  contractor.phone: Contractor Phone
+  contractor.address: Contractor Address 1
+  contractor.address_2: Contractor Address 2
+  contractor.email: Contractor eMail
+  contractor.license: Contractor License
+  contractor.license_expires: License Expire
+  contractor.hic: HICR-Ex
+  contractor.fein: FEID              # 9 characters: digits only
+  contractor.fax: Contractor Fax
+  architect.name: Architect-Engineer
+  responsible_person.name: Responsible Person
+  # §IIa Proposed work
+  proposed_work.minor_work: Minor Work
+  proposed_work.new_building: New Bldg
+  proposed_work.addition: Addition
+  proposed_work.demolition: Demolition
+  proposed_work.repair: Repair
+  proposed_work.alteration: Alteration
+  proposed_work.renovation: Check Box10
+  proposed_work.reconstruction: Check Box11
+  proposed_work.asbestos: Check Box12
+  proposed_work.lead_hazard: Check Box13
+  proposed_work.radon: Check Box14
+  proposed_work.annual_permit: Check Box15
+  # §IIb Subcodes and estimated cost
+  subcode.building: Check Box16
+  est_cost.building: Bldg Est Cost
+  subcode.electrical: Check Box29
+  est_cost.electrical: Elec Est Cost
+  subcode.plumbing: Check Box31
+  est_cost.plumbing: Plumb Est Cost
+  subcode.fire: Check Box33
+  est_cost.fire: Fire Prot Est Cost
+  subcode.elevator: Check Box35
+  est_cost.elevator: Elev Est Cost
+  est_cost.total: Total Est Cost
+  # §VII Description of building use (A. Residential)
+  use_group.proposed: Res Use Proposed           # dropdown
+  use_group.present_if_changed: Res Use Present  # "Change in use group": left blank when the use doesn't change
+  # Page 2, Owner Section (owner-occupant path, after M2)
+  owner_section.a_new_home: Owner A
+  owner_section.b_own_plans: Owner B
+  owner_section.c_perform_work: Owner C
+  owner_section.c1_building: Owner -Bldg
+  owner_section.c2_fire: Owner -Fire Prot
+  owner_section.c3_electrical: Owner -Elec
+  owner_section.c4_plumbing: Owner -Plumb
+  owner_section.d_advise_contractors: Owner D
+  # Page 2, Agent Section
+  agent.is_contractor: Agent-Contractor
+  agent.name: Agent Name
+  agent.address: Agent Address
+  agent.city_state_zip: Agent City-St-Zip
+  agent.phone: Agent Tel
+  lead_abatement: Lead Abate
+  home_elevation: HEC
+
+# Engine values → the box that shows them.
+choices:
+  proposed_work:
+    Minor Work: proposed_work.minor_work
+    Alteration: proposed_work.alteration
+    Renovation: proposed_work.renovation
+  subcode:
+    Building: { check: subcode.building, cost: est_cost.building }
+    Electrical: { check: subcode.electrical, cost: est_cost.electrical }
+    Plumbing: { check: subcode.plumbing, cost: est_cost.plumbing }
+    Fire Protection: { check: subcode.fire, cost: est_cost.fire }
+    Elevator: { check: subcode.elevator, cost: est_cost.elevator }

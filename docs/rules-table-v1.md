@@ -2,6 +2,8 @@
 
 *Draft, October 2026. Scope: one- and two-family dwellings (use group R-3 / R-5) in Maplewood, NJ. Four project types: kitchen & bath, finished basement, roof replacement, HVAC.*
 
+> **Changes after approval** (owner decisions 2026-10-23, M2 plan). The YAML in `rules/` is the source of truth; see [rules-reference.md](rules-reference.md). **LC-03** now warns instead of blocking printing. New **SB-01 / SB-02** (cover-checklist lines for copies of the forms and plans) and assumption **A-22** (one original plus three copies). The table below is kept as approved.
+
 This is the human-readable version of the rule data the engine will run. Once you've approved it, each row becomes a record in a rules file (state rules and Maplewood rules kept separate). Rule IDs (e.g. `KB-04`) will carry through to the code and the test suite, so a test failure points back to a row here.
 
 **Legend**

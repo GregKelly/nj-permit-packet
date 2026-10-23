@@ -1,0 +1,51 @@
+# The official DCA forms the packet fills, stored unchanged. Design doc §5, M2 plan.
+# Source page: https://www.nj.gov/dca/codes/resources/constructionpermitforms.shtml
+#
+# sha256 is the file's fingerprint. If DCA revises a form and the file here is
+# swapped, the "forms haven't changed" test fails until the field map
+# (<id>.map.yaml) is rechecked against a fresh proof sheet (npm run form-proof).
+type: forms
+downloaded: 2026-10-23
+forms:
+  - id: F100
+    name: Construction Permit Application
+    file: ucc_f100_cpa.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/ucc_f100_cpa.pdf
+    revision: "F100-1 rev. 8/23; F100-2 rev. 11/2014; F100-3 rev. 12/07"
+    pages: 3
+    sha256: b71248375211ed0550bf7b6ade0f8d5934165929218438976a928077325673aa
+  - id: F110
+    name: Building Subcode Technical Section
+    file: F110_bldg_fill.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/F110_bldg_fill.pdf
+    revision: rev. 12/25
+    pages: 1
+    sha256: 3022fe87f3bfc195bb532746bcd0bcb78e1df79cccc49b46ba85337272b6d60c
+  - id: F120
+    name: Electrical Subcode Technical Section
+    file: F120_elec_fill.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/F120_elec_fill.pdf
+    revision: rev. 12/25
+    pages: 1
+    sha256: 4a0e99399ddf8bea88111414b3693bc1cd22f6bdf671b5ea98df4ee186c1d5c0
+  - id: F130
+    name: Plumbing Subcode Technical Section
+    file: F130_plumb_fill.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/F130_plumb_fill.pdf
+    revision: rev. 12/25
+    pages: 1
+    sha256: e8d1cad4e141698a7864790e0fd302b544468b1bf99e8c1493431838ccfce7a2
+  - id: F145
+    name: Mechanical Inspection Technical Section (R-3/R-5)
+    file: F145_mech_fill.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/F145_mech_fill.pdf
+    revision: rev. 12/25
+    pages: 1
+    sha256: e27fcc9fd681f7477994b9ddc39d96b48d8b3aaeeafb4464ec6cb0b16ccd7b35
+  - id: F370
+    name: Chimney Verification
+    file: ucc_f370_chim_cert.pdf
+    source: https://www.nj.gov/dca/codes/forms/pdf_ucc_stdforms/ucc_f370_chim_cert.pdf
+    revision: rev. 06/26
+    pages: 1
+    sha256: 7435d3e8ed161f15f0b8fac8ad968f26447c0aba4ec17d4467abcf6c837c4c9f

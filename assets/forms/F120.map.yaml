@@ -1,0 +1,108 @@
+# F120 Electrical Subcode Technical Section: our names → the PDF's field names.
+# Checked against a proof sheet (npm run form-proof -- F120), 2026-10-23.
+# Many PDF names are meaningless or misspelled (QYRow1, Ceck Box1); the
+# comments give the printed label next to each box.
+type: field_map
+form: F120
+fields:
+  # A. Identification
+  site.block: Block
+  site.lot: Lot
+  site.qualifier: fill_3
+  site.address: Work Site Location 1
+  site.address_2: Work Site Location 2
+  owner.name: Owner in Fee
+  owner.phone_area: Tel
+  owner.phone: undefined
+  owner.email: email
+  owner.address: Address
+  contractor.name: Contractor
+  contractor.phone_area: Tel_2
+  contractor.phone: undefined_3
+  contractor.address: Address 1
+  contractor.address_2: Address 2
+  contractor.email: email_2
+  contractor.license: Contractor License No
+  contractor.license_expires: Exp Date
+  contractor.hic: Home Improvement Contractor Registration No or Exemption Reason if applicable
+  contractor.fein: Federal Emp ID No
+  contractor.fax_area: FAX
+  contractor.fax: undefined_4
+  # C. Certification
+  certification.print_name: Print name here
+  # D. Technical site data
+  licensed_contractor: ck Box1           # [ ] Licensed Contractor
+  exempt_applicant: Check Box1           # [ ] Exempt Applicant
+  description: DESCRIPTION OF ALL ELECTRICAL WORK
+  # B. Electrical characteristics
+  use_group.present: Present
+  use_group.proposed: undefined_6
+  est_cost: Est Cost of Elec Work
+  # Quantity and size columns, top to bottom
+  devices.qty: QYRow1                    # Devices
+  detectors.qty: QTYRow1                 # Detectors [ ] Smoke OR [ ] CO
+  detectors.smoke: ck1
+  detectors.co: ck2
+  light_poles.qty: QTYRow2               # Light Poles/Bollards
+  emergency_lights.qty: QTYRow3          # Emergency & Exit Lights
+  alarm_devices.qty: QTYRow4             # Alarm Devices/F.A.C. Panel
+  attached_list.qty: QTYRow5             # SEE ATTACHED LIST
+  pool_uv.qty: QTYRow6                   # Pool Permit/with UV Lights
+  pool_uv.size: Rw16
+  storable_pool.qty: QTYRow7             # Storable Pool/Spa/Hot Tub
+  storable_pool.size: Row1
+  ev_charger.qty: QTYRow8                # EV Charger KW
+  ev_charger.size: Row2
+  pv.qty: QTYRow9                        # PV Systems KW
+  pv.size: Row3
+  energy_storage.qty: QTYRow10           # Energy Storage KW
+  energy_storage.size: Row4
+  kw_range_dryer.qty: QTYRow11           # KW [ ]Range [ ]Dryer [ ]Water Heater [ ]Oven
+  kw_range_dryer.size: Row5
+  kw_range_dryer.range: Ceck Box1
+  kw_range_dryer.dryer: Chek Box1
+  kw_range_dryer.water_heater: Check Bo1
+  kw_range_dryer.oven: Check ox1
+  kw_dishwasher_disposal.qty: QTYRow12   # KW [ ] Dishwasher [ ] Garbage Disposal
+  kw_dishwasher_disposal.size: Row6
+  kw_dishwasher_disposal.dishwasher: Chec Box1
+  kw_dishwasher_disposal.disposal: ChecBox1
+  kw_ac.qty: QTYRow13                    # KW [ ] Central AC Unit OR [ ] Mini Split
+  kw_ac.size: Row7
+  kw_ac.central_ac: heck Box1
+  kw_ac.mini_split: Check Bx1
+  hp_kw.qty: QTYRow14                    # HP/KW [ ] Space Heater [ ] Air Handler [ ] Furnace
+  hp_kw.size: Row8
+  hp_kw.space_heater: CecBox1
+  hp_kw.air_handler: Check 1
+  hp_kw.furnace: CheBox1
+  kw_baseboard.qty: QTYRow15
+  kw_baseboard.size: Row9
+  hp_motors.qty: QTYRow16
+  hp_motors.size: Row10
+  kw_transformer.qty: QTYRow17
+  kw_transformer.size: Row11
+  amp_service.qty: QTYRow18
+  amp_service.size: Row12
+  amp_subpanels.qty: QTYRow19
+  amp_subpanels.size: Row13
+  amp_disconnect.qty: QTYRow20
+  amp_disconnect.size: Row14
+  kw_sign.qty: QTYRow21
+  kw_sign.size: Row15
+  other.qty: QTYRow22                    # OTHER (no box for a description: see `lines`)
+  other.size: Row16
+
+# Engine quantity lines (rules/state/nj/form-entries.yaml) → the row they go on.
+# check: sub-boxes on that row to mark. markers: the engine's marker → its box.
+# An "Other" line's label has no box on this form, so it goes in the description.
+lines:
+  Devices: { qty: devices.qty }
+  Detectors: { qty: detectors.qty, markers: { Smoke: detectors.smoke, CO: detectors.co } }
+  KW Range: { qty: kw_range_dryer.qty, size: kw_range_dryer.size, check: [kw_range_dryer.range] }
+  KW Dryer: { qty: kw_range_dryer.qty, size: kw_range_dryer.size, check: [kw_range_dryer.dryer] }
+  KW Dishwasher/Disposal: { qty: kw_dishwasher_disposal.qty, size: kw_dishwasher_disposal.size, check: [kw_dishwasher_disposal.dishwasher, kw_dishwasher_disposal.disposal] }
+  KW Central AC Unit: { qty: kw_ac.qty, size: kw_ac.size, check: [kw_ac.central_ac] }
+  KW Mini Split: { qty: kw_ac.qty, size: kw_ac.size, check: [kw_ac.mini_split] }
+  HP/KW Furnace: { qty: hp_kw.qty, size: hp_kw.size, check: [hp_kw.furnace] }
+  Other: { qty: other.qty, size: other.size }

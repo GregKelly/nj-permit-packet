@@ -197,3 +197,17 @@ describe('zoning assumptions are flippable in config, without code changes', () 
     expect(determine(j08.after, flipped, TODAY).zoning).toMatchObject({ rule_id: 'ZN-03', status: 'required' });
   });
 });
+
+describe('submitting the packet (SB, M2 plan decision 4)', () => {
+  it('every packet gets the copies line; plans add the plan-copies line', () => {
+    const ids = (job: typeof j01) => determine(job.after, rules, TODAY).submission.map((n) => n.id);
+    expect(ids(j01)).toEqual(['SB-01', 'SB-02']); // floor plan
+    expect(ids(j08)).toEqual(['SB-01']); // no plans
+    expect(determine(j08.after, rules, TODAY).assumptions_applied.map((a) => a.id)).toContain('A-22');
+  });
+
+  it('no permit, no submission lines', () => {
+    const j02 = loadJob('J-02.yaml');
+    expect(determine(j02.after, rules, TODAY).submission).toEqual([]);
+  });
+});

@@ -116,6 +116,8 @@ export interface Determinations {
   zoning: ZoningDetermination | null;
   plans: PlansDetermination | null;
   tips: Note[];
+  /** Cover-checklist lines for submitting the packet (copies of forms and plans). */
+  submission: Note[];
   flags: Flag[];
   form_entries: Record<string, FormEntries>;
   fill_ins: FillIn[];

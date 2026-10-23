@@ -95,3 +95,28 @@ The owner wants this handled (2026-10-23) instead of stopping at LC-05. The offi
 On a branch, `m2-packet-builder`. First the forms, proof sheets and field maps, then the tests (all failing), then the builder and pages until they pass, then the demo command. After your review, merge to `main`.
 
 **If a test job's expected form entry turns out to be wrong or has no matching box** on the official form, I won't change the expected answer myself. I'll stop and bring it to you, as in M1.
+
+## Build notes (2026-10-23)
+
+**Status.** Built on `m2-packet-builder`. All 218 tests pass, including field read-back for all nine MW/FULL jobs. Waiting for owner review.
+
+**Needs your decision** (no approved answer was changed; the packet uses my recommendation until you decide):
+
+1. **"Other" lines on F120 and F145 have no box for their description.** The official forms print just "OTHER" (F120) and "Other" (F145) next to the count, with no write-in line (F130 has one). This affects the approved entries for J-03 (F120), and J-04, J-08, J-09 and J-10 (F145). The count goes on the Other row as expected. The description goes in that form's "Description of work" box, marked, for example "A/C condensing unit, 3-ton (on the Other line)". **Recommendation:** keep this. The alternative is to hand-write it next to the row, which the packet can't do neatly.
+2. **F370 has no use-group box.** The engine gives F370 a use group (R-5), but the form doesn't ask for one, so it isn't printed. The test doc's tables don't list F370 entries, so nothing approved is affected. **Recommendation:** leave as is.
+
+**Interpretations made while building** (flag any you disagree with):
+
+1. **F100 §VII.** R-5 goes in "Use Group, Proposed". "Change in Use Group, Indicate Present" stays blank, because the use doesn't change. Technical sections get R-5 as both present and proposed (CQ-06).
+2. **F120 "KW [ ] Dishwasher [ ] Garbage Disposal".** The engine reports these as one line ("KW Dishwasher/Disposal"), so both boxes are checked whenever it appears. Right for J-01 (both are installed). If a job ever has only one, the rule data should split the line.
+3. **"Licensed Contractor" is checked** on F120, F130 and F145 when a licensed sub signs (A-2). "Exempt Applicant" and the F100 Owner Section boxes are mapped but never filled until the homeowner path is built.
+4. **Boilers on F145.** The form has separate Steam Boiler and Hot Water Boiler rows; the engine has one Boiler line. A boiler goes on Other, labelled "Boiler", for the sub to correct. No test job has a boiler.
+5. **Ownership in Fee:** "Private" is marked (v1 is one- and two-family homes only).
+6. **Left blank** for the person signing: print-name lines, F370's verifying individual and everything below its header (the HVACR contractor completes the chimney details), architect, responsible person, §VI building characteristics, fax numbers, and a sub's HIC and FEIN (not in the directory).
+7. **Text that doesn't fit shrinks** (to 6 pt at the smallest). F100's FEIN box takes 9 characters, so the FEIN is written without the dash there. Unused F100 dropdowns print "Select Group", exactly as on the blank form.
+8. **The F100 signer** on the cover is the contractor, in the Agent Section (decision 1); the owner signs our authorization page.
+9. **Demo packets use the test date** (2026-10-22), like the engine tests, so license checks and the "Prepared" line don't change from day to day.
+
+**Found while checking proof sheets.** Some DCA boxes set their own font size, which overrode ours, so long entries were cut off. The filler now sets the size on each box too. This is the kind of mistake the proof sheets are for.
+
+**Review material:** `npm run packet -- J-01`, `J-04`, `J-08` (and `J-08 --hvacr clearair`), `J-02`; [m2-test-report.txt](../reports/m2-test-report.txt); optional proof sheets via `npm run form-proof -- F120` next to `assets/forms/F120.map.yaml`.

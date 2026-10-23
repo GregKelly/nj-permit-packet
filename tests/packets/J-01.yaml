@@ -1,0 +1,81 @@
+# Packet inputs and expected form boxes for J-01 (tests/jobs/J-01.yaml).
+# Owner and parcel details are fictional; the engine doesn't use them.
+# Engine entries (work type, costs, use group, quantities) are copied from the
+# "Expected form entries" table in docs/test-jobs-v1.md, not from engine output.
+# Fee and office-use boxes, signatures and sizes not given stay blank (CQ-08, CQ-10).
+id: J-01
+site: { block: "4101", lot: "7", zip: "07040" }
+owner:
+  name: Ana and Luis Moreno
+  address: { street: 34 Oakview Ave, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0161
+  email: morenos@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "4101"
+    site.lot: "7"
+    site.address: 34 Oakview Ave
+    site.work_site: 34 Oakview Ave, Maplewood, NJ 07040
+    owner.name: Ana and Luis Moreno
+    owner.phone: 973-555-0161
+    owner.email: morenos@mail.example
+    owner.street: 34 Oakview Ave
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $39,000 / $5,500 / $3,500 / $48,000
+    est_cost.building: $39,000
+    subcode.electrical: true
+    est_cost.electrical: $5,500
+    subcode.plumbing: true
+    est_cost.plumbing: $3,500
+    est_cost.total: $48,000
+    use_group.proposed: R-5                 # §VII
+  site_owner: &site_owner                   # identical on each technical section
+    site.block: "4101"
+    site.lot: "7"
+    site.address: 34 Oakview Ave, Maplewood, NJ 07040
+    owner.name: Ana and Luis Moreno
+    owner.phone_area: "973"
+    owner.phone: 555-0161
+    owner.email: morenos@mail.example
+    owner.address: 34 Oakview Ave, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $39,000 · $39,000
+    est_cost.rehabilitation: "39,000"
+    est_cost.total: "39,000"
+    description: |-
+      New drywall throughout
+      Remove wall between kitchen and dining room
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "5,500"                       # $5,500 · Devices 18 · KW Dishwasher/Disposal 2 (size blank)
+    devices.qty: "18"
+    kw_dishwasher_disposal.qty: "2"
+    kw_dishwasher_disposal.dishwasher: true
+    kw_dishwasher_disposal.disposal: true
+    description: |-
+      Two new 20A counter circuits, 8 recessed cans, island outlets
+      See attached scope of work.
+  F130:
+    <<: *site_owner
+    contractor: sutton
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "3,500"                       # $3,500 · Sink 1 · Dishwasher 1
+    sink.qty: "1"
+    dishwasher.qty: "1"
+    description: |-
+      Sink moved to new island, with dishwasher and disposal on the new run
+      See attached scope of work.

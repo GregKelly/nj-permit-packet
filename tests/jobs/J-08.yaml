@@ -36,8 +36,7 @@ expected:
   zoning: { rule: ZN-03, status: probably_not_required }
   plans: { rule: PL-04, requirement: none }
   tips: []
-  flags: [LC-03]
-  print_blocked: true
+  flags: [LC-03]   # warns, doesn't block printing (owner decision 2026-10-23)
   form_entries:
     F100:
       use_group: R-5

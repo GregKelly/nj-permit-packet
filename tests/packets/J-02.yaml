@@ -1,0 +1,7 @@
+# Packet inputs for J-02 (tests/jobs/J-02.yaml): no permit, so no form boxes to check.
+# Owner and parcel details are fictional.
+id: J-02
+site: { block: "1207", lot: "15", zip: "07040" }
+owner:
+  name: Chris Delgado
+  address: { street: 18 Elmwood Ave, city: Maplewood, state: NJ, zip: "07040" }

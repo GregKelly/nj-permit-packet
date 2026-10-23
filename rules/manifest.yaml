@@ -23,6 +23,7 @@ files:
   - state/nj/form-entries.yaml
   - state/nj/licensing.yaml
   - state/nj/tips.yaml
+  - state/nj/submission.yaml
   - state/nj/assumptions.yaml
   - municipal/maplewood/zoning.yaml
   - municipal/maplewood/assumptions.yaml

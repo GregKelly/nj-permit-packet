@@ -1,0 +1,60 @@
+# Packet inputs and expected form boxes for J-09 (tests/jobs/J-09.yaml).
+# See J-01.yaml for how these are written.
+id: J-09
+site: { block: "1504", lot: "22", zip: "07040" }
+owner:
+  name: Sam Kowalski
+  address: { street: 15 Midland Blvd, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0169
+  email: samk@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis
+    site.block: "1504"
+    site.lot: "22"
+    site.address: 15 Midland Blvd
+    site.work_site: 15 Midland Blvd, Maplewood, NJ 07040
+    owner.name: Sam Kowalski
+    owner.phone: 973-555-0169
+    owner.email: samk@mail.example
+    owner.street: 15 Midland Blvd
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration (new equipment)
+    subcode.electrical: true                # §IIb $900 / $15,100 (mechanical, A-20) / $16,000
+    est_cost.electrical: $900
+    subcode.plumbing: true
+    est_cost.plumbing: $15,100
+    est_cost.total: $16,000
+    use_group.proposed: R-5
+  site_owner: &site_owner
+    site.block: "1504"
+    site.lot: "22"
+    site.address: 15 Midland Blvd, Maplewood, NJ 07040
+    owner.name: Sam Kowalski
+    owner.phone_area: "973"
+    owner.phone: 555-0169
+    owner.email: samk@mail.example
+    owner.address: 15 Midland Blvd, Maplewood, NJ 07040
+  F145:
+    <<: *site_owner
+    contractor: clearair
+    use_group.r5: true
+    est_cost: "15,100"                      # $15,100 · heating system blank (cooling only) · Other 1
+    other.qty: "1"
+    description: |-
+      Ductless mini-split, 1 outdoor + 3 indoor units (on the Other line)
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor: watts
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "900"                         # $900 · KW Mini Split 1 (size blank)
+    kw_ac.qty: "1"
+    kw_ac.mini_split: true
+    description: |-
+      Ductless mini-split, 1 outdoor + 3 indoor units
+      See attached scope of work.
