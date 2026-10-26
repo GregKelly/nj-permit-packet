@@ -1,4 +1,5 @@
-# Licensing and registration checks. Rules table §4.5.
+# Licensing and registration checks. Rules table §4.5. LC-02 and LC-03 aren't raised
+# for a trade the owner does (homeowner.yaml).
 type: licensing
 rules:
   - id: LC-01
@@ -26,7 +27,8 @@ rules:
     notes: Info only, shown as tip TP-05. Not a permit item.
 
   - id: LC-05
-    title: Owner is doing the trade work themselves
-    check: owner_trade_work
-    message: Out of scope for v1. The homeowner-exempt path isn't supported.
+    title: The owner is doing building-section (F110) work on a contractor's job
+    # Narrowed 2026-10-26: the owner doing a licensed trade is handled in homeowner.yaml (§4.7).
+    check: owner_building_work
+    message: "Out of scope: the owner doing building work themselves isn't supported."
     blocks_printing: true

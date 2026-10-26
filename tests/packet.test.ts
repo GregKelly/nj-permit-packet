@@ -3,14 +3,14 @@
 
 import { PDFDocument } from 'pdf-lib';
 import { beforeAll, describe, expect, it } from 'vitest';
-import type { RuleSet } from '../src/engine';
+import { compileRules, type RuleSet } from '../src/engine';
 import { buildPacket } from '../src/packet/build';
 import { formValues } from '../src/packet/entries';
 import { fillForm, readFields } from '../src/packet/fill';
 import { officialForm, officialForms, sha256 } from '../src/packet/forms';
-import { loadRules } from '../src/rules-dir';
+import { loadRules, readRuleSources } from '../src/rules-dir';
 import { TODAY } from './helpers';
-import { loadPacketJob, packetProfile, PACKET_JOBS, pageTexts, partyBlock, type PacketFixture } from './packet-helpers';
+import { loadPacketJob, OWNER_APPLICANT_JOBS, packetProfile, PACKET_JOBS, pageTexts, partyBlock, type PacketFixture } from './packet-helpers';
 
 let rules: RuleSet;
 beforeAll(() => {
@@ -71,7 +71,8 @@ for (const id of PACKET_JOBS) {
       expect(result.kind).toBe('packet');
       const order = ['F100', 'F110', 'F120', 'F130', 'F145', 'F370'].filter((x) => f.d.forms.some((y) => y.form === x));
       const parts = result.pages.map((p) => p.form ?? p.part);
-      expect(parts).toEqual(['cover', 'F100', 'owner_authorization', ...order.slice(1), 'scope']);
+      const authorization = OWNER_APPLICANT_JOBS.includes(id) ? [] : ['owner_authorization'];
+      expect(parts).toEqual(['cover', 'F100', ...authorization, ...order.slice(1), 'scope']);
       for (const p of result.pages.filter((x) => x.form)) expect(p.pages, p.form).toBe(officialForm(p.form!).pages);
       const doc = await PDFDocument.load(result.pdf);
       const last = result.pages.at(-1)!;
@@ -161,6 +162,71 @@ describe('cover checklist says the right things', () => {
       for (const [k, v] of Object.entries(swap)) expect(values[k], `${form} ${k}`).toEqual(v);
     }
   });
+});
+
+describe('homeowner trade work (rules table §4.7)', () => {
+  const coverOf = async (id: string) => {
+    const f = loadPacketJob(id, rules);
+    const result = await buildPacket(f.job, f.d, packetProfile, TODAY);
+    if (result.kind === 'none') throw new Error(result.reason);
+    const page = result.pages.find((p) => p.part === 'cover')!;
+    const texts = await pageTexts(result.pdf);
+    return { f, result, cover: squash(texts.slice(page.start - 1, page.start - 1 + page.pages).join('\n')) };
+  };
+
+  it('J-11: the owner signs F100 (Owner Section) and F120 (exempt); no owner authorization row', async () => {
+    const { cover, f } = await coverOf('J-11');
+    expect(cover).toContain('Page 2, Owner Section');
+    expect(cover).toContain('Exempt Applicant');
+    expect(cover).toContain(f.job.owner.name);
+    expect(cover).not.toContain('Owner authorization');
+    expect(cover).not.toContain('Watts Electric LLC');
+    expect(cover).toContain('Owner: fill in KW Dishwasher/Disposal size on F120');
+    expect(cover).toContain("You must do the electrical work yourself. Under the homeowner exemption, friends, relatives or a handyman can't do it for you.");
+    expect(cover).toContain('The estimated cost for your electrical work is the figure given ($2,000).');
+    expect(cover).not.toContain('WARNING');
+  });
+
+  it('J-11: the scope of work says which trade the owner does', async () => {
+    const f = loadPacketJob('J-11', rules);
+    const result = await buildPacket(f.job, f.d, packetProfile, TODAY);
+    if (result.kind === 'none') throw new Error(result.reason);
+    const scope = result.pages.find((p) => p.part === 'scope')!;
+    const page = squash((await pageTexts(result.pdf)).slice(scope.start - 1, scope.start - 1 + scope.pages).join('\n'));
+    expect(page).toContain('Electrical (F120) $2,000, done by the owner');
+    expect(page).toContain('Plumbing (F130) $3,500');
+  });
+
+  it('J-13b: Clearair signs F145 and F370; the owner signs F100 and F120', async () => {
+    const { cover } = await coverOf('J-13b');
+    expect(cover).toContain('Clearair Mechanical');
+    expect(cover).toContain('Owner: fill in KW Central AC Unit size, HP/KW Furnace size on F120');
+    expect(cover.indexOf('Notify the construction office before work starts')).toBeGreaterThan(-1);
+  });
+
+  it('the HIC box gets the longest exemption wording that fits (owner decision 2026-10-26)', async () => {
+    // J-12b: J-12 with A-26 flipped, so the owner signs F130, whose HIC box is wider than F120's.
+    const flipped = compileRules(
+      readRuleSources().map((x) =>
+        x.path === 'state/nj/homeowner.yaml' ? { ...x, text: x.text.replace('two_family_owner_plumbing_hvacr: false', 'two_family_owner_plumbing_hvacr: true') } : x,
+      ),
+    );
+    const f = loadPacketJob('J-12', flipped);
+    const hic = async (form: string) => {
+      const doc = await fillForm(form, formValues(f.job, f.d, packetProfile)[form], { flatten: false });
+      return readFields(doc)[officialForm(form).map.fields['contractor.hic']];
+    };
+    expect(await hic('F130')).toBe('Exempt: owner, 5:23-2.15(b)8.ii');
+    expect(await hic('F120')).toBe('Exempt: owner');
+  });
+
+  for (const [id, ruleId] of [['J-12', 'HO-02'], ['J-13', 'HO-04']]) {
+    it(`${id} as written: no packet, just the ${ruleId} reason`, async () => {
+      const f = loadPacketJob(id, rules);
+      const result = await buildPacket(f.job, f.d, packetProfile, TODAY);
+      expect(result).toEqual({ kind: 'none', reason: f.d.flags.find((x) => x.id === ruleId)!.message });
+    });
+  }
 });
 
 describe('our other pages', () => {

@@ -5,7 +5,7 @@
 // The checker rejects: invalid file shapes, duplicate IDs, references to
 // assumptions / questions / forms / rules that don't exist, conditions on facts a
 // work item kind doesn't have, condition values a fact can't take, and rule files
-// missing from the manifest.
+// missing from the manifest, and homeowner checks that name unknown trades or switches.
 
 import { createHash } from 'node:crypto';
 import { parse } from 'yaml';
@@ -39,7 +39,7 @@ export type When = Cond | Cond[];
 // ---------------------------------------------------------------------------
 // File shapes
 
-const Id = z.string().regex(/^[A-Z]+-\d+$/, 'IDs look like KB-01');
+const Id = z.string().regex(/^[A-Z]+-[A-Z]?\d+$/, 'IDs look like KB-01 (or HO-F1)');
 const FormId = z.string().regex(/^F\d+$/, 'form IDs look like F110');
 const Ids = z.array(z.string()).default([]);
 const TIERS = ['OM', 'MW', 'FULL'] as const;
@@ -82,9 +82,49 @@ const LicensingRuleSchema = z
   .object({
     id: Id,
     title: z.string(),
-    check: z.enum(['hic_missing', 'sub_missing', 'license_expired', 'owner_trade_work']),
+    check: z.enum(['hic_missing', 'sub_missing', 'license_expired', 'owner_building_work']),
     message: z.string(),
     blocks_printing: z.boolean(),
+  })
+  .strict();
+
+// Homeowner trade work (rules table §4.7)
+const OWNER_TRADES = ['electrical', 'plumbing', 'mechanical'] as const;
+
+const HomeownerCheckSchema = z
+  .object({
+    id: Id,
+    title: z.string(),
+    check: z.enum(['home', 'no_items', 'one_signer']),
+    /** The trades this check applies to; all of them when left out. */
+    trades: z.array(z.enum(OWNER_TRADES)).min(1).optional(),
+    /** check: home. Any one passes; keys are property facts, `trade` and `switch`. */
+    allowed: z.array(Cond).min(1).optional(),
+    /** check: no_items. The owner's work items for the trade must not match. */
+    items: When.optional(),
+    item_names: z.record(z.string()).optional(),
+    /** A different message when the home matches `when` (property facts). */
+    cases: z.array(z.object({ when: Cond, message: z.string() }).strict()).default([]),
+    message: z.string(),
+    citation: z.string().optional(),
+    assumptions: Ids,
+    office_questions: Ids,
+    show_assumptions_when: Cond.optional(),
+    notes: z.string().optional(),
+  })
+  .strict()
+  .refine((r) => (r.check === 'home') === Boolean(r.allowed), '`allowed` goes with check: home (and only there)')
+  .refine((r) => (r.check === 'no_items') === Boolean(r.items), '`items` goes with check: no_items (and only there)');
+
+const HomeownerTradeSchema = z
+  .object({
+    name: z.string(),
+    person: z.string(),
+    forms: z.array(FormId).min(1),
+    f100_box: z.string().optional(),
+    exempt_license: z.string(),
+    checklist_note: z.string().optional(),
+    office_questions: Ids,
   })
   .strict();
 
@@ -175,6 +215,19 @@ const FILE_SCHEMAS = {
     })
     .strict(),
   licensing: z.object({ type: z.literal('licensing'), rules: z.array(entryOrRef(LicensingRuleSchema)) }).strict(),
+  homeowner: z
+    .object({
+      type: z.literal('homeowner'),
+      switches: z.record(z.boolean()),
+      trades: z.object(Object.fromEntries(OWNER_TRADES.map((t) => [t, HomeownerTradeSchema])) as Record<(typeof OWNER_TRADES)[number], typeof HomeownerTradeSchema>).strict(),
+      exempt_hic: z.string(),
+      exempt_hic_short: z.array(z.string()).default([]),
+      unknown_notes: z.record(z.string()).default({}),
+      rules: z.array(HomeownerCheckSchema),
+      entries: z.array(z.object({ id: Id, title: z.string(), rule: z.string(), assumptions: Ids, office_questions: Ids }).strict()),
+      checklist: z.array(z.object({ id: Id, text: z.string(), citation: z.string().optional(), assumptions: Ids }).strict()),
+    })
+    .strict(),
   tips: z
     .object({
       type: z.literal('tips'),
@@ -252,6 +305,9 @@ export type PlanRule = Files['plans']['rules'][number];
 export type LineDef = Files['form_entries']['lines'][number];
 export type HeatingDef = Files['form_entries']['heating_system'][number];
 export type LicensingRule = z.infer<typeof LicensingRuleSchema>;
+export type OwnerTrade = (typeof OWNER_TRADES)[number];
+export type HomeownerCheck = z.infer<typeof HomeownerCheckSchema>;
+export type Homeowner = Files['homeowner'];
 export type TipRule = Files['tips']['rules'][number];
 export type SubmissionRule = Files['submission']['rules'][number];
 export type ZoningRule = Files['zoning']['rules'][number];
@@ -281,6 +337,8 @@ export interface RuleSet {
   lines: LineDef[];
   heating: HeatingDef[];
   licensing: (LicensingRule | RefRule)[];
+  /** Homeowner trade work (rules table §4.7). */
+  homeowner: Homeowner;
   tips: TipRule[];
   submission: SubmissionRule[];
   zoning: ZoningRule[];
@@ -333,6 +391,9 @@ export function compileRules(sources: RuleSource[]): RuleSet {
   const configs = ofType('config');
   if (configs.length !== 1) fail([`expected exactly one config file, found ${configs.length}`]);
   const config = configs[0].data;
+  const homeowners = ofType('homeowner');
+  if (homeowners.length !== 1) fail([`expected exactly one homeowner file, found ${homeowners.length}`]);
+  const homeowner = homeowners[0].data;
 
   const rs: RuleSet = {
     version: createHash('sha256')
@@ -355,6 +416,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     lines: ofType('form_entries').flatMap((f) => f.data.lines),
     heating: ofType('form_entries').flatMap((f) => f.data.heating_system),
     licensing: ofType('licensing').flatMap((f) => f.data.rules.map((r) => ('refers_to' in r ? { ...r, group: 'LC' } : r))),
+    homeowner,
     tips: ofType('tips').flatMap((f) => f.data.rules),
     submission: ofType('submission').flatMap((f) => f.data.rules),
     zoning: ofType('zoning').flatMap((f) => f.data.rules),
@@ -373,6 +435,9 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     ...rs.plans.map((r) => r.id),
     ...Object.values(ofType('form_entries').flatMap((f) => f.data.policies.map((p) => p.id))),
     ...rs.licensing.map((r) => r.id),
+    ...homeowner.rules.map((r) => r.id),
+    ...homeowner.entries.map((e) => e.id),
+    ...homeowner.checklist.map((c) => c.id),
     ...rs.tips.map((r) => r.id),
     ...rs.submission.map((r) => r.id),
     ...rs.zoning.map((r) => r.id),
@@ -391,6 +456,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
   const formIds = new Set(rs.forms.map((f) => f.id));
   const itemRuleIds = new Set(rs.groups.flatMap((g) => g.entries.map((e) => e.id)));
   const flags = new Set(Object.keys(config.flags));
+  const switches = new Set(Object.keys(homeowner.switches));
 
   for (const g of rs.groups) {
     for (const e of g.entries) {
@@ -434,6 +500,7 @@ export function compileRules(sources: RuleSource[]): RuleSet {
   }
   for (const h of rs.heating) checkWhen(h.when, null, `heating system "${h.work}"`, errors, null);
   for (const r of rs.licensing) if ('refers_to' in r) ref(`licensing ${r.id}`, 'referenced rule', r.refers_to, rs.ids);
+  checkHomeowner(homeowner, errors, rs, formIds, switches);
   for (const t of rs.tips) {
     if (t.when_item) checkWhen(t.when_item, null, `tip ${t.id}`, errors, rs.thresholds);
     if (t.when_property) checkPropertyCond(t.when_property, `tip ${t.id}`, errors, rs.thresholds, true);
@@ -448,7 +515,9 @@ export function compileRules(sources: RuleSource[]): RuleSet {
     if (rs.zoning.filter((z) => z.role === role).length !== 1) errors.push(`zoning: expected exactly one rule with role ${role}`);
   }
   for (const a of rs.assumptions.values()) {
-    if (a.config_flag && !flags.has(a.config_flag)) errors.push(`assumption ${a.id}: config flag ${a.config_flag} isn't in config.yaml`);
+    if (a.config_flag && !flags.has(a.config_flag) && !switches.has(a.config_flag)) {
+      errors.push(`assumption ${a.id}: config flag ${a.config_flag} isn't in config.yaml or the homeowner switches`);
+    }
   }
   const need: [string, string][] = [['CQ-02', 'f100_rows'], ['CQ-03', 'remainder_order'], ['CQ-04', 'trade_forms'], ['CQ-05', 'order'], ['CQ-06', 'use_group']];
   for (const [id, key] of need) if (!rs.policies[id]?.[key]) errors.push(`form entries ${id}: needs \`${key}\``);
@@ -460,6 +529,41 @@ export function compileRules(sources: RuleSource[]): RuleSet {
 
 function fail(errors: string[]): never {
   throw new Error(`Rule files have ${errors.length} problem(s):\n- ${errors.join('\n- ')}`);
+}
+
+// ---------------------------------------------------------------------------
+// Homeowner checks
+
+function checkHomeowner(h: Homeowner, errors: string[], rs: RuleSet, formIds: Set<string>, switches: Set<string>) {
+  const ref = (where: string, kind: string, ids: string[], pool: { has(id: string): boolean }) => {
+    for (const id of ids) if (!pool.has(id)) errors.push(`${where}: ${kind} ${id} doesn't exist`);
+  };
+  for (const [trade, t] of Object.entries(h.trades)) {
+    ref(`homeowner trade ${trade}`, 'form', t.forms, formIds);
+    ref(`homeowner trade ${trade}`, 'office question', t.office_questions, rs.officeQuestions);
+  }
+  for (const fact of Object.keys(h.unknown_notes)) if (!PROPERTY_FACTS[fact]) errors.push(`homeowner unknown_notes: "${fact}" isn't a property fact`);
+  for (const r of h.rules) {
+    const where = `homeowner ${r.id}`;
+    ref(where, 'assumption', r.assumptions, rs.assumptions);
+    ref(where, 'office question', r.office_questions, rs.officeQuestions);
+    for (const cond of r.allowed ?? []) {
+      const { trade, switch: sw, ...property } = cond;
+      for (const t of trade === undefined ? [] : Array.isArray(trade) ? trade : [trade]) {
+        if (!(OWNER_TRADES as readonly unknown[]).includes(t)) errors.push(`${where}: trade "${String(t)}" isn't one of ${OWNER_TRADES.join(', ')}`);
+      }
+      if (sw !== undefined && !switches.has(String(sw))) errors.push(`${where}: switch "${String(sw)}" isn't in the homeowner switches`);
+      checkPropertyCond(property, where, errors, rs.thresholds, true);
+    }
+    for (const c of r.cases) checkPropertyCond(c.when, `${where} (case)`, errors, rs.thresholds, true);
+    if (r.show_assumptions_when) checkPropertyCond(r.show_assumptions_when, where, errors, rs.thresholds, true);
+    if (r.items) checkWhen(r.items, null, where, errors, null);
+  }
+  for (const e of h.entries) {
+    ref(`homeowner ${e.id}`, 'assumption', e.assumptions, rs.assumptions);
+    ref(`homeowner ${e.id}`, 'office question', e.office_questions, rs.officeQuestions);
+  }
+  for (const c of h.checklist) ref(`homeowner ${c.id}`, 'assumption', c.assumptions, rs.assumptions);
 }
 
 // ---------------------------------------------------------------------------

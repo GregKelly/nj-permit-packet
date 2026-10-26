@@ -17,7 +17,18 @@ f100_hollis:
   agent.city_state_zip: Maplewood, NJ 07040
   agent.phone: 973-555-0101
 
+# F100 §I Principal Contractor only: when the owner is the applicant (HO-F1), the Agent Section stays blank.
+f100_hollis_principal:
+  contractor.name: Hollis Building Co. LLC
+  contractor.phone: 973-555-0101
+  contractor.address: 1800 Springfield Ave
+  contractor.address_2: Maplewood, NJ 07040
+  contractor.email: office@hollis.example
+  contractor.hic: 13VH00000001
+  contractor.fein: "000000001"
+
 # Contractor boxes on a technical section: the party that signs it.
+# (An owner signing as exempt applicant, HO-F3, is written out in that job's file.)
 hollis:
   contractor.name: Hollis Building Co. LLC
   contractor.phone_area: "973"

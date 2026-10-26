@@ -2,7 +2,7 @@
 // determinations out; no I/O, no clock ("today" is passed in).
 
 import { TRADES, UNKNOWN, type JobFacts, type Trade, type WorkItem } from './facts';
-import type { FormDef, ItemRule, LicensingRule, RuleSet, ThenPart } from './load';
+import type { Cond, FormDef, ItemRule, LicensingRule, OwnerTrade, RuleSet, ThenPart } from './load';
 import { matchProperty, matchWhen } from './match';
 import type {
   Determinations,
@@ -14,6 +14,7 @@ import type {
   HeatingSystem,
   ItemDetermination,
   Note,
+  OwnerTradeDetermination,
   PlansDetermination,
   Tier,
   ZoningDetermination,
@@ -23,6 +24,9 @@ const TIER_RANK: Record<Tier, number> = { OM: 0, MW: 1, FULL: 2 };
 const TRADE_PERSON: Record<string, string> = { electrical: 'electrician', plumbing: 'plumber', hvacr: 'HVACR contractor' };
 const TRADE_LICENSE: Record<string, string> = { electrical: 'electrical', plumbing: 'plumbing', hvacr: 'HVACR' };
 const FUEL_LABEL: Record<string, string> = { gas: 'Gas', oil: 'Oil', propane: 'Propane', electric: 'Electric' };
+/** Owner-performed trades → the subcontractor directory entry for that trade. */
+const TEAM_KEY: Record<OwnerTrade, 'electrical' | 'plumbing' | 'hvacr'> = { electrical: 'electrical', plumbing: 'plumbing', mechanical: 'hvacr' };
+const OWNER = 'Owner';
 
 interface Classified {
   item: WorkItem;
@@ -50,6 +54,8 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
     tips: [],
     submission: [],
     flags: [],
+    owner_trades: [],
+    owner_notes: [],
     form_entries: {},
     fill_ins: [],
     questions: [],
@@ -71,8 +77,8 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   for (const s of rules.scope) {
     if (!matchProperty(s.property, property)) return stop({ id: s.id, message: s.message, blocks_printing: true });
   }
-  if (facts.performed_by === 'owner') {
-    const lc = licensingRule(rules, 'owner_trade_work');
+  if (facts.performed_by.building !== 'contractor') {
+    const lc = licensingRule(rules, 'owner_building_work');
     return stop({ id: lc.id, message: lc.message, blocks_printing: true });
   }
 
@@ -93,14 +99,26 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   d.job_tier = tier;
   const permitted = classified.filter((c) => c.det.tier !== 'OM');
 
-  // 5–6. Forms and signers.
+  // 5. Trades the owner does themselves: may they? (rules table §4.7)
+  const owner = tier === 'OM' ? null : ownerTrades(facts, permitted, property, rules);
+  const ownerTrade = (form: string) => owner?.trades.find((t) => rules.homeowner.trades[t.trade].forms.includes(form));
+  if (owner) d.owner_trades = owner.trades.map(({ trade, allowed, rule_id }) => ({ trade, allowed, rule_id }));
+
+  // 6. Forms and signers.
   const formIds = new Set<string>();
   if (tier !== 'OM') {
     formIds.add('F100');
     for (const c of permitted) c.det.forms.forEach((f) => formIds.add(f));
   }
   const formDefs = rules.forms.filter((f) => formIds.has(f.id));
-  d.forms = formDefs.map((f) => ({ form: f.id, name: f.name, signer_role: f.signer, signer: signerFor(f, facts) }));
+  d.forms = formDefs.map((f) => {
+    const form: FormDetermination = { form: f.id, name: f.name, signer_role: f.signer, signer: signerFor(f, facts) };
+    const t = ownerTrade(f.id);
+    if (t) form.signer = t.allowed ? OWNER : null; // HO-F3, HO-F4; no eligible signer when a check failed
+    if (f.id === 'F100' && owner?.trades.length) form.signer = OWNER; // HO-F1: the owner is the applicant
+    if (form.signer === OWNER) form.by_owner = true;
+    return form;
+  });
 
   // 7. Zoning prior approval.
   d.zoning = zoning(classified, property, rules, tier);
@@ -116,14 +134,15 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   d.submission = submission.map((s) => ({ id: s.id, text: s.text }));
 
   // 9. Work type, cost and quantities.
-  const entries = tier === 'OM' ? null : formEntries(facts, classified, permitted, d.forms, formDefs, rules, tier);
+  const entries = tier === 'OM' ? null : formEntries(facts, classified, permitted, d.forms, formDefs, rules, tier, owner?.trades ?? []);
   if (entries) {
     d.form_entries = entries.entries;
     d.fill_ins = entries.fillIns;
   }
 
-  // 10. License and registration checks.
-  if (tier !== 'OM') d.flags = licensingFlags(facts, d.forms, rules, today);
+  // 10. License and registration checks, then the owner's eligibility (§4.7).
+  if (tier !== 'OM') d.flags = [...licensingFlags(facts, d.forms.filter((f) => !ownerTrade(f.form)), rules, today), ...(owner?.flags ?? [])];
+  if (owner) d.owner_notes = ownerNotes(owner.trades, d.form_entries, rules);
 
   d.outcome =
     tier === 'FULL' ? 'permit' : tier === 'MW' ? 'minor_work' : d.zoning?.status === 'required' ? 'zoning_only' : 'no_permit';
@@ -146,6 +165,8 @@ export function evaluate(facts: JobFacts, rules: RuleSet, today: string): Evalua
   entries?.assumptions.forEach((a) => assumptionIds.add(a));
   submission.forEach((s) => s.assumptions.forEach((a) => assumptionIds.add(a)));
   entries?.officeQuestions.forEach((q) => questionIds.add(q));
+  owner?.assumptions.forEach((a) => assumptionIds.add(a));
+  owner?.officeQuestions.forEach((q) => questionIds.add(q));
 
   d.assumptions_applied = sortIds([...assumptionIds]).map((id) => {
     const a = rules.assumptions.get(id)!;
@@ -294,6 +315,104 @@ function licensingFlags(facts: JobFacts, forms: FormDetermination[], rules: Rule
 }
 
 // ---------------------------------------------------------------------------
+// Homeowner trade work (rules table §4.7)
+
+interface OwnerTradeResult extends OwnerTradeDetermination {
+  trade: OwnerTrade;
+}
+
+/**
+ * For each licensed trade the owner does all or some of, run the checks in order;
+ * the first that fails blocks printing for that trade.
+ */
+function ownerTrades(facts: JobFacts, permitted: Classified[], property: Record<string, unknown>, rules: RuleSet) {
+  const h = rules.homeowner;
+  const trades: OwnerTradeResult[] = [];
+  const flags: Flag[] = [];
+  const assumptions = new Set<string>();
+  const officeQuestions = new Set<string>();
+
+  for (const [trade, def] of Object.entries(h.trades) as [OwnerTrade, (typeof h.trades)[OwnerTrade]][]) {
+    const who = facts.performed_by[trade];
+    if (who === 'contractor') continue;
+    const items = permitted.filter((c) => c.det.forms.some((f) => def.forms.includes(f))).map((c) => c.item);
+    const ownerItems = who === 'owner' ? items : items.filter((i) => who.owner.includes(i.id));
+    if (!ownerItems.length) continue;
+    const subItems = items.filter((i) => !ownerItems.includes(i));
+    const sub = facts.team[TEAM_KEY[trade]]?.name ?? `a ${def.person}`;
+    const values = { trade: def.name, trade_person: def.person, sub };
+
+    let failed: Flag | null = null;
+    for (const r of h.rules.filter((x) => !x.trades || x.trades.includes(trade))) {
+      if (!r.show_assumptions_when || matchProperty(r.show_assumptions_when, property)) {
+        r.assumptions.forEach((a) => assumptions.add(a));
+        r.office_questions.forEach((q) => officeQuestions.add(q));
+      }
+      if (failed) continue;
+      let message: string | null = null;
+      if (r.check === 'home') {
+        const unknowns = blockingUnknowns(r.allowed!, trade, property, h.switches);
+        if (unknowns === null) continue; // an allowed condition matched
+        message = fill(r.cases.find((c) => matchProperty(c.when, property))?.message ?? r.message, values);
+        message = [message, ...unknowns.map((f) => h.unknown_notes[f]).filter(Boolean)].join(' ');
+      } else if (r.check === 'no_items') {
+        const bad = ownerItems.find((i) => matchWhen(r.items!, i, property).ok);
+        if (!bad) continue;
+        message = fill(r.message, { ...values, item: r.item_names?.[String(bad.equipment)] ?? bad.label });
+      } else if (subItems.length) {
+        message = fill(r.message, values);
+      } else continue;
+      failed = { id: r.id, message, blocks_printing: true };
+    }
+    if (failed) flags.push(failed);
+    else def.office_questions.forEach((q) => officeQuestions.add(q));
+    trades.push({ trade, allowed: !failed, rule_id: failed?.id ?? null });
+  }
+
+  if (trades.length) {
+    for (const e of h.entries) {
+      if (e.id === 'HO-F4' && !trades.some((t) => t.allowed && t.trade === 'mechanical')) continue;
+      e.assumptions.forEach((a) => assumptions.add(a));
+      e.office_questions.forEach((q) => officeQuestions.add(q));
+    }
+    h.checklist.forEach((c) => c.assumptions.forEach((a) => assumptions.add(a)));
+  }
+  return { trades, flags, assumptions, officeQuestions };
+}
+
+/**
+ * null if any allowed condition matches. Otherwise the unknown property facts that
+ * alone kept a condition from matching (so the note can say the answer wasn't known).
+ */
+function blockingUnknowns(allowed: Cond[], trade: OwnerTrade, property: Record<string, unknown>, switches: Record<string, boolean>): string[] | null {
+  const unknowns = new Set<string>();
+  for (const cond of allowed) {
+    const { trade: forTrade, switch: sw, ...facts } = cond;
+    if (forTrade !== undefined && !(Array.isArray(forTrade) ? forTrade : [forTrade]).includes(trade)) continue;
+    if (sw !== undefined && switches[String(sw)] !== true) continue;
+    const missed = Object.keys(facts).filter((k) => !matchProperty({ [k]: facts[k] }, property));
+    if (!missed.length) return null;
+    if (missed.every((k) => property[k] === UNKNOWN)) missed.forEach((k) => unknowns.add(k));
+  }
+  return [...unknowns];
+}
+
+/** HO-T1 and HO-T2 for each trade the owner may do, and that trade's own note (Q-13 for HVACR). */
+function ownerNotes(trades: OwnerTradeResult[], entries: Record<string, FormEntries>, rules: RuleSet): Note[] {
+  const h = rules.homeowner;
+  const tradeForms = rules.policies['CQ-04'].trade_forms as Record<Trade, string>;
+  const notes: Note[] = [];
+  for (const t of trades.filter((x) => x.allowed)) {
+    const def = h.trades[t.trade];
+    const cost = entries[tradeForms[t.trade]]?.est_cost;
+    const amount = typeof cost === 'number' ? `$${cost.toLocaleString('en-US')}` : 'not given yet';
+    for (const c of h.checklist) notes.push({ id: c.id, text: fill(c.text, { trade: def.name, amount }) });
+    if (def.checklist_note) notes.push({ id: 'HO-F1', text: def.checklist_note });
+  }
+  return notes;
+}
+
+// ---------------------------------------------------------------------------
 // Form entries (rules table §4.4)
 
 function formEntries(
@@ -304,8 +423,11 @@ function formEntries(
   formDefs: FormDef[],
   rules: RuleSet,
   tier: Tier,
+  ownerTrades: OwnerTradeResult[],
 ) {
   const property = facts.property as Record<string, unknown>;
+  const h = rules.homeowner;
+  const byOwner = new Set<Trade>(ownerTrades.map((t) => t.trade)); // all or some of the trade
   const p = rules.policies;
   const useGroup = p['CQ-06'].use_group as string;
   const tradeForms = p['CQ-04'].trade_forms as Record<Trade, string>;
@@ -314,14 +436,15 @@ function formEntries(
   const assumptions = new Set<string>([...p['CQ-01'].assumptions, ...p['CQ-03'].assumptions, ...p['CQ-06'].assumptions]);
   const officeQuestions = new Set<string>();
 
-  // Cost by trade (CQ-02 to CQ-04). One trade takes the remainder of the total.
+  // Cost by trade (CQ-02 to CQ-04). One trade takes the remainder of the total. The owner's own
+  // work isn't part of the contract total, so an owner-performed trade never does (HO-F5).
   const given = facts.costs as Record<Trade | 'total', number | null>;
-  const remainderTrade = (p['CQ-03'].remainder_order as Trade[]).find((t) => presentTrades.includes(t)) ?? null;
+  const remainderTrade = (p['CQ-03'].remainder_order as Trade[]).find((t) => presentTrades.includes(t) && !byOwner.has(t)) ?? null;
   const cost: Partial<Record<Trade, number | null>> = {};
   for (const t of presentTrades) cost[t] = given[t];
   const othersKnown = presentTrades.every((t) => t === remainderTrade || given[t] !== null);
   if (remainderTrade && given[remainderTrade] === null && given.total !== null && othersKnown) {
-    const others = TRADES.filter((t) => t !== remainderTrade).reduce((sum, t) => sum + (given[t] ?? 0), 0);
+    const others = TRADES.filter((t) => t !== remainderTrade && !byOwner.has(t)).reduce((sum, t) => sum + (given[t] ?? 0), 0);
     cost[remainderTrade] = given.total - others >= 0 ? given.total - others : null;
   }
   const sum = (values: (number | null | undefined)[]) => (values.every((v) => typeof v === 'number') ? (values as number[]).reduce((a, b) => a + b, 0) : null);
@@ -342,6 +465,11 @@ function formEntries(
         if (here.length) e.cost_by_subcode[row] = sum(here.map((t) => cost[t]));
       }
       e.total_cost = sum(Object.values(e.cost_by_subcode));
+      if (forms.find((f) => f.form === 'F100')?.by_owner) {
+        // HO-F1: C, the trade boxes for what the owner may do, and D (contractors are on the job).
+        const boxes = ownerTrades.filter((t) => t.allowed).map((t) => h.trades[t.trade].f100_box);
+        e.owner_section = ['C', ...boxes.filter((b): b is string => Boolean(b)), 'D'];
+      }
       if (presentTrades.includes('mechanical')) {
         p['CQ-02'].assumptions.forEach((a) => assumptions.add(a));
         p['CQ-02'].office_questions.forEach((q) => officeQuestions.add(q));
@@ -355,6 +483,8 @@ function formEntries(
     } else {
       const trade = TRADES.find((t) => tradeForms[t] === def.id);
       if (trade) e.est_cost = cost[trade] ?? null;
+      const mine = ownerTrades.find((t) => t.allowed && t.trade === trade);
+      if (mine) e.exempt_applicant = { license: h.trades[mine.trade].exempt_license, hic: h.exempt_hic, hic_short: h.exempt_hic_short }; // HO-F3
       if (def.id === tradeForms.mechanical) {
         e.heating_system = heatingSystem(classified, property, rules);
         if (e.heating_system && e.heating_system.fuel === null) missing.push('Heating system fuel');

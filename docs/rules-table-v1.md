@@ -3,6 +3,10 @@
 *Draft, October 2026. Scope: one- and two-family dwellings (use group R-3 / R-5) in Maplewood, NJ. Four project types: kitchen & bath, finished basement, roof replacement, HVAC.*
 
 > **Changes after approval** (owner decisions 2026-10-23, M2 plan). The YAML in `rules/` is the source of truth; see [rules-reference.md](rules-reference.md). **LC-03** now warns instead of blocking printing. New **SB-01 / SB-02** (cover-checklist lines for copies of the forms and plans) and assumption **A-22** (one original plus three copies). The table below is kept as approved.
+>
+> **Addendum approved by owner (2026-10-26):** [§4.7 Homeowner does their own trade work](#47-homeowner-does-their-own-trade-work-approved-2026-10-26), new assumptions **A-23 to A-27** and questions **Q-12 to Q-16**. LC-05 is narrowed to building work only.
+>
+> **Change after approval** (owner decision 2026-10-26, homeowner build): **HO-F3**'s HIC entry "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii" doesn't fit the HIC box on any form, so each form gets the longest wording that fits: the full text, else "Exempt: owner, 5:23-2.15(b)8.ii" (F130, F145), else "Exempt: owner" (F120). The wordings are in `rules/state/nj/homeowner.yaml`.
 
 This is the human-readable version of the rule data the engine will run. Once you've approved it, each row becomes a record in a rules file (state rules and Maplewood rules kept separate). Rule IDs (e.g. `KB-04`) will carry through to the code and the test suite, so a test failure points back to a row here.
 
@@ -224,6 +228,53 @@ Owner decision 2026-10-22: include a few warnings a plan reviewer would raise ev
 | TP-04 | Fuel-fired appliance near new finished space (FB-11) | "Show the furnace/water heater on the plan with clearances and combustion air." |
 | TP-05 | Year built before 1978 (LC-04) | "Lead-safe work practices may apply to disturbing painted surfaces." |
 
+### 4.7 Homeowner does their own trade work (approved 2026-10-26)
+
+*From the approved [homeowner trade-work plan](plans/homeowner-trade-plan.md). Replaces the LC-05 stop for the licensed trades (electrical, plumbing, HVACR) on a contractor's job. Sources: `docs/research-notes.md`, "Homeowner trade work."*
+
+**Basis.** N.J.A.C. 5:23-2.15(b)2.i allows unlicensed trade work only "in the case of a single-family homeowner on his or her own dwelling." DCA says to apply that within each trade's own licensing law (52 N.J.R. 10(1)). The licensing boards' answers by home type are in "License Check," *Construction Code Communicator* 31:1 (Spring 2019), pp. 6–7.
+
+**New facts.** These are asked only when the owner does at least one trade.
+
+| Fact | Values | Used by | Example question |
+|---|---|---|---|
+| Who does each licensed trade (`performed_by.electrical / plumbing / mechanical`) | contractor's sub / owner | HO-01 to HO-06 | "Is anyone other than your subs doing electrical, plumbing or HVAC work, such as the owner?" |
+| Who lives in the home (`owner_occupied`) | owner / immediate family only / no one in the family / unknown | HO-01 | "Does the owner live in the home? If not, does a member of their immediate family?" |
+| Own sewer connection (`own_sewer`) | yes / no / unknown | HO-02, only for an attached home where the owner does plumbing | "Does this half of the twin have its own sewer line to the street, or is it shared with the neighbor?" |
+
+Refrigerant work (HO-04) comes from the HVAC item's equipment type, so it needs no question. Unknown answers take the conservative branch: the owner isn't eligible for that trade.
+
+**Eligibility rules.** A failed check blocks printing. The message says why, cites the law, and tells the contractor to assign a licensed sub for that trade.
+
+| ID | Check | Result if it fails | Basis |
+|---|---|---|---|
+| HO-01 | The owner lives in the home. For **electrical only**, an immediate family member living there also counts | "The owner can do their own {trade} work only in a home they live in. Assign a licensed {trade person}." | 45:5A-18(n); 45:14C-12.4 and 13:32-1.4(f)1 ("his or her own dwelling"); 45:16A-9 ("personally occupies"); 2019 board answers 1b |
+| HO-02 | Plumbing by the owner: `detached_1f`, or `attached` with its own sewer (`own_sewer: yes`) | Two-family: "NJ plumbing law lets only a single-family homeowner do their own plumbing. Assign a licensed master plumber." Shared sewer: "...because this home shares a sewer line with the neighbor..." ⚠️ A-26 | 45:14C-12.4; 13:32-1.4(f)1; Plumbing Board answers 2 and 3 |
+| HO-03 | HVACR by the owner: `detached_1f` or `attached` | Two-family: "NJ HVACR law lets only a single-family homeowner do their own HVACR work. Assign a licensed HVACR contractor." ⚠️ A-26 | 45:16A-9; 13:32A-1.1(b)3; HVACR Board answer 2 |
+| HO-04 | HVACR by the owner includes no refrigerant work: no A/C or condensing unit, heat pump or mini-split, new or replaced. Furnace, boiler, water heater, ductwork, controls and gas connections are fine | "Work on the {item} involves refrigerant, which the owner can't do under the homeowner exemption. Assign a licensed HVACR contractor for all the HVACR work (see HO-05)." ⚠️ A-24 | 45:16A-9 (CFC/HCFC exception), read conservatively |
+| HO-05 | One signer per technical section: the owner does all of a trade's work on the job, or none of it | "One person must do and sign for all the {trade} work on this permit. Assign either the owner or {sub} to all of it." | Each section has a single signer and license block (F120/F130/F145 §C) |
+| HO-06 | Electrical by the owner: any one- or two-family type in v1 scope, if HO-01 passes | (No separate failure; HO-01 covers it) ⚠️ A-23 | 45:5A-18(n); Electrical Board answer |
+| LC-05 *(narrowed)* | The owner is doing **building-section** (F110) work on a contractor's job | Still a stop: "Out of scope: the owner doing building work themselves isn't supported." | Owner "perform or supervise" (F100 box C.1) changes who's responsible for the job |
+
+**When every owner-performed trade passes, forms and signers change as follows** (everything else as in §4.2):
+
+| ID | Form | Entry |
+|---|---|---|
+| HO-F1 | F100 | The **owner is the applicant**. Owner Section: box C checked; **C.3 Electrical** and/or **C.4 Plumbing** for the trades the owner does; **D** checked (contractors are on the job). C.1 and C.2 are left blank. The Agent Section is left blank. Hollis stays on page 1 as Principal Contractor. The owner signs. There's no box for HVACR ❓ Q-13 |
+| HO-F2 | Owner authorization page | Left out. The owner signs F100 themselves |
+| HO-F3 | Each owner-performed section (F120 / F130 / F145) | **Exempt Applicant** checked. The contractor block gets the owner's name, address, phone and email. License box: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)" (F120), "Exempt: homeowner, N.J.S.A. 45:14C-12.4" (F130), or "Exempt: homeowner, N.J.S.A. 45:16A-9" (F145). License expiry blank. HIC box: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii". FEIN blank. The owner signs |
+| HO-F4 | F370, when the owner replaces a fuel-fired appliance | Signed by the owner ❓ Q-13 |
+| HO-F5 | Estimated cost of an owner-performed trade (CQ-02, CQ-04) | The figure the contractor enters for the owner's work. If none is stated, ask: "What's the estimated cost of the owner's {trade} work?" ⚠️ A-27 ❓ Q-14 |
+| HO-F6 | Fill-ins (CQ-08) | Sizes the contractor didn't give go to the owner as signer: "Owner: fill in kW sizes for dishwasher and disposal" |
+| — | LC-02, LC-03 | Not raised for a trade the owner does (no sub, no license) |
+
+**Cover checklist lines** (shown when the owner does any trade):
+
+| ID | Line |
+|---|---|
+| HO-T1 | "You must do the {trade} work yourself. Under the homeowner exemption, friends, relatives or a handyman can't do it for you." (45:16A-9 "solely performs"; town guidance) |
+| HO-T2 | "The estimated cost for your {trade} work is the figure given ({amount}). Ask the construction office whether to include the value of your own labor." (A-27) |
+
 ---
 
 ## 5. Assumptions register
@@ -253,6 +304,12 @@ Each will be a configurable entry in the rule data with a "how to confirm" note,
 | A-19 | One- and two-family dwellings (incl. twins) are use group R-5 on the forms | Construction office |
 | A-20 | With no Mechanical row on F100, F145 work is costed on the Plumbing row | Construction office (Q-11) |
 | A-21 | F100 "Alteration" vs "Renovation" follows the Rehabilitation Subcode definitions (N.J.A.C. 5:23-6.3) as summarized in CQ-01 | DCA Code Assistance |
+| A-22 | *(M2, in the rule data)* Submit one original plus three copies of each form | Maplewood Construction Office |
+| A-23 | An owner (or immediate family) living in a two-family home may do their own electrical work, per the Electrical Board's 2019 answer. Config switch `two_family_owner_electrical: true` | Maplewood electrical subcode official (Q-15). At least one town (Ridgefield Park) reads it the other way |
+| A-24 | The owner may do **no** refrigerant work at all (A/C, heat pump, mini-split), not only the CFC/HCFC work the HVACR law names | HVACR Board (Division of Consumer Affairs) |
+| A-25 | The statute text in §4.7 (read on onecle, FindLaw and Cornell LII) matches the official text | Official NJ statutes (pub.njleg.gov) and N.J.A.C., as with A-1 |
+| A-26 | An owner living in a two-family home may **not** do their own plumbing or HVACR work, per the "single family" wording in both laws and the 2019 board answers. Config switch `two_family_owner_plumbing_hvacr: false`; set to `true` to allow it | Plumbing Board and HVACR Board, or DCA Code Assistance at (609) 984-7609 (Q-16) |
+| A-27 | The estimated cost of an owner-performed trade is the figure entered for it (no added value for the owner's labor) | Construction office (Q-14) |
 
 ---
 
@@ -275,6 +332,14 @@ Questions for the Maplewood Construction Office (add to the existing call list):
 - **Q-8.** Do they require hardwired interconnected smoke/CO alarms when a basement is finished?
 - **Q-10.** For new or resized HVAC, do they want a Manual J load calculation?
 - **Q-11.** F100 has no Mechanical row in §IIb. Where do they want the cost of F145 work: the Plumbing row, or written in?
+
+Homeowner trade work (approved 2026-10-26; §4.7):
+
+- **Q-12.** When the owner does one trade and a contractor does the rest, is it one application with the owner as applicant, or a separate permit for the owner's trade?
+- **Q-13.** F100's Owner Section has no mechanical box. For owner HVACR work, is F145's "Exempt Applicant" box enough, or do they want something written in? And who signs F370 when the owner replaces a fuel-fired appliance themselves?
+- **Q-14.** What estimated cost goes on an owner-performed section: materials only, or materials plus the value of the labor? (A-27)
+- **Q-15.** Do they follow the Electrical Board on two-family homes, i.e. can an owner living there do their own electrical? (A-23)
+- **Q-16.** Can an owner who lives in a two-family home do their own plumbing or HVACR work? (A-26) Ask the Maplewood plumbing subcode official. For a definitive state answer, ask the Board of Examiners of Master Plumbers and the HVACR Board (Division of Consumer Affairs), or DCA Code Assistance at (609) 984-7609, and whether the 2019 "License Check" answers still stand.
 
 ---
 

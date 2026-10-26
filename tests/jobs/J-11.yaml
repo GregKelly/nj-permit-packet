@@ -1,0 +1,80 @@
+id: J-11
+title: Kitchen, owner does the electrical
+description: >
+  Kitchen at 19 Ridgewood Rd. Taking out the wall between kitchen and dining, not load bearing
+  (joists run parallel, checked from the basement). New cabinets, quartz, LVP, new drywall
+  throughout. Sink moves to the new island with a dishwasher and disposal. Owner is doing all the
+  electrical himself: two new 20A counter circuits, 8 cans, island outlets, about 18 devices. He
+  figures $2,000 for it. Our contract is $42,500, plumbing about $3,500.
+
+property: { municipality: Maplewood, address: 19 Ridgewood Rd, prop_class: "2", year_built: 1952, dwelling_type: detached_1f }
+# total is our contract; the owner's own electrical work is on top of it (HO-F5).
+costs: { total: 42500, plumbing: 3500, electrical: 2000 }
+# Who does each licensed trade (rules table §4.7). Unlisted trades: the contractor and its subs.
+# The directory still has Watts for electrical; the engine must not use it.
+performed_by: { electrical: owner }
+
+work_items:
+  - { id: cabinets, kind: finishes, label: New cabinets, element: cabinets }
+  - { id: counters, kind: finishes, label: Quartz countertops, element: countertops }
+  - { id: floor, kind: finishes, label: LVP flooring, element: flooring }
+  - { id: drywall, kind: drywall, label: New drywall throughout, extent: 25_percent_or_more }
+  - { id: wall, kind: wall_change, label: Remove wall between kitchen and dining room, action: remove, bearing: "no" }
+  - id: island
+    kind: fixture
+    label: Sink moved to new island, with dishwasher and disposal on the new run
+    fixtures: { sink: 1, dishwasher: 1, disposal: 1 }
+    action: relocate
+  - { id: electrical, kind: electrical, label: "Two new 20A counter circuits, 8 recessed cans, island outlets", action: add, devices: 18, new_circuit: other }
+
+expected_questions:
+  - property.owner_occupied   # Does the owner live in the home?
+
+answers:
+  property.owner_occupied: "yes"
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    cabinets:   { rule: KB-01, tier: OM }
+    counters:   { rule: KB-01, tier: OM }
+    floor:      { rule: KB-02, tier: OM }
+    drywall:    { rule: KB-05, tier: MW }
+    wall:       { rule: KB-20, tier: MW }
+    island:     { rule: KB-08, tier: FULL }
+    electrical: { rule: KB-13, tier: FULL }
+  forms:
+    F100: Owner                       # Owner Section (HO-F1); no owner authorization page (HO-F2)
+    F110: Hollis Building Co. LLC
+    F120: Owner                       # Exempt Applicant (HO-F3)
+    F130: Sutton Plumbing & Heating
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-05]
+  flags: []                           # no LC-02 for electrical
+  office_questions_include: [Q-12, Q-14]
+  owner_notes: [HO-T1, HO-T2]
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 39000, Electrical: 2000, Plumbing: 3500 }
+      total_cost: 44500
+      owner_section: [C, C.3, D]
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 39000, total_cost: 39000 }
+    F120:
+      use_group: R-5
+      est_cost: 2000
+      exempt_applicant: { license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)", hic: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii", hic_short: ["Exempt: owner, 5:23-2.15(b)8.ii", "Exempt: owner"] }
+      lines:
+        - { line: Devices, count: 18 }
+        - { line: KW Dishwasher/Disposal, count: 2, size: null }
+    F130:
+      use_group: R-5
+      est_cost: 3500
+      lines:
+        - { line: Sink, count: 1 }
+        - { line: Dishwasher, count: 1 }
+  fill_ins:
+    - { form: F120, signer: Owner, details: [KW Dishwasher/Disposal size] }   # HO-F6

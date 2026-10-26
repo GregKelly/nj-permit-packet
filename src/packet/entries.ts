@@ -11,15 +11,26 @@ import type { Address, PacketJob, PacketProfile, Party, Subcontractor } from './
 export const SEE_SCOPE = 'See attached scope of work.';
 const ON_OTHER = '(on the Other line)';
 
+/** F100 Owner Section boxes the engine names (HO-F1) → our field names. */
+const OWNER_SECTION: Record<string, string> = {
+  C: 'owner_section.c_perform_work',
+  'C.1': 'owner_section.c1_building',
+  'C.2': 'owner_section.c2_fire',
+  'C.3': 'owner_section.c3_electrical',
+  'C.4': 'owner_section.c4_plumbing',
+  D: 'owner_section.d_advise_contractors',
+};
+
 /** Form → our field name → value, for every form the engine selected. */
 export function formValues(job: PacketJob, d: Determinations, profile: PacketProfile): Record<string, FormValues> {
   const out: Record<string, FormValues> = {};
   for (const f of d.forms) {
     const entries = d.form_entries[f.form] ?? { use_group: '' };
     const v: FormValues = {};
+    const signer = f.by_owner ? job.owner : f.signer === null ? null : partyFor(f.signer_role, job, profile);
     if (f.form === 'F100') f100(v, job, entries, profile);
-    else if (f.form === 'F370') f370(v, job, partyFor(f.signer_role, job, profile));
-    else techSection(v, f.form, job, d, entries, f.signer_role, profile);
+    else if (f.form === 'F370') f370(v, job, signer);
+    else techSection(v, f.form, job, d, entries, signer);
     out[f.form] = v;
   }
   return out;
@@ -45,7 +56,8 @@ function f100(v: FormValues, job: PacketJob, e: FormEntries, profile: PacketProf
   put(v, 'owner.zip', job.owner.address?.zip);
   v['ownership.private'] = 'X'; // v1 scope: one- and two-family homes
 
-  // §I.4 Principal Contractor, and the Agent Section on page 2 (M2 plan decision 1).
+  // §I.4 Principal Contractor, and on page 2 either the Agent Section (M2 plan decision 1)
+  // or, when the owner is the applicant, the Owner Section (HO-F1).
   put(v, 'contractor.name', me.name);
   put(v, 'contractor.phone', me.phone);
   put(v, 'contractor.address', me.address?.street);
@@ -55,11 +67,18 @@ function f100(v: FormValues, job: PacketJob, e: FormEntries, profile: PacketProf
   put(v, 'contractor.license_expires', me.license_expires && usDate(me.license_expires));
   put(v, 'contractor.hic', me.hic_registration ?? undefined);
   put(v, 'contractor.fein', me.fein?.replace(/\D/g, '')); // the box takes 9 digits
-  v['agent.is_contractor'] = true;
-  put(v, 'agent.name', me.name);
-  put(v, 'agent.address', me.address?.street);
-  put(v, 'agent.city_state_zip', me.address && cityLine(me.address));
-  put(v, 'agent.phone', me.phone);
+  if (e.owner_section) {
+    for (const box of e.owner_section) {
+      if (!OWNER_SECTION[box]) throw new Error(`No F100 Owner Section box "${box}"`);
+      v[OWNER_SECTION[box]] = true;
+    }
+  } else {
+    v['agent.is_contractor'] = true;
+    put(v, 'agent.name', me.name);
+    put(v, 'agent.address', me.address?.street);
+    put(v, 'agent.city_state_zip', me.address && cityLine(me.address));
+    put(v, 'agent.phone', me.phone);
+  }
 
   // §IIa, §IIb, §VII: the engine's entries.
   if (e.proposed_work) check(v, choice(choices, 'proposed_work', e.proposed_work));
@@ -72,12 +91,19 @@ function f100(v: FormValues, job: PacketJob, e: FormEntries, profile: PacketProf
   put(v, 'use_group.proposed', e.use_group);
 }
 
-function techSection(v: FormValues, form: string, job: PacketJob, d: Determinations, e: FormEntries, role: string, profile: PacketProfile) {
+function techSection(v: FormValues, form: string, job: PacketJob, d: Determinations, e: FormEntries, who: Signer | null) {
   const { map } = officialForm(form);
   siteAndOwner(v, job);
-  const who = partyFor(role, job, profile);
-  if (who) contractorBoxes(v, who);
-  if (who && 'trade' in who) v.licensed_contractor = true; // A-2: the licensed trade signs its own section
+  if (e.exempt_applicant) {
+    // HO-F3: the owner signs as exempt applicant; expiry and FEIN stay blank.
+    const { license, hic, hic_short } = e.exempt_applicant;
+    contractorBoxes(v, { ...job.owner, license });
+    v['contractor.hic'] = hic_short.length ? { text: hic, fallback: hic_short } : hic; // the longest that fits
+    v.exempt_applicant = true;
+  } else if (who) {
+    contractorBoxes(v, who);
+    if ('trade' in who) v.licensed_contractor = true; // A-2: the licensed trade signs its own section
+  }
 
   // Use group: two text boxes (F110, F120, F130) or R-3/R-5 boxes (F145).
   if (map.choices.use_group) check(v, choice(map.choices, 'use_group', e.use_group));
@@ -176,7 +202,9 @@ function siteAndOwner(v: FormValues, job: PacketJob) {
   put(v, 'owner.address', job.owner.address && oneLine(job.owner.address));
 }
 
-function contractorBoxes(v: FormValues, who: Party & { license?: string; license_expires?: string; expires?: string; hic_registration?: string | null; fein?: string }) {
+type Signer = Party & { trade?: string; license?: string; license_expires?: string; expires?: string; hic_registration?: string | null; fein?: string };
+
+function contractorBoxes(v: FormValues, who: Signer) {
   put(v, 'contractor.name', who.name);
   const [area, number] = splitPhone(who.phone);
   put(v, 'contractor.phone_area', area);
@@ -192,7 +220,7 @@ function contractorBoxes(v: FormValues, who: Party & { license?: string; license
 }
 
 /** The applicant, or the sub the job's facts name for this trade (looked up in the directory by license). */
-function partyFor(role: string, job: PacketJob, profile: PacketProfile) {
+function partyFor(role: string, job: PacketJob, profile: PacketProfile): Signer | null {
   if (role === 'applicant') return profile.applicant;
   const member = job.facts.team[role as Subcontractor['trade']];
   if (!member) return null; // LC-02: no sub for this trade; the boxes stay blank

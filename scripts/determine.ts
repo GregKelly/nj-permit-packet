@@ -46,7 +46,7 @@ if (d.questions.length) {
 
 if (d.forms.length) {
   h('Forms and signers');
-  for (const f of d.forms) console.log(`  ${f.form}  ${f.name.padEnd(48)} signed by: ${f.signer ?? 'MISSING'}`);
+  for (const f of d.forms) console.log(`  ${f.form}  ${f.name.padEnd(48)} signed by: ${f.signer ?? (d.owner_trades.some((t) => !t.allowed) ? 'NO ELIGIBLE SIGNER' : 'MISSING')}`);
 }
 if (d.zoning) {
   h(`Zoning (${d.zoning.rule_id}): ${d.zoning.status.replace(/_/g, ' ')}`);
@@ -58,6 +58,11 @@ if (d.tips.length) {
   h('Tips (non-blocking)');
   for (const t of d.tips) console.log(`  ${t.id}  ${t.text}`);
 }
+if (d.owner_trades.length) {
+  h('Owner does their own trade work (rules table §4.7)');
+  for (const t of d.owner_trades) console.log(`  ${t.allowed ? '✓' : '✖'} ${t.trade}${t.allowed ? ': allowed' : `: not allowed (${t.rule_id})`}`);
+  for (const n of d.owner_notes) console.log(`  ${n.id.padEnd(5)} ${n.text}`);
+}
 h(d.flags.length ? `Flags${d.print_blocked ? ' (PRINTING BLOCKED)' : ''}` : 'Flags: none');
 for (const f of d.flags) console.log(`  ${f.blocks_printing ? '✖' : '!'} ${f.id}  ${f.message}`);
 
@@ -66,6 +71,8 @@ if (Object.keys(d.form_entries).length) {
   for (const [form, e] of Object.entries(d.form_entries)) {
     const parts: string[] = [`use group ${e.use_group}`];
     if (e.proposed_work) parts.push(`proposed work: ${e.proposed_work}`);
+    if (e.owner_section) parts.push(`Owner Section: ${e.owner_section.join(', ')}`);
+    if (e.exempt_applicant) parts.push(`Exempt Applicant: "${e.exempt_applicant.license}", HIC "${e.exempt_applicant.hic}"`);
     if (e.cost_by_subcode) parts.push(Object.entries(e.cost_by_subcode).map(([k, v]) => `${k} ${money(v)}`).join(', ') + `, Total ${money(e.total_cost)}`);
     if (e.type_of_work) parts.push(`type of work: ${e.type_of_work.join(' + ')}, rehabilitation ${money(e.rehabilitation_cost)}`);
     if ('est_cost' in e) parts.push(`est. cost ${money(e.est_cost)}`);

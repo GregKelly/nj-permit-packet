@@ -11,7 +11,7 @@ const TABLE = readFileSync(new URL('../docs/rules-table-v1.md', import.meta.url)
 /** IDs defined in the approved table (first column of a row), excluding the deferred fee appendix. */
 function approvedIds(): string[] {
   const body = TABLE.split('## Appendix A')[0];
-  const rows = [...body.matchAll(/^\| ((?:KB|FB|RF|HV|ZN|PL|CQ|LC|TP|A)-\d+) \|/gm)].map((m) => m[1]);
+  const rows = [...body.matchAll(/^\| ((?:(?:KB|FB|RF|HV|ZN|PL|CQ|LC|TP|A)-\d+|HO-[FT]?\d+)) \|/gm)].map((m) => m[1]);
   const questions = [...body.matchAll(/^- \*\*(Q-\d+)\./gm)].map((m) => m[1]);
   return [...new Set([...rows, ...questions])];
 }
@@ -71,6 +71,19 @@ describe('the rule checker rejects', () => {
 
   it('a form that is not defined', () => {
     expect(compileWith(KB, 'forms: [F110]', 'forms: [F111]')).toThrow(/F111/);
+  });
+
+  it('a homeowner check that names a switch that does not exist', () => {
+    const HO = 'state/nj/homeowner.yaml';
+    expect(compileWith(HO, 'switch: two_family_owner_electrical }', 'switch: two_family_owner_electric }')).toThrow(/two_family_owner_electric"/);
+  });
+
+  it('a homeowner check that names a trade that does not exist', () => {
+    expect(compileWith('state/nj/homeowner.yaml', '{ trade: electrical, owner_occupied', '{ trade: electric, owner_occupied')).toThrow(/trade "electric"/);
+  });
+
+  it('a homeowner check on a property fact value that does not exist', () => {
+    expect(compileWith('state/nj/homeowner.yaml', '{ dwelling_type: detached_1f }', '{ dwelling_type: single_family }')).toThrow(/single_family/);
   });
 
   it('a rule file missing from the manifest', () => {

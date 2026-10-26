@@ -18,8 +18,10 @@ import type { PacketJob, PacketPart, PacketProfile, PacketResult } from './types
 /**
  * Print order: cover checklist, F100, owner authorization, technical sections
  * (in the rule data's form order: F110, F120, F130, F145, then F370), scope of work.
+ * When the owner is the F100 applicant (HO-F1) there's no owner authorization page (HO-F2).
  * Jobs with no construction permit get the one-page "no permit needed" sheet.
- * Jobs the app can't handle get no packet, only the reason.
+ * Jobs the app can't handle, or whose printing is blocked (an owner who may not do a
+ * trade, rules table §4.7), get no packet, only the reason.
  */
 export async function buildPacket(job: PacketJob, d: Determinations, profile: PacketProfile, today: string): Promise<PacketResult> {
   if (d.outcome === 'out_of_scope') return { kind: 'none', reason: d.flags.map((f) => f.message).join(' ') };
@@ -27,6 +29,7 @@ export async function buildPacket(job: PacketJob, d: Determinations, profile: Pa
     const items = d.items.filter((i) => i.error).map((i) => `"${i.label}": ${i.error}`);
     return { kind: 'none', reason: items.join(' ') };
   }
+  if (d.print_blocked) return { kind: 'none', reason: d.flags.filter((f) => f.blocks_printing).map((f) => f.message).join(' ') };
 
   const parts: { part: PacketPart['part']; form?: string; doc: PDFDocument }[] = [];
   const page = async (part: PacketPart['part'], element: ReactElement) => parts.push({ part, doc: await PDFDocument.load(await renderToBuffer(element as never)) });
@@ -40,7 +43,7 @@ export async function buildPacket(job: PacketJob, d: Determinations, profile: Pa
   await page('cover', <CoverChecklist job={job} d={d} prepared={today} />);
   for (const f of d.forms) {
     parts.push({ part: 'form', form: f.form, doc: await fillForm(f.form, values[f.form]) });
-    if (f.form === 'F100') await page('owner_authorization', <OwnerAuthorization job={job} d={d} profile={profile} prepared={today} />);
+    if (f.form === 'F100' && !f.by_owner) await page('owner_authorization', <OwnerAuthorization job={job} d={d} profile={profile} prepared={today} />);
   }
   await page('scope', <ScopeOfWork job={job} d={d} prepared={today} />);
   return assemble('packet', parts, job, today);

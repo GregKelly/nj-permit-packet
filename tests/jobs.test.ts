@@ -65,6 +65,10 @@ for (const job of loadJobs()) {
       expect(d.fill_ins).toEqual(e.fill_ins);
     });
 
+    it('cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2)', () => {
+      expect(d.owner_notes.map((n) => n.id)).toEqual(e.owner_notes ?? []);
+    });
+
     if (e.office_questions_include) {
       it('shows the open questions for the office', () => {
         const ids = d.office_questions.map((q) => q.id);

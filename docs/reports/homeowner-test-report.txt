@@ -1,0 +1,353 @@
+
+ RUN  v5.0.4 /Users/gregorykelly/Projects/nj-permit-packet
+
+ ✓ tests/homeowner.test.ts > approved messages > J-12: HO-02 says why plumbing is blocked and what to do 10ms
+ ✓ tests/homeowner.test.ts > approved messages > J-13: HO-04 names the refrigerant item 2ms
+ ✓ tests/homeowner.test.ts > approved messages > J-11: the owner checklist lines HO-T1 and HO-T2 1ms
+ ✓ tests/homeowner.test.ts > approved messages > J-11: the owner signs F100 in the Owner Section and F120 as exempt applicant 1ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > 1. the owner doesn't live there: HO-01 blocks electrical 1ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > 2. only immediate family lives there: electrical passes 1ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > 2. only immediate family lives there: plumbing is blocked (HO-01) 1ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > 2. only immediate family lives there: HVACR is blocked (HO-01), wiring passes 2ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > 3. "don't know": treated as not living there, says so, and the question is asked 2ms
+ ✓ tests/homeowner.test.ts > 1-3. who lives in the home (HO-01) > occupancy is not asked when the owner does no trade work 2ms
+ ✓ tests/homeowner.test.ts > 4. attached home, owner does plumbing (HO-02) > own sewer: passes; F130 is the owner, exempt, with the plumbing citation 1ms
+ ✓ tests/homeowner.test.ts > 4. attached home, owner does plumbing (HO-02) > shared sewer: HO-02 blocks, saying the sewer is shared 1ms
+ ✓ tests/homeowner.test.ts > 4. attached home, owner does plumbing (HO-02) > don't know: HO-02 blocks, and the question is asked 1ms
+ ✓ tests/homeowner.test.ts > 4. attached home, owner does plumbing (HO-02) > the sewer question is asked only for an attached home where the owner does plumbing 2ms
+ ✓ tests/rule-files.test.ts > rule files > all load and pass the checker 44ms
+ ✓ tests/rule-files.test.ts > rule files > contain every ID in the approved rules table 21ms
+ ✓ tests/rule-files.test.ts > rule files > have a stable version hash that changes when a rule changes 68ms
+ ✓ tests/gaps.test.ts > out of scope > three or more units: stops with SC-01, no packet 2ms
+ ✓ tests/gaps.test.ts > out of scope > a town other than Maplewood: stops with SC-02 0ms
+ ✓ tests/gaps.test.ts > out of scope > homeowner doing the building work: stops with LC-05 (narrowed 2026-10-26; trade work is tests/homeowner.test.ts) 0ms
+ ✓ tests/gaps.test.ts > out of scope > lead abatement: KB-24 flags "call the office" and stops 1ms
+ ✓ tests/gaps.test.ts > licensing and registration > missing HIC registration: LC-01 5ms
+ ✓ tests/gaps.test.ts > licensing and registration > no electrician in the directory for an F120 job: LC-02, F120 has no signer 1ms
+ ✓ tests/gaps.test.ts > licensing and registration > J-08 re-run with Clearair clears LC-03 and changes nothing else 3ms
+ ✓ tests/gaps.test.ts > licensing and registration > a license expiring today is still valid 3ms
+ ✓ tests/gaps.test.ts > structural and conversion work > bearing wall removal: KB-21, FULL, sealed plans 3ms
+ ✓ tests/gaps.test.ts > structural and conversion work > oil-to-gas furnace conversion: HV-02, FULL, gas piping on F130, load-calc flag 3ms
+ ✓ tests/gaps.test.ts > "don't know" answers take the conservative branch > bearing unknown: treated as bearing (KB-21) and says so 4ms
+ ✓ tests/gaps.test.ts > "don't know" answers take the conservative branch > window opening unknown: zoning treated as required (ZN-05) 5ms
+ ✓ tests/gaps.test.ts > items that match no rule > is an error, not a skip: the job cannot be classified and printing is blocked 1ms
+ ✓ tests/gaps.test.ts > question selection > a count is tested at the rule threshold (5 vs 6), not every number 6ms
+ ✓ tests/gaps.test.ts > question selection > a count that no rule compares is not asked 6ms
+ ✓ tests/gaps.test.ts > question selection > a missing total cost is asked 2ms
+ ✓ tests/gaps.test.ts > zoning assumptions are flippable in config, without code changes > A-13: interior alterations require zoning → J-01 needs zoning 31ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > asks exactly the expected follow-up questions (before follow-ups) 4ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > zoning 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > plans 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > tips 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > flags 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-01 · Kitchen gut with wall removal > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > asks exactly the expected follow-up questions (before follow-ups) 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > plans 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > tips 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > flags 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-02 · Hall bath refresh (no permit) > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > asks exactly the expected follow-up questions (before follow-ups) 4ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > zoning 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > plans 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > tips 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > flags 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-03 · Primary bath with vague details > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > asks exactly the expected follow-up questions (before follow-ups) 2ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > zoning 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > plans 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > tips 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > flags 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-04 · Full basement finish with bathroom > shows the open questions for the office 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > asks exactly the expected follow-up questions (before follow-ups) 2ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > zoning 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > plans 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > tips 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > flags 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-05 · Basement guest bedroom with new egress window > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > asks exactly the expected follow-up questions (before follow-ups) 2ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > plans 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > tips 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > flags 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-05b · Boundary variant of J-05: 4 outlets + 2 lights (6) > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > zoning 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > plans 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > tips 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > flags 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-06 · Roof replacement, detached house (no permit) > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > zoning 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > plans 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > tips 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > flags 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-07 · Reroof on an attached twin, with skylights > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > zoning 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > plans 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > tips 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > flags 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-08 · Furnace and A/C swap, expired HVAC license > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > zoning 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > plans 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > tips 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > flags 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-09 · New ductless mini-split > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > zoning 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > plans 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > tips 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > flags 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-10 · "Cosmetic" kitchen with a pro range > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > zoning 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > plans 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > tips 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > flags 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-11 · Kitchen, owner does the electrical > shows the open questions for the office 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > zoning 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > plans 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > tips 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > flags 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > cover checklist: details left for subs to fill in 1ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-12 · Two-family basement, owner wants to do electrical and plumbing > shows the open questions for the office 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > zoning 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > plans 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > tips 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > flags 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-12a · Variant of J-12: Sutton does the plumbing, owner keeps the electrical > shows the open questions for the office 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > zoning 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > plans 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > tips 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > flags 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-13 · Twin, owner swaps the furnace and A/C > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > asks exactly the expected follow-up questions (before follow-ups) 1ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > has nothing left to ask after the follow-ups 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > outcome and job tier 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > rule and tier for each work item 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > forms and signers 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > zoning 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > plans 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > tips 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > flags 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > form entries (work type, cost, quantities; fee boxes blank) 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > cover checklist: details left for subs to fill in 0ms
+ ✓ tests/jobs.test.ts > J-13b · Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring > cover checklist: lines for an owner doing their own trade work (HO-T1, HO-T2) 0ms
+ ✓ tests/determinism.test.ts > determinism > J-01: two runs with separately loaded rules are byte-identical 118ms
+ ✓ tests/gaps.test.ts > zoning assumptions are flippable in config, without code changes > A-15: like-for-like exterior requires zoning → J-08 needs zoning 25ms
+ ✓ tests/gaps.test.ts > submitting the packet (SB, M2 plan decision 4) > every packet gets the copies line; plans add the plan-copies line 11ms
+ ✓ tests/gaps.test.ts > submitting the packet (SB, M2 plan decision 4) > no permit, no submission lines 1ms
+ ✓ tests/homeowner.test.ts > 5. owner replaces only the furnace on a detached home > passes; F145 and F370 are signed by the owner; Watts keeps F120 1ms
+ ✓ tests/homeowner.test.ts > 5. owner replaces only the furnace on a detached home > no C.3/C.4 on F100 for HVACR; Q-13 is shown 1ms
+ ✓ tests/homeowner.test.ts > 6. owner installs a mini-split (HV-03) > HO-04 blocks: refrigerant work 1ms
+ ✓ tests/homeowner.test.ts > 7. the owner does building work > the narrowed LC-05 still stops 0ms
+ ✓ tests/homeowner.test.ts > 8. two-family home, owner does HVACR (HO-03, A-26) > HO-03 blocks 1ms
+ ✓ tests/homeowner.test.ts > 8. two-family home, owner does HVACR (HO-03, A-26) > with A-26 flipped, it passes 25ms
+ ✓ tests/homeowner.test.ts > J-12b: J-12 as written, with A-26 flipped > HO-02 passes; F130 becomes owner, exempt; F100 adds C.4 14ms
+ ✓ tests/homeowner.test.ts > A-23 is a switch too > turned off, a two-family owner may not do their own electrical (HO-06) 19ms
+ ✓ tests/homeowner.test.ts > J-13a: Clearair takes the condenser only; the owner keeps the furnace > HO-04 clears, but HO-05 blocks: one signer per section 4ms
+ ✓ tests/homeowner.test.ts > J-13a: Clearair takes the condenser only; the owner keeps the furnace > an item the job doesn't have can't be assigned to the owner 0ms
+ ✓ tests/homeowner.test.ts > licensing checks skip the trades the owner does > no electrician in the directory: no LC-02 when the owner does the electrical 1ms
+ ✓ tests/homeowner.test.ts > licensing checks skip the trades the owner does > an expired HVACR license: no LC-03 when the owner does the HVACR 1ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a duplicate rule ID 16ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a reference to an assumption that does not exist 14ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a condition on a fact the work item kind does not have 19ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a condition value the fact cannot take 13ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a rule for a work item kind that does not exist 12ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a form that is not defined 12ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a homeowner check that names a switch that does not exist 12ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a homeowner check that names a trade that does not exist 11ms
+ ✓ tests/determinism.test.ts > determinism > J-02: two runs with separately loaded rules are byte-identical 62ms
+ ✓ tests/determinism.test.ts > determinism > J-03: two runs with separately loaded rules are byte-identical 54ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a homeowner check on a property fact value that does not exist 12ms
+ ✓ tests/rule-files.test.ts > the rule checker rejects > a rule file missing from the manifest 12ms
+ ✓ tests/packet.test.ts > J-01 packet > has expected entries for exactly the forms the engine selected 1ms
+ ✓ tests/packet.test.ts > J-01 packet > field read-back: every box holds its expected entry, and every other box is blank 117ms
+ ✓ tests/determinism.test.ts > determinism > J-04: two runs with separately loaded rules are byte-identical 50ms
+ ✓ tests/determinism.test.ts > determinism > J-05: two runs with separately loaded rules are byte-identical 44ms
+ ✓ tests/determinism.test.ts > determinism > J-05b: two runs with separately loaded rules are byte-identical 42ms
+ ✓ tests/packet.test.ts > J-01 packet > right forms, right order, right page counts; nothing left editable 176ms
+ ✓ tests/determinism.test.ts > determinism > J-06: two runs with separately loaded rules are byte-identical 42ms
+ ✓ tests/determinism.test.ts > determinism > J-07: two runs with separately loaded rules are byte-identical 41ms
+ ✓ tests/determinism.test.ts > determinism > J-08: two runs with separately loaded rules are byte-identical 45ms
+ ✓ tests/determinism.test.ts > determinism > J-09: two runs with separately loaded rules are byte-identical 42ms
+ ✓ tests/determinism.test.ts > determinism > J-10: two runs with separately loaded rules are byte-identical 43ms
+ ✓ tests/determinism.test.ts > determinism > J-11: two runs with separately loaded rules are byte-identical 46ms
+ ✓ tests/determinism.test.ts > determinism > J-12: two runs with separately loaded rules are byte-identical 43ms
+ ✓ tests/determinism.test.ts > determinism > J-12a: two runs with separately loaded rules are byte-identical 43ms
+ ✓ tests/determinism.test.ts > determinism > J-13: two runs with separately loaded rules are byte-identical 46ms
+ ✓ tests/packet.test.ts > J-01 packet > flattened forms print their entries 303ms
+ ✓ tests/determinism.test.ts > determinism > J-13b: two runs with separately loaded rules are byte-identical 46ms
+ ✓ tests/packet.test.ts > J-03 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-03 packet > field read-back: every box holds its expected entry, and every other box is blank 49ms
+ ✓ tests/packet.test.ts > J-03 packet > right forms, right order, right page counts; nothing left editable 125ms
+ ✓ tests/packet.test.ts > J-03 packet > flattened forms print their entries 196ms
+ ✓ tests/packet.test.ts > J-04 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-04 packet > field read-back: every box holds its expected entry, and every other box is blank 56ms
+ ✓ tests/packet.test.ts > J-04 packet > right forms, right order, right page counts; nothing left editable 142ms
+ ✓ tests/packet.test.ts > J-04 packet > flattened forms print their entries 222ms
+ ✓ tests/packet.test.ts > J-05 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-05 packet > field read-back: every box holds its expected entry, and every other box is blank 35ms
+ ✓ tests/packet.test.ts > J-05 packet > right forms, right order, right page counts; nothing left editable 92ms
+ ✓ tests/packet.test.ts > J-05 packet > flattened forms print their entries 155ms
+ ✓ tests/packet.test.ts > J-05b packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-05b packet > field read-back: every box holds its expected entry, and every other box is blank 36ms
+ ✓ tests/packet.test.ts > J-05b packet > right forms, right order, right page counts; nothing left editable 92ms
+ ✓ tests/packet.test.ts > J-05b packet > flattened forms print their entries 148ms
+ ✓ tests/packet.test.ts > J-07 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-07 packet > field read-back: every box holds its expected entry, and every other box is blank 22ms
+ ✓ tests/packet.test.ts > J-07 packet > right forms, right order, right page counts; nothing left editable 69ms
+ ✓ tests/packet.test.ts > J-07 packet > flattened forms print their entries 101ms
+ ✓ tests/packet.test.ts > J-08 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-08 packet > field read-back: every box holds its expected entry, and every other box is blank 52ms
+ ✓ tests/packet.test.ts > J-08 packet > right forms, right order, right page counts; nothing left editable 116ms
+ ✓ tests/packet.test.ts > J-08 packet > flattened forms print their entries 176ms
+ ✓ tests/packet.test.ts > J-09 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-09 packet > field read-back: every box holds its expected entry, and every other box is blank 37ms
+ ✓ tests/packet.test.ts > J-09 packet > right forms, right order, right page counts; nothing left editable 96ms
+ ✓ tests/packet.test.ts > J-09 packet > flattened forms print their entries 158ms
+ ✓ tests/packet.test.ts > J-10 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-10 packet > field read-back: every box holds its expected entry, and every other box is blank 43ms
+ ✓ tests/packet.test.ts > J-10 packet > right forms, right order, right page counts; nothing left editable 117ms
+ ✓ tests/packet.test.ts > J-10 packet > flattened forms print their entries 175ms
+ ✓ tests/packet.test.ts > J-11 packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-11 packet > field read-back: every box holds its expected entry, and every other box is blank 44ms
+ ✓ tests/packet.test.ts > J-11 packet > right forms, right order, right page counts; nothing left editable 120ms
+ ✓ tests/packet.test.ts > J-11 packet > flattened forms print their entries 178ms
+ ✓ tests/packet.test.ts > J-12a packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-12a packet > field read-back: every box holds its expected entry, and every other box is blank 41ms
+ ✓ tests/packet.test.ts > J-12a packet > right forms, right order, right page counts; nothing left editable 110ms
+ ✓ tests/packet.test.ts > J-12a packet > flattened forms print their entries 177ms
+ ✓ tests/packet.test.ts > J-13b packet > has expected entries for exactly the forms the engine selected 0ms
+ ✓ tests/packet.test.ts > J-13b packet > field read-back: every box holds its expected entry, and every other box is blank 51ms
+ ✓ tests/packet.test.ts > J-13b packet > right forms, right order, right page counts; nothing left editable 132ms
+ ✓ tests/packet.test.ts > J-13b packet > flattened forms print their entries 202ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-01: signers, fill-ins, plans, copies, tips, assumptions, footer 179ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-03: zoning permit first, with its checklist, and sealed plans 177ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-04: the fuel fill-in for Clearair 208ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-08: the two minor-work steps come first, then the zoning note 168ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-08 as written: builds the full packet with the LC-03 warning at the top 172ms
+ ✓ tests/packet.test.ts > cover checklist says the right things > J-08 with Clearair: the same packet without the warning 340ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > J-11: the owner signs F100 (Owner Section) and F120 (exempt); no owner authorization row 170ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > J-11: the scope of work says which trade the owner does 170ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > J-13b: Clearair signs F145 and F370; the owner signs F100 and F120 202ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > the HIC box gets the longest exemption wording that fits (owner decision 2026-10-26) 35ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > J-12 as written: no packet, just the HO-02 reason 1ms
+ ✓ tests/packet.test.ts > homeowner trade work (rules table §4.7) > J-13 as written: no packet, just the HO-04 reason 2ms
+ ✓ tests/packet.test.ts > our other pages > J-02: one-page "no permit needed" sheet listing every item with its rule 11ms
+ ✓ tests/packet.test.ts > our other pages > J-06: "no permit needed" sheet with the zoning "confirm" note and lead tip 8ms
+ ✓ tests/packet.test.ts > our other pages > owner authorization names the owner, the contractor and the site 177ms
+ ✓ tests/packet.test.ts > our other pages > scope of work lists each item grouped by trade, with that trade cost 176ms
+ ✓ tests/packet.test.ts > our other pages > a job the app can’t handle gets no packet, just the reason 3ms
+ ✓ tests/packet.test.ts > official forms > haven't changed since their field maps were checked 1ms
+ ✓ tests/packet.test.ts > official forms > have the page counts recorded in forms.yaml 44ms
+ ✓ tests/packet.test.ts > official forms > every mapped field exists in its PDF 1ms
+ ✓ tests/packet.test.ts > official forms > every quantity line in the rules has a row on its form 0ms
+ ✓ tests/packet.test.ts > official forms > every form the rules can put in a packet has an official PDF 0ms
+ ✓ tests/packet.test.ts > determinism > J-01: building twice gives the identical PDF 223ms
+ ✓ tests/packet.test.ts > determinism > J-08: building twice gives the identical PDF 209ms
+ ✓ tests/packet.test.ts > determinism > J-02: building twice gives the identical PDF 25ms
+
+ Test Files  6 passed (6)
+      Tests  344 passed (344)
+   Start at  13:12:02
+   Duration  7.22s (tests 95%, import 4%, transform 1%)
+

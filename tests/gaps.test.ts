@@ -36,8 +36,8 @@ describe('out of scope', () => {
     expect(d.flags.map((f) => f.id)).toEqual(['SC-02']);
   });
 
-  it('homeowner doing their own trade work: stops with LC-05', () => {
-    const d = determine(variant(j01, (r) => (r.performed_by = 'owner')), rules, TODAY);
+  it('homeowner doing the building work: stops with LC-05 (narrowed 2026-10-26; trade work is tests/homeowner.test.ts)', () => {
+    const d = determine(variant(j01, (r) => (r.performed_by = { building: 'owner' })), rules, TODAY);
     expect(d.outcome).toBe('out_of_scope');
     expect(d.flags.map((f) => f.id)).toEqual(['LC-05']);
   });

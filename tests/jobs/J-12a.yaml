@@ -1,0 +1,67 @@
+id: J-12a
+title: "Variant of J-12: Sutton does the plumbing, owner keeps the electrical"
+variant_of: J-12
+description: Same job as J-12, with Sutton Plumbing doing the half bath (quoted at $4,000) and the owner doing the electrical.
+
+property: { municipality: Maplewood, address: 88 Prospect St, prop_class: "2", year_built: 1921, dwelling_type: detached_2f, owner_occupied: "yes" }
+costs: { building: 28000, plumbing: 4000 }
+performed_by: { electrical: owner }
+
+work_items:
+  - { id: framing, kind: partitions, label: "Framing, drywall and drop ceiling" }
+  - { id: rooms, kind: habitable_space, label: Rec room }
+  - { id: bath, kind: new_bathroom, label: "Half bath: toilet and sink, gravity drain", fixtures: { water_closet: 1, lavatory: 1 }, ejector_pump: "no" }
+  - { id: electrical, kind: electrical, label: About 10 outlets and 6 lights on a new circuit, action: add, devices: 16, new_circuit: other }
+
+expected_questions:
+  - rooms.bedroom
+  - rooms.fuel_appliance_nearby
+  - bath.upsizing_needed
+  - costs.electrical
+
+answers:
+  rooms.bedroom: "no"
+  rooms.fuel_appliance_nearby: "no"
+  bath.upsizing_needed: "no"
+  costs.electrical: 1500
+
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    framing:    { rule: FB-01, tier: MW }
+    rooms:      { rule: FB-03, tier: MW }
+    bath:       { rule: FB-06, tier: MW }
+    electrical: { rule: KB-13, tier: FULL }
+  forms:
+    F100: Owner
+    F110: Hollis Building Co. LLC
+    F120: Owner
+    F130: Sutton Plumbing & Heating
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-03, TP-05]
+  flags: []
+  office_questions_include: [Q-15]
+  owner_notes: [HO-T1, HO-T2]
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 28000, Electrical: 1500, Plumbing: 4000 }
+      total_cost: 33500
+      owner_section: [C, C.3, D]
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 28000, total_cost: 28000 }
+    F120:
+      use_group: R-5
+      est_cost: 1500
+      exempt_applicant: { license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)", hic: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii", hic_short: ["Exempt: owner, 5:23-2.15(b)8.ii", "Exempt: owner"] }
+      lines:
+        - { line: Devices, count: 16 }
+    F130:
+      use_group: R-5
+      est_cost: 4000
+      lines:
+        - { line: Water closet, count: 1 }
+        - { line: Lavatory, count: 1 }
+  fill_ins: []

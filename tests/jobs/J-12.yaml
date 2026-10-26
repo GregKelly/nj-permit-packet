@@ -1,0 +1,75 @@
+id: J-12
+title: Two-family basement, owner wants to do electrical and plumbing
+description: >
+  Basement finish at 88 Prospect St, it's a two-family and the owner lives on the first floor. Rec
+  room plus a half bath (toilet and sink, gravity drain, no pump). We're doing framing, drywall and
+  drop ceiling, $28k. Owner wants to do the electrical and plumbing herself to save money: about 10
+  outlets and 6 lights on a new circuit, and the half bath rough-in.
+
+property: { municipality: Maplewood, address: 88 Prospect St, prop_class: "2", year_built: 1921, dwelling_type: detached_2f, owner_occupied: "yes" }
+costs: { building: 28000 }
+performed_by: { electrical: owner, plumbing: owner }
+
+work_items:
+  - { id: framing, kind: partitions, label: "Framing, drywall and drop ceiling" }
+  - { id: rooms, kind: habitable_space, label: Rec room }
+  - { id: bath, kind: new_bathroom, label: "Half bath: toilet and sink, gravity drain", fixtures: { water_closet: 1, lavatory: 1 }, ejector_pump: "no" }
+  - { id: electrical, kind: electrical, label: About 10 outlets and 6 lights on a new circuit, action: add, devices: 16, new_circuit: other }
+
+expected_questions:
+  - rooms.bedroom                # Will any finished room be used as a bedroom?
+  - rooms.fuel_appliance_nearby  # Is the furnace or water heater in or next to the finished rooms?
+  - bath.upsizing_needed         # Will the new fixtures need a bigger drain or water line?
+  - costs.electrical             # What's the estimated cost of the owner's electrical work?
+  - costs.plumbing               # What's the estimated cost of the owner's plumbing work?
+
+answers:
+  rooms.bedroom: "no"
+  rooms.fuel_appliance_nearby: "no"
+  bath.upsizing_needed: "no"
+  costs.electrical: 1500
+  costs.plumbing: 1200
+
+# As written: blocked by HO-02 (two-family, A-26). The test doc gives no form entries for the
+# blocked case; these follow the same rules as J-12b, so the contractor can see the rest of the job.
+expected:
+  outcome: permit
+  job_tier: FULL
+  items:
+    framing:    { rule: FB-01, tier: MW }
+    rooms:      { rule: FB-03, tier: MW }
+    bath:       { rule: FB-06, tier: MW }
+    electrical: { rule: KB-13, tier: FULL }   # FB-07 -> KB-13
+  forms:
+    F100: Owner
+    F110: Hollis Building Co. LLC
+    F120: Owner
+    F130: null                                # no eligible signer
+  zoning: { rule: ZN-01, status: not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-03, TP-05]
+  flags: [HO-02]
+  print_blocked: true
+  office_questions_include: [Q-15, Q-16]
+  owner_notes: [HO-T1, HO-T2]                 # for the electrical, which the owner may do
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Alteration
+      cost_by_subcode: { Building: 28000, Electrical: 1500, Plumbing: 1200 }
+      total_cost: 30700
+      owner_section: [C, C.3, D]
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 28000, total_cost: 28000 }
+    F120:
+      use_group: R-5
+      est_cost: 1500
+      exempt_applicant: { license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)", hic: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii", hic_short: ["Exempt: owner, 5:23-2.15(b)8.ii", "Exempt: owner"] }
+      lines:
+        - { line: Devices, count: 16 }
+    F130:
+      use_group: R-5
+      est_cost: 1200
+      lines:
+        - { line: Water closet, count: 1 }
+        - { line: Lavatory, count: 1 }
+  fill_ins: []

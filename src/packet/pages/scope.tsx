@@ -32,10 +32,12 @@ export function ScopeOfWork({ job, d, prepared }: { job: PacketJob; d: Determina
 
         {TRADES.filter(([form]) => d.forms.some((f) => f.form === form)).map(([form, trade]) => {
           const cost = tradeCost(d.form_entries[form]);
+          const byOwner = d.forms.find((f) => f.form === form)?.by_owner;
           return (
             <View key={form} wrap={false}>
               <Text style={s.h2}>
                 {trade} ({form}) {cost === null ? '' : `$${money(cost)}`}
+                {byOwner ? ', done by the owner (homeowner exemption)' : ''}
               </Text>
               {d.items
                 .filter((i) => i.forms.includes(form))

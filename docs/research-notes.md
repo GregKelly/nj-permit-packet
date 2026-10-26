@@ -34,3 +34,14 @@ Sources and findings gathered during product definition (October 2026). Verify a
   - At most 2000 records per query.
   - `OWNER_NAME` is redacted (Daniel's Law), so owner details come from the contractor.
   - Parcel shapes aren't legal boundaries.
+
+## Homeowner trade work (researched 2026-10-26)
+
+- UCC general exception, N.J.A.C. 5:23-2.15(b)2.i ("except in the case of a single-family homeowner on his or her own dwelling"), (b)8.ii (owner needs no HIC registration), (d) (who may apply): https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-5-23-2-15
+- DCA adoption of that wording, with the response that each trade's own law governs the exception: 52 N.J.R. 10(1), https://nj.gov/dca/codes/codreg/pdf_rule_adoptions/HVACR_adopt_2020_10_05.pdf
+- **Key source.** "License Check," *Construction Code Communicator* Vol. 31 No. 1 (Spring 2019), pp. 6–7: the plumbing, HVACR and electrical boards' answers by home type and residency, as a chart. https://www.nj.gov/dca/codes/publications/pdf_ccc/CCC_Spr_2019.pdf
+- Electrical, N.J.S.A. 45:5A-18(n) (dwelling occupied solely as a residence for the person or immediate family): https://law.onecle.com/new-jersey/title-45/45-5a-18.html
+- Plumbing, N.J.S.A. 45:14C-12.4: https://codes.findlaw.com/nj/title-45-professions-and-occupations/nj-st-sect-45-14c-12-4/ and N.J.A.C. 13:32-1.4(f)1: https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-32-1-4
+- HVACR, N.J.S.A. 45:16A-9 (personally occupies, solely performs, no CFC/HCFC work): https://codes.findlaw.com/nj/title-45-professions-and-occupations/nj-st-sect-45-16a-9/ and N.J.A.C. 13:32A-1.1(b)3: https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-32A-1-1
+- Town guidance (secondary): the owner must do the work personally; Ridgefield Park requires licensed trades for owner-occupied two-family homes, which conflicts with the Electrical Board. https://www.ridgefieldpark.org/node/46, https://veronanj.org/departments/buildingandzoning/BuildingFAQs
+- *Unconfirmed:* the statute text above came from mirrors (onecle, FindLaw, LII), not the official sites. The NJ Electrical Board FAQ page (https://www.njconsumeraffairs.gov/elec/pages/faq.aspx) didn't load. Maplewood publishes nothing on homeowner trade work.

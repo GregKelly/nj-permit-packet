@@ -21,3 +21,9 @@ entries:
   - { id: A-20, text: "With no Mechanical row on F100, F145 work is costed on the Plumbing row", confirm_with: Construction office (Q-11) }
   - { id: A-21, text: "F100 \"Alteration\" vs \"Renovation\" follows the Rehabilitation Subcode definitions (N.J.A.C. 5:23-6.3) as summarized in CQ-01", confirm_with: DCA Code Assistance }
   - { id: A-22, text: "The office wants one original plus three copies of each completed form (DCA construction permit forms page)", confirm_with: Maplewood Construction Office }
+  # Homeowner trade work (rules table §4.7, approved 2026-10-26). A-23 and A-26 are switches in homeowner.yaml.
+  - { id: A-23, text: "An owner (or immediate family) living in a two-family home may do their own electrical work, per the Electrical Board's 2019 answer", confirm_with: "Maplewood electrical subcode official (Q-15). At least one town (Ridgefield Park) reads it the other way", config_flag: two_family_owner_electrical }
+  - { id: A-24, text: "The owner may do no refrigerant work at all (A/C, heat pump, mini-split), not only the CFC/HCFC work the HVACR law names", confirm_with: HVACR Board (Division of Consumer Affairs) }
+  - { id: A-25, text: "The homeowner-exemption statute text (read on onecle, FindLaw and Cornell LII) matches the official text", confirm_with: "Official NJ statutes (pub.njleg.gov) and N.J.A.C., as with A-1" }
+  - { id: A-26, text: "An owner living in a two-family home may not do their own plumbing or HVACR work, per the \"single family\" wording in both laws and the 2019 board answers", confirm_with: "Plumbing Board and HVACR Board, or DCA Code Assistance at (609) 984-7609 (Q-16)", config_flag: two_family_owner_plumbing_hvacr }
+  - { id: A-27, text: "The estimated cost of an owner-performed trade is the figure entered for it (no added value for the owner's labor)", confirm_with: Construction office (Q-14) }

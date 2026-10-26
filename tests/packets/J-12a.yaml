@@ -1,0 +1,86 @@
+# Packet inputs and expected form boxes for J-12a (tests/jobs/J-12a.yaml): two-family basement,
+# owner does the electrical (A-23), Sutton the plumbing. See J-01.yaml for how these are written.
+id: J-12a
+site: { block: "3307", lot: "12", zip: "07040" }
+owner:
+  name: Priya Raman
+  address: { street: 88 Prospect St, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0172
+  email: praman@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis_principal
+    site.block: "3307"
+    site.lot: "12"
+    site.address: 88 Prospect St
+    site.work_site: 88 Prospect St, Maplewood, NJ 07040
+    owner.name: Priya Raman
+    owner.phone: 973-555-0172
+    owner.email: praman@mail.example
+    owner.street: 88 Prospect St
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $28,000 / $1,500 / $4,000 / $33,500
+    est_cost.building: $28,000
+    subcode.electrical: true
+    est_cost.electrical: $1,500
+    subcode.plumbing: true
+    est_cost.plumbing: $4,000
+    est_cost.total: $33,500
+    use_group.proposed: R-5
+    owner_section.c_perform_work: true      # C, C.3, D
+    owner_section.c3_electrical: true
+    owner_section.d_advise_contractors: true
+  site_owner: &site_owner
+    site.block: "3307"
+    site.lot: "12"
+    site.address: 88 Prospect St, Maplewood, NJ 07040
+    owner.name: Priya Raman
+    owner.phone_area: "973"
+    owner.phone: 555-0172
+    owner.email: praman@mail.example
+    owner.address: 88 Prospect St, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $28,000
+    est_cost.rehabilitation: "28,000"
+    est_cost.total: "28,000"
+    description: |-
+      Framing, drywall and drop ceiling
+      Rec room
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor.name: Priya Raman            # the owner, exempt applicant (HO-F3)
+    contractor.phone_area: "973"
+    contractor.phone: 555-0172
+    contractor.address: 88 Prospect St
+    contractor.address_2: Maplewood, NJ 07040
+    contractor.email: praman@mail.example
+    contractor.license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)"
+    contractor.hic: "Exempt: owner"              # the full HIC text doesn't fit F120's box (owner decision 2026-10-26)
+    exempt_applicant: true
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "1,500"                       # $1,500 · Devices 16
+    devices.qty: "16"
+    description: |-
+      About 10 outlets and 6 lights on a new circuit
+      See attached scope of work.
+  F130:
+    <<: *site_owner
+    contractor: sutton                      # Licensed Contractor
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "4,000"                       # $4,000 · Water closet 1 · Lavatory 1
+    water_closet.qty: "1"
+    lavatory.qty: "1"
+    description: |-
+      Half bath: toilet and sink, gravity drain
+      See attached scope of work.

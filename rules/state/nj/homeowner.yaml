@@ -1,0 +1,181 @@
+# Homeowner does their own trade work on a contractor's job. Rules table §4.7
+# (approved 2026-10-26; plan: docs/plans/homeowner-trade-plan.md). Replaces the
+# LC-05 stop for the licensed trades. The owner doing building work is still LC-05.
+#
+# Basis: N.J.A.C. 5:23-2.15(b)2.i allows unlicensed trade work only "in the case of a
+# single-family homeowner on his or her own dwelling", applied within each trade's
+# own licensing law (52 N.J.R. 10(1)). Board answers by home type: "License Check,"
+# Construction Code Communicator 31:1 (Spring 2019), pp. 6-7.
+type: homeowner
+
+# State-law switches (assumptions A-23 and A-26). Change true/false here, no code changes needed.
+switches:
+  # A-23. true = an owner (or their immediate family) living in a two-family home may do their own electrical.
+  two_family_owner_electrical: true
+  # A-26. false = an owner living in a two-family home may NOT do their own plumbing or HVACR work.
+  two_family_owner_plumbing_hvacr: false
+
+# The licensed trades an owner may do. forms: the sections that trade signs.
+# f100_box: the Owner Section box on F100 for that trade (HO-F1); HVACR has none (Q-13).
+# exempt_license: what goes in the license box of the owner's section (HO-F3).
+trades:
+  electrical:
+    name: electrical
+    person: licensed electrician
+    forms: [F120]
+    f100_box: C.3
+    exempt_license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)"
+  plumbing:
+    name: plumbing
+    person: licensed master plumber
+    forms: [F130]
+    f100_box: C.4
+    exempt_license: "Exempt: homeowner, N.J.S.A. 45:14C-12.4"
+  mechanical:
+    name: HVACR
+    person: licensed HVACR contractor
+    forms: [F145, F370]
+    exempt_license: "Exempt: homeowner, N.J.S.A. 45:16A-9"
+    # Shown on the cover checklist when the owner does the HVACR work (HO-F1, Q-13).
+    checklist_note: "F100's Owner Section has no box for HVACR work, so the Exempt Applicant box on F145 is your certification for it. Ask the construction office whether they want anything written in (Q-13)."
+    office_questions: [Q-13]
+
+# HIC box on every owner-performed section (HO-F3).
+exempt_hic: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii"
+# Shorter wordings for a box too small for the full text, longest first: the form gets the
+# longest one that fits (owner decision 2026-10-26; F130/F145 fit the first, F120 only the second).
+exempt_hic_short: ["Exempt: owner, 5:23-2.15(b)8.ii", "Exempt: owner"]
+
+# Added to a failed check's message when the answer it turned on wasn't known (conservative branch, §3).
+unknown_notes:
+  owner_occupied: Assumed the owner doesn't live there because it wasn't known. Change it if you confirm otherwise.
+  own_sewer: Assumed the sewer line is shared because it wasn't known. Change it if you confirm otherwise.
+  dwelling_type: Assumed it isn't a single-family home because the home type wasn't known. Change it if you confirm otherwise.
+
+# Eligibility checks, in order. For each trade the owner does (all of it or some), the
+# first check that fails blocks printing with its message. Placeholders: {trade}, {trade_person},
+# {item}, {sub}.
+#
+# check: home       passes when any `allowed` condition matches. Conditions use property facts,
+#                   `trade` (which trade is being checked) and `switch` (a switch above that's true).
+# check: no_items   passes when none of the owner's work items for the trade match `items`.
+# check: one_signer passes when the owner does all of the trade's work items, not just some.
+#
+# assumptions / office_questions: shown when the check applies to a job, or only when the
+# home also matches `show_assumptions_when`.
+rules:
+  - id: HO-01
+    title: The owner lives in the home (for electrical only, an immediate family member living there also counts)
+    check: home
+    allowed:
+      - { owner_occupied: "yes" }
+      - { trade: electrical, owner_occupied: immediate_family }
+    message: The owner can do their own {trade} work only in a home they live in. Assign a {trade_person}.
+    citation: "N.J.S.A. 45:5A-18(n); 45:14C-12.4 and N.J.A.C. 13:32-1.4(f)1 (\"his or her own dwelling\"); 45:16A-9 (\"personally occupies\"); 2019 board answers 1b"
+    assumptions: [A-25]
+
+  - id: HO-02
+    title: "Plumbing by the owner: single-family detached, or attached with its own sewer"
+    check: home
+    trades: [plumbing]
+    allowed:
+      - { dwelling_type: detached_1f }
+      - { dwelling_type: attached, own_sewer: "yes" }
+      - { dwelling_type: detached_2f, switch: two_family_owner_plumbing_hvacr }
+    cases:
+      - when: { dwelling_type: attached }
+        message: NJ plumbing law lets only a single-family homeowner do their own plumbing, and this home doesn't count because it shares a sewer line with the neighbor. Assign a licensed master plumber.
+    message: NJ plumbing law lets only a single-family homeowner do their own plumbing. Assign a licensed master plumber.
+    citation: N.J.S.A. 45:14C-12.4; N.J.A.C. 13:32-1.4(f)1; Plumbing Board answers 2 and 3
+    assumptions: [A-26]
+    office_questions: [Q-16]
+    show_assumptions_when: { dwelling_type: [detached_2f, unknown] }
+
+  - id: HO-03
+    title: "HVACR by the owner: single-family detached or attached"
+    check: home
+    trades: [mechanical]
+    allowed:
+      - { dwelling_type: [detached_1f, attached] }
+      - { dwelling_type: detached_2f, switch: two_family_owner_plumbing_hvacr }
+    message: NJ HVACR law lets only a single-family homeowner do their own HVACR work. Assign a licensed HVACR contractor.
+    citation: N.J.S.A. 45:16A-9; N.J.A.C. 13:32A-1.1(b)3; HVACR Board answer 2
+    assumptions: [A-26]
+    office_questions: [Q-16]
+    show_assumptions_when: { dwelling_type: [detached_2f, unknown] }
+
+  - id: HO-04
+    title: HVACR by the owner includes no refrigerant work (A/C or condensing unit, heat pump, mini-split)
+    check: no_items
+    trades: [mechanical]
+    items: { kind: hvac_equipment, equipment: [ac_condenser, heat_pump, mini_split] }
+    # {item}: what the message calls each piece of equipment.
+    item_names: { ac_condenser: A/C condensing unit, heat_pump: heat pump, mini_split: mini-split }
+    message: Work on the {item} involves refrigerant, which the owner can't do under the homeowner exemption. Assign a licensed HVACR contractor for all the HVACR work.
+    citation: N.J.S.A. 45:16A-9 (CFC/HCFC exception), read conservatively
+    assumptions: [A-24]
+    notes: Furnace, boiler, water heater, ductwork, controls and gas connections are fine.
+
+  - id: HO-05
+    title: "One signer per technical section: the owner does all of a trade's work on the job, or none of it"
+    check: one_signer
+    message: One person must do and sign for all the {trade} work on this permit. Assign either the owner or {sub} to all of it.
+    citation: Each section has a single signer and license block (F120/F130/F145 §C)
+
+  - id: HO-06
+    title: "Electrical by the owner: any one- or two-family home in v1 scope, if HO-01 passes"
+    check: home
+    trades: [electrical]
+    allowed:
+      - { dwelling_type: [detached_1f, attached] }
+      - { dwelling_type: detached_2f, switch: two_family_owner_electrical }
+    # Only reachable with A-23 switched off.
+    message: With assumption A-23 switched off, an owner in a two-family home can't do their own electrical work. Assign a licensed electrician.
+    citation: N.J.S.A. 45:5A-18(n); Electrical Board answer
+    assumptions: [A-23]
+    office_questions: [Q-15]
+    show_assumptions_when: { dwelling_type: [detached_2f, unknown] }
+
+# When every owner-performed trade passes: forms, signers and entries (everything else as in §4.2).
+entries:
+  - id: HO-F1
+    title: F100
+    rule: >
+      The owner is the applicant and signs. Owner Section: box C checked; C.3 Electrical and/or
+      C.4 Plumbing for the trades the owner does; D checked (contractors are on the job). C.1 and
+      C.2 are left blank. The Agent Section is left blank. The contractor stays on page 1 as
+      Principal Contractor. There's no box for HVACR.
+    office_questions: [Q-12]
+  - id: HO-F2
+    title: Owner authorization page
+    rule: Left out. The owner signs F100 themselves.
+  - id: HO-F3
+    title: Each owner-performed section (F120 / F130 / F145)
+    rule: >
+      Exempt Applicant checked. The contractor block gets the owner's name, address, phone and
+      email. License box: that trade's `exempt_license` above. License expiry blank. HIC box:
+      `exempt_hic` above. FEIN blank. The owner signs.
+  - id: HO-F4
+    title: F370, when the owner replaces a fuel-fired appliance
+    rule: Signed by the owner.
+    office_questions: [Q-13]
+  - id: HO-F5
+    title: Estimated cost of an owner-performed trade (CQ-02, CQ-04)
+    rule: >
+      The figure the contractor enters for the owner's work. If none is stated, it's asked. The
+      owner's work isn't part of the contract total, so an owner-performed trade never takes the
+      remainder of the total (CQ-03).
+    assumptions: [A-27]
+    office_questions: [Q-14]
+  - id: HO-F6
+    title: Fill-ins (CQ-08)
+    rule: Sizes the contractor didn't give go to the owner as signer.
+
+# Cover checklist lines, one of each per trade the owner does.
+checklist:
+  - id: HO-T1
+    text: You must do the {trade} work yourself. Under the homeowner exemption, friends, relatives or a handyman can't do it for you.
+    citation: N.J.S.A. 45:16A-9 ("solely performs"); town guidance
+  - id: HO-T2
+    text: The estimated cost for your {trade} work is the figure given ({amount}). Ask the construction office whether to include the value of your own labor.
+    assumptions: [A-27]
