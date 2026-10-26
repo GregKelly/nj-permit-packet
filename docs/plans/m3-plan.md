@@ -131,9 +131,9 @@ An Anthropic API key in `ANTHROPIC_API_KEY` for the eval runs, and OK to spend r
 
 On a branch, `m3-ai-layer`. First the eval-only descriptions for your approval, then the checks and offline tests (all failing), then the three calls until the tests pass, then the eval runs and prompt fixes until the targets are met (or I bring you the gap), then the report. After your review, merge to `main`.
 
-## Build notes (2026-10-26)
+## Build notes (2026-10-26; accepted by the owner 2026-10-26)
 
-**Status.** Built on `m3-ai-layer`, evals run, every target met by Sonnet 5.5 on all 13 test jobs and all 10 eval-only descriptions, 3 runs each (`docs/reports/m3-eval-report-sonnet-final.md`). 414 offline tests pass. Waiting on owner review.
+**Status.** Built on `m3-ai-layer`, evals run, every target met by Sonnet 5.5 on all 13 test jobs and all 10 eval-only descriptions, 3 runs each (`docs/reports/m3-eval-report-sonnet-final.md`). 414 offline tests pass. **Accepted by the owner (2026-10-26)** after reviewing the reports, sample questions and narratives, and the J-01 packet with its narrative.
 
 **Model recommendation: Sonnet 5.5 for all three calls** (the current setting in `src/ai/config.ts`). From the three-model comparison (`docs/reports/m3-eval-report.md`, run before the last prompt fixes):
 - **Haiku** fails several targets on every call: about 1 answer in 6 was unusable (bad values or missing facts), and its question wording missed the description quote on 5 of 9 follow-ups. It would save about 2 cents a job.
@@ -158,4 +158,3 @@ On a branch, `m3-ai-layer`. First the eval-only descriptions for your approval, 
 4. **Automatic retry on a different model is off.** The API can retry a declined request on another model. It's off because the eval needs to know which model answered; a declined request takes the manual path instead. Declines are unlikely for this kind of text.
 5. **Costs in the report are estimates** from list prices, counting cached prompt reads at a tenth of the input price.
 
-**To finish M3:** owner review of the eval reports, the sample questions and narratives in them, the prompts (`src/ai/prompts/`), and the J-01 packet with its narrative (`npm run scope -- J-01`, then `npm run packet -- J-01 --narrative`).
