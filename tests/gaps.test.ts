@@ -165,10 +165,37 @@ describe('question selection', () => {
     expect(keys).toContain('electrical.devices');
   });
 
-  it('a count that no rule compares is not asked', () => {
+  it('a count that no rule compares and no form line uses is not asked', () => {
+    const j07 = loadJob('J-07.yaml');
+    const facts = variant(j07, (r) => (r.work_items.find((i: any) => i.id === 'skylights').count = 'unknown'));
+    expect(selectQuestions(facts, rules, TODAY).map((q) => q.key)).toEqual([]);
+  });
+
+  // M3 plan, change 4 (owner decision 2026-10-26): a count that goes on a form
+  // quantity line is asked even when it doesn't change the determinations.
+  it('a count that goes on a form line is asked, even when no rule compares it', () => {
     const j04 = loadJob('J-04.yaml');
     const facts = variant(j04, (r) => (r.work_items.find((i: any) => i.id === 'alarms').count = 'unknown'));
+    expect(selectQuestions(facts, rules, TODAY).map((q) => q.key)).toEqual(['alarms.count']);
+  });
+
+  it('a device count is asked once a new circuit makes the tier FULL regardless of the count (E-04)', () => {
+    const facts = variant(j01, (r) => (r.work_items.find((i: any) => i.id === 'electrical').devices = 'unknown'));
+    expect(selectQuestions(facts, rules, TODAY).map((q) => q.key)).toEqual(['electrical.devices']);
+  });
+
+  it('a count on a form that is not in the packet is not asked', () => {
+    // Battery alarms don't go on F120's Detectors line.
+    const j04 = loadJob('J-04.yaml');
+    const facts = variant(j04, (r) => Object.assign(r.work_items.find((i: any) => i.id === 'alarms'), { power: 'battery', count: 'unknown' }));
     expect(selectQuestions(facts, rules, TODAY).map((q) => q.key)).toEqual([]);
+  });
+
+  it('"don\'t know" on a count: the line is left blank and the cover checklist asks the signer to fill it in', () => {
+    const facts = variant(j01, (r) => (r.work_items.find((i: any) => i.id === 'electrical').devices = 'unknown'));
+    const d = determine(facts, rules, TODAY);
+    expect(d.form_entries.F120.lines).toContainEqual({ line: 'Devices', count: null });
+    expect(d.fill_ins).toContainEqual({ form: 'F120', signer: 'Watts Electric LLC', details: ['Devices count', 'KW Dishwasher/Disposal size'] });
   });
 
   it('a missing total cost is asked', () => {

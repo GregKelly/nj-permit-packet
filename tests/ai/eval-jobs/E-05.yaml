@@ -1,0 +1,8 @@
+id: E-05
+title: '"Opening up the wall" (kitchen)'
+description: >
+  Kitchen at 17 Mountain Ave. Opening up the wall between the kitchen and living room to make it one
+  big space. New cabinets, counters and hardwood. $55k.
+items:
+  wall: { match: { kind: wall_change }, unknown: [bearing], facts: { action: remove } }
+costs: { total: 55000 }

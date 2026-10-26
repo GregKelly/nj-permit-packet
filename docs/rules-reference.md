@@ -1,6 +1,6 @@
 # Rules reference
 
-*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `26aec36ddd84`.*
+*Generated from `rules/` by `npm run render-rules`. Don't edit this file; edit the YAML and regenerate. Rules version `d262148b1a0b`.*
 
 This is the rule data the engine runs, in table form. The approved original is [rules-table-v1.md](rules-table-v1.md); the YAML is the source of truth from M1 on (design doc §4.2).
 
@@ -145,7 +145,7 @@ Config flags (`municipal/maplewood/config.yaml`): `interior_alterations_require_
 | CQ-04 | Tech section "Est. Cost of … Work" | That trade's cost. On F110, the Rehabilitation line and the Total line (New Bldg. blank). |
 | CQ-05 | F110 Type of work | Rehabilitation for interior or alteration work; Roofing for roof items; Siding for siding; check all that apply. |
 | CQ-06 | Use group (F100 §VII, every tech section) | R-5 for one- and two-family dwellings, present and proposed. ⚠️ A-19 |
-| CQ-07 | Quantity lines (F120 devices/detectors/kW items, F130 fixtures, F145 equipment) | One count per form line, covering every fixture, device or appliance installed for that trade in the job, including like-for-like ones once the section is in the packet. Items with no form line go on "Other" with a short label. See `lines` below. ⚠️ A-17 |
+| CQ-07 | Quantity lines (F120 devices/detectors/kW items, F130 fixtures, F145 equipment) | One count per form line, covering every fixture, device or appliance installed for that trade in the job, including like-for-like ones once the section is in the packet. Items with no form line go on "Other" with a short label. See `lines` below. When a count isn't known, it's asked (M3 plan, change 4); if the contractor doesn't know, the count is left blank and the cover checklist adds "fill in the {line} count" for that section's signer. ⚠️ A-17 |
 | CQ-08 | Size columns and other equipment details | Fill in when the contractor gave the detail. Otherwise leave blank and add "fill in sizes/details" for that subcontractor on the cover checklist. No follow-up question. |
 | CQ-09 | F145 Heating system checkboxes | New / Replacement / Conversion / Modification, Hydronic / Hot Air, and fuel, from the HVAC facts. Leave blank for cooling-only work. See `heating_system` below. |
 | CQ-10 | All "Fee (Office Use Only)" boxes, surcharges, F100 §V | Left blank. |

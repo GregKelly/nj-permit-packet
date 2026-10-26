@@ -1,15 +1,16 @@
 // Builds a test job's packet, ready to print.
 // Usage: npm run packet -- J-01                  (writes out/J-01.pdf)
 //        npm run packet -- J-08 --hvacr clearair (swap a subcontractor)
+//        npm run packet -- J-01 --narrative      (add the scope narrative saved by `npm run scope -- J-01`)
 
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { buildPacket } from '../src/packet/build';
 import { loadRules } from '../src/rules-dir';
 import { TODAY } from '../tests/helpers';
 import { loadPacketJob, packetProfile } from '../tests/packet-helpers';
 
 const args = process.argv.slice(2);
-const id = args.find((a) => !a.startsWith('--') && !args[args.indexOf(a) - 1]?.startsWith('--'));
+const id = args.find((a) => !a.startsWith('--') && !['--electrical', '--plumbing', '--hvacr'].includes(args[args.indexOf(a) - 1]));
 if (!id) {
   console.error('Usage: npm run packet -- <job id, e.g. J-01> [--electrical|--plumbing|--hvacr <sub key>]');
   process.exit(1);
@@ -21,6 +22,14 @@ for (const trade of ['electrical', 'plumbing', 'hvacr']) {
 }
 
 const f = loadPacketJob(id, loadRules(), Object.keys(team).length ? team : undefined);
+if (args.includes('--narrative')) {
+  const saved = `out/${id}.scope.json`;
+  if (!existsSync(saved)) {
+    console.error(`No saved narrative at ${saved}. Run \`npm run scope -- ${id}\` first.`);
+    process.exit(1);
+  }
+  f.job.scope_narrative = JSON.parse(readFileSync(saved, 'utf8')).paragraphs;
+}
 const result = await buildPacket(f.job, f.d, packetProfile, TODAY);
 if (result.kind === 'none') {
   console.log(`${id}: no packet. ${result.reason}`);

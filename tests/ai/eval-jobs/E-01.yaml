@@ -1,0 +1,11 @@
+id: E-01
+title: '"New window" (bath)'
+description: >
+  Hall bath at 12 Courter Ave. New toilet and vanity in the same spots, new tile floor, and a new
+  window over the tub. $11,000.
+items:
+  window: { match: { kind: opening, opening: window }, unknown: [action] }
+  fixtures: { match: { kind: fixture }, facts: { action: replace_same } }
+costs: { total: 11000 }
+follow_ups:
+  - { match: { kind: opening, opening: window }, fact: action, quote: new window over the tub }

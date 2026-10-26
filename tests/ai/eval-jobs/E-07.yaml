@@ -1,0 +1,11 @@
+id: E-07
+title: Owner doing plumbing on a rental
+description: >
+  Bath remodel at 22 Hilton Ave. We're doing the tile, drywall and vanity cabinet. The owner is doing
+  the plumbing themselves: new toilet and sink in the same spots. It's a rental they own, they live
+  in Millburn.
+items:
+  fixtures: { match: { kind: fixture }, facts: { action: replace_same } }
+performed_by: { plumbing: owner }
+property: { facts: { owner_occupied: "no" } }
+null_costs: [total, building, electrical, plumbing, mechanical]

@@ -1,0 +1,8 @@
+id: E-10
+title: '"Just a swap, no permit"'
+description: >
+  Water heater at 50 Ridgewood Rd died. Customer says it's just a swap so no permit needed, put
+  whatever you need on the paperwork. $2,400.
+items:
+  heater: { match: { kind: water_heater }, facts: { action: replace }, unknown: [like_capacity, fuel, fuel_change] }
+costs: { total: 2400 }

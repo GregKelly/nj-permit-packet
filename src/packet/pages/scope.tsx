@@ -1,6 +1,6 @@
-// Scope of work for the plan reviewer. In M2 a plain list: each work item
-// grouped by trade with that trade's cost. M3 adds the AI-written narrative
-// above it; the list stays as the fallback.
+// Scope of work for the plan reviewer: the contractor-approved narrative (M3),
+// when there is one, above a plain list of each work item grouped by trade with
+// that trade's cost. Without a narrative, the list alone (M2).
 
 import { Document, Text, View } from '@react-pdf/renderer';
 import type { Determinations, FormEntries } from '../../engine';
@@ -29,6 +29,13 @@ export function ScopeOfWork({ job, d, prepared }: { job: PacketJob; d: Determina
         <Text style={s.subtitle}>
           {oneLine(site)} · Block {job.site.block}, Lot {job.site.lot} · Owner: {job.owner.name} · Contractor: {job.facts.team.applicant.name}
         </Text>
+
+        {job.scope_narrative?.map((p, i) => (
+          <Text key={i} style={{ marginBottom: 6 }}>
+            {p}
+          </Text>
+        ))}
+        {job.scope_narrative?.length ? <Text style={[s.h2, { marginTop: 10 }]}>Work items</Text> : null}
 
         {TRADES.filter(([form]) => d.forms.some((f) => f.form === form)).map(([form, trade]) => {
           const cost = tradeCost(d.form_entries[form]);

@@ -1,0 +1,9 @@
+id: E-09
+title: '"Maybe a bedroom later" (basement)'
+description: >
+  Finish the basement at 14 Hickory Dr. Open rec room for now, maybe a bedroom down the road. Framing,
+  drywall, two new outlets on the existing circuit.
+items:
+  rooms: { match: { kind: habitable_space }, unknown: [bedroom, fuel_appliance_nearby] }
+  electrical: { match: { kind: electrical }, facts: { action: add, devices: 2, new_circuit: none } }
+null_costs: [total, building, electrical, plumbing, mechanical]
