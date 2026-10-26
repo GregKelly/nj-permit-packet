@@ -1,6 +1,6 @@
 # Plan: Homeowner does their own trade work
 
-*Status: Approved by Gregory Kelly, 2026-10-26 · Rules addendum and test jobs approved 2026-10-26 · Replaces the LC-05 stop · Follows design doc §9 (plan → approval → rules-first → build)*
+*Status: Approved by Gregory Kelly, 2026-10-26 · Rules addendum and test jobs approved 2026-10-26 · Built and accepted by the owner, merged to `main` 2026-10-26 · Replaces the LC-05 stop · Follows design doc §9 (plan → approval → rules-first → build)*
 
 ## Goal
 
@@ -132,7 +132,7 @@ If an approved expected answer turns out to be wrong, I'll stop and ask rather t
 
 ## Build notes (2026-10-26)
 
-**Status.** Built on `homeowner-trade`. All 344 tests pass (up from 218): J-01 to J-10 unchanged, J-11, J-12 and J-13 as written, variants J-12a and J-13b as full fixtures with field read-back, J-12b, J-13a and the eight unit cases in `tests/homeowner.test.ts`. Awaiting owner acceptance before merging to `main`.
+**Status.** Built on `homeowner-trade`. All 344 tests pass (up from 218): J-01 to J-10 unchanged, J-11, J-12 and J-13 as written, variants J-12a and J-13b as full fixtures with field read-back, J-12b, J-13a and the eight unit cases in `tests/homeowner.test.ts`. Accepted by the owner and merged to `main` (2026-10-26).
 
 **Decided by the owner (2026-10-26):**
 
