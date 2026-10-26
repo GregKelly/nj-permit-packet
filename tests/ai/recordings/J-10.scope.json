@@ -1,0 +1,88 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Replace the range hood with a 900 cfm range hood.",
+            "item_ids": [
+              "hood"
+            ]
+          },
+          {
+            "text": "The new range hood has a higher cfm than the existing hood.",
+            "item_ids": [
+              "hood"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "plumbing",
+        "sentences": [
+          {
+            "text": "Install a 36in professional gas range in the same location as the existing range.",
+            "item_ids": [
+              "range"
+            ]
+          },
+          {
+            "text": "The range remains gas fueled, with no change of fuel.",
+            "item_ids": [
+              "range"
+            ]
+          },
+          {
+            "text": "Install a larger gas line from the meter to serve the range.",
+            "item_ids": [
+              "range"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "mechanical",
+        "sentences": [
+          {
+            "text": "Replace the range hood with a 900 cfm range hood ducted to the outside.",
+            "item_ids": [
+              "hood"
+            ]
+          },
+          {
+            "text": "The new range hood has a higher cfm than the existing hood.",
+            "item_ids": [
+              "hood"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "not_permitted",
+        "sentences": [
+          {
+            "text": "Paint the existing cabinets.",
+            "item_ids": [
+              "paint"
+            ]
+          },
+          {
+            "text": "Install quartz countertops.",
+            "item_ids": [
+              "counters"
+            ]
+          },
+          {
+            "text": "Install a backsplash.",
+            "item_ids": [
+              "backsplash"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -10,7 +10,8 @@ costs: { total: 14000 }
 
 work_items:
   - { id: vanity, kind: finishes, label: Replace vanity, element: vanity }
-  - { id: toilet, kind: fixture, label: "Replace toilet, same spot and plumbing", fixtures: { water_closet: 1 }, action: replace_same }
+  # The vanity includes its sink, and "same plumbing" means no pipes change, so no upsizing; owner, 2026-10-26.
+  - { id: toilet, kind: fixture, label: "Replace toilet and vanity sink, same spots and plumbing", fixtures: { water_closet: 1, lavatory: 1 }, action: replace_same, upsizing_needed: "no" }
   - { id: floor, kind: finishes, label: Porcelain tile floor, element: flooring }
   - { id: valves, kind: faucet_valve, label: "New faucet; swap shower valve, same location" }
   - { id: light, kind: electrical, label: Replace vanity light, action: replace_same, devices: 1 }

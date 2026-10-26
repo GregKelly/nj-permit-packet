@@ -1,0 +1,79 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "property.dwelling_type",
+        "text": "What kind of home is this? (We mean the household setup and whether it shares a wall, not the number of stories.)",
+        "options": [
+          {
+            "value": "detached_1f",
+            "label": "Detached single-family house"
+          },
+          {
+            "value": "detached_2f",
+            "label": "Two-family house (two households)"
+          },
+          {
+            "value": "attached",
+            "label": "Attached single-family home sharing a wall (twin, townhouse, row house)"
+          },
+          {
+            "value": "three_or_more_units",
+            "label": "Building with three or more homes"
+          },
+          {
+            "value": "non_residential",
+            "label": "Not a home (commercial or other)"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "bath_fan.cuts_framing",
+        "text": "You mentioned a new fan. Does installing the fan or its duct mean cutting any joists, studs or rafters?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, framing gets cut"
+          },
+          {
+            "value": "no",
+            "label": "No, no framing is cut"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "usual_electrical.action",
+        "text": "You mentioned the usual electrical. Does it only replace existing outlets, switches or lights like-for-like, or does it add new ones?",
+        "options": [
+          {
+            "value": "replace_same",
+            "label": "Only replaces existing ones like-for-like"
+          },
+          {
+            "value": "add",
+            "label": "Adds new outlets, switches, lights or circuits"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "usual_electrical.devices",
+        "text": "You mentioned the usual electrical. How many outlets, switches and light fixtures does the electrical work install in total?",
+        "options": []
+      }
+    ]
+  }
+}

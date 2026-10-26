@@ -1,0 +1,44 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "rooms.bedroom",
+        "text": "You mentioned a family room and home office. Will any of the finished rooms be used as a bedroom?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, at least one will be a bedroom"
+          },
+          {
+            "value": "no",
+            "label": "No, none will be a bedroom"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "rooms.fuel_appliance_nearby",
+        "text": "Is a furnace, boiler or water heater in or right next to the family room and home office?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, one is in or right next to the rooms"
+          },
+          {
+            "value": "no",
+            "label": "No, none is in or right next to the rooms"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

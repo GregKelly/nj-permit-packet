@@ -1,0 +1,82 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "building",
+        "sentences": [
+          {
+            "text": "Install framing, drywall and a drop ceiling for new partitions.",
+            "item_ids": [
+              "framing"
+            ]
+          },
+          {
+            "text": "Spray foam the rim joists.",
+            "item_ids": [
+              "foam"
+            ]
+          },
+          {
+            "text": "Create habitable space for a family room and a home office.",
+            "item_ids": [
+              "rooms"
+            ]
+          },
+          {
+            "text": "Neither room is a bedroom, and there is no fuel-burning appliance nearby.",
+            "item_ids": [
+              "rooms"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Install 26 devices (14 recessed lights and 12 outlets) on new 20A circuits.",
+            "item_ids": [
+              "electrical"
+            ]
+          },
+          {
+            "text": "Install 2 hardwired smoke/CO combination alarms tied into the existing alarm system.",
+            "item_ids": [
+              "alarms"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "plumbing",
+        "sentences": [
+          {
+            "text": "Install a new basement bathroom with 1 water closet, 1 lavatory and 1 shower.",
+            "item_ids": [
+              "bath"
+            ]
+          },
+          {
+            "text": "Install an ejector pit with an ejector pump for the bathroom.",
+            "item_ids": [
+              "bath"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "mechanical",
+        "sentences": [
+          {
+            "text": "Extend the supply ductwork with 3 runs.",
+            "item_ids": [
+              "ducts"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

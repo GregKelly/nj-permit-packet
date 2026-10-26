@@ -277,6 +277,18 @@ describe('our other pages', () => {
     expect(page).toContain('New cabinets'); // ordinary maintenance items are listed too
   });
 
+  it('scope of work: an approved narrative (M3) goes above the list, and the list stays', async () => {
+    const f = loadPacketJob('J-01', rules);
+    f.job.scope_narrative = ['Building: Remove the non-bearing wall between the kitchen and dining room.', 'Electrical: Two new 20A counter circuits.'];
+    const result = await buildPacket(f.job, f.d, packetProfile, TODAY);
+    if (result.kind === 'none') throw new Error(result.reason);
+    const scope = result.pages.find((p) => p.part === 'scope')!;
+    const page = squash((await pageTexts(result.pdf)).slice(scope.start - 1, scope.start - 1 + scope.pages).join('\n'));
+    expect(page).toContain('Building: Remove the non-bearing wall between the kitchen and dining room.');
+    expect(page.indexOf('Electrical: Two new 20A counter circuits.')).toBeLessThan(page.indexOf('Building (F110) $39,000'));
+    expect(page).toContain('Remove wall between kitchen and dining room'); // the list is still there
+  });
+
   it('a job the app can’t handle gets no packet, just the reason', async () => {
     const f = loadPacketJob('J-01', rules);
     f.job.facts.property.municipality = 'South Orange';

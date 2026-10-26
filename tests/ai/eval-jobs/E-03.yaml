@@ -1,0 +1,12 @@
+id: E-03
+title: Cost as a range (roof)
+description: >
+  Tear off and reroof 8 Baker St, single family, one layer on there now. Architectural shingles, new
+  drip edge. Somewhere around $14–16k depending on what we find under it.
+items:
+  roof: { match: { kind: roof_covering }, facts: { existing_layers: one } }
+null_costs: [total]
+property: { unknown: [dwelling_type] }
+follow_ups:
+  - { key: costs.total, quote: $14–16k }
+  - { key: property.dwelling_type, quote: single family }

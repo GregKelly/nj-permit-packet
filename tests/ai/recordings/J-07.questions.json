@@ -1,0 +1,26 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "roof.existing_layers",
+        "text": "For the reroof on the left half of the twin, how many layers of roofing are on the roof now?",
+        "options": [
+          {
+            "value": "one",
+            "label": "One layer"
+          },
+          {
+            "value": "two_or_more",
+            "label": "Two or more layers"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

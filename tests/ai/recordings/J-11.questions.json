@@ -1,0 +1,30 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "property.owner_occupied",
+        "text": "Does the owner live in the home?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, the owner lives there"
+          },
+          {
+            "value": "immediate_family",
+            "label": "No, but the owner's immediate family lives there"
+          },
+          {
+            "value": "no",
+            "label": "No, neither (for example, a rental)"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "property.dwelling_type",
+        "text": "What kind of home is this? (Looking at the number of households and whether it shares a wall with another home, not the number of stories.)",
+        "options": [
+          {
+            "value": "detached_1f",
+            "label": "Detached single-family house"
+          },
+          {
+            "value": "detached_2f",
+            "label": "Two-family house (two households)"
+          },
+          {
+            "value": "attached",
+            "label": "Attached single-family home sharing a wall (twin, townhouse, row house)"
+          },
+          {
+            "value": "three_or_more_units",
+            "label": "Building with three or more homes"
+          },
+          {
+            "value": "non_residential",
+            "label": "Not a home (commercial or other)"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "tub_window.action",
+        "text": "You mentioned a new window over the tub. Is the opening new, is an existing opening being made bigger, or is the window being replaced in the same opening, unchanged?",
+        "options": [
+          {
+            "value": "new",
+            "label": "New opening"
+          },
+          {
+            "value": "enlarge",
+            "label": "Existing opening made bigger"
+          },
+          {
+            "value": "replace_same",
+            "label": "Same opening, unchanged"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "wall_change",
+        "id": "kitchen_living_wall",
+        "label": "Opening up the wall between the kitchen and living room",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "remove"
+          },
+          {
+            "fact": "bearing",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "cabinets",
+        "label": "New cabinets",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "cabinets"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "countertops",
+        "label": "New counters",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "countertops"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "flooring",
+        "label": "New hardwood",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 55000,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "kitchen_living_wall.bearing",
+        "quote": "Opening up the wall between the kitchen and living room"
+      }
+    ],
+    "not_covered": []
+  }
+}

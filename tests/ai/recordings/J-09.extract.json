@@ -1,0 +1,89 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "hvac_equipment",
+        "id": "mini_split",
+        "label": "3-zone ductless mini-split, cooling only",
+        "facts": [
+          {
+            "fact": "equipment",
+            "value": "mini_split"
+          },
+          {
+            "fact": "action",
+            "value": "new"
+          },
+          {
+            "fact": "like_capacity",
+            "value": "unknown"
+          },
+          {
+            "fact": "fuel_change",
+            "value": "no"
+          },
+          {
+            "fact": "fuel",
+            "value": "none"
+          },
+          {
+            "fact": "same_location",
+            "value": "no"
+          },
+          {
+            "fact": "cuts_framing",
+            "value": "no"
+          },
+          {
+            "fact": "kw",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 16000,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "named",
+        "name": "Clearair",
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "mini_split.kw",
+        "quote": "3-zone ductless mini-split"
+      }
+    ],
+    "not_covered": []
+  }
+}

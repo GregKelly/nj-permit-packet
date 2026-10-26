@@ -1,0 +1,25 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "building",
+        "sentences": [
+          {
+            "text": "Reroof the left half of the twin; one layer of roofing currently exists.",
+            "item_ids": [
+              "roof"
+            ]
+          },
+          {
+            "text": "Install 2 skylights in the back slope of the roof.",
+            "item_ids": [
+              "skylights"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

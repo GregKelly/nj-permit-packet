@@ -1,0 +1,132 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "habitable_space",
+        "id": "rec_room",
+        "label": "Finish the basement: rec room",
+        "facts": [
+          {
+            "fact": "bedroom",
+            "value": "unknown"
+          },
+          {
+            "fact": "fuel_appliance_nearby",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "partitions",
+        "id": "basement_finish",
+        "label": "Basement finishing: drywall and drop ceiling",
+        "facts": [],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "carpet",
+        "label": "Carpet",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "electrical",
+        "id": "basement_wiring",
+        "label": "Wiring handled by the homeowner's brother-in-law",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "unknown"
+          },
+          {
+            "fact": "devices",
+            "value": "unknown"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "unknown"
+          },
+          {
+            "fact": "equipment",
+            "value": "unknown"
+          },
+          {
+            "fact": "kw",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": null,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "named",
+        "name": "The homeowner's brother-in-law",
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "rec_room.bedroom",
+        "quote": "rec room"
+      },
+      {
+        "key": "basement_wiring.action",
+        "quote": "will handle the wiring"
+      },
+      {
+        "key": "basement_wiring.devices",
+        "quote": "will handle the wiring"
+      },
+      {
+        "key": "basement_wiring.new_circuit",
+        "quote": "will handle the wiring"
+      },
+      {
+        "key": "basement_wiring.equipment",
+        "quote": "will handle the wiring"
+      },
+      {
+        "key": "basement_wiring.kw",
+        "quote": "will handle the wiring"
+      }
+    ],
+    "not_covered": []
+  }
+}

@@ -1,0 +1,11 @@
+id: E-06
+title: A relative does the wiring
+description: >
+  Finish the basement at 6 Lenox Pl: rec room, drywall, carpet, drop ceiling. The homeowner's
+  brother-in-law is an electrician and will handle the wiring.
+items:
+  electrical: { match: { kind: electrical }, unknown: [action, devices, new_circuit], optional: true }
+null_costs: [total, building, electrical, plumbing, mechanical]
+not_owner: [electrical]
+named:
+  - { trade: electrical, name: brother-in-law, match: null }

@@ -1,0 +1,36 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Provide electrical connections for a new ductless mini-split system with 1 outdoor unit and 3 indoor units.",
+            "item_ids": [
+              "minisplit"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "mechanical",
+        "sentences": [
+          {
+            "text": "Install a new ductless mini-split system with 1 outdoor unit and 3 indoor units.",
+            "item_ids": [
+              "minisplit"
+            ]
+          },
+          {
+            "text": "The equipment does not change fuel type and does not cut framing.",
+            "item_ids": [
+              "minisplit"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

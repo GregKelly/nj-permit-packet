@@ -1,0 +1,88 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "roof_covering",
+        "id": "roof_replacement",
+        "label": "Tear off and replace the roof, architectural shingles, new ice and water shield",
+        "facts": [
+          {
+            "fact": "existing_layers",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "roof_decking",
+        "id": "rotted_plywood",
+        "label": "Replace a few sheets of rotted plywood",
+        "facts": [
+          {
+            "fact": "rafters_touched",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "gutters",
+        "id": "gutters_leaders",
+        "label": "New gutters and leaders",
+        "facts": [],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 18500,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "property.dwelling_type",
+        "quote": "single family"
+      },
+      {
+        "key": "roof_replacement.existing_layers",
+        "quote": "Tear off and replace the roof"
+      },
+      {
+        "key": "rotted_plywood.rafters_touched",
+        "quote": "replace a few sheets of rotted plywood"
+      }
+    ],
+    "not_covered": []
+  }
+}

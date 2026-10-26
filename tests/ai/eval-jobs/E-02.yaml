@@ -1,0 +1,11 @@
+id: E-02
+title: Deck (out of scope)
+description: >
+  Kitchen at 30 Valley St: new cabinets and counters, and replace the back door with a slider in a
+  wider opening. They also want a 12x16 deck off the new slider.
+items:
+  door: { match: { kind: opening, opening: exterior_door }, facts: { action: enlarge } }
+  cabinets: { match: { kind: finishes, element: cabinets } }
+  counters: { match: { kind: finishes, element: countertops } }
+null_costs: [total, building, electrical, plumbing, mechanical]
+not_covered: [deck]

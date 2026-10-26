@@ -2,7 +2,7 @@
 
 *Draft, October 2026. Scope: one- and two-family dwellings (use group R-3 / R-5) in Maplewood, NJ. Four project types: kitchen & bath, finished basement, roof replacement, HVAC.*
 
-> **Changes after approval** (owner decisions 2026-10-23, M2 plan). The YAML in `rules/` is the source of truth; see [rules-reference.md](rules-reference.md). **LC-03** now warns instead of blocking printing. New **SB-01 / SB-02** (cover-checklist lines for copies of the forms and plans) and assumption **A-22** (one original plus three copies). The table below is kept as approved.
+> **Changes after approval** (owner decisions 2026-10-23, M2 plan). The YAML in `rules/` is the source of truth; see [rules-reference.md](rules-reference.md). **LC-03** now warns instead of blocking printing. New **SB-01 / SB-02** (cover-checklist lines for copies of the forms and plans) and assumption **A-22** (one original plus three copies). **CQ-07** (owner decision 2026-10-26, [M3 plan](plans/m3-plan.md) change 4 and 5): an unknown count that goes on a form line is always asked; if the contractor doesn't know, the line is left blank and the cover checklist asks that section's signer to fill in the count. The table below is kept as approved.
 >
 > **Addendum approved by owner (2026-10-26):** [§4.7 Homeowner does their own trade work](#47-homeowner-does-their-own-trade-work-approved-2026-10-26), new assumptions **A-23 to A-27** and questions **Q-12 to Q-16**. LC-05 is narrowed to building work only.
 >

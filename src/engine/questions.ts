@@ -10,6 +10,9 @@
 //   by the sub (CQ-08), and costs follow their own rule below.
 // - A missing cost for a trade that has a section is always asked, except the
 //   trade that takes the remainder of the total (CQ-03).
+// - An unknown count that goes on a form quantity line is always asked, even when
+//   it doesn't change the determinations (CQ-07; M3 plan, change 4). Sizes and
+//   other details are still left for the sub (CQ-08).
 
 import { PROPERTY_FACTS, UNKNOWN, WORK_ITEM_KINDS, type FactSpec, type JobFacts } from './facts';
 import type { RuleSet } from './load';
@@ -28,6 +31,18 @@ function signature(d: Determinations): string {
     d.tips.map((t) => t.id),
     d.flags.map((f) => f.id),
   ]);
+}
+
+/** The quantity lines on every form in the packet. */
+function formLines(d: Determinations): string {
+  return JSON.stringify(Object.entries(d.form_entries).map(([form, e]) => [form, e.lines ?? []]));
+}
+
+/** Would knowing this count change a quantity line on a form in the packet? Tried with 1. */
+function feedsFormLine(facts: JobFacts, index: number, fact: string, rules: RuleSet, today: string, base: string) {
+  const variant = structuredClone(facts);
+  variant.work_items[index][fact] = 1;
+  return formLines(evaluate(variant, rules, today).d) !== base;
 }
 
 function candidates(spec: FactSpec, thresholdKey: string, rules: RuleSet): readonly (string | number)[] {
@@ -60,11 +75,15 @@ export function selectQuestions(facts: JobFacts, rules: RuleSet, today: string):
     }
   }
 
+  const lines = formLines(evaluate(facts, rules, today).d);
   facts.work_items.forEach((item, index) => {
     for (const [fact, spec] of Object.entries(WORK_ITEM_KINDS[item.kind])) {
       if (item[fact] !== UNKNOWN) continue;
       const values = candidates(spec, `${item.kind}.${fact}`, rules);
-      if (matters(facts, values, (f, v) => (f.work_items[index][fact] = v), rules, today)) {
+      if (
+        matters(facts, values, (f, v) => (f.work_items[index][fact] = v), rules, today) ||
+        (spec.type === 'count' && feedsFormLine(facts, index, fact, rules, today, lines))
+      ) {
         questions.push({ key: `${item.id}.${fact}`, item_id: item.id, fact, options: options(spec) });
       }
     }

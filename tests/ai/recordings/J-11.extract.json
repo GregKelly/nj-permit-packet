@@ -1,0 +1,169 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "wall_change",
+        "id": "kitchen_dining_wall",
+        "label": "Taking out the wall between kitchen and dining",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "remove"
+          },
+          {
+            "fact": "bearing",
+            "value": "no"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "new_cabinets",
+        "label": "New cabinets",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "cabinets"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "quartz_countertops",
+        "label": "Quartz",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "countertops"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "lvp_flooring",
+        "label": "LVP",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "drywall",
+        "id": "new_drywall",
+        "label": "New drywall throughout",
+        "facts": [
+          {
+            "fact": "material",
+            "value": "drywall"
+          },
+          {
+            "fact": "extent",
+            "value": "25_percent_or_more"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "fixture",
+        "id": "island_sink",
+        "label": "Sink moves to the new island with a dishwasher and disposal",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "relocate"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "sink",
+            "count": 1
+          },
+          {
+            "fixture": "dishwasher",
+            "count": 1
+          },
+          {
+            "fixture": "disposal",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "electrical",
+        "id": "kitchen_electrical",
+        "label": "Two new 20A counter circuits, 8 cans, island outlets, about 18 devices",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "add"
+          },
+          {
+            "fact": "devices",
+            "value": "18"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "other"
+          },
+          {
+            "fact": "equipment",
+            "value": "none"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 42500,
+      "building": null,
+      "electrical": 2000,
+      "plumbing": 3500,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "owner",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [],
+    "not_covered": []
+  }
+}

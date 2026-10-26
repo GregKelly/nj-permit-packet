@@ -1,0 +1,86 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "finishes",
+        "id": "cabinets",
+        "label": "new cabinets",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "cabinets"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "countertops",
+        "label": "new counters",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "countertops"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "opening",
+        "id": "back_door",
+        "label": "replace the back door with a slider in a wider opening",
+        "facts": [
+          {
+            "fact": "opening",
+            "value": "exterior_door"
+          },
+          {
+            "fact": "action",
+            "value": "enlarge"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": null,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [],
+    "not_covered": [
+      "a 12x16 deck off the new slider"
+    ]
+  }
+}

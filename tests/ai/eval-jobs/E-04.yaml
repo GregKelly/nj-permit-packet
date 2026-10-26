@@ -1,0 +1,14 @@
+id: E-04
+title: '"The usual electrical" (bath)'
+description: >
+  Full gut of the upstairs bath at 45 Jefferson Ave. Tub stays, new toilet and vanity in the same
+  places, new tile. New fan, and the usual electrical. Total is $26k, electrician quoted $3,800.
+items:
+  electrical: { match: { kind: electrical }, unknown: [action, devices, new_circuit] }
+  fan: { match: { kind: exhaust_fan }, unknown: [action, vents_outdoors, cuts_framing] }
+  fixtures: { match: { kind: fixture }, facts: { action: replace_same } }
+costs: { total: 26000, electrical: 3800 }
+null_costs: [plumbing]
+follow_ups:
+  - { match: { kind: electrical }, fact: action, quote: the usual electrical }
+  - { match: { kind: exhaust_fan }, fact: cuts_framing, quote: New fan }

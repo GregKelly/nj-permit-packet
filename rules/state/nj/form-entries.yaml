@@ -54,7 +54,9 @@ policies:
     rule: >
       One count per form line, covering every fixture, device or appliance installed for that trade
       in the job, including like-for-like ones once the section is in the packet. Items with no form
-      line go on "Other" with a short label. See `lines` below.
+      line go on "Other" with a short label. See `lines` below. When a count isn't known, it's asked
+      (M3 plan, change 4); if the contractor doesn't know, the count is left blank and the cover
+      checklist adds "fill in the {line} count" for that section's signer.
     assumptions: [A-17]
 
   - id: CQ-08

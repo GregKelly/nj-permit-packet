@@ -1,0 +1,13 @@
+id: E-08
+title: Bigger furnace
+description: >
+  Replace the furnace at 3 Plymouth Ave with a bigger unit since they finished the attic. Same spot in
+  the basement. Clearair is doing it, $7,200.
+items:
+  furnace:
+    match: { kind: hvac_equipment, equipment: furnace }
+    facts: { action: replace, like_capacity: "no", same_location: "yes" }
+    unknown: [fuel, fuel_change]
+costs: { total: 7200 }
+named:
+  - { trade: mechanical, name: Clearair, match: clearair }

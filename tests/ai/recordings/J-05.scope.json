@@ -1,0 +1,65 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "building",
+        "sentences": [
+          {
+            "text": "Frame two walls and install drywall.",
+            "item_ids": [
+              "framing"
+            ]
+          },
+          {
+            "text": "Create a guest bedroom in the basement.",
+            "item_ids": [
+              "bedroom"
+            ]
+          },
+          {
+            "text": "Install a new egress window with a window well, including a cut in the foundation.",
+            "item_ids": [
+              "egress"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Add 5 devices (3 outlets and 2 ceiling lights) to the existing basement circuit.",
+            "item_ids": [
+              "electrical"
+            ]
+          },
+          {
+            "text": "No new circuit and no new equipment are included.",
+            "item_ids": [
+              "electrical"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "not_permitted",
+        "sentences": [
+          {
+            "text": "Install carpet as flooring.",
+            "item_ids": [
+              "carpet"
+            ]
+          },
+          {
+            "text": "Install battery-powered smoke and CO alarms in the new bedroom.",
+            "item_ids": [
+              "alarms"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

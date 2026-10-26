@@ -494,7 +494,7 @@ function formEntries(
         e.lines = lines.lines;
         p['CQ-07'].assumptions.forEach((a) => assumptions.add(a));
       }
-      missing.unshift(...lines.missingSizes);
+      missing.unshift(...lines.missingCounts, ...lines.missingSizes);
     }
     entries[def.id] = e;
     if (missing.length) fillIns.push({ form: def.id, signer: signer(def.id), details: missing });
@@ -538,13 +538,15 @@ function formLines(form: string, classified: Classified[], property: Record<stri
   }
 
   const missingSizes: string[] = [];
+  const missingCounts: string[] = [];
   const out = lines.map(({ sizes, ...line }) => {
+    if (line.count === null) missingCounts.push(`${line.line} count`); // "don't know" on a count (CQ-07)
     if (!sizes) return line;
     const known = sizes.every(Boolean);
     if (!known) missingSizes.push(`${line.line} size`);
     return { ...line, size: known ? sizes.join(' + ') : null };
   });
-  return { lines: out, missingSizes };
+  return { lines: out, missingSizes, missingCounts };
 }
 
 function heatingSystem(classified: Classified[], property: Record<string, unknown>, rules: RuleSet): HeatingSystem | null {

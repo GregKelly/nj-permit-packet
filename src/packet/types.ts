@@ -47,6 +47,8 @@ export interface PacketJob {
   site: { block: string; lot: string; qualifier?: string; zip: string };
   /** Owner details are entered by the contractor (the parcel data redacts names). */
   owner: Party;
+  /** The AI-written scope narrative as the contractor approved it (M3), one string per paragraph. */
+  scope_narrative?: string[];
 }
 
 export type PacketResult =

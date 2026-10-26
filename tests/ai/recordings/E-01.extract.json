@@ -1,0 +1,118 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "fixture",
+        "id": "toilet_vanity",
+        "label": "New toilet and vanity in the same spots",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace_same"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "water_closet",
+            "count": 1
+          },
+          {
+            "fixture": "lavatory",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "finishes",
+        "id": "vanity_cabinet",
+        "label": "New vanity",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "vanity"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "tile_floor",
+        "label": "New tile floor",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "opening",
+        "id": "tub_window",
+        "label": "New window over the tub",
+        "facts": [
+          {
+            "fact": "opening",
+            "value": "window"
+          },
+          {
+            "fact": "action",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 11000,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "toilet_vanity.upsizing_needed",
+        "quote": "same spots"
+      },
+      {
+        "key": "tub_window.action",
+        "quote": "a new window over the tub"
+      }
+    ],
+    "not_covered": []
+  }
+}

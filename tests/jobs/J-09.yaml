@@ -10,7 +10,8 @@ costs: { total: 16000 }
 
 work_items:
   # cuts_framing: no. Only line-set holes, which don't count per the HV-03 wording, so it isn't asked.
-  - { id: minisplit, kind: hvac_equipment, label: "Ductless mini-split, 1 outdoor + 3 indoor units", equipment: mini_split, action: new, fuel: none, cuts_framing: "no" }
+  # fuel_change: no (cooling only, the steam heat stays) and same_location: no ("a new pad"); owner, 2026-10-26.
+  - { id: minisplit, kind: hvac_equipment, label: "Ductless mini-split, 1 outdoor + 3 indoor units", equipment: mini_split, action: new, fuel: none, fuel_change: "no", same_location: "no", cuts_framing: "no" }
 
 expected_questions:
   - costs.electrical   # How much of the $16,000 is electrical work?
