@@ -129,3 +129,37 @@ If an approved expected answer turns out to be wrong, I'll stop and ask rather t
 - `tests/rule-files.test.ts` fails until the rule files have the new IDs. Its pattern for row IDs (`KB|FB|RF|HV|ZN|PL|CQ|LC|TP|A`) also needs `HO` added, so the HO rules are checked too.
 - A-23 and A-26 are switches in the **state** rule data, since they're state law, not Maplewood config.
 - `performed_by` moves from one value per job to one per trade. Existing fixtures default to the contractor, so J-01 to J-10 shouldn't change. If one does, stop and ask.
+
+## Build notes (2026-10-26)
+
+**Status.** Built on `homeowner-trade`. All 344 tests pass (up from 218): J-01 to J-10 unchanged, J-11, J-12 and J-13 as written, variants J-12a and J-13b as full fixtures with field read-back, J-12b, J-13a and the eight unit cases in `tests/homeowner.test.ts`. Awaiting owner acceptance before merging to `main`.
+
+**Decided by the owner (2026-10-26):**
+
+1. **The HIC box is too small for "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii".** Each form gets the longest wording that fits: F120 prints "Exempt: owner", F130 and F145 print "Exempt: owner, 5:23-2.15(b)8.ii". Recorded under "Changes after approval" in the rules table and the test doc (change 7).
+
+**Interpretations made while building** (flag any you disagree with):
+
+1. **How "who does each trade" is stored.** `performed_by` has one entry per trade (building, electrical, plumbing, mechanical), each `contractor` or `owner`. To express J-13a (the owner does the furnace, Clearair the condenser), a trade can also list the work items the owner does: `mechanical: { owner: [furnace] }`. The sub does the rest, and HO-05 blocks. The engine never asks who does a trade; in M3 the AI reads it from the description and the contractor confirms.
+2. **Occupancy and sewer are property facts** (`owner_occupied`: yes / immediate_family / no; `own_sewer`: yes / no). The engine asks them only when the answer would change the result, so J-01 to J-10 never ask, and the sewer question only comes up for an attached home where the owner does plumbing.
+3. **Signer names.** Owner-signed forms show "Owner" in the engine's results; the cover checklist prints the owner's name. A trade the owner may not do shows no signer.
+4. **F370 goes with the HVACR trade.** When the owner may do the HVACR work, the owner signs F370 (HO-F4); when not, it has no eligible signer, like F145.
+5. **F100 box D is always checked** when the owner is the applicant: the contractor is always on the job as Principal Contractor.
+6. **One flag per blocked trade**, from the first check that fails, in the order HO-01 to HO-06. J-12 shows only HO-02; an owner who doesn't live in a two-family home and wants to do plumbing sees HO-01.
+7. **The contract total doesn't include the owner's work** (from J-11's numbers: $42,500 contract, $39,000 building, $44,500 F100 total). So an owner-performed trade never takes "the rest of the total" (CQ-03), and its cost is always asked if it wasn't given. Written into HO-F5 in the rule data.
+8. **Blocked jobs still show everything else** (forms, costs, quantities), worked out with the same rules. The test doc doesn't list form entries for J-12 and J-13 as written, so the fixtures say where those come from.
+9. **Assumptions A-23 and A-26 (and Q-15, Q-16) are shown only for a two-family home**, or when the home type isn't known. A-24 shows whenever the owner does HVACR, A-25 and A-27 whenever the owner does any trade.
+10. **The scope of work** says "done by the owner (homeowner exemption)" next to an owner-performed trade.
+
+**Wording I wrote** (not in the approved table; please read):
+
+- **HO-02, shared sewer:** "NJ plumbing law lets only a single-family homeowner do their own plumbing, and this home doesn't count because it shares a sewer line with the neighbor. Assign a licensed master plumber."
+- **HO-04** ends at "...for all the HVACR work." as in J-13's expected answer, without the table's "(see HO-05)".
+- **HO-06** only fails with A-23 switched off: "With assumption A-23 switched off, an owner in a two-family home can't do their own electrical work. Assign a licensed electrician."
+- **"Don't know" answers** add one sentence to the message, e.g. "Assumed the owner doesn't live there because it wasn't known. Change it if you confirm otherwise." (same for the sewer and the home type).
+- **Owner doing HVACR** gets a cover line: "F100's Owner Section has no box for HVACR work, so the Exempt Applicant box on F145 is your certification for it. Ask the construction office whether they want anything written in (Q-13)."
+- **Cover checklist "where to sign":** F100 "Page 2, Owner Section: Signature (boxes C, D and the box for each trade you do are already checked)"; exempt sections "Section C: Sign here, Print name here (Exempt Applicant is checked; no seal)".
+
+**Polish noticed, not fixed:** J-11's and J-13b's cover checklists run one or two lines onto a second page. The new owner lines made the page longer.
+
+**Review material:** `npm run packet -- J-11`, `J-12a`, `J-13b` (packets); `npm run packet -- J-12` and `J-13` (no packet, the reason only); `npm run determine -- J-12` (what the engine decided, in plain language); [homeowner-test-report.txt](../reports/homeowner-test-report.txt); the new section 8 of [rules-reference.md](../rules-reference.md).

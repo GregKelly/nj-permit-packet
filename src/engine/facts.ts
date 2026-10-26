@@ -114,10 +114,19 @@ export const PROPERTY_FACTS: Record<string, FactSpec> = {
   prop_class: text,
   year_built: count,
   dwelling_type: choice('detached_1f', 'detached_2f', 'attached', 'three_or_more_units', 'non_residential'),
+  // Homeowner trade work (rules table §4.7). Asked only when the owner does a trade and the answer matters.
+  owner_occupied: choice('yes', 'immediate_family', 'no'), // immediate_family = the owner doesn't, but their immediate family does
+  own_sewer: yesNo, // an attached home's own sewer connection, not shared with the neighbor
 };
 
 export const TRADES = ['building', 'electrical', 'plumbing', 'mechanical'] as const;
 export type Trade = (typeof TRADES)[number];
+
+/**
+ * Who does a trade's work: the contractor (or its sub), the owner, or a split
+ * where the owner does the listed work items and the sub does the rest.
+ */
+export type PerformedBy = 'contractor' | 'owner' | { owner: string[] };
 
 function factSchema(spec: FactSpec): z.ZodTypeAny {
   switch (spec.type) {
@@ -153,6 +162,9 @@ export const WorkItemSchema = z.discriminatedUnion(
 );
 
 const money = z.number().nonnegative().nullable().default(null);
+const performedBy = z
+  .union([z.enum(['contractor', 'owner']), z.object({ owner: z.array(z.string()).min(1) }).strict()])
+  .default('contractor') as z.ZodType<PerformedBy, z.ZodTypeDef, PerformedBy | undefined>;
 
 const SubcontractorSchema = z.object({
   name: z.string(),
@@ -172,6 +184,8 @@ export const JobFactsSchema = z
         prop_class: z.string(),
         year_built: factSchema(PROPERTY_FACTS.year_built),
         dwelling_type: factSchema(PROPERTY_FACTS.dwelling_type),
+        owner_occupied: factSchema(PROPERTY_FACTS.owner_occupied),
+        own_sewer: factSchema(PROPERTY_FACTS.own_sewer),
       })
       .strict(),
     /** Contract value by trade, in dollars. null = not stated. */
@@ -179,8 +193,11 @@ export const JobFactsSchema = z
       .object({ total: money, building: money, electrical: money, plumbing: money, mechanical: money })
       .strict()
       .default({}),
-    /** Who does the trade work. The homeowner-exempt path is out of scope (LC-05). */
-    performed_by: z.enum(['contractor', 'owner']).default('contractor'),
+    /** Who does each trade's work (rules table §4.7). Unlisted trades: the contractor and its subs. */
+    performed_by: z
+      .object({ building: performedBy, electrical: performedBy, plumbing: performedBy, mechanical: performedBy })
+      .strict()
+      .default({}),
     /** From the contractor profile and subcontractor directory. */
     team: z
       .object({
@@ -198,6 +215,12 @@ export const JobFactsSchema = z
     for (const item of job.work_items as { id: string }[]) {
       if (seen.has(item.id)) ctx.addIssue({ code: 'custom', message: `duplicate work item id "${item.id}"` });
       seen.add(item.id);
+    }
+    for (const [trade, who] of Object.entries(job.performed_by as Record<string, PerformedBy>)) {
+      if (typeof who !== 'object') continue;
+      for (const id of who.owner) {
+        if (!seen.has(id)) ctx.addIssue({ code: 'custom', message: `performed_by.${trade}: no work item "${id}"` });
+      }
     }
   });
 

@@ -1,0 +1,99 @@
+# Packet inputs and expected form boxes for J-13b (tests/jobs/J-13b.yaml): twin, Clearair does the
+# furnace and condenser, the owners do the wiring. See J-01.yaml for how these are written.
+id: J-13b
+site: { block: "1208", lot: "31", zip: "07040" }
+owner:
+  name: Kim and Joe Russo
+  address: { street: 41 Burnet Ave, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0173
+  email: russos@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis_principal
+    site.block: "1208"
+    site.lot: "31"
+    site.address: 41 Burnet Ave
+    site.work_site: 41 Burnet Ave, Maplewood, NJ 07040
+    owner.name: Kim and Joe Russo
+    owner.phone: 973-555-0173
+    owner.email: russos@mail.example
+    owner.street: 41 Burnet Ave
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.minor_work: true          # §IIa Minor Work
+    subcode.building: true                  # §IIb $16,000 / $200 / $9,000 (mechanical, A-20) / $25,200
+    est_cost.building: $16,000
+    subcode.electrical: true
+    est_cost.electrical: $200
+    subcode.plumbing: true
+    est_cost.plumbing: $9,000
+    est_cost.total: $25,200
+    use_group.proposed: R-5
+    owner_section.c_perform_work: true      # C, C.3, D
+    owner_section.c3_electrical: true
+    owner_section.d_advise_contractors: true
+  site_owner: &site_owner
+    site.block: "1208"
+    site.lot: "31"
+    site.address: 41 Burnet Ave, Maplewood, NJ 07040
+    owner.name: Kim and Joe Russo
+    owner.phone_area: "973"
+    owner.phone: 555-0173
+    owner.email: russos@mail.example
+    owner.address: 41 Burnet Ave, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $16,000
+    est_cost.rehabilitation: "16,000"
+    est_cost.total: "16,000"
+    description: |-
+      Remove non-bearing wall between kitchen and dining room
+      Redo drywall in kitchen and dining room
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    contractor.name: Kim and Joe Russo      # the owners, exempt applicant (HO-F3)
+    contractor.phone_area: "973"
+    contractor.phone: 555-0173
+    contractor.address: 41 Burnet Ave
+    contractor.address_2: Maplewood, NJ 07040
+    contractor.email: russos@mail.example
+    contractor.license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)"
+    contractor.hic: "Exempt: owner"              # the full HIC text doesn't fit F120's box (owner decision 2026-10-26)
+    exempt_applicant: true
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "200"                         # $200 · KW Central AC Unit 1 (size blank) · HP/KW Furnace 1 (size blank)
+    kw_ac.qty: "1"
+    kw_ac.central_ac: true
+    hp_kw.qty: "1"
+    hp_kw.furnace: true
+    description: |-
+      Gas furnace, 80k BTU, same size
+      A/C condensing unit, 3-ton
+      See attached scope of work.
+  F145:
+    <<: *site_owner
+    contractor: clearair
+    use_group.r5: true
+    est_cost: "9,000"                       # $9,000 · Replacement, Hot Air, Gas · Hot Air Furnace 1 · Other 1
+    heating.replacement: true
+    heating.hot_air: true
+    fuel.gas: true
+    hot_air_furnace.qty: "1"
+    other.qty: "1"
+    description: |-
+      Gas furnace, 80k BTU, same size
+      A/C condensing unit, 3-ton (on the Other line)
+      See attached scope of work.
+  F370:
+    contractor: f370_clearair
+    site.block: "1208"
+    site.lot: "31"
+    site.address: 41 Burnet Ave, Maplewood, NJ 07040
+    owner.name: Kim and Joe Russo

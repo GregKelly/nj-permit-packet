@@ -10,8 +10,11 @@ import { applyAnswers, buildFacts, loadJob, profile, TODAY } from './helpers';
 const PACKETS_DIR = new URL('./packets/', import.meta.url).pathname;
 const parties: Record<string, Record<string, FieldValue>> = parse(readFileSync(PACKETS_DIR + '_parties.yaml', 'utf8'));
 
-/** The MW/FULL test jobs (M2 plan: done when these pass). */
-export const PACKET_JOBS = ['J-01', 'J-03', 'J-04', 'J-05', 'J-05b', 'J-07', 'J-08', 'J-09', 'J-10'];
+/** The MW/FULL test jobs (M2 plan: done when these pass), plus the homeowner jobs that print. */
+export const PACKET_JOBS = ['J-01', 'J-03', 'J-04', 'J-05', 'J-05b', 'J-07', 'J-08', 'J-09', 'J-10', 'J-11', 'J-12a', 'J-13b'];
+
+/** Jobs where the owner is the F100 applicant (HO-F1), so there's no owner authorization page (HO-F2). */
+export const OWNER_APPLICANT_JOBS = ['J-11', 'J-12a', 'J-13b'];
 
 export const packetProfile: PacketProfile = {
   applicant: profile.applicant,

@@ -1,0 +1,91 @@
+# Packet inputs and expected form boxes for J-11 (tests/jobs/J-11.yaml): the owner does the
+# electrical, so the owner is the F100 applicant (HO-F1) and signs F120 as exempt applicant (HO-F3).
+# See J-01.yaml for how these are written.
+id: J-11
+site: { block: "3802", lot: "15", zip: "07040" }
+owner:
+  name: Daniel Okafor
+  address: { street: 19 Ridgewood Rd, city: Maplewood, state: NJ, zip: "07040" }
+  phone: 973-555-0171
+  email: dokafor@mail.example
+
+expected:
+  F100:
+    contractor: f100_hollis_principal       # Hollis stays Principal Contractor; Agent Section blank
+    site.block: "3802"
+    site.lot: "15"
+    site.address: 19 Ridgewood Rd
+    site.work_site: 19 Ridgewood Rd, Maplewood, NJ 07040
+    owner.name: Daniel Okafor
+    owner.phone: 973-555-0171
+    owner.email: dokafor@mail.example
+    owner.street: 19 Ridgewood Rd
+    owner.municipality: Maplewood
+    owner.zip: "07040"
+    ownership.private: X
+    proposed_work.alteration: true          # §IIa Alteration
+    subcode.building: true                  # §IIb $39,000 / $2,000 / $3,500 / $44,500
+    est_cost.building: $39,000
+    subcode.electrical: true
+    est_cost.electrical: $2,000
+    subcode.plumbing: true
+    est_cost.plumbing: $3,500
+    est_cost.total: $44,500
+    use_group.proposed: R-5
+    owner_section.c_perform_work: true      # Owner Section: C, C.3 Electrical, D (A, B, C.1, C.2, C.4 blank)
+    owner_section.c3_electrical: true
+    owner_section.d_advise_contractors: true
+  site_owner: &site_owner
+    site.block: "3802"
+    site.lot: "15"
+    site.address: 19 Ridgewood Rd, Maplewood, NJ 07040
+    owner.name: Daniel Okafor
+    owner.phone_area: "973"
+    owner.phone: 555-0171
+    owner.email: dokafor@mail.example
+    owner.address: 19 Ridgewood Rd, Maplewood, NJ 07040
+  F110:
+    <<: *site_owner
+    contractor: hollis
+    use_group.present: R-5
+    use_group.proposed: R-5
+    type.rehabilitation: true               # Rehabilitation · $39,000 · $39,000
+    est_cost.rehabilitation: "39,000"
+    est_cost.total: "39,000"
+    description: |-
+      New drywall throughout
+      Remove wall between kitchen and dining room
+      See attached scope of work.
+  F120:
+    <<: *site_owner
+    # Contractor block: the owner, as exempt applicant (HO-F3). Expiry and FEIN blank.
+    contractor.name: Daniel Okafor
+    contractor.phone_area: "973"
+    contractor.phone: 555-0171
+    contractor.address: 19 Ridgewood Rd
+    contractor.address_2: Maplewood, NJ 07040
+    contractor.email: dokafor@mail.example
+    contractor.license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)"
+    contractor.hic: "Exempt: owner"              # the full HIC text doesn't fit F120's box (owner decision 2026-10-26)
+    exempt_applicant: true
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "2,000"                       # $2,000 · Devices 18 · KW Dishwasher/Disposal 2 (size blank)
+    devices.qty: "18"
+    kw_dishwasher_disposal.qty: "2"
+    kw_dishwasher_disposal.dishwasher: true
+    kw_dishwasher_disposal.disposal: true
+    description: |-
+      Two new 20A counter circuits, 8 recessed cans, island outlets
+      See attached scope of work.
+  F130:
+    <<: *site_owner
+    contractor: sutton
+    use_group.present: R-5
+    use_group.proposed: R-5
+    est_cost: "3,500"                       # $3,500 · Sink 1 · Dishwasher 1
+    sink.qty: "1"
+    dishwasher.qty: "1"
+    description: |-
+      Sink moved to new island, with dishwasher and disposal on the new run
+      See attached scope of work.

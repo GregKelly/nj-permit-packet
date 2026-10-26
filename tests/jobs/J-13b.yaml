@@ -1,0 +1,62 @@
+id: J-13b
+title: "Variant of J-13: Clearair takes the furnace and condenser, owner keeps the wiring"
+variant_of: J-13
+description: Same job as J-13, with Clearair doing both HVACR swaps (quoted at $9,000) and the owners doing the wiring.
+
+property: { municipality: Maplewood, address: 41 Burnet Ave, prop_class: "2", year_built: 1931, dwelling_type: attached, owner_occupied: "yes" }
+costs: { building: 16000, electrical: 200, mechanical: 9000 }
+performed_by: { electrical: owner }
+
+work_items:
+  - { id: wall, kind: wall_change, label: Remove non-bearing wall between kitchen and dining room, action: remove, bearing: "no" }
+  - { id: drywall, kind: drywall, label: Redo drywall in kitchen and dining room, extent: 25_percent_or_more }
+  - { id: furnace, kind: hvac_equipment, label: "Gas furnace, 80k BTU, same size", equipment: furnace, action: replace, like_capacity: "yes", fuel_change: "no", fuel: gas }
+  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none }
+
+expected_questions: []
+answers: {}
+
+expected:
+  outcome: minor_work
+  job_tier: MW
+  items:
+    wall:      { rule: KB-20, tier: MW }
+    drywall:   { rule: KB-05, tier: MW }
+    furnace:   { rule: HV-01, tier: MW }
+    condenser: { rule: HV-11, tier: MW }
+  forms:
+    F100: Owner
+    F110: Hollis Building Co. LLC
+    F120: Owner
+    F145: Clearair Mechanical
+    F370: Clearair Mechanical
+  zoning: { rule: ZN-03, status: probably_not_required }
+  plans: { rule: PL-02, requirement: floor_plan }
+  tips: [TP-05]
+  flags: []
+  owner_notes: [HO-T1, HO-T2]
+  form_entries:
+    F100:
+      use_group: R-5
+      proposed_work: Minor Work
+      cost_by_subcode: { Building: 16000, Electrical: 200, Plumbing: 9000 }
+      total_cost: 25200
+      owner_section: [C, C.3, D]
+    F110: { use_group: R-5, type_of_work: [Rehabilitation], rehabilitation_cost: 16000, total_cost: 16000 }
+    F120:
+      use_group: R-5
+      est_cost: 200
+      exempt_applicant: { license: "Exempt: homeowner, N.J.S.A. 45:5A-18(n)", hic: "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii", hic_short: ["Exempt: owner, 5:23-2.15(b)8.ii", "Exempt: owner"] }
+      lines:
+        - { line: KW Central AC Unit, count: 1, size: null }
+        - { line: HP/KW Furnace, count: 1, size: null }
+    F145:
+      use_group: R-5
+      est_cost: 9000
+      heating_system: { work: Replacement, distribution: Hot Air, fuel: Gas }
+      lines:
+        - { line: Hot Air Furnace, count: 1 }
+        - { line: Other, label: "A/C condensing unit, 3-ton", count: 1 }
+    F370: { use_group: R-5 }
+  fill_ins:
+    - { form: F120, signer: Owner, details: [KW Central AC Unit size, HP/KW Furnace size] }

@@ -13,3 +13,9 @@ entries:
   - { id: Q-9, status: resolved, text: "Reviewer-style warnings. Resolved: included as non-blocking tips (§4.6)." }
   - { id: Q-10, text: "For new or resized HVAC, do they want a Manual J load calculation?" }
   - { id: Q-11, text: "F100 has no Mechanical row in §IIb. Where do they want the cost of F145 work: the Plumbing row, or written in?" }
+  # Homeowner trade work (rules table §4.7, approved 2026-10-26)
+  - { id: Q-12, text: "When the owner does one trade and a contractor does the rest, is it one application with the owner as applicant, or a separate permit for the owner's trade?" }
+  - { id: Q-13, text: "F100's Owner Section has no mechanical box. For owner HVACR work, is F145's \"Exempt Applicant\" box enough, or do they want something written in? And who signs F370 when the owner replaces a fuel-fired appliance themselves?" }
+  - { id: Q-14, text: "What estimated cost goes on an owner-performed section: materials only, or materials plus the value of the labor? (A-27)" }
+  - { id: Q-15, text: "Do they follow the Electrical Board on two-family homes, i.e. can an owner living there do their own electrical? (A-23)" }
+  - { id: Q-16, text: "Can an owner who lives in a two-family home do their own plumbing or HVACR work? (A-26) Ask the Maplewood plumbing subcode official; for a definitive state answer, the Plumbing and HVACR Boards or DCA Code Assistance at (609) 984-7609, and whether the 2019 \"License Check\" answers still stand." }

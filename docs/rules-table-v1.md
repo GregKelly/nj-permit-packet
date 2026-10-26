@@ -5,6 +5,8 @@
 > **Changes after approval** (owner decisions 2026-10-23, M2 plan). The YAML in `rules/` is the source of truth; see [rules-reference.md](rules-reference.md). **LC-03** now warns instead of blocking printing. New **SB-01 / SB-02** (cover-checklist lines for copies of the forms and plans) and assumption **A-22** (one original plus three copies). The table below is kept as approved.
 >
 > **Addendum approved by owner (2026-10-26):** [§4.7 Homeowner does their own trade work](#47-homeowner-does-their-own-trade-work-approved-2026-10-26), new assumptions **A-23 to A-27** and questions **Q-12 to Q-16**. LC-05 is narrowed to building work only.
+>
+> **Change after approval** (owner decision 2026-10-26, homeowner build): **HO-F3**'s HIC entry "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii" doesn't fit the HIC box on any form, so each form gets the longest wording that fits: the full text, else "Exempt: owner, 5:23-2.15(b)8.ii" (F130, F145), else "Exempt: owner" (F120). The wordings are in `rules/state/nj/homeowner.yaml`.
 
 This is the human-readable version of the rule data the engine will run. Once you've approved it, each row becomes a record in a rules file (state rules and Maplewood rules kept separate). Rule IDs (e.g. `KB-04`) will carry through to the code and the test suite, so a test failure points back to a row here.
 

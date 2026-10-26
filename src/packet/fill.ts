@@ -18,9 +18,9 @@ import { officialForm } from './forms';
 
 /**
  * A text entry, a checkbox (true = checked), or text that falls back to a
- * shorter entry when it can't fit the box at a readable size.
+ * shorter entry (the first of a list that fits) when it can't fit the box at a readable size.
  */
-export type FieldValue = string | boolean | { text: string; fallback: string };
+export type FieldValue = string | boolean | { text: string; fallback: string | string[] };
 /** Our field name → value. */
 export type FormValues = Record<string, FieldValue>;
 
@@ -71,7 +71,7 @@ function setField(formId: string, field: PDFField, value: FieldValue, font: PDFF
 }
 
 /** Write text at the box's own size, shrinking it (down to 6 pt) until it fits. */
-function setText(field: PDFTextField, value: string | { text: string; fallback: string }, font: PDFFont, minFont: number) {
+function setText(field: PDFTextField, value: string | { text: string; fallback: string | string[] }, font: PDFFont, minFont: number) {
   const box = boxOf(field);
   const preferred = defaultSize(field);
   const attempt = (text: string) => {
@@ -81,10 +81,11 @@ function setText(field: PDFTextField, value: string | { text: string; fallback: 
     }
     return null;
   };
+  const fallbacks = typeof value === 'string' ? [] : [value.fallback].flat();
   const fitted =
     typeof value === 'string'
       ? (attempt(value) ?? { text: value, size: minFont, multiline: value.includes('\n') })
-      : (attempt(value.text) ?? attempt(value.fallback) ?? { text: value.fallback, size: minFont, multiline: false });
+      : ([value.text, ...fallbacks].map(attempt).find(Boolean) ?? { text: fallbacks.at(-1)!, size: minFont, multiline: false });
 
   const max = field.getMaxLength();
   if (max !== undefined && fitted.text.length > max) field.setMaxLength(undefined);

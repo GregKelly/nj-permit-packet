@@ -30,8 +30,22 @@ export interface FormDetermination {
   form: string;
   name: string;
   signer_role: string;
-  /** Who signs: a name from the profile or subcontractor directory; null if missing (LC-02). */
+  /**
+   * Who signs: a name from the profile or subcontractor directory, or "Owner" (rules table §4.7);
+   * null if missing (LC-02) or if the owner may not do this trade.
+   */
   signer: string | null;
+  /** The owner signs: F100's Owner Section, a section as Exempt Applicant, or F370 (HO-F1, HO-F3, HO-F4). */
+  by_owner?: true;
+}
+
+/** A licensed trade the owner does all or some of (rules table §4.7). */
+export interface OwnerTradeDetermination {
+  trade: string;
+  /** False when a check failed; printing is then blocked by that check's flag. */
+  allowed: boolean;
+  /** The check that failed, or null. */
+  rule_id: string | null;
 }
 
 export interface ZoningDetermination {
@@ -84,6 +98,8 @@ export interface FormEntries {
   proposed_work?: string;
   cost_by_subcode?: Record<string, number | null>;
   total_cost?: number | null;
+  /** F100 Owner Section boxes to check when the owner is the applicant (HO-F1), e.g. C, C.3, D. */
+  owner_section?: string[];
   // F110
   type_of_work?: string[];
   rehabilitation_cost?: number | null;
@@ -91,6 +107,11 @@ export interface FormEntries {
   est_cost?: number | null;
   heating_system?: HeatingSystem | null;
   lines?: FormLine[];
+  /**
+   * An owner-performed section (HO-F3): Exempt Applicant, with these in the license and HIC
+   * boxes. hic_short: shorter HIC wordings, longest first, for a box too small for `hic`.
+   */
+  exempt_applicant?: { license: string; hic: string; hic_short: string[] };
 }
 
 export interface FillIn {
@@ -119,6 +140,10 @@ export interface Determinations {
   /** Cover-checklist lines for submitting the packet (copies of forms and plans). */
   submission: Note[];
   flags: Flag[];
+  /** Trades the owner does themselves; empty when the owner does none. */
+  owner_trades: OwnerTradeDetermination[];
+  /** Cover-checklist lines for an owner doing their own trade work (HO-T1, HO-T2). */
+  owner_notes: Note[];
   form_entries: Record<string, FormEntries>;
   fill_ins: FillIn[];
   questions: Question[];

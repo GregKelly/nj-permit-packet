@@ -18,6 +18,14 @@ const SIGN_WHERE: Record<string, string> = {
   F370: 'Bottom: check one verification statement, Signature, Date. Also completes the type of replacement, appliances and venting',
 };
 
+/** Where the owner signs instead, when the owner is the applicant or does a trade (rules table §4.7). */
+const OWNER_SIGNS_WHERE: Record<string, string> = {
+  F100: 'Page 2, Owner Section: Signature (boxes C, D and the box for each trade you do are already checked)',
+  F120: 'Section C: Sign here, Print name here (Exempt Applicant is checked; no seal)',
+  F130: 'Section C: Sign here, Print name here (Exempt Applicant is checked; no seal)',
+  F145: 'Section C: Sign here, Print name here (Exempt Applicant is checked; no seal)',
+};
+
 const OUTCOME: Record<string, string> = {
   permit: 'Permit required before work starts',
   minor_work: 'Minor work: notify the office before starting, file within 5 business days',
@@ -45,12 +53,17 @@ export function CoverChecklist({ job, d, prepared }: { job: PacketJob; d: Determ
   if (d.zoning?.status === 'required') attach.push('Zoning approval from Maplewood Zoning, and a copy of the survey you submitted with it');
   if (d.forms.some((f) => f.form === 'F370')) attach.push('If a chimney liner is being installed: all of the liner documentation (F370)');
 
+  const ownerApplies = d.forms.some((f) => f.form === 'F100' && f.by_owner); // HO-F1, HO-F2
   const signers = d.forms.map((f) => ({
     form: f.form,
-    where: SIGN_WHERE[f.form] ?? 'Signature line',
-    who: f.form === 'F100' ? job.facts.team.applicant.name : (f.signer ?? 'MISSING: add the sub who will sign this'),
+    where: (f.by_owner && OWNER_SIGNS_WHERE[f.form]) || SIGN_WHERE[f.form] || 'Signature line',
+    who: f.by_owner
+      ? `${job.owner.name} (owner)`
+      : f.form === 'F100'
+        ? job.facts.team.applicant.name
+        : (f.signer ?? 'MISSING: add the sub who will sign this'),
   }));
-  signers.splice(1, 0, { form: 'Owner authorization', where: 'Signature, printed name and date', who: job.owner.name });
+  if (!ownerApplies) signers.splice(1, 0, { form: 'Owner authorization', where: 'Signature, printed name and date', who: job.owner.name });
 
   return (
     <Document title={`Cover checklist ${job.ref}`} creator="Permit Packet" producer="Permit Packet">
@@ -72,7 +85,9 @@ export function CoverChecklist({ job, d, prepared }: { job: PacketJob; d: Determ
         <Bullet>
           {OUTCOME[d.outcome] ?? d.outcome} ({d.job_tier})
         </Bullet>
-        <Bullet>Forms in this packet: {d.forms.map((f) => f.form).join(', ')}, plus the owner authorization page and the scope of work</Bullet>
+        <Bullet>
+          Forms in this packet: {d.forms.map((f) => f.form).join(', ')}, plus {ownerApplies ? 'the scope of work. The owner is the applicant.' : 'the owner authorization page and the scope of work'}
+        </Bullet>
         {d.zoning?.status === 'not_required' && <Bullet>Zoning: {d.zoning.message}</Bullet>}
 
         <Text style={s.h2}>Steps, in order</Text>
@@ -109,6 +124,15 @@ export function CoverChecklist({ job, d, prepared }: { job: PacketJob; d: Determ
               <Bullet key={f.form} mark="[ ]">
                 {f.signer ?? f.form}: fill in {f.details.join(', ')} on {f.form}
               </Bullet>
+            ))}
+          </>
+        )}
+
+        {d.owner_notes.length > 0 && (
+          <>
+            <Text style={s.h2}>For the owner (homeowner exemption)</Text>
+            {d.owner_notes.map((n, i) => (
+              <Bullet key={i}>{n.text}</Bullet>
             ))}
           </>
         )}

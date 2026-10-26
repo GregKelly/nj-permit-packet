@@ -22,6 +22,9 @@
 5. **J-08 / LC-03:** an expired subcontractor license **warns instead of blocking printing**. J-08 as written builds the full packet, with the LC-03 warning at the top of the cover checklist: the office will likely reject the section, and the sub may not legally do or sign for the work until the license is renewed. Re-running with Clearair still clears the flag and changes nothing else.
 6. **Copies (new rules SB-01, SB-02 and assumption A-22):** the cover checklist of every packet says "Submit one original plus three copies of each completed form"; when plans are flagged it adds "Bring at least two copies of the plans" (N.J.A.C. 5:23-2.15(f)1). The packet itself holds one set.
 
+**Changes after approval, homeowner build** (owner decision 2026-10-26; `tests/packets/` carries the change)
+7. **J-11, J-12a, J-13b (F120 HIC box):** the approved entry "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii" is too long for the box (106 pt of text at the smallest type in a 58 pt box), so F120 prints **"Exempt: owner"**. F130 and F145 have wider boxes and print "Exempt: owner, 5:23-2.15(b)8.ii" (unit case J-12b). The engine's entry keeps the full text.
+
 ---
 
 ## Shared test profile
