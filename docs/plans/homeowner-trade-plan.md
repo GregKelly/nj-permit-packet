@@ -1,6 +1,6 @@
 # Plan: Homeowner does their own trade work
 
-*Status: Approved by Gregory Kelly, 2026-10-26 · Replaces the LC-05 stop · Follows design doc §9 (plan → approval → rules-first → build)*
+*Status: Approved by Gregory Kelly, 2026-10-26 · Rules addendum and test jobs approved 2026-10-26 · Replaces the LC-05 stop · Follows design doc §9 (plan → approval → rules-first → build)*
 
 ## Goal
 
@@ -121,3 +121,11 @@ On a branch, `homeowner-trade`:
 3. Regenerate `docs/rules-reference.md`, add the demo (`npm run packet -- J-11`) and the test report, and bring it to you to accept before merging to `main`.
 
 If an approved expected answer turns out to be wrong, I'll stop and ask rather than change it.
+
+## Notes for the build
+
+**Status (2026-10-26).** Step 1 is done and approved: rules table §4.7, assumptions A-23 to A-27, questions Q-12 to Q-16, and test jobs J-11 to J-13 with variants and unit cases. The build (step 2) starts from those approved docs.
+
+- `tests/rule-files.test.ts` fails until the rule files have the new IDs. Its pattern for row IDs (`KB|FB|RF|HV|ZN|PL|CQ|LC|TP|A`) also needs `HO` added, so the HO rules are checked too.
+- A-23 and A-26 are switches in the **state** rule data, since they're state law, not Maplewood config.
+- `performed_by` moves from one value per job to one per trade. Existing fixtures default to the contractor, so J-01 to J-10 shouldn't change. If one does, stop and ask.

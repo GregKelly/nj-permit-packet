@@ -55,11 +55,11 @@ Building-section work (F110) is done by Hollis, which signs F110 as applicant. F
 | J-08 | HVAC | Minor work | Like-for-like swap; F370; **expired sub license** warns (blocked printing until change 5) |
 | J-09 | HVAC | FULL + zoning | New mini-split; new outdoor unit; load calc flag only |
 | J-10 | Kitchen | FULL | Sounds cosmetic; gas upsizing + 900 cfm hood; OM costs excluded |
-| J-11 *(draft)* | Kitchen | FULL, owner applicant | Owner does all the electrical; F100 Owner Section; F120 exempt |
-| J-12 *(draft)* | Basement | **Blocked** (HO-02) | Two-family: owner may do electrical but not plumbing (A-26); two variants |
-| J-13 *(draft)* | Kitchen + HVAC | **Blocked** (HO-04) | Twin: owner may swap the furnace but not the A/C; split signer (HO-05); mixed packet |
+| J-11 | Kitchen | FULL, owner applicant | Owner does all the electrical; F100 Owner Section; F120 exempt |
+| J-12 | Basement | **Blocked** (HO-02) | Two-family: owner may do electrical but not plumbing (A-26); two variants |
+| J-13 | Kitchen + HVAC | **Blocked** (HO-04) | Twin: owner may swap the furnace but not the A/C; split signer (HO-05); mixed packet |
 
-**Not covered by these ten** (add later or test as unit tests): out-of-scope property (3+ units or commercial), missing HIC registration (LC-01), the owner doing building work (LC-05, narrowed; draft 2026-10-26), lead abatement (KB-24), bearing wall removal (KB-21), oil-to-gas conversion (HV-02), unknown answered "don't know" (conservative branch).
+**Not covered by these ten** (add later or test as unit tests): out-of-scope property (3+ units or commercial), missing HIC registration (LC-01), the owner doing building work (LC-05, narrowed 2026-10-26), lead abatement (KB-24), bearing wall removal (KB-21), oil-to-gas conversion (HV-02), unknown answered "don't know" (conservative branch).
 
 ---
 
@@ -488,9 +488,9 @@ Like capacity, same location and fuel are all stated, so nothing else is asked.
 
 ---
 
-# Homeowner trade-work jobs: DRAFT for owner review (2026-10-26)
+# Homeowner trade-work jobs: approved by owner (2026-10-26)
 
-*From the approved [homeowner trade-work plan](plans/homeowner-trade-plan.md), rules in [rules table §4.7](rules-table-v1.md#47-homeowner-does-their-own-trade-work-draft-for-owner-review-2026-10-26). Same fixed test conditions and shared profile as above. **Blocked** means printing is blocked with the flag's explanation. The determinations are still shown so the contractor can see the rest of the job.*
+*From the approved [homeowner trade-work plan](plans/homeowner-trade-plan.md), rules in [rules table §4.7](rules-table-v1.md#47-homeowner-does-their-own-trade-work-approved-2026-10-26). Same fixed test conditions and shared profile as above. **Blocked** means printing is blocked with the flag's explanation. The determinations are still shown so the contractor can see the rest of the job.*
 
 ## J-11 · Kitchen, owner does the electrical
 
@@ -633,7 +633,7 @@ Electrical by the owner passes HO-01 and HO-06. HVACR by the owner passes HO-01 
 
 ---
 
-## Homeowner unit cases (draft)
+## Homeowner unit cases
 
 These are tested in code, without a full write-up:
 
