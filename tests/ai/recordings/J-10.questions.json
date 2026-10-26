@@ -1,0 +1,26 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "hood.cfm_increase",
+        "text": "You mentioned replacing the old recirculating hood with a 900 cfm hood. Is the new hood more powerful (higher cfm) than the old one?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, the new hood has a higher cfm"
+          },
+          {
+            "value": "no",
+            "label": "No, the new hood does not have a higher cfm"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

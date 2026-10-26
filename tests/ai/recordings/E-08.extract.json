@@ -1,0 +1,89 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "hvac_equipment",
+        "id": "furnace",
+        "label": "Replace the furnace with a bigger unit, same spot in the basement",
+        "facts": [
+          {
+            "fact": "equipment",
+            "value": "furnace"
+          },
+          {
+            "fact": "action",
+            "value": "replace"
+          },
+          {
+            "fact": "like_capacity",
+            "value": "no"
+          },
+          {
+            "fact": "fuel_change",
+            "value": "unknown"
+          },
+          {
+            "fact": "fuel",
+            "value": "unknown"
+          },
+          {
+            "fact": "same_location",
+            "value": "yes"
+          },
+          {
+            "fact": "cuts_framing",
+            "value": "unknown"
+          },
+          {
+            "fact": "kw",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 7200,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "named",
+        "name": "Clearair",
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "furnace.kw",
+        "quote": "bigger unit"
+      }
+    ],
+    "not_covered": []
+  }
+}

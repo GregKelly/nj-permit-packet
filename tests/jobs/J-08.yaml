@@ -12,7 +12,7 @@ costs: { total: 14500 }
 
 work_items:
   - { id: furnace, kind: hvac_equipment, label: "Gas furnace, 80k BTU, same size", equipment: furnace, action: replace, like_capacity: "yes", fuel_change: "no", fuel: gas }
-  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none }
+  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none, fuel_change: "no" }
   - { id: thermostat, kind: hvac_component, label: New thermostat, component: thermostat }
 
 expected_questions:

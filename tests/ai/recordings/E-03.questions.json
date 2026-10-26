@@ -1,0 +1,43 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "property.dwelling_type",
+        "text": "You mentioned this is a single family home. Is it a detached single-family house, a two-family house, an attached single-family home that shares a wall (twin, townhouse, row house), a building with three or more homes, or not a home at all?",
+        "options": [
+          {
+            "value": "detached_1f",
+            "label": "Detached single-family house"
+          },
+          {
+            "value": "detached_2f",
+            "label": "Two-family house (two households)"
+          },
+          {
+            "value": "attached",
+            "label": "Attached single-family home sharing a wall"
+          },
+          {
+            "value": "three_or_more_units",
+            "label": "Building with three or more homes"
+          },
+          {
+            "value": "non_residential",
+            "label": "Not a home (commercial or other)"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "costs.total",
+        "text": "You mentioned somewhere around $14–16k depending on what you find under it. The application needs a single estimated cost; an estimate is fine. What figure should go on it?",
+        "options": []
+      }
+    ]
+  }
+}

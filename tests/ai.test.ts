@@ -1,19 +1,23 @@
 // The AI layer, offline (M3 plan, "Tests"). The API is never called here:
 // answers are hand-made or replayed from saved recordings.
 
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readdirSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { parse } from 'yaml';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { determine, parseJobFacts, selectQuestions, type RuleSet } from '../src/engine';
-import { WORK_ITEM_KINDS, PROPERTY_FACTS } from '../src/engine/facts';
+import { WORK_ITEM_KINDS, PROPERTY_FACTS, UNKNOWN } from '../src/engine/facts';
+import { meaningFor } from '../src/ai/meanings';
 import { loadRules } from '../src/rules-dir';
 import { checkExtract, checkQuestions, checkScope, dollarAmounts } from '../src/ai/checks';
-import { outputSchema } from '../src/ai/client';
+import { outputSchema, type Transport } from '../src/ai/client';
 import { extract, extractRequest, matchDirectory, toFacts, type DirectoryEntry } from '../src/ai/extract';
 import { applyAnswers, openQuestions } from '../src/ai/flow';
 import { fallbackQuestion, phraseQuestions, questionsRequest } from '../src/ai/questions';
 import { replayTransport, loadRecording } from '../src/ai/replay';
-import { ExtractOutput, QuestionsOutput, ScopeOutput } from '../src/ai/schema';
+import { newStats, savedTransport } from '../src/ai/eval/saved';
+import { ExtractOutput, ExtractWire, QuestionsOutput, ScopeOutput, fromWire, toWire } from '../src/ai/schema';
 import { scopeRequest, writeScope } from '../src/ai/scope';
 import { answerKeyAsOutput, jobFromExtraction } from '../src/ai/eval/jobs';
 import { alignItems, playRounds, renameItems, scoreFacts } from '../src/ai/eval/score';
@@ -56,13 +60,13 @@ describe('extract checks catch bad answers', () => {
 
   it('a made-up quote', () => {
     const out = j03Output();
-    out.quotes = [{ key: 'window.action', quote: 'make the window opening wider' }];
+    out.quotes = [{ key: 'shower.action', quote: 'move the shower drain' }];
     expect(checkExtract(out, j03.raw.description)).toEqual([expect.stringContaining("isn't word for word")]);
   });
 
   it('a real quote passes, even across a line break in the description', () => {
     const out = j03Output();
-    out.quotes = [{ key: 'window.action', quote: 'Owner wants a bigger window over the tub area' }];
+    out.quotes = [{ key: 'lavs.upsizing_needed', quote: 'Double vanity instead of the single' }]; // spans a line break in the fixture
     expect(checkExtract(out, j03.raw.description)).toEqual([]);
   });
 
@@ -140,11 +144,44 @@ describe('scope checks catch bad answers', () => {
 
 describe('the output formats sent to the API', () => {
   it('keep the allowed values (enum) and drop keywords the API rejects', () => {
-    for (const schema of [ExtractOutput, QuestionsOutput, ScopeOutput]) {
+    for (const schema of [ExtractWire, QuestionsOutput, ScopeOutput]) {
       const json = JSON.stringify(outputSchema(schema));
       expect(json).not.toMatch(/"(\$schema|minimum|maximum)"/);
     }
-    expect(JSON.stringify(outputSchema(ExtractOutput))).toContain('"enum":["replace_same","new","enlarge","unknown"]');
+    expect(JSON.stringify(outputSchema(ExtractWire))).toContain('"enum":["finishes","drywall"');
+  });
+
+  it('extraction is sent as name/value pairs, small enough for the API (one shape per kind was rejected as too large)', () => {
+    expect(JSON.stringify(outputSchema(ExtractWire)).length).toBeLessThan(8000);
+  });
+
+  it('name/value pairs round-trip to typed items for every test job', () => {
+    for (const job of jobsWithDescriptions) {
+      const out = ExtractOutput.parse(answerKeyAsOutput(job.raw, directory));
+      expect(fromWire(toWire(out)), job.id).toEqual({ output: out, problems: [] });
+    }
+  });
+
+  it('"unknown" for a fact with a default means the default, as when the fact is left out (E-04: a gut names no wall material)', () => {
+    const wire = toWire(j03Output());
+    wire.work_items.push({ kind: 'drywall', id: 'walls', label: 'Gut walls', facts: [{ fact: 'material', value: 'unknown' }, { fact: 'extent', value: 'unknown' }], fixtures: [] } as never);
+    wire.quotes.push({ key: 'walls.material', quote: 'Full gut' }, { key: 'walls.extent', quote: 'Full gut' });
+    const out = fromWire(wire);
+    expect(out.problems).toEqual([]);
+    expect(out.output!.quotes.map((q) => q.key)).toContain('walls.extent');
+    expect(out.output!.quotes.map((q) => q.key)).not.toContain('walls.material');
+    expect(out.output!.work_items.find((i) => i.id === 'walls')).toMatchObject({ material: 'drywall', extent: 'unknown' });
+  });
+
+  it('a value the engine does not know, a missing fact and a fact from another kind are caught for the retry', () => {
+    const wire = toWire(j03Output());
+    const window = wire.work_items.find((i) => i.id === 'window')!;
+    window.facts = [{ fact: 'opening', value: 'skylight' }, { fact: 'bearing', value: 'no' }];
+    expect(fromWire(wire).problems).toEqual([
+      'Work item "window" (opening): opening "skylight" isn\'t allowed; use one of: window, exterior_door, interior_door.',
+      'Work item "window" (opening) is missing action; give a value or "unknown".',
+      'Work item "window" (opening) has no fact "bearing"; opening facts are: opening, action.',
+    ]);
   });
 
   it('the extraction prompt explains every item kind and fact in the schema', () => {
@@ -182,16 +219,36 @@ describe('fallbacks: the job can go ahead without the AI', () => {
       ...Object.entries(WORK_ITEM_KINDS).flatMap(([kind, facts]) =>
         Object.entries(facts)
           .filter(([, spec]) => spec.type === 'choice' || spec.type === 'count')
-          .map(([fact, spec]) => ({ key: `x.${fact}`, item_id: 'x', fact, options: spec.type === 'choice' ? [...spec.values] : [], kind })),
+          .map(([fact, spec]) => ({ key: `${kind}.${fact}`, item_id: kind, fact, options: spec.type === 'choice' ? [...spec.values] : [] })),
       ),
       ...Object.keys(PROPERTY_FACTS).map((fact) => ({ key: `property.${fact}`, fact, options: ['yes', 'no'] })),
       ...['total', 'building', 'electrical', 'plumbing', 'mechanical'].map((fact) => ({ key: `costs.${fact}`, fact, options: [] })),
     ];
-    const facts = { ...j01.before, work_items: [{ id: 'x', kind: 'fixture', label: 'Test item' }] };
+    const facts = { ...j01.before, work_items: Object.keys(WORK_ITEM_KINDS).map((kind) => ({ id: kind, kind, label: 'Test item' })) };
     for (const q of questions) {
       const w = fallbackQuestion(q, facts);
       expect(checkQuestions({ questions: [w] }, [q]), q.key).toEqual([]);
     }
+  });
+
+  it('every fact the engine can ask about, and every answer value, has a plain meaning (sent to the question call)', () => {
+    const missing: string[] = [];
+    for (const [kind, facts] of Object.entries(WORK_ITEM_KINDS)) {
+      for (const [fact, spec] of Object.entries(facts)) {
+        if (spec.type !== 'choice' && spec.type !== 'count') continue;
+        const m = meaningFor(kind, fact);
+        if (!m) missing.push(`${kind}.${fact}`);
+        else if (spec.type === 'choice') for (const v of spec.values) if (!['yes', 'no', UNKNOWN].includes(v) && !m.values?.[v]) missing.push(`${kind}.${fact} = ${v}`);
+      }
+    }
+    for (const [fact, spec] of Object.entries(PROPERTY_FACTS)) {
+      if (spec.type === 'text') continue;
+      const m = meaningFor(null, fact);
+      if (!m) missing.push(`property.${fact}`);
+      else if (spec.type === 'choice') for (const v of spec.values) if (!['yes', 'no', UNKNOWN].includes(v) && !m.values?.[v]) missing.push(`property.${fact} = ${v}`);
+    }
+    expect(missing).toEqual([]);
+    expect(meaningFor(null, 'dwelling_type')!.values!.detached_2f).toMatch(/two-family/i);
   });
 
   it('with no key or network, questions fall back to the built-in wording', async () => {
@@ -212,7 +269,7 @@ describe('a failed check gets one retry with the problems listed', () => {
   it('extract: a bad first answer, then a good one', async () => {
     const bad = j03Output();
     bad.costs.plumbing = 6000;
-    const answers = [bad, j03Output()];
+    const answers = [toWire(bad), toWire(j03Output())];
     const seen: string[] = [];
     const r = await extract(j03.raw.description, {
       transport: async (req) => {
@@ -256,17 +313,17 @@ describe('the eval scores a perfect extraction perfectly (checks the eval itself
 });
 
 describe('the eval tells guessed, wrong and missed facts apart', () => {
-  it('J-03 with a guessed window, a wrong lavatory count and a missed total', () => {
+  it('J-03 with a guessed shower drain, a wrong lavatory count and a missed total', () => {
     const out = j03Output();
     const items = out.work_items as Record<string, unknown>[];
-    items.find((i) => i.id === 'window')!.action = 'replace_same';
+    items.find((i) => i.id === 'shower')!.action = 'replace_same';
     items.find((i) => i.id === 'lavs')!.fixtures = [{ fixture: 'lavatory', count: 1 }];
     out.costs.total = null;
     const ex = toFacts(out, directory);
     const raw = jobFromExtraction(j03.raw, ex);
     const facts = buildFacts(raw);
     const score = scoreFacts(facts, j03.before, alignItems(facts.work_items, j03.before.work_items), raw, j03.raw);
-    expect(score.guessed).toEqual([{ key: 'window.action', expected: 'unknown', got: 'replace_same' }]);
+    expect(score.guessed).toEqual([{ key: 'shower.action', expected: 'unknown', got: 'replace_same' }]);
     expect(score.wrong).toEqual([{ key: 'lavs.fixtures', expected: { lavatory: 2 }, got: { lavatory: 1 } }]);
     expect(score.missed).toEqual([{ key: 'costs.total', expected: 32000, got: null }]);
   });
@@ -362,5 +419,41 @@ describe('eval-only fixtures', () => {
       const spec = parse(readFileSync(dir + f, 'utf8'));
       expect(doc, spec.id).toContain(`> ${spec.description.trim()}`.replace(/\s+/g, ' '));
     }
+  });
+});
+
+describe('the eval buys each answer once (saved answers are reused)', () => {
+  const fakeApi = () => {
+    let calls = 0;
+    const t: Transport = async (req, settings) => {
+      calls++;
+      return { output: { questions: [] }, usage: { model: settings.model, input_tokens: 1, output_tokens: 1, cost: 0.01 } } as never;
+    };
+    return { t, calls: () => calls };
+  };
+  const request = (user: string) => ({ ...questionsRequest([], j03.before, {}), user });
+  const settings = { model: 'claude-sonnet-5-5', effort: 'medium', max_tokens: 1000 } as const;
+
+  it('the same request is bought once, then reused for free; a changed request or another run is bought', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'saved-'));
+    const api = fakeApi();
+    const stats = newStats();
+    await savedTransport(1, stats, { base: api.t, dir })(request('A'), settings as never);
+    await savedTransport(1, stats, { base: api.t, dir })(request('A'), settings as never);
+    expect(api.calls()).toBe(1);
+    await savedTransport(1, stats, { base: api.t, dir })(request('A, changed prompt'), settings as never);
+    await savedTransport(2, stats, { base: api.t, dir })(request('A'), settings as never);
+    expect(api.calls()).toBe(3);
+    expect(stats).toMatchObject({ reused: 1, bought: 3 });
+    expect(stats.spent).toBeCloseTo(0.03);
+  });
+
+  it('re-grading (--rescore) never calls the API; it counts what is missing instead', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'saved-'));
+    const api = fakeApi();
+    const stats = newStats();
+    await expect(savedTransport(1, stats, { base: api.t, dir, offline: true })(request('B'), settings as never)).rejects.toThrow(/No saved/);
+    expect(api.calls()).toBe(0);
+    expect(stats.missing).toEqual({ 'claude-sonnet-5-5': 1 });
   });
 });

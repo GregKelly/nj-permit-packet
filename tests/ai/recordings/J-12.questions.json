@@ -1,0 +1,72 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "rooms.bedroom",
+        "text": "You mentioned a \"Rec room\". Will any of the finished rooms be used as a bedroom?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, a bedroom"
+          },
+          {
+            "value": "no",
+            "label": "No bedroom"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "rooms.fuel_appliance_nearby",
+        "text": "For the rec room, is a furnace, boiler or water heater in or right next to the finished rooms?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, one is in or right next to them"
+          },
+          {
+            "value": "no",
+            "label": "No, none is in or next to them"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "bath.upsizing_needed",
+        "text": "For the half bath (toilet and sink, gravity drain, no pump), do the water lines or the drain have to be made bigger for the new bathroom?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, they must be made bigger"
+          },
+          {
+            "value": "no",
+            "label": "No, they don't need to be made bigger"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "costs.electrical",
+        "text": "The application needs a single estimated dollar amount for the electrical work. An estimate is fine. What figure should go on it?",
+        "options": []
+      },
+      {
+        "key": "costs.plumbing",
+        "text": "The application needs a single estimated dollar amount for the plumbing work. An estimate is fine. What figure should go on it?",
+        "options": []
+      }
+    ]
+  }
+}

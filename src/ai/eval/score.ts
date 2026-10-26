@@ -88,7 +88,7 @@ function compare(key: string, expected: unknown, got: unknown, s: FactScore, bla
  * facts before follow-ups. Property facts the parcel lookup or contractor supply
  * (dwelling type) count only when the AI gives a value.
  */
-export function scoreFacts(ai: JobFacts, gold: JobFacts, matches: ItemMatch[], aiRaw: Raw, goldRaw: Raw): FactScore {
+export function scoreFacts(ai: JobFacts, gold: JobFacts, matches: ItemMatch[], aiRaw: Raw, goldRaw: Raw, defaultTeam: Record<string, string> = {}): FactScore {
   const s: FactScore = { guessed: [], wrong: [], missed: [], extra_items: [], missing_items: [] };
   const aiItems = new Map(ai.work_items.map((i) => [i.id, i]));
   const goldItems = new Map(gold.work_items.map((i) => [i.id, i]));
@@ -130,9 +130,10 @@ export function scoreFacts(ai: JobFacts, gold: JobFacts, matches: ItemMatch[], a
     if (!same(e, g)) s.wrong.push({ key: `performed_by.${trade}`, expected: e, got: g });
   }
   for (const trade of ['electrical', 'plumbing', 'hvacr']) {
-    const e = goldRaw.team?.[trade];
-    const g = aiRaw.team?.[trade];
-    if (e !== g) (e ? s.wrong : s.guessed).push({ key: `team.${trade}`, expected: e ?? '(default)', got: g ?? '(default)' });
+    // Naming the sub that's already the default isn't a difference (J-09: "Clearair is installing").
+    const e = goldRaw.team?.[trade] ?? defaultTeam[trade];
+    const g = aiRaw.team?.[trade] ?? defaultTeam[trade];
+    if (e !== g) (goldRaw.team?.[trade] ? s.wrong : s.guessed).push({ key: `team.${trade}`, expected: e ?? '(none)', got: g ?? '(none)' });
   }
   return s;
 }
@@ -169,7 +170,8 @@ export function resultOf(d: Determinations) {
   return {
     outcome: d.outcome,
     job_tier: d.job_tier,
-    items: Object.fromEntries(d.items.map((i) => [i.item_id, [i.rule_id, i.tier]])),
+    // Sorted, so the order the AI listed its items in doesn't count as a difference.
+    items: Object.fromEntries(d.items.map((i) => [i.item_id, [i.rule_id, i.tier]]).sort(([a], [b]) => String(a).localeCompare(String(b)))),
     forms: Object.fromEntries(d.forms.map((f) => [f.form, f.signer])),
     zoning: d.zoning && [d.zoning.rule_id, d.zoning.status],
     plans: d.plans && [d.plans.rule_id, d.plans.requirement],
@@ -207,6 +209,9 @@ export function playRounds(aiRaw: Raw, goldAfter: JobFacts, expected: Determinat
   const final = determine(build(raw), rules, today);
   const got = resultOf(final);
   const want = resultOf(expected);
+  // An AI item the answer key doesn't have (one approved item split in two) isn't a difference
+  // by itself: every approved item must still get its rule, and the forms and entries must match.
+  for (const id of Object.keys(got.items)) if (!(id in want.items)) delete got.items[id];
   const differences = (Object.keys(want) as (keyof typeof want)[])
     .filter((k) => !same(got[k], want[k]))
     .map((k) => `${k}: expected ${JSON.stringify(want[k])}, got ${JSON.stringify(got[k])}`);

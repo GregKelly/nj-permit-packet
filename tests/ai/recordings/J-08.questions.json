@@ -1,0 +1,13 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "costs.electrical",
+        "text": "The application needs a single estimated dollar amount for the electrical work, and an estimate is fine. What figure should go on it?",
+        "options": []
+      }
+    ]
+  }
+}

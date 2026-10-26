@@ -9,7 +9,7 @@ import { extract, toFacts } from '../src/ai/extract';
 import { jobFromExtraction, evalOnlyJob } from '../src/ai/eval/jobs';
 import { alignItems, scoreFacts } from '../src/ai/eval/score';
 import { scoreFacts as scoreEvalOnly } from '../src/ai/eval/score-eval-only';
-import { buildFacts } from '../tests/helpers';
+import { buildFacts, profile } from '../tests/helpers';
 import { descriptionOf, directory, extrasLines, factLines, findJob, idArg, modelArg } from './ai-shared';
 
 const args = process.argv.slice(2);
@@ -39,7 +39,7 @@ try {
   if (job.kind === 'test') {
     console.log('\nAnswer key (facts before follow-ups)');
     console.log(factLines(job.job.before).join('\n'));
-    const s = scoreFacts(facts, job.job.before, alignItems(facts.work_items, job.job.before.work_items), raw, job.job.raw);
+    const s = scoreFacts(facts, job.job.before, alignItems(facts.work_items, job.job.before.work_items), raw, job.job.raw, profile.default_team);
     printScore(s.guessed, s.wrong, s.missed, [...s.extra_items.map((i) => `extra item ${i}`), ...s.missing_items.map((i) => `missing item ${i}`)]);
   } else {
     const s = scoreEvalOnly(job.spec, ex, facts);

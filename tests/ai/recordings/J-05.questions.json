@@ -1,0 +1,48 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "bedroom.fuel_appliance_nearby",
+        "text": "For turning the back half of the basement into a guest bedroom, is a furnace, boiler or water heater in or right next to the finished rooms?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, one is in or right next to the rooms"
+          },
+          {
+            "value": "no",
+            "label": "No, none is in or right next to the rooms"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "alarms.power",
+        "text": "For the smoke and CO alarms in the new bedroom, how are they powered?",
+        "options": [
+          {
+            "value": "hardwired",
+            "label": "Hardwired to the house wiring"
+          },
+          {
+            "value": "battery",
+            "label": "Battery only"
+          },
+          {
+            "value": "plug_in",
+            "label": "Plug-in"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

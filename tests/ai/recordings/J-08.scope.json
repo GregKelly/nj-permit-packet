@@ -1,0 +1,53 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Replace the gas furnace (80k BTU) with a unit of the same size, with no change in fuel.",
+            "item_ids": [
+              "furnace"
+            ]
+          },
+          {
+            "text": "Replace the 3-ton A/C condensing unit with a unit of the same capacity in the same location.",
+            "item_ids": [
+              "condenser"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "mechanical",
+        "sentences": [
+          {
+            "text": "Replace the gas furnace (80k BTU) with a unit of the same size, with no change in fuel.",
+            "item_ids": [
+              "furnace"
+            ]
+          },
+          {
+            "text": "Replace the 3-ton A/C condensing unit with a unit of the same capacity in the same location.",
+            "item_ids": [
+              "condenser"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "not_permitted",
+        "sentences": [
+          {
+            "text": "Install a new thermostat.",
+            "item_ids": [
+              "thermostat"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "building",
+        "sentences": [
+          {
+            "text": "Install new drywall throughout.",
+            "item_ids": [
+              "drywall"
+            ]
+          },
+          {
+            "text": "Remove the non-bearing wall between the kitchen and dining room.",
+            "item_ids": [
+              "wall"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Install 18 devices on two new 20A counter circuits, including 8 recessed cans and island outlets.",
+            "item_ids": [
+              "electrical"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "plumbing",
+        "sentences": [
+          {
+            "text": "Relocate the sink to the new island.",
+            "item_ids": [
+              "island"
+            ]
+          },
+          {
+            "text": "Connect 1 dishwasher and 1 disposal on the new run.",
+            "item_ids": [
+              "island"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "not_permitted",
+        "sentences": [
+          {
+            "text": "Install new cabinets.",
+            "item_ids": [
+              "cabinets"
+            ]
+          },
+          {
+            "text": "Install quartz countertops.",
+            "item_ids": [
+              "counters"
+            ]
+          },
+          {
+            "text": "Install LVP flooring.",
+            "item_ids": [
+              "floor"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

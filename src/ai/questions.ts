@@ -8,6 +8,7 @@ import type { JobFacts, Question } from '../engine';
 import { UNKNOWN } from '../engine/facts';
 import { answerValues, checkQuestions } from './checks';
 import { AiError, send, totalUsage, type CallOptions, type Usage } from './client';
+import { meaningFor } from './meanings';
 import { QuestionsOutput } from './schema';
 
 const PROMPT = readFileSync(new URL('./prompts/questions.md', import.meta.url), 'utf8');
@@ -38,22 +39,31 @@ export function fallbackQuestion(q: Question, facts: JobFacts): WordedQuestion {
       options: [],
     };
   }
-  const subject = q.item_id ? facts.work_items.find((i) => i.id === q.item_id)?.label ?? q.item_id : 'Property';
+  const item = q.item_id ? facts.work_items.find((i) => i.id === q.item_id) : undefined;
+  const subject = q.item_id ? item?.label ?? q.item_id : 'Property';
+  const meaning = meaningFor(item ? item.kind : null, q.fact);
+  const about = meaning?.asks ?? humanize(q.fact);
   return {
     key: q.key,
-    text: q.options.length ? `${subject}: ${humanize(q.fact).toLowerCase()}?` : `${subject}: how many (${q.fact.replace(/_/g, ' ')})? Enter one number.`,
-    options: answerValues(q).map((v) => ({ value: v, label: v === UNKNOWN ? "Don't know" : humanize(v) })),
+    text: q.options.length ? `${subject}: ${about}?` : `${subject}: ${about}? Enter one number.`,
+    options: answerValues(q).map((v) => ({ value: v, label: v === UNKNOWN ? "Don't know" : meaning?.values?.[v] ?? humanize(v) })),
   };
 }
 
 export function questionsRequest(asked: Question[], facts: JobFacts, quotes: Record<string, string>, problems: string[] = []) {
-  const list = asked.map((q) => ({
-    key: q.key,
-    about: q.item_id ? facts.work_items.find((i) => i.id === q.item_id)?.label : q.key.startsWith('costs.') ? 'Costs' : 'The property',
-    fact: q.fact,
-    values: answerValues(q),
-    ...(quotes[q.key] ? { quote: quotes[q.key] } : {}),
-  }));
+  const list = asked.map((q) => {
+    const item = q.item_id ? facts.work_items.find((i) => i.id === q.item_id) : undefined;
+    const meaning = q.key.startsWith('costs.') ? undefined : meaningFor(item ? item.kind : null, q.fact);
+    return {
+      key: q.key,
+      about: item?.label ?? (q.key.startsWith('costs.') ? 'Costs' : 'The property'),
+      fact: q.fact,
+      ...(meaning ? { means: meaning.asks } : {}),
+      values: answerValues(q),
+      ...(meaning?.values ? { value_meanings: meaning.values } : {}),
+      ...(quotes[q.key] ? { quote: quotes[q.key] } : {}),
+    };
+  });
   const retry = problems.length ? `\n\nA previous answer had these problems. Fix them:\n${problems.map((p) => `- ${p}`).join('\n')}` : '';
   return { call: 'questions' as const, system: PROMPT, user: `Questions to word:\n\n${JSON.stringify(list, null, 2)}${retry}`, schema: QuestionsOutput };
 }

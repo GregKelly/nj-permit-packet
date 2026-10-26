@@ -1,0 +1,80 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "shower.action",
+        "text": "You mentioned \"Rip out the tub, put in a walk-in tile shower.\" Does the new shower go in the same spot with the same piping, is it an extra fixture added in the existing space, or does it move so the drain or supply lines get rerouted?",
+        "options": [
+          {
+            "value": "replace_same",
+            "label": "Same spot, same piping"
+          },
+          {
+            "value": "add",
+            "label": "Extra fixture, piping in existing space"
+          },
+          {
+            "value": "relocate",
+            "label": "Moved, drain or supply lines rerouted"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "lavs.upsizing_needed",
+        "text": "You mentioned a double vanity instead of the single. Do the water lines or drain have to be made bigger for this work?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, bigger lines or drain needed"
+          },
+          {
+            "value": "no",
+            "label": "No, not made bigger"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "heated_floor.new_circuit",
+        "text": "You mentioned a heated floor. Does the work need a new circuit from the panel, and if so, what kind?",
+        "options": [
+          {
+            "value": "none",
+            "label": "No new circuit, uses existing circuits"
+          },
+          {
+            "value": "appliance",
+            "label": "New circuit only for a range, oven, dryer or air conditioner"
+          },
+          {
+            "value": "other",
+            "label": "Other new circuit (counter outlets, lights, heated floor, etc.)"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "costs.electrical",
+        "text": "The application needs a single estimated dollar amount for the electrical work, and an estimate is fine. What figure should go on it?",
+        "options": []
+      },
+      {
+        "key": "costs.plumbing",
+        "text": "The application needs a single estimated dollar amount for the plumbing work, and an estimate is fine. What figure should go on it?",
+        "options": []
+      }
+    ]
+  }
+}

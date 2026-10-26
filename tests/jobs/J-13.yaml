@@ -15,7 +15,7 @@ work_items:
   - { id: wall, kind: wall_change, label: Remove non-bearing wall between kitchen and dining room, action: remove, bearing: "no" }
   - { id: drywall, kind: drywall, label: Redo drywall in kitchen and dining room, extent: 25_percent_or_more }
   - { id: furnace, kind: hvac_equipment, label: "Gas furnace, 80k BTU, same size", equipment: furnace, action: replace, like_capacity: "yes", fuel_change: "no", fuel: gas }
-  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none }
+  - { id: condenser, kind: hvac_equipment, label: "A/C condensing unit, 3-ton", equipment: ac_condenser, action: replace, like_capacity: "yes", same_location: "yes", fuel: none, fuel_change: "no" }
 
 expected_questions: []
 answers: {}

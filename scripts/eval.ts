@@ -1,27 +1,34 @@
 // The M3 evals (plan, "Evals and targets"). Runs every description through the
-// real API, scores it, and writes docs/reports/m3-eval-report.md. Costs money,
-// so it's never part of `npm test`.
+// real API, scores it, and writes the report. Costs money, so it's never part of
+// `npm test`. Every answer bought is saved (src/ai/eval/saved.ts) and reused by
+// later evals that send the same request, so only changed requests cost money.
 //
-// Usage: npm run eval                                 (all models, 3 runs each)
+// Usage: npm run eval -- --rescore                    (free: re-grade saved answers; says what's missing and its cost)
+//        npm run eval                                 (all models, 3 runs each; buys only answers not saved)
 //        npm run eval -- --models sonnet --runs 1     (quicker, cheaper)
 //        npm run eval -- --jobs J-03,E-01             (only these descriptions)
-//        npm run eval -- --record                     (also save the answers for the offline tests)
+//        npm run eval -- --record                     (also save Sonnet's run-1 answers for the offline tests)
 //        npm run eval -- --dry-run                    (no API: answers with the answer key, to check the eval itself)
+//
+// Only a full eval (all three models, 3 runs, every description) writes
+// docs/reports/m3-eval-report.md; a partial one writes next to its raw results in out/eval/.
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { determine, type JobFacts, type RuleSet } from '../src/engine';
 import { MODELS, SETTINGS, type Model } from '../src/ai/config';
-import { AiError, apiTransport, type CallOptions, type Transport } from '../src/ai/client';
+import { AiError, type CallOptions, type Transport } from '../src/ai/client';
 import { extract, toFacts } from '../src/ai/extract';
 import { openQuestions } from '../src/ai/flow';
 import { fallbackQuestion, phraseQuestions, type WordedQuestion } from '../src/ai/questions';
 import { recordingTransport } from '../src/ai/replay';
+import { newStats, savedTransport } from '../src/ai/eval/saved';
+import { toWire } from '../src/ai/schema';
 import { writeScope } from '../src/ai/scope';
 import { answerKeyAsOutput, evalOnlyJob, jobFromExtraction } from '../src/ai/eval/jobs';
 import { alignItems, playRounds, renameItems, renameKey, renameQuotes, scoreFacts, type FactDiff } from '../src/ai/eval/score';
 import { scoreFacts as scoreEvalOnly, scoreFollowUps, type EvalOnlySpec } from '../src/ai/eval/score-eval-only';
 import { loadRules } from '../src/rules-dir';
-import { buildFacts, TODAY, type JobFixture } from '../tests/helpers';
+import { buildFacts, profile, TODAY, type JobFixture } from '../tests/helpers';
 import { directory, loadEvalOnly, testJobs } from './ai-shared';
 
 // ── Arguments ─────────────────────────────────────────────────────────────────
@@ -37,6 +44,8 @@ const runs = Number(arg('runs') ?? 3);
 const only = arg('jobs')?.split(',');
 const record = args.includes('--record');
 const dryRun = args.includes('--dry-run');
+const rescore = args.includes('--rescore');
+const stats = newStats();
 const rules: RuleSet = loadRules();
 
 const jobs = testJobs().filter((j) => !only || only.includes(j.id));
@@ -50,7 +59,7 @@ const dryRunTransport: Transport = async (req) => {
   if (req.call === 'extract') {
     const job = jobs.find((j) => req.user.includes(j.raw.description.trim()));
     if (!job) throw new AiError('Dry run: no answer key for eval-only descriptions.', 'invalid');
-    return { output: answerKeyAsOutput(job.raw, directory), usage } as never;
+    return { output: toWire(answerKeyAsOutput(job.raw, directory)), usage } as never;
   }
   if (req.call === 'questions') {
     const list = JSON.parse(req.user.slice(req.user.indexOf('['), req.user.lastIndexOf(']') + 1)) as { key: string; fact: string; values: string[]; quote?: string }[];
@@ -64,8 +73,9 @@ const dryRunTransport: Transport = async (req) => {
 
 function transportFor(model: Model, run: number, id: string): Transport {
   if (dryRun) return dryRunTransport;
-  if (record && run === 1 && model === SETTINGS.extract.model) return recordingTransport(new URL(`../tests/ai/recordings/${id}`, import.meta.url).pathname);
-  return apiTransport;
+  const saved = savedTransport(run, stats, { offline: rescore });
+  if (record && run === 1 && model === SETTINGS.extract.model) return recordingTransport(new URL(`../tests/ai/recordings/${id}`, import.meta.url).pathname, saved);
+  return saved;
 }
 
 // ── One test job, one run ─────────────────────────────────────────────────────
@@ -99,7 +109,7 @@ async function runTestJob(job: JobFixture, model: Model, run: number): Promise<T
   };
   const r = await extract(job.raw.description, opts);
   base.cost += r.usage?.cost ?? 0;
-  if (!r.output) return { ...base, error: r.problems.join(' ') };
+  if (!r.output) return { ...base, error: r.problems.join(' '), question_checks: ['No usable extraction.'] };
   if (r.problems.length) base.error = `Checks failed after retry: ${r.problems.join(' ')}`;
 
   const ex = toFacts(r.output, directory);
@@ -111,7 +121,7 @@ async function runTestJob(job: JobFixture, model: Model, run: number): Promise<T
     return { ...base, error: `Extracted facts don't fit the schema: ${(e as Error).message}` };
   }
   const matches = alignItems(facts.work_items, job.before.work_items);
-  const s = scoreFacts(facts, job.before, matches, raw, job.raw);
+  const s = scoreFacts(facts, job.before, matches, raw, job.raw, profile.default_team);
   const renamed = renameItems(raw, matches);
   const renamedFacts = buildFacts(renamed);
   const asked = openQuestions(renamedFacts, rules, TODAY, new Set());
@@ -174,7 +184,7 @@ async function runEvalOnly(spec: EvalOnlySpec, model: Model, run: number): Promi
   const base: EvalOnlyRun = { id: spec.id, ok: false, guessed: [], wrong: [], missed: [], failed: [], follow_up_failures: [], question_checks: [], worded: [], cost: 0 };
   const r = await extract(spec.description, opts);
   base.cost += r.usage?.cost ?? 0;
-  if (!r.output) return { ...base, error: r.problems.join(' ') };
+  if (!r.output) return { ...base, error: r.problems.join(' '), failed: ['No usable extraction.'], follow_up_failures: spec.follow_ups ? ['No usable extraction.'] : [], question_checks: ['No usable extraction.'] };
   const ex = toFacts(r.output, directory);
   let facts: JobFacts;
   try {
@@ -230,16 +240,39 @@ for (const model of dryRun ? (['dry-run'] as unknown as Model[]) : models) {
         if (e instanceof AiError) return { ...empty, id, error: e.message } as T;
         throw e;
       });
-    const blankTest = { ok: false, guessed: [], wrong: [], missed: [], item_differences: [], same_questions: false, questions_asked: [], same_result: false, result_differences: [], rounds: 0, costs_exact: false, question_checks: [], worded: [], scope_checks: [], scope: [], cost: 0 } as unknown as TestRun;
-    const blankEval = { ok: false, guessed: [], wrong: [], missed: [], failed: [], follow_up_failures: [], question_checks: [], worded: [], cost: 0 } as unknown as EvalOnlyRun;
-    results[model].test.push(await pool(jobs.map((j) => () => settle(j.id, () => runTestJob(j, m, run), blankTest))));
-    if (!dryRun) results[model].evalOnly.push(await pool(evalOnly.map((s) => () => settle(s.id, () => runEvalOnly(s, m, run), blankEval))));
+    const failed = ['No usable answer.'];
+    const blankTest = { ok: false, guessed: [], wrong: [], missed: [], item_differences: [], same_questions: false, questions_asked: [], same_result: false, result_differences: [], rounds: 0, costs_exact: false, question_checks: failed, worded: [], scope_checks: [], scope: [], cost: 0 } as unknown as TestRun;
+    const blankEval = { ok: false, guessed: [], wrong: [], missed: [], failed, follow_up_failures: failed, question_checks: failed, worded: [], cost: 0 } as unknown as EvalOnlyRun;
+    let done = 0;
+    const total = jobs.length + (dryRun ? 0 : evalOnly.length);
+    const tick = <T>(id: string, f: () => Promise<T>) => async () => {
+      const r = await f();
+      console.log(`  ${String(++done).padStart(2)}/${total} ${id}`);
+      return r;
+    };
+    results[model].test.push(await pool(jobs.map((j) => tick(j.id, () => settle(j.id, () => runTestJob(j, m, run), blankTest)))));
+    if (!dryRun) results[model].evalOnly.push(await pool(evalOnly.map((s) => tick(s.id, () => settle(s.id, () => runEvalOnly(s, m, run), blankEval)))));
   }
+}
+
+const missing = Object.entries(stats.missing);
+if (missing.length) {
+  // Re-grading needs every answer saved; a partial set would grade missing answers as failures.
+  // A missing extraction hides the calls after it, so a whole job is priced per missing answer.
+  const perJob = (model: string) => {
+    const xs = [...results[model].test.flat(), ...results[model].evalOnly.flat()].filter((x) => x.cost > 0);
+    return xs.length ? xs.reduce((a, x) => a + x.cost, 0) / xs.length : 0.05;
+  };
+  const cost = missing.reduce((a, [model, n]) => a + n * perJob(model), 0);
+  console.log(`\nNot every answer is saved: ${missing.map(([m, n]) => `${n} missing for ${m}`).join(', ')}.`);
+  console.log(`No report written. Run without --rescore to buy only the missing answers: at most about $${cost.toFixed(2)}.`);
+  process.exit(1);
 }
 
 mkdirSync('out/eval', { recursive: true });
 const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
 writeFileSync(`out/eval/${stamp}.json`, JSON.stringify({ models, runs, results }, null, 2));
+
 
 // ── Report ────────────────────────────────────────────────────────────────────
 
@@ -275,7 +308,7 @@ rows.push(['Question checks pass: every run', ...per((r) => { const t = [...allT
 rows.push(['Scope checks pass: every run', ...per((r) => { const t = allTest(r).filter((x) => x.scope.length || x.scope_checks.length); const n = t.filter((x) => !x.scope_checks.length).length; return `${yes(n === t.length)} ${n}/${t.length}`; })]);
 rows.push(['Answers that failed outright (no usable answer)', ...per((r) => { const n = [...allTest(r), ...allEval(r)].filter((x) => x.error && !x.ok).length; return `${yes(n === 0)} ${n}`; })]);
 rows.push(['Cost per job, all three calls (average)', ...per((r) => money([...allTest(r), ...allEval(r)].reduce((a, x) => a + x.cost, 0) / Math.max(1, jobRuns(r))))]);
-rows.push(['Cost of this eval', ...per((r) => money([...allTest(r), ...allEval(r)].reduce((a, x) => a + x.cost, 0)))]);
+rows.push(['Cost of these answers (when first bought)', ...per((r) => money([...allTest(r), ...allEval(r)].reduce((a, x) => a + x.cost, 0)))]);
 
 L(`| ${header.join(' | ')} |`);
 L(`|${header.map(() => '---').join('|')}|`);
@@ -363,8 +396,10 @@ for (const id of SCOPE_SAMPLES) {
   }
 }
 
+const full = !dryRun && !only && runs === 3 && MODELS.every((m) => models.includes(m));
 mkdirSync('docs/reports', { recursive: true });
-const report = dryRun ? 'out/eval/dry-run-report.md' : 'docs/reports/m3-eval-report.md';
+const report = dryRun ? 'out/eval/dry-run-report.md' : full ? 'docs/reports/m3-eval-report.md' : `out/eval/${stamp}-report.md`;
 writeFileSync(report, lines.join('\n'));
-console.log(`\nWrote ${report} (raw results: out/eval/${stamp}.json)`);
+console.log(`\nWrote ${report} (raw results: out/eval/${stamp}.json)${full || dryRun ? '' : '. Partial eval, so the official report is unchanged.'}`);
 console.log(rows.map((r) => `  ${r[0].replace(/\*/g, '')}: ${r.slice(1).join(' | ')}`).join('\n'));
+if (!dryRun) console.log(`\nAnswers reused: ${stats.reused}; bought: ${stats.bought}. Spent this time: $${stats.spent.toFixed(2)}.`);

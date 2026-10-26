@@ -27,10 +27,10 @@ export function loadRecording(path: string): Recording {
   return JSON.parse(readFileSync(path, 'utf8'));
 }
 
-/** Calls the API and saves each answer to `${prefix}.<call>.json`. */
-export function recordingTransport(prefix: string): Transport {
+/** Calls the API (or `base`) and saves each answer to `${prefix}.<call>.json`. */
+export function recordingTransport(prefix: string, base: Transport = apiTransport): Transport {
   return async (req, settings) => {
-    const result = await apiTransport(req, settings);
+    const result = await base(req, settings);
     const path = `${prefix}.${req.call}.json`;
     mkdirSync(dirname(path), { recursive: true });
     const rec: Recording = { source: 'api', model: result.usage.model, output: result.output };

@@ -25,6 +25,12 @@
 **Changes after approval, homeowner build** (owner decision 2026-10-26; `tests/packets/` carries the change)
 7. **J-11, J-12a, J-13b (F120 HIC box):** the approved entry "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii" is too long for the box (106 pt of text at the smallest type in a 58 pt box), so F120 prints **"Exempt: owner"**. F130 and F145 have wider boxes and print "Exempt: owner, 5:23-2.15(b)8.ii" (unit case J-12b). The engine's entry keeps the full text.
 
+**Changes after approval, M3** (owner decisions 2026-10-26, found by the first AI evals; `tests/jobs/` carries the same changes)
+8. **J-03:** "Owner wants a bigger window over the tub area" states an **enlarged opening** (a bigger window can't go in the same opening), so Q4 ("Does the window opening change?") is no longer asked; the determinations are unchanged (KB-23, FULL). The **tile floor item is removed**: the description doesn't mention one, and as ordinary maintenance it changed no form or determination. E-01's plain "new window" still leaves the opening unknown.
+9. **J-08, J-13, J-13b:** the A/C condenser's **fuel change is "no"** (it burns no fuel before or after, like `fuel: none`). No question or determination changes.
+10. **J-09:** the mini-split's **fuel change is "no"** (cooling only; the steam heat stays) and **same location is "no"** ("a new pad in the side yard"). No question or determination changes.
+11. **J-02:** "same plumbing" means nothing behind the walls or under the floor changes (no new pipes), so the toilet's **upsizing needed is "no"**. "Replace the vanity" includes its **sink** (the vanity is cabinet and sink as one unit), so the fixture item now covers a toilet and a lavatory. Still ordinary maintenance (KB-01, KB-06); no permit, no questions.
+
 ---
 
 ## Shared test profile

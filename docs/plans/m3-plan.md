@@ -131,9 +131,22 @@ An Anthropic API key in `ANTHROPIC_API_KEY` for the eval runs, and OK to spend r
 
 On a branch, `m3-ai-layer`. First the eval-only descriptions for your approval, then the checks and offline tests (all failing), then the three calls until the tests pass, then the eval runs and prompt fixes until the targets are met (or I bring you the gap), then the report. After your review, merge to `main`.
 
-## Build notes (2026-10-26, in progress)
+## Build notes (2026-10-26)
 
-**Status.** Built on `m3-ai-layer` and tested offline: 395 tests pass, including 47 new ones for the AI layer (`tests/ai.test.ts` and the narrative on the scope page) and 4 for the engine change (`tests/gaps.test.ts`). **The real evals haven't run yet**: there's no API key on this machine. A dry run of the eval (`npm run eval -- --dry-run`), which answers with the answer key, scores perfectly on every target, so the scoring itself is checked.
+**Status.** Built on `m3-ai-layer`, evals run, every target met by Sonnet 5.5 on all 13 test jobs and all 10 eval-only descriptions, 3 runs each (`docs/reports/m3-eval-report-sonnet-final.md`). 414 offline tests pass. Waiting on owner review.
+
+**Model recommendation: Sonnet 5.5 for all three calls** (the current setting in `src/ai/config.ts`). From the three-model comparison (`docs/reports/m3-eval-report.md`, run before the last prompt fixes):
+- **Haiku** fails several targets on every call: about 1 answer in 6 was unusable (bad values or missing facts), and its question wording missed the description quote on 5 of 9 follow-ups. It would save about 2 cents a job.
+- **Opus** infers more than the description says (a guessed hood airflow increase, a dropped quote on E-03) and costs twice as much as Sonnet (about 4 cents a job against 2).
+- **Sonnet** never guessed. Its remaining misses were all gaps in the instructions, fixed below.
+
+**Eval history** (about $16 spent on API calls in total, including about $2 on a run stopped when the answer key changed):
+1. First full run: Sonnet missed only a fuel and a bedroom guess. The question call worded `detached_2f` as "two stories". Fixed by sending a plain meaning with every question and answer value (`src/ai/meanings.ts`; a test requires one for every askable fact). Owner decisions 8 to 11 in `docs/test-jobs-v1.md` corrected the answer key (J-02, J-03, J-08, J-09, J-13).
+2. Second full run, against the corrected key: Sonnet still left the sink out of "replace the vanity" (J-02), made a work item out of "electrical $600" (J-10) and put "3-ton" in a kilowatt size (J-13). Fixed with general rules in the extraction prompt: a vanity includes its sink unless only the cabinet is named; "same plumbing" means no upsizing; a trade cost isn't a work item; only kilowatts go in `kw`; "a new pad" isn't the same location; equipment that burns no fuel has no fuel change.
+3. Sonnet recheck: E-04 ("full gut") failed because the AI answered `unknown` for the wall material, a fact the engine defaults to drywall. `unknown` for a defaulted fact now means the default, as it does in a job file.
+4. Final Sonnet run: every target met. The one remaining miss, J-10's range fuel change, is never asked (it doesn't change the result).
+
+**Saved answers.** After money was spent on runs that had to be redone, every answer the eval buys is now saved (`src/ai/eval/saved.ts`, in `out/eval/answers/`) and reused when the same request comes again. `npm run eval -- --rescore` re-grades the saved answers without calling the API and lists any that are missing with their cost; changing the answer key or the scoring now costs nothing. Only a full three-model eval writes `docs/reports/m3-eval-report.md`.
 
 **What's built:** the three calls (`src/ai/extract.ts`, `questions.ts`, `scope.ts`), their prompts (`src/ai/prompts/`), the checks (`src/ai/checks.ts`), follow-up rounds (`src/ai/flow.ts`), the eval scorer (`src/ai/eval/`), the ten eval-only fixtures (`tests/ai/eval-jobs/`), the commands `extract`, `ask`, `scope`, `eval` and `packet --narrative`, the narrative on the scope page, and changes 4 and 5 in the engine and rule data (CQ-07).
 
@@ -145,8 +158,4 @@ On a branch, `m3-ai-layer`. First the eval-only descriptions for your approval, 
 4. **Automatic retry on a different model is off.** The API can retry a declined request on another model. It's off because the eval needs to know which model answered; a declined request takes the manual path instead. Declines are unlikely for this kind of text.
 5. **Costs in the report are estimates** from list prices, counting cached prompt reads at a tenth of the input price.
 
-**To finish M3:**
-
-1. Add an API key (`export ANTHROPIC_API_KEY=...`), then run `npm run eval -- --models sonnet --runs 1` first, as a cheap first look.
-2. Fix the prompts where targets are missed, then the full run: `npm run eval -- --record` (all three models, 3 runs). `--record` saves Sonnet's run-1 answers to `tests/ai/recordings/` for the offline tests.
-3. Write the report summary and model recommendation, then your review.
+**To finish M3:** owner review of the eval reports, the sample questions and narratives in them, the prompts (`src/ai/prompts/`), and the J-01 packet with its narrative (`npm run scope -- J-01`, then `npm run packet -- J-01 --narrative`).

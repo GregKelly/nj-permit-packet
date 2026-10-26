@@ -1,0 +1,130 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "habitable_space",
+        "id": "guest_bedroom",
+        "label": "Back half of basement into a guest bedroom",
+        "facts": [
+          {
+            "fact": "bedroom",
+            "value": "yes"
+          },
+          {
+            "fact": "fuel_appliance_nearby",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "partitions",
+        "id": "basement_walls",
+        "label": "Frame two walls, drywall",
+        "facts": [],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "carpet",
+        "label": "Carpet",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "electrical",
+        "id": "basement_electrical",
+        "label": "3 outlets and 2 ceiling lights off the existing basement circuit",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "add"
+          },
+          {
+            "fact": "devices",
+            "value": "5"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "none"
+          },
+          {
+            "fact": "equipment",
+            "value": "none"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "egress_window",
+        "id": "egress_window",
+        "label": "New egress window with a window well on the side of the house",
+        "facts": [],
+        "fixtures": []
+      },
+      {
+        "kind": "smoke_co_alarm",
+        "id": "bedroom_alarms",
+        "label": "Smoke and CO alarms in the new bedroom",
+        "facts": [
+          {
+            "fact": "power",
+            "value": "unknown"
+          },
+          {
+            "fact": "count",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 26000,
+      "building": null,
+      "electrical": 1200,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [],
+    "not_covered": []
+  }
+}

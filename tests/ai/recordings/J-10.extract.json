@@ -1,0 +1,145 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "finishes",
+        "id": "cabinets_paint",
+        "label": "Paint the existing cabinets",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "paint"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "quartz_counters",
+        "label": "New quartz counters",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "countertops"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "backsplash",
+        "label": "New backsplash",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "wall_tile"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "appliance",
+        "id": "range",
+        "label": "36\" pro gas range replacing 30\" range, same spot, bigger gas line from meter",
+        "facts": [
+          {
+            "fact": "appliance",
+            "value": "range"
+          },
+          {
+            "fact": "fuel",
+            "value": "gas"
+          },
+          {
+            "fact": "fuel_change",
+            "value": "unknown"
+          },
+          {
+            "fact": "gas_line_change",
+            "value": "yes"
+          },
+          {
+            "fact": "electrical_change",
+            "value": "unknown"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "range_hood",
+        "id": "hood",
+        "label": "900 cfm hood ducted outside through the back wall, replacing old recirculating hood",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace"
+          },
+          {
+            "fact": "cfm",
+            "value": "900"
+          },
+          {
+            "fact": "cfm_increase",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 21000,
+      "building": null,
+      "electrical": 600,
+      "plumbing": 1200,
+      "mechanical": 1800
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "range.fuel_change",
+        "quote": "Swapping the 30\" range for a 36\" pro gas range"
+      },
+      {
+        "key": "range.electrical_change",
+        "quote": "electrical $600"
+      },
+      {
+        "key": "hood.cfm_increase",
+        "quote": "Replacing the old recirculating hood with a 900 cfm hood"
+      }
+    ],
+    "not_covered": []
+  }
+}

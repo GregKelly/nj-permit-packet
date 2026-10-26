@@ -1,0 +1,44 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "questions": [
+      {
+        "key": "roof.existing_layers",
+        "text": "You mentioned tearing off and replacing the roof. How many layers of roofing are on the roof now?",
+        "options": [
+          {
+            "value": "one",
+            "label": "One layer"
+          },
+          {
+            "value": "two_or_more",
+            "label": "Two or more layers"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      },
+      {
+        "key": "decking.rafters_touched",
+        "text": "You mentioned replacing a few sheets of rotted plywood. Are any rafters, joists or other roof framing also being repaired or replaced?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, some framing is repaired or replaced"
+          },
+          {
+            "value": "no",
+            "label": "No, no framing is touched"
+          },
+          {
+            "value": "unknown",
+            "label": "Don't know"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "sections": [
+      {
+        "trade": "building",
+        "sentences": [
+          {
+            "text": "Enlarge the existing window over the tub area.",
+            "item_ids": [
+              "window"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "electrical",
+        "sentences": [
+          {
+            "text": "Install a radiant floor heat mat on a new 20A GFCI circuit.",
+            "item_ids": [
+              "heated_floor"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "plumbing",
+        "sentences": [
+          {
+            "text": "Replace the tub with a walk-in tile shower, relocating the shower (1 shower).",
+            "item_ids": [
+              "shower"
+            ]
+          },
+          {
+            "text": "Replace the single vanity with a double vanity by adding a second lavatory, for a total of 2 lavatories.",
+            "item_ids": [
+              "lavs"
+            ]
+          },
+          {
+            "text": "No upsizing is needed for the added lavatory.",
+            "item_ids": [
+              "lavs"
+            ]
+          }
+        ]
+      },
+      {
+        "trade": "not_permitted",
+        "sentences": [
+          {
+            "text": "Install a double vanity cabinet.",
+            "item_ids": [
+              "vanity"
+            ]
+          },
+          {
+            "text": "Install tile on the shower walls.",
+            "item_ids": [
+              "shower_tile"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

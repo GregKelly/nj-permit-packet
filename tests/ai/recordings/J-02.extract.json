@@ -1,0 +1,169 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "finishes",
+        "id": "vanity_cabinet",
+        "label": "Replace the vanity",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "vanity"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "fixture",
+        "id": "vanity_toilet",
+        "label": "Replace the vanity and toilet in the same spots, same plumbing",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace_same"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "no"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "lavatory",
+            "count": 1
+          },
+          {
+            "fixture": "water_closet",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "finishes",
+        "id": "tile_floor",
+        "label": "New porcelain tile floor",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "flooring"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "faucet_valve",
+        "id": "faucet_shower_valve",
+        "label": "New faucet and swap the shower valve, same location",
+        "facts": [],
+        "fixtures": []
+      },
+      {
+        "kind": "electrical",
+        "id": "vanity_light",
+        "label": "Replace the vanity light",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace_same"
+          },
+          {
+            "fact": "devices",
+            "value": "1"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "unknown"
+          },
+          {
+            "fact": "equipment",
+            "value": "none"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "exhaust_fan",
+        "id": "exhaust_fan",
+        "label": "Replace the exhaust fan (existing fan already vents outside)",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace"
+          },
+          {
+            "fact": "vents_outdoors",
+            "value": "yes"
+          },
+          {
+            "fact": "cuts_framing",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "paint",
+        "label": "Paint",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "paint"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 14000,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "vanity_light.new_circuit",
+        "quote": "Replace the vanity light"
+      },
+      {
+        "key": "exhaust_fan.cuts_framing",
+        "quote": "the exhaust fan"
+      }
+    ],
+    "not_covered": []
+  }
+}

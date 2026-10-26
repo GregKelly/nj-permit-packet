@@ -1,0 +1,171 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "fixture",
+        "id": "walk_in_shower",
+        "label": "Rip out the tub, put in a walk-in tile shower",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "unknown"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "shower",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "finishes",
+        "id": "shower_tile",
+        "label": "Tile for the walk-in shower",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "wall_tile"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "fixture",
+        "id": "double_vanity_sinks",
+        "label": "Double vanity instead of the single",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "add"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "lavatory",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "kind": "finishes",
+        "id": "double_vanity_cabinet",
+        "label": "Double vanity",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "vanity"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "electrical",
+        "id": "heated_floor",
+        "label": "Heated floor",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "add"
+          },
+          {
+            "fact": "devices",
+            "value": "0"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "unknown"
+          },
+          {
+            "fact": "equipment",
+            "value": "radiant_floor_heat"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "opening",
+        "id": "bigger_window",
+        "label": "Bigger window over the tub area",
+        "facts": [
+          {
+            "fact": "opening",
+            "value": "window"
+          },
+          {
+            "fact": "action",
+            "value": "enlarge"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 32000,
+      "building": null,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "walk_in_shower.action",
+        "quote": "Rip out the tub, put in a walk-in tile shower"
+      },
+      {
+        "key": "walk_in_shower.upsizing_needed",
+        "quote": "Rip out the tub, put in a walk-in tile shower"
+      },
+      {
+        "key": "double_vanity_sinks.upsizing_needed",
+        "quote": "Double vanity instead of the single"
+      },
+      {
+        "key": "heated_floor.new_circuit",
+        "quote": "Heated floor"
+      }
+    ],
+    "not_covered": []
+  }
+}

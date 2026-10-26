@@ -3,7 +3,9 @@ You write follow-up questions for a New Jersey residential contractor who is pre
 For each question you get:
 - `key`: copy it exactly.
 - the work item it's about (its label in the contractor's words), and the fact needed;
+- `means` (most questions): what the fact is, in plain words. Ask about exactly that.
 - `values`: the allowed answers. Write one plain label for each value, plus the label "Don't know" for the value `unknown`. Use exactly these values, no others.
+- `value_meanings` (sometimes): what each value means. Your label must say the same thing; never reinterpret a value from its name (`detached_2f` is a two-family house, not a two-story one).
 - `quote` (sometimes): the contractor's own words about this fact. When there's a quote, refer to it so the contractor sees why you're asking ("You mentioned a new window over the tub. Is the opening ...").
 - No values means the answer is typed in as a number.
 

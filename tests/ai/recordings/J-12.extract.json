@@ -1,0 +1,125 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "partitions",
+        "id": "basement_framing",
+        "label": "Framing, drywall and drop ceiling in the basement",
+        "facts": [],
+        "fixtures": []
+      },
+      {
+        "kind": "habitable_space",
+        "id": "rec_room",
+        "label": "Rec room",
+        "facts": [
+          {
+            "fact": "bedroom",
+            "value": "unknown"
+          },
+          {
+            "fact": "fuel_appliance_nearby",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "new_bathroom",
+        "id": "half_bath",
+        "label": "Half bath (toilet and sink, gravity drain, no pump)",
+        "facts": [
+          {
+            "fact": "ejector_pump",
+            "value": "no"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "water_closet",
+            "count": 1
+          },
+          {
+            "fixture": "lavatory",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "electrical",
+        "id": "basement_electrical",
+        "label": "About 10 outlets and 6 lights on a new circuit",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "add"
+          },
+          {
+            "fact": "devices",
+            "value": "16"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "other"
+          },
+          {
+            "fact": "equipment",
+            "value": "none"
+          },
+          {
+            "fact": "kw",
+            "value": "none"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": null,
+      "building": 28000,
+      "electrical": null,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "contractor",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "owner",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "owner",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "detached_2f",
+      "owner_occupied": "yes",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "rec_room.bedroom",
+        "quote": "Rec room"
+      }
+    ],
+    "not_covered": []
+  }
+}

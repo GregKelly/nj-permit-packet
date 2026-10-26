@@ -62,7 +62,8 @@ export function outputSchema(schema: z.ZodType): Record<string, unknown> {
 }
 
 export const apiTransport: Transport = async (req, settings) => {
-  client ??= new Anthropic();
+  // A request that hangs (e.g. after the computer sleeps) fails after 3 minutes and is retried, instead of waiting forever.
+  client ??= new Anthropic({ timeout: 3 * 60 * 1000, maxRetries: 2 });
   let response;
   try {
     response = await client.messages.create({

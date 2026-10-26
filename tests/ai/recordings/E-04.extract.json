@@ -1,0 +1,203 @@
+{
+  "source": "api",
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "work_items": [
+      {
+        "kind": "fixture",
+        "id": "toilet_vanity",
+        "label": "new toilet and vanity in the same places",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace_same"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "water_closet",
+            "count": 1
+          },
+          {
+            "fixture": "lavatory",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "fixture",
+        "id": "tub",
+        "label": "tub stays",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "replace_same"
+          },
+          {
+            "fact": "upsizing_needed",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": [
+          {
+            "fixture": "bathtub",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "kind": "finishes",
+        "id": "vanity_cabinet",
+        "label": "new vanity",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "vanity"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "finishes",
+        "id": "tile",
+        "label": "new tile",
+        "facts": [
+          {
+            "fact": "element",
+            "value": "wall_tile"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "exhaust_fan",
+        "id": "bath_fan",
+        "label": "New fan",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "unknown"
+          },
+          {
+            "fact": "vents_outdoors",
+            "value": "unknown"
+          },
+          {
+            "fact": "cuts_framing",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      },
+      {
+        "kind": "electrical",
+        "id": "usual_electrical",
+        "label": "the usual electrical",
+        "facts": [
+          {
+            "fact": "action",
+            "value": "unknown"
+          },
+          {
+            "fact": "devices",
+            "value": "unknown"
+          },
+          {
+            "fact": "new_circuit",
+            "value": "unknown"
+          },
+          {
+            "fact": "equipment",
+            "value": "unknown"
+          },
+          {
+            "fact": "kw",
+            "value": "unknown"
+          }
+        ],
+        "fixtures": []
+      }
+    ],
+    "costs": {
+      "total": 26000,
+      "building": null,
+      "electrical": 3800,
+      "plumbing": null,
+      "mechanical": null
+    },
+    "performed_by": {
+      "building": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "electrical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "plumbing": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      },
+      "mechanical": {
+        "who": "not_mentioned",
+        "name": null,
+        "owner_item_ids": []
+      }
+    },
+    "property": {
+      "dwelling_type": "unknown",
+      "owner_occupied": "unknown",
+      "own_sewer": "unknown"
+    },
+    "quotes": [
+      {
+        "key": "toilet_vanity.upsizing_needed",
+        "quote": "in the same places"
+      },
+      {
+        "key": "tub.upsizing_needed",
+        "quote": "Tub stays"
+      },
+      {
+        "key": "bath_fan.action",
+        "quote": "New fan"
+      },
+      {
+        "key": "bath_fan.vents_outdoors",
+        "quote": "New fan"
+      },
+      {
+        "key": "bath_fan.cuts_framing",
+        "quote": "New fan"
+      },
+      {
+        "key": "usual_electrical.action",
+        "quote": "the usual electrical"
+      },
+      {
+        "key": "usual_electrical.devices",
+        "quote": "the usual electrical"
+      },
+      {
+        "key": "usual_electrical.new_circuit",
+        "quote": "the usual electrical"
+      },
+      {
+        "key": "usual_electrical.equipment",
+        "quote": "the usual electrical"
+      },
+      {
+        "key": "usual_electrical.kw",
+        "quote": "the usual electrical"
+      }
+    ],
+    "not_covered": []
+  }
+}

@@ -1,6 +1,8 @@
 // Call 1: the contractor's description in, facts out (M3 plan, "How each call works").
 //
-// Only the description is sent. The answer is checked (src/ai/checks.ts) and, if it
+// Only the description is sent. The answer comes back with each item's facts as
+// name/value pairs (src/ai/schema.ts, "What's sent to the API"), is rebuilt into
+// typed items and checked (src/ai/checks.ts) and, if it
 // fails, asked for once more with the problems listed. Then plain code turns it
 // into the engine's fact shapes and matches any names to the subcontractor directory.
 
@@ -8,7 +10,7 @@ import { readFileSync } from 'node:fs';
 import { UNKNOWN, WORK_ITEM_KINDS } from '../engine/facts';
 import { checkExtract } from './checks';
 import { AiError, send, totalUsage, type CallOptions, type Usage } from './client';
-import { ExtractOutput } from './schema';
+import { ExtractWire, fromWire, type ExtractOutput } from './schema';
 
 const PROMPT = readFileSync(new URL('./prompts/extract.md', import.meta.url), 'utf8');
 
@@ -16,7 +18,7 @@ export function extractRequest(description: string, problems: string[] = []) {
   const retry = problems.length
     ? `\n\nA previous answer for this description had these problems. Fix them:\n${problems.map((p) => `- ${p}`).join('\n')}`
     : '';
-  return { call: 'extract' as const, system: PROMPT, user: `Job description:\n\n${description}${retry}`, schema: ExtractOutput };
+  return { call: 'extract' as const, system: PROMPT, user: `Job description:\n\n${description}${retry}`, schema: ExtractWire };
 }
 
 export interface ExtractResult {
@@ -38,8 +40,9 @@ export async function extract(description: string, options: CallOptions = {}): P
     try {
       const result = await send(extractRequest(description, problems), options);
       usages.push(result.usage);
-      output = result.output;
-      problems = checkExtract(output, description);
+      const typed = fromWire(result.output);
+      output = typed.output;
+      problems = output ? checkExtract(output, description) : typed.problems;
     } catch (error) {
       if (!(error instanceof AiError) || !['invalid', 'too_long'].includes(error.reason)) throw error;
       output = null;
