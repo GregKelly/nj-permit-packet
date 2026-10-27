@@ -108,3 +108,30 @@ Nothing new. The app uses the same `ANTHROPIC_API_KEY`; without it, the app stil
 ## How it's done
 
 On a branch, `m4-app`. First the tests above (failing), then the parcel lookup and saved data, then the job service until the tests pass, then the screens, then my run-through in the browser and fixes. Then you review; after your OK, merge to `main` and update `CLAUDE.md`.
+
+## Build notes (2026-10-27; awaiting the owner's review)
+
+**Status.** Built on `m4-app`. Every screen in the plan works: Setup, Home (saved jobs), Describe, and the job page with Questions, Review and Print. `npm run app` starts it at `http://127.0.0.1:3000`, reachable only from this computer. 486 offline tests pass, including all 13 test jobs through the job service. Not yet done: your timed run-through and review.
+
+**My run-through in Chrome (2026-10-27), J-01 with the real AI.** A GIF of it is in your Downloads (`m4-app-run-through-J-01.gif`, 6 MB; not committed because of its size).
+- **Describe.** The lookup found 34 Oakview Ave (block 23.03, lot 213, built 1910, 1 unit) and filled in block and lot. Picking "two-family" showed the unit-count warning; one-family cleared it. Reading the description took about 40 seconds.
+- **Questions.** Skipped: J-01's description answers everything the rules ask.
+- **Review.** The result matched J-01's approved answer on every item, form, signer, zoning and plans line. Setting the wall to load-bearing changed it to a full permit (KB-21) with sealed plans within 2 seconds; setting it back restored both.
+- **Print.** The AI's scope of work was drafted, approved, and the 9-page packet showed in the page. Earlier, the same job entered by hand printed a packet identical to `npm run packet -- J-01` except for the prepared date.
+
+**Cost: about 7.5 cents a job, not the 2 cents this plan estimated.** That's the reading of the description plus the scope of work for J-01, as the app recorded it. I haven't confirmed why it's higher than the M3 eval figures. A likely reason is that the evals ran many jobs back to back and reused the cached instructions, while a single job pays full price for them. Your timed run plus a few more jobs still comes to well under $1.
+
+**Found while building** (flag any you disagree with):
+
+1. **The real block and lot for 34 Oakview Ave aren't the test job's.** The tax record says block 23.03, lot 213; the approved test packet uses a made-up 4101 / 7. The tests keep the made-up values; the app uses whatever the lookup finds, or what you type.
+2. **Block and lot typed by hand.** The property class is set to "2" (residential), because the rules need one and only homes are in scope. Year built and the unit count are left blank, so no unit-count warning shows. If you change the block or lot after picking a tax record, the record's other details are dropped too.
+3. **"Not a home" isn't offered as a home type** on the Describe screen. The plan lists only the four home types, and a non-home is out of scope anyway.
+4. **Confirm takes you to Print.** It first stayed on Review, which looked as if nothing had happened.
+5. **An approved scope of work can be re-opened to edit.** This keeps Confirm (the facts haven't changed) but clears the printed packet, so the next print uses the new wording. An empty scope of work can't be approved: the plain list has to be chosen on purpose.
+6. **The packet is saved the first time it's shown** on the Print screen, which marks the job "Printed". After a rules change, the job asks for a fresh review, and the printed packet can still be opened as it was (decision 6).
+7. **A bug found in the run-through.** The app kept one copy of the job service in memory, so code changes didn't apply until the app was restarted. It now makes a new one on each request (only the database connection is kept), so this can't happen again.
+8. **The API key stays on your Mac.** It's read from the macOS Keychain when you open a Terminal (`~/.zshrc`), so the app must be started from your own Terminal. Only server code reads the key; nothing in the pages loaded in the browser can see it.
+9. **Decisions 8 and 9 are now in the design doc** (§3 and §6). They were meant to be recorded there when this plan was approved, and weren't until now.
+10. **`AGENTS.md` is committed.** `next dev` writes it on every start (it repeats the Next.js note in `CLAUDE.md`), so committing it keeps it from showing as a stray change.
+
+**Before your timed run-through:** stop the app, delete the `data/` folder (it holds the test profile and my two test jobs), and start it again with `npm run app` from your own Terminal. Setup then starts empty, as the plan's timing assumes.
