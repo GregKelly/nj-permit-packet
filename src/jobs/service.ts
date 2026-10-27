@@ -290,7 +290,18 @@ export class Jobs {
   approveScope(id: number, paragraphs: string[] | null): JobView {
     const v = this.ready(id);
     const kept = (paragraphs ?? []).map((p) => p.trim()).filter(Boolean);
+    if (paragraphs !== null && !kept.length) throw new JobError('Write the scope of work, or choose the plain list.');
     v.job.narrative = { paragraphs: kept, approved: true };
+    this.save(id, v.job);
+    return this.view(id);
+  }
+
+  /** Print screen: edit the approved narrative again. The facts stay confirmed; the packet must be printed again. */
+  reopenScope(id: number): JobView {
+    const v = this.ready(id);
+    if (!v.job.narrative?.approved) return v;
+    v.job.narrative = { ...v.job.narrative, approved: false };
+    v.job.printed = null;
     this.save(id, v.job);
     return this.view(id);
   }

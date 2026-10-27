@@ -266,6 +266,26 @@ describe('guardrails', () => {
     expect(after.job.narrative).toEqual({ paragraphs: ['Remove the kitchen wall and remodel the kitchen.'], approved: false });
   });
 
+  it('editing an approved scope of work keeps Confirm but needs approval again before the packet prints again', async () => {
+    const { app, v } = await enterByHand(loadJob('J-01.yaml'));
+    app.confirm(v.id);
+    app.approveScope(v.id, ['Remove the kitchen wall and remodel the kitchen.']);
+    await app.packet(v.id);
+    const reopened = app.reopenScope(v.id);
+    expect(reopened.stage).toBe('print');
+    expect(reopened.job.printed).toBeNull();
+    expect(reopened.job.narrative).toEqual({ paragraphs: ['Remove the kitchen wall and remodel the kitchen.'], approved: false });
+    await expect(app.packet(v.id)).rejects.toThrow(JobError);
+  });
+
+  it('an empty scope of work is not approved; the plain list is chosen on purpose', async () => {
+    const { app, v } = await enterByHand(loadJob('J-01.yaml'));
+    app.confirm(v.id);
+    expect(() => app.approveScope(v.id, ['', '  '])).toThrow('Write the scope of work, or choose the plain list.');
+    expect(app.view(v.id).job.narrative).toBeNull();
+    expect(app.approveScope(v.id, null).job.narrative).toEqual({ paragraphs: [], approved: true });
+  });
+
   it('a job confirmed under older rules says so and asks for a fresh review; the printed PDF is kept', async () => {
     const { store, app, v } = await enterByHand(loadJob('J-01.yaml'));
     app.confirm(v.id);

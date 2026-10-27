@@ -16,7 +16,8 @@
     "ask": "tsx scripts/ask.ts",
     "scope": "tsx scripts/scope.ts",
     "eval": "tsx scripts/eval.ts",
-    "parcel": "tsx scripts/parcel.ts"
+    "parcel": "tsx scripts/parcel.ts",
+    "app": "next dev --hostname 127.0.0.1 --port 3000"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
