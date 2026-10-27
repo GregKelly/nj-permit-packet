@@ -1,0 +1,1383 @@
+{
+ "objectIdFieldName": "OBJECTID",
+ "uniqueIdField": {
+  "name": "OBJECTID",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "fields": [
+  {
+   "name": "PROP_LOC",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_LOC",
+   "sqlType": "sqlTypeOther",
+   "length": 25,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "MUN_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "MUN_NAME",
+   "sqlType": "sqlTypeOther",
+   "length": 40,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLBLOCK",
+   "type": "esriFieldTypeString",
+   "alias": "PCLBLOCK",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLLOT",
+   "type": "esriFieldTypeString",
+   "alias": "PCLLOT",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLQCODE",
+   "type": "esriFieldTypeString",
+   "alias": "PCLQCODE",
+   "sqlType": "sqlTypeOther",
+   "length": 11,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PROP_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_CLASS",
+   "sqlType": "sqlTypeOther",
+   "length": 3,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "YR_CONSTR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "YR_CONSTR",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "DWELL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "DWELL",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "PROP_LOC": "8 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "202.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "29 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "221.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1916,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "36 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "214",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1906,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "17 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "227",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1918,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "14 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "204",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "10 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "203",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "33 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "220",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "11 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "232",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1918,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "32 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "212",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1905,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "91 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "29",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "147 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "235",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "142 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "213",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "108 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "9",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "119 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "17",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "9 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "233",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1915,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "23 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "223",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1914,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "80 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "115",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "19 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "225",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "20 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "206",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "39 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "218",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1906,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "83 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.08",
+    "PCLLOT": "32",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "68 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "108",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "28 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "210",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "63 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "146.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "139 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "231",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "93 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "28",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "82 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "34",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "97 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "27",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "41 OAKVIEW AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "217",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "22 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "207",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "100 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "4",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "40 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "215",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1913,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "113 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "20",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "104 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "7",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "89 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.08",
+    "PCLLOT": "26",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "96 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "3",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "114 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "12",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "16 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "205",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "152 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "207",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "15 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "229",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1908,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "21 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "224",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1911,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "27 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "222",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1939,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "31 OAKVIEW AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "221",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "12 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "203.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "35 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "219",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1909,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "130 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "218",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "145 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "234",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "132 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "217",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "26 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "209",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1906,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "24 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "208",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1907,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "76 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "113",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1920,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "122 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "222",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "133 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "228",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "30 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "211",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1906,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "34 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "213",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "115 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "19",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "110 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "10",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "121 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "16",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1929,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "112 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "11",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "143 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "233",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "149 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "236",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "140 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "214",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "69 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "145",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1916,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "88 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "37",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "144 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "211",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1930,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "42 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "216",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "71 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "144",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1919,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "65 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "146",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "84 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "35",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "151 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "237",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "136 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "215",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "73 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "143",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "75 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.05",
+    "PCLLOT": "142",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1918,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "64 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "106",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1913,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "106 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "8",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "117 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "18",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "109 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "22",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "66 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "107",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1919,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "81 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.08",
+    "PCLLOT": "33",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "85 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.08",
+    "PCLLOT": "31",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "72 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "109",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "87 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.08",
+    "PCLLOT": "30",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "74 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "111",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "78 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.03",
+    "PCLLOT": "114",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "86 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "36",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "99 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "26",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "101 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "25",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "90 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "38",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "92 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "103 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "24",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "94 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "2",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "105 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "32.01",
+    "PCLLOT": "23",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "102 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "27.04",
+    "PCLLOT": "6",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "111 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "21",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "116-118 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "13",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1931,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "129 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "226",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "120 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "15",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "131 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "227",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "125-127 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "223",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "135 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "229",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "126 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "220",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "128 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "219",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "141 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "232",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "134 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "216",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "153 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.03",
+    "PCLLOT": "238",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1936,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "146 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "210",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "148 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "209",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "150 OAKVIEW AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.02",
+    "PCLLOT": "208",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1929,
+    "DWELL": 1
+   }
+  }
+ ]
+}

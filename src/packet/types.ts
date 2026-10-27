@@ -49,6 +49,8 @@ export interface PacketJob {
   owner: Party;
   /** The AI-written scope narrative as the contractor approved it (M3), one string per paragraph. */
   scope_narrative?: string[];
+  /** Work the app couldn't classify that the contractor removed from this packet (M4 plan, decision 3). */
+  not_in_packet?: string[];
 }
 
 export type PacketResult =

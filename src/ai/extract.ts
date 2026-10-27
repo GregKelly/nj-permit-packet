@@ -7,12 +7,13 @@
 // into the engine's fact shapes and matches any names to the subcontractor directory.
 
 import { readFileSync } from 'node:fs';
+import { projectPath } from '../paths';
 import { UNKNOWN, WORK_ITEM_KINDS } from '../engine/facts';
 import { checkExtract } from './checks';
 import { AiError, send, totalUsage, type CallOptions, type Usage } from './client';
 import { ExtractWire, fromWire, type ExtractOutput } from './schema';
 
-const PROMPT = readFileSync(new URL('./prompts/extract.md', import.meta.url), 'utf8');
+const PROMPT = readFileSync(projectPath('src', 'ai', 'prompts', 'extract.md'), 'utf8');
 
 export function extractRequest(description: string, problems: string[] = []) {
   const retry = problems.length

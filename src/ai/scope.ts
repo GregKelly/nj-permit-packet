@@ -4,13 +4,14 @@
 // packet builder takes the approved text as input, so building never calls the API.
 
 import { readFileSync } from 'node:fs';
+import { projectPath } from '../paths';
 import type { Determinations, JobFacts } from '../engine';
 import { UNKNOWN } from '../engine/facts';
 import { checkScope } from './checks';
 import { AiError, send, totalUsage, type CallOptions, type Usage } from './client';
 import { ScopeOutput } from './schema';
 
-const PROMPT = readFileSync(new URL('./prompts/scope.md', import.meta.url), 'utf8');
+const PROMPT = readFileSync(projectPath('src', 'ai', 'prompts', 'scope.md'), 'utf8');
 
 const FORM_TRADE: Record<string, string> = { F110: 'building', F120: 'electrical', F130: 'plumbing', F145: 'mechanical' };
 

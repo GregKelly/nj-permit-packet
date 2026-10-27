@@ -34,6 +34,14 @@ Sources and findings gathered during product definition (October 2026). Verify a
   - At most 2000 records per query.
   - `OWNER_NAME` is redacted (Daniel's Law), so owner details come from the contractor.
   - Parcel shapes aren't legal boundaries.
+- Field definitions (checked 2026-10-27). The service itself defines no fields; its attributes come from the Treasury's MOD-IV tax list, defined in NJ Division of Taxation, "MOD IV" field descriptions: https://www.nj.gov/treasury/taxation/pdf/lpt/MODIVLayoutandDescrip.pdf (status key: M = mandatory, O = optional, * = rarely used). The NJOGIS metadata page for the composite (`.../digidownload/metadata/html/Cad_parcel_mod4.html`) now returns 404.
+  - `PROP_LOC`: "PROPERTY LOCATION (M): This is the actual street address of the parcel." Street only; no town or ZIP.
+  - `ST_ADDRESS`, `CITY_STATE`, `ZIP_CODE` (and `ZIP5`): the owner's mailing address. "ZIP CODE (M): This field should list the Zip Code of the current owner(s)." Example: 21 Nelson Place, Maplewood (block 45.03, lot 126) lists 52 Wootton Road, Essex Fells, 07021. **The record has no ZIP for the property itself**, so the work-site ZIP comes from the address the contractor enters.
+  - `OWNER_NAME`: mandatory in MOD-IV but blank in this service (Daniel's Law). The owner's mailing street, town and ZIP are still present.
+  - `DWELL`: "NUMBER OF DWELLINGS (O, *): This field indicates the number of residential dwelling units within the property." Optional and "rarely used" statewide, but filled in for all 6,851 Maplewood class 2 parcels: 1 unit 6,124; 2 units 631; 3 units 68; 4 units 28. It can't tell a detached house from a twin (each half is usually its own lot with 1 unit), and its accuracy is unchecked: 21 Nelson Place shows 4 units on a 46×100 lot.
+  - `PROP_CLASS`: class 2 is "Residential"; the code doesn't separate one-family from multi-family. So class 2 alone doesn't establish rule SC-01's one- or two-family scope.
+  - `BLDG_DESC`: "stories, exterior structural material, style, number of stalls and type of garage" (e.g. "2SF2G").
+  - `YR_CONSTR`: "the year the building was constructed" (optional).
 
 ## Homeowner trade work (researched 2026-10-26)
 

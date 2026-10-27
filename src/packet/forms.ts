@@ -5,8 +5,9 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { z } from 'zod';
+import { projectPath } from '../paths';
 
-export const FORMS_DIR = new URL('../../assets/forms/', import.meta.url).pathname;
+export const FORMS_DIR = projectPath('assets', 'forms') + '/';
 
 const Catalog = z
   .object({

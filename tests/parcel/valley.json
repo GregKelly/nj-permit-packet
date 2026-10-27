@@ -1,0 +1,1947 @@
+{
+ "objectIdFieldName": "OBJECTID",
+ "uniqueIdField": {
+  "name": "OBJECTID",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "fields": [
+  {
+   "name": "PROP_LOC",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_LOC",
+   "sqlType": "sqlTypeOther",
+   "length": 25,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "MUN_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "MUN_NAME",
+   "sqlType": "sqlTypeOther",
+   "length": 40,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLBLOCK",
+   "type": "esriFieldTypeString",
+   "alias": "PCLBLOCK",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLLOT",
+   "type": "esriFieldTypeString",
+   "alias": "PCLLOT",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLQCODE",
+   "type": "esriFieldTypeString",
+   "alias": "PCLQCODE",
+   "sqlType": "sqlTypeOther",
+   "length": 11,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PROP_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_CLASS",
+   "sqlType": "sqlTypeOther",
+   "length": 3,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "YR_CONSTR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "YR_CONSTR",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "DWELL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "DWELL",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "PROP_LOC": "489-91 VALLEY ST + REAR",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "82",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "505 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "90",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "535-543 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "126",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "534 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "24.01",
+    "PCLLOT": "185",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "618 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.01",
+    "PCLLOT": "112",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1929,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "477 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "31.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "475 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "30",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "477 VALLEY ST       REAR",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "31",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-473 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15F",
+    "YR_CONSTR": 0,
+    "DWELL": null
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "503 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "89",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1890,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "463 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "24",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1957,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "497 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "86",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4C",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "493-495 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "84",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1900,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "501 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "88",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1912,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "547 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "17.01",
+    "PCLLOT": "17",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "451-457 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "22",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 2015,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "479 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "37",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4C",
+    "YR_CONSTR": 1936,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "483-485 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "36",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4C",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "487 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "35",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1920,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "494 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "24.04",
+    "PCLLOT": "122",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "647 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "127",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1820,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "499 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "87",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "507 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.02",
+    "PCLLOT": "91",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "538 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "24.01",
+    "PCLLOT": "184",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "624 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.01",
+    "PCLLOT": "108",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "596 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "197",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "533 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "125",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1908,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "594 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "199",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "550-552 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.05",
+    "PCLLOT": "123",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "574 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.04",
+    "PCLLOT": "235",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "724 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.03",
+    "PCLLOT": "56",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "588 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "202",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1856,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "592 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "201",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2013,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "600 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.03",
+    "PCLLOT": "195",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "649 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "128",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1900,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "651 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "128.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1950,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "746 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.12",
+    "PCLLOT": "125",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "616 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.01",
+    "PCLLOT": "114",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "620 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.01",
+    "PCLLOT": "110",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "626 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "23.01",
+    "PCLLOT": "48",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "645 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "126",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "1",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "634 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.09",
+    "PCLLOT": "199",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1730,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "644 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.08",
+    "PCLLOT": "178",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1957,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "708 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.02",
+    "PCLLOT": "3",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "710 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.02",
+    "PCLLOT": "2",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "719 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "206",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "721 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "206.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1961,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "725 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "207",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1800,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "727 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "208",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1930,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "729 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "209",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1953,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "716-720 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.03",
+    "PCLLOT": "55",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1956,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "733 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "294",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1930,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "745 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "19.20",
+    "PCLLOT": "284",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4C",
+    "YR_CONSTR": 1985,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "688 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "3.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "690 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "3",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "692 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "2.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "694 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "2",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "696 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1950,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "515-519 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "111",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1907,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "511 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "114",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "509 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "113",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "693 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "119.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1840,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "697 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "18.03",
+    "PCLLOT": "120.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1840,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "513 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.03",
+    "PCLLOT": "115",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1898,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0203",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0205",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0206",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0207",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0208",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0210",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0211",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0212",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0213",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0214",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST 5F",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0506",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0505",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0507",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0508",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0510",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0511",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0512",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0513",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0514",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0601",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0602",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0603",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0604",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0605",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0606",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST    C006G",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0607",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0608",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0610",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0611",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0612",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0613",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0614",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0701",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0702",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0703",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0704",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0705",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0706",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0707",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0708",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0103",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST #1D",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0104",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0105",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0106",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0110",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST 1K",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0111",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0201",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET 2B",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0202",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0204",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0301",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0302",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0303",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0304",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0305",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0306",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0307",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0308",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0310",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0311",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0312",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0313",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0314",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0401",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0402",
+    "PROP_CLASS": "15F",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0403",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST    C004D",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0404",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0405",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0406",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0407",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0408",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST    C004J",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0410",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0411",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0412",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0413",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0414",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0501",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST #5B",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0502",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST. #5C",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0503",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST    C005D",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0504",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0710",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0711",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0712",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0713",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0714",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0101",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0102",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "465-73 VALLEY ST",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "16.01",
+    "PCLLOT": "25",
+    "PCLQCODE": "C0108",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "769 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "20.04",
+    "PCLLOT": "331",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "767 VALLEY STREET",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "20.04",
+    "PCLLOT": "333",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1920,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "762-764 VALLEY STREET 1/2",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "20.03",
+    "PCLLOT": "352",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "760-760 VALLEY STREET 1/2",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "20.03",
+    "PCLLOT": "355",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15D",
+    "YR_CONSTR": 1950,
+    "DWELL": 1
+   }
+  }
+ ]
+}
