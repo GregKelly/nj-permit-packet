@@ -109,7 +109,7 @@ Nothing new. The app uses the same `ANTHROPIC_API_KEY`; without it, the app stil
 
 On a branch, `m4-app`. First the tests above (failing), then the parcel lookup and saved data, then the job service until the tests pass, then the screens, then my run-through in the browser and fixes. Then you review; after your OK, merge to `main` and update `CLAUDE.md`.
 
-## Build notes (2026-10-27; awaiting the owner's review)
+## Build notes (2026-10-27; accepted by the owner 2026-10-29)
 
 **Status.** Built on `m4-app`. Every screen in the plan works: Setup, Home (saved jobs), Describe, and the job page with Questions, Review and Print. `npm run app` starts it at `http://127.0.0.1:3000`, reachable only from this computer. 486 offline tests pass, including all 13 test jobs through the job service. Not yet done: your timed run-through and review.
 
@@ -136,9 +136,11 @@ On a branch, `m4-app`. First the tests above (failing), then the parcel lookup a
 
 **Before your timed run-through:** stop the app, delete the `data/` folder (it holds the test profile and my two test jobs), and start it again with `npm run app` from your own Terminal. Setup then starts empty, as the plan's timing assumes.
 
-## Owner's run-through (2026-10-28)
+## Owner's run-through (2026-10-28) and acceptance (2026-10-29)
 
-**Timed run.** J-01 from address to printed packet in about 3 minutes (target: under 10). Setup took about 5 minutes, once. The two extra jobs (J-02 or J-06, and J-08 with Northside) are still to do, after the fixes below.
+**Timed run.** J-01 from address to printed packet in about 3 minutes (target: under 10). Setup took about 5 minutes, once.
+
+**Extra jobs (2026-10-29).** After the fixes below, the owner ran J-02 (at 18 Courter Ave) and J-08 with Northside (at 66 Courter Ave) in the app: everything matched the expected results, nothing odd. **Accepted; OK to merge to `main`.**
 
 **Fixes from the owner's notes** (approved 2026-10-28; no rule or expected answer changed):
 1. **Duplicate-key error on Review.** One rule can warn once per trade: with no electrician and no plumber picked, LC-02 shows twice. The screen used the rule id alone to tell warnings apart. Fixed; an LC-02 warning now also says where to pick or add the sub. A new job also picks a trade's only sub when none is marked usual (the owner's subs had no usual one).
