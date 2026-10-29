@@ -11,6 +11,7 @@ import { alignItems, renameKey, resultOf } from '../src/ai/eval/score';
 import { loadRecording, replayTransport, type Recording } from '../src/ai/replay';
 import { Store } from '../src/db';
 import { compileRules, determine, UNKNOWN, type JobFacts, type RuleSet } from '../src/engine';
+import { PATTERNS, tidyFein, tidyPhone } from '../src/jobs/contact';
 import { Jobs, JobError, type JobView } from '../src/jobs/service';
 import type { NewJob } from '../src/jobs/types';
 import { formValues } from '../src/packet/entries';
@@ -167,6 +168,21 @@ describe('entered by hand (no AI), every packet job prints the same form entries
     });
   }
 
+  it('J-09 (a mini-split) with your own HVACR license instead of a sub: same result, and your business fills and signs F145', async () => {
+    const fx = loadJob('J-09.yaml');
+    const { store, app, v } = await enterByHand(fx);
+    const own = store.saveSub({ self: true, trade: 'hvacr', license: '19HC00000999', expires: '2027-12-31' });
+    const mine = app.edit(v.id, { team: { ...v.job.team, hvacr: own } });
+    const f = loadPacketJob('J-09', rules);
+    const approved = resultOf(f.d);
+    expect(resultOf(mine.d)).toEqual({ ...approved, forms: { ...approved.forms, F145: profile.applicant.name } });
+    expect(mine.d.flags).toEqual(f.d.flags);
+    expect(mine.d.forms.find((x) => x.form === 'F145')?.signer).toBe(profile.applicant.name);
+    const values = formValues(app.packetJob(mine), mine.d, store.packetProfile());
+    expect(values.F145['contractor.license']).toBe('19HC00000999');
+    expect(values.F145['contractor.name']).toBe(profile.applicant.name);
+  });
+
   for (const id of ['J-02', 'J-06']) {
     it(`${id}: the "no permit needed" sheet, with no scope step`, async () => {
       const { app, v } = await enterByHand(loadJob(`${id}.yaml`));
@@ -216,6 +232,29 @@ describe('saved data', () => {
     store.saveSub({ ...store.getSub(ids.northside)!, usual: true });
     const usual = store.listSubs().filter((s) => s.trade === 'hvacr' && s.usual);
     expect(usual.map((s) => s.id)).toEqual([ids.northside]);
+  });
+
+  it("a new job gets each trade's usual sub; with no usual one, a trade's only sub; with several and none usual, nobody", async () => {
+    const store = new Store(':memory:');
+    store.saveProfile(profile.applicant);
+    const { watts, clearair, northside } = profile.subcontractors;
+    const elec = store.saveSub(watts);
+    store.saveSub(clearair);
+    store.saveSub(northside);
+    const v = await jobs(store).create(describeScreen(loadJob('J-01.yaml')));
+    expect(v.job.team).toEqual({ electrical: elec });
+  });
+
+  it("your own trade license: only the trade, number and expiry are saved; the rest is always your business's", () => {
+    const { store } = testStore();
+    const id = store.saveSub({ self: true, trade: 'hvacr', license: '19HC00000999', expires: '2027-12-31', usual: true });
+    const { name, address, phone, email, fein } = profile.applicant;
+    expect(store.getSub(id)).toEqual({ self: true, trade: 'hvacr', license: '19HC00000999', expires: '2027-12-31', id, usual: true, name, address, phone, email, fein });
+    store.saveProfile({ ...profile.applicant, name: 'Renamed Builders LLC' });
+    expect(store.getSub(id)!.name).toBe('Renamed Builders LLC');
+    expect(store.packetProfile().subcontractors.find((s) => s.license === '19HC00000999')).not.toHaveProperty('self');
+    // Marking it usual unmarks the HVACR sub that was.
+    expect(store.listSubs().filter((s) => s.trade === 'hvacr' && s.usual).map((s) => s.id)).toEqual([id]);
   });
 
   it('a job reopened from the file is the same job, and printing it again gives the same PDF', async () => {
@@ -347,6 +386,13 @@ describe('guardrails', () => {
     expect(cover).toMatch(/Build a deck off the kitchen/);
   });
 
+  it("the owner's phone is written one way; a phone that isn't 10 digits, or a ZIP that isn't 5, is refused", async () => {
+    const { app, v } = await enterByHand(loadJob('J-01.yaml'));
+    expect(app.edit(v.id, { owner: { ...v.job.owner, phone: '(973) 555 0199' } }).job.owner.phone).toBe('973-555-0199');
+    expect(() => app.edit(v.id, { owner: { ...v.job.owner, phone: '973-555-01999' } })).toThrow(/10-digit/);
+    expect(() => app.edit(v.id, { owner: { ...v.job.owner, address: { street: '1 Main St', city: 'Maplewood', state: 'NJ', zip: '0704' } } })).toThrow(/5 digits/);
+  });
+
   it('answers must be open questions with allowed values; counts are whole numbers', async () => {
     const fx = loadJob('J-03.yaml');
     const { store } = testStore();
@@ -359,6 +405,24 @@ describe('guardrails', () => {
 });
 
 // ── 6. Nothing private is sent ────────────────────────────────────────────────
+
+describe('contact details', () => {
+  it('phones: any common format with 10 digits (a leading 1 dropped) is written 973-555-0101; others are refused', () => {
+    for (const typed of ['9735550101', '973.555.0101', '(973) 555-0101', '+1 973 555 0101', '1-973-555-0101']) expect(tidyPhone(typed)).toBe('973-555-0101');
+    for (const typed of ['973-555-01019', '555-0101', '2-973-555-0101', '']) expect(tidyPhone(typed)).toBeNull();
+  });
+
+  it('FEINs: 9 digits, written 12-3456789', () => {
+    expect(tidyFein('123456789')).toBe('12-3456789');
+    expect(tidyFein('12-345678')).toBeNull();
+  });
+
+  it("the browser's patterns accept and refuse the same phones", () => {
+    const re = new RegExp(`^(?:${PATTERNS.phone.pattern})$`);
+    for (const typed of ['9735550101', '(973) 555-0101', '+1 973 555 0101']) expect(re.test(typed)).toBe(true);
+    for (const typed of ['973-555-01019', '555-0101']) expect(re.test(typed)).toBe(false);
+  });
+});
 
 describe('nothing private is sent', () => {
   it('a full job (extract, questions, scope) sends no profile, directory, owner or FEIN details', async () => {

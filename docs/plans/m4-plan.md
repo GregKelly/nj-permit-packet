@@ -135,3 +135,27 @@ On a branch, `m4-app`. First the tests above (failing), then the parcel lookup a
 10. **`AGENTS.md` is committed.** `next dev` writes it on every start (it repeats the Next.js note in `CLAUDE.md`), so committing it keeps it from showing as a stray change.
 
 **Before your timed run-through:** stop the app, delete the `data/` folder (it holds the test profile and my two test jobs), and start it again with `npm run app` from your own Terminal. Setup then starts empty, as the plan's timing assumes.
+
+## Owner's run-through (2026-10-28)
+
+**Timed run.** J-01 from address to printed packet in about 3 minutes (target: under 10). Setup took about 5 minutes, once. The two extra jobs (J-02 or J-06, and J-08 with Northside) are still to do, after the fixes below.
+
+**Fixes from the owner's notes** (approved 2026-10-28; no rule or expected answer changed):
+1. **Duplicate-key error on Review.** One rule can warn once per trade: with no electrician and no plumber picked, LC-02 shows twice. The screen used the rule id alone to tell warnings apart. Fixed; an LC-02 warning now also says where to pick or add the sub. A new job also picks a trade's only sub when none is marked usual (the owner's subs had no usual one).
+2. **Phone, ZIP and FEIN checks.** Any common format is accepted, then written one way (973-555-0101, 12-3456789, the test profile's style). The browser refuses a bad entry before the form is sent, and the server checks again (`src/jobs/contact.ts`).
+3. **Costs on Review show as currency** ($48,000), typed with or without the $ and commas.
+4. **Setup says what's next:** the saved message points to the next step, and a "Start a job" button sits at the bottom once the business is saved.
+5. **"Use the plain list instead" is now "Skip the paragraph: use a list of work items",** with a note that the scope page always has the list; this only leaves out the paragraph above it.
+6. **A new sub can be added on Review** ("Add a new subcontractor…" in each trade's dropdown). It's saved to the directory and put on the job.
+
+**Built after the owner's decision (2026-10-28):**
+7. **One company, several trade licenses.** Each NJ trade license has its own number and expiry, so a company like an HVACR-and-plumbing shop still gets one entry per trade. Setup now lists a company's licenses together, with "Add another trade license for (company)", which fills in the company's details.
+8. **Your own trade licenses** (Setup, under your business). Only the trade, number and expiry are saved; the name, address, phone, email and FEIN are always your business's, so a later change to them carries over. Your business then appears as "Your business (name)" in Review's signer dropdowns, now headed "Who signs each trade's section". Tested with J-09 (the mini-split): with your own HVACR license instead of Clearair, the result is the same apart from who signs F145, and your business's name and license fill F145. Nothing changed in the rules: LC-01 (HIC registration) still warns as approved, and J-09 still needs an electrician for F120 (Q-3).
+
+**Kept in view:** the single-trade contractor working alone, the applicant and only signer, may be the bigger user. It's recorded in the brief's "Key risks & assumptions", with the evidence to gather before M5 and the open rules questions (HIC registration for licensed trades, Q-3).
+
+**Addresses for app run-throughs.** J-02's 18 Elmwood Ave and J-08's 66 Parker Ave aren't in Maplewood's parcel data (the owner noticed 18 Elmwood Ave is in Irvington), so the lookup can't find them. The test jobs keep them, as they keep J-01's made-up block and lot. For runs in the app, use 18 Courter Ave (block 27.01, lot 123) for J-02 and 66 Courter Ave (block 31.01, lot 184) for J-08. Both were built in 1923, so the lead-paint tip (TP-05) shows, which the test jobs (built 1987 and 1994) don't have.
+
+**Q-3 reworded (owner decision 2026-10-28).** It now also asks whether F120 is needed at all on a like-for-like A/C or furnace swap reconnected to its existing disconnect (research in `docs/research-notes.md`). The wording changed and nothing else did: J-08 keeps F120, signed by the electrician. Office questions show on Review only, not in the packet, so no PDF changed. The rules version is now 9cfb8d410c44, so open jobs saved earlier will ask for a fresh review (decision 6).
+
+Checked in Chrome on a copy of the owner's data (restored afterwards). 493 offline tests pass.

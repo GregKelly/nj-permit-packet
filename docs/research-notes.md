@@ -53,3 +53,12 @@ Sources and findings gathered during product definition (October 2026). Verify a
 - HVACR, N.J.S.A. 45:16A-9 (personally occupies, solely performs, no CFC/HCFC work): https://codes.findlaw.com/nj/title-45-professions-and-occupations/nj-st-sect-45-16a-9/ and N.J.A.C. 13:32A-1.1(b)3: https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-32A-1-1
 - Town guidance (secondary): the owner must do the work personally; Ridgefield Park requires licensed trades for owner-occupied two-family homes, which conflicts with the Electrical Board. https://www.ridgefieldpark.org/node/46, https://veronanj.org/departments/buildingandzoning/BuildingFAQs
 - *Unconfirmed:* the statute text above came from mirrors (onecle, FindLaw, LII), not the official sites. The NJ Electrical Board FAQ page (https://www.njconsumeraffairs.gov/elec/pages/faq.aspx) didn't load. Maplewood publishes nothing on homeowner trade work.
+
+## HVACR contractors and electrical work (researched 2026-10-28, bears on Q-3)
+
+Prompted by the owner's M4 review: can a licensed HVACR contractor working alone also do the electrical side?
+
+- **The 30-volt limit is real.** N.J.A.C. 13:32A-1.3 ("Electrical work"): apart from replacement cases, a master HVACR contractor may not do electrical work above 30 volts. https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-32A-1-3
+- **But there's a replacement exception.** The HVACR definition (N.J.A.C. 13:32A-1.2, item 10; N.J.S.A. 45:16A-2) lets the HVACR contractor, *in replacement cases only*, connect the wiring from an existing service disconnect previously dedicated to that equipment, if the equipment is 25 tons or less, the system is 240 volts or less, and the work follows the UCC. "Replacement" means the same or similar type of equipment. https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-32A-1-2 and https://codes.findlaw.com/nj/title-45-professions-and-occupations/nj-st-sect-45-16a-2/
+- **What it means here.** New equipment that needs a new circuit or disconnect (J-09's new mini-split) needs a licensed electrician, which matches the approved J-09. For a like-for-like swap reconnected to the existing dedicated disconnect (J-08's furnace and A/C swap), the HVACR contractor may do the hookup. Still unanswered, so Q-3 stays open: whether the office then wants F120 at all, and if so, who signs it.
+- *Unconfirmed:* the texts came from LII and FindLaw, not the official sites. The pages don't cover the Electrical Contractors law.

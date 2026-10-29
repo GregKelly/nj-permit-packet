@@ -74,6 +74,22 @@ export async function editJob(id: number, change: Partial<Pick<JobRecord, 'raw' 
   return null;
 }
 
+/** Review screen: a new sub, saved to the directory and put on this job for its trade. Returns an error message, or null. */
+export async function addSubToJob(id: number, trade: TeamTrade, sub: { name: string; license: string; expires: string }): Promise<string | null> {
+  const name = sub.name.trim();
+  const license = sub.license.trim();
+  if (!name || !license || !/^\d{4}-\d{2}-\d{2}$/.test(sub.expires)) return 'A new subcontractor needs a name, license number and license expiry date.';
+  try {
+    const subId = store().saveSub({ trade, name, license, expires: sub.expires });
+    jobs().edit(id, { team: { ...jobs().view(id).job.team, [trade]: subId } });
+  } catch (error) {
+    if (error instanceof JobError) return error.message;
+    throw error;
+  }
+  refresh();
+  return null;
+}
+
 /** Review screen: the owner and site details. */
 export async function editOwnerSite(id: number, f: FormData) {
   await step(

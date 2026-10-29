@@ -2,6 +2,7 @@
 // Describe screen: work site (looked up in the state parcel data, or typed), home type, owner, description.
 
 import { useState, useTransition } from 'react';
+import { PATTERNS } from '../../../src/jobs/contact';
 import type { NewJob } from '../../../src/jobs/types';
 import type { ParcelCandidate } from '../../../src/parcel/lookup';
 import { HOME_TYPE_LABELS, unitsMismatch } from '../../../src/parcel/units';
@@ -105,7 +106,7 @@ export function DescribeForm() {
             </div>
             <div>
               <label htmlFor="zip">ZIP</label>
-              <input id="zip" type="text" inputMode="numeric" value={zip} onChange={(e) => setZip(e.target.value)} required />
+              <input id="zip" type="text" inputMode="numeric" value={zip} onChange={(e) => setZip(e.target.value)} required {...PATTERNS.zip} />
             </div>
           </div>
         </div>
@@ -194,7 +195,7 @@ export function DescribeForm() {
           </div>
           <div>
             <label htmlFor="owner_phone">Phone</label>
-            <input id="owner_phone" type="tel" value={owner.phone} onChange={(e) => setOwner({ ...owner, phone: e.target.value })} />
+            <input id="owner_phone" type="tel" value={owner.phone} onChange={(e) => setOwner({ ...owner, phone: e.target.value })} placeholder="973-555-0101" {...PATTERNS.phone} />
           </div>
           <div>
             <label htmlFor="owner_email">Email</label>

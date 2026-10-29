@@ -15,6 +15,7 @@ import { determine, parseJobFacts, UNKNOWN, type Determinations, type JobFacts, 
 import { buildPacket } from '../packet/build';
 import type { PacketJob } from '../packet/types';
 import { unitsMismatch } from '../parcel/units';
+import { isZip, PHONE_HINT, tidyPhone } from './contact';
 import type { JobRecord, NewJob, RawFacts, TeamTrade } from './types';
 
 export interface Deps {
@@ -157,9 +158,15 @@ export class Jobs {
     checkNew(input);
     const raw: RawFacts = { work_items: [], costs: {}, performed_by: {}, property: {} };
     const team: JobRecord['team'] = {};
-    for (const sub of this.store.listSubs()) if (sub.usual) team[sub.trade] = sub.id;
+    const subs = this.store.listSubs();
+    for (const trade of ['electrical', 'plumbing', 'hvacr'] as const) {
+      // The usual sub for the trade; or, when the directory has only one, that one.
+      const ofTrade = subs.filter((s) => s.trade === trade);
+      const pick = ofTrade.find((s) => s.usual) ?? (ofTrade.length === 1 ? ofTrade[0] : undefined);
+      if (pick) team[trade] = pick.id;
+    }
     const job: JobRecord = {
-      ...structuredClone(input),
+      ...tidyOwner(structuredClone(input)),
       raw,
       team,
       ai: null,
@@ -239,7 +246,7 @@ export class Jobs {
   /** Review screen: change facts, team, owner, site or home type. Clears Confirm and the narrative approval. */
   edit(id: number, change: Partial<Pick<JobRecord, 'raw' | 'team' | 'owner' | 'site' | 'home_type'>>): JobView {
     const job = this.load(id);
-    const next: JobRecord = { ...job, ...structuredClone(change) };
+    const next: JobRecord = tidyOwner({ ...job, ...structuredClone(change) });
     if (change.site || change.owner || change.home_type) checkNew(next);
     try {
       this.facts(next);
@@ -404,6 +411,15 @@ function checkNew(input: NewJob) {
   if (!input.home_type) missing.push('home type');
   if (!input.owner.name.trim()) missing.push("owner's name");
   if (missing.length) throw new JobError(`Fill in the ${missing.join(', ')}.`);
+  if (input.owner.phone && !tidyPhone(input.owner.phone)) throw new JobError(`Enter the owner's phone as ${PHONE_HINT}.`);
+  if (input.owner.address?.zip && !isZip(input.owner.address.zip)) throw new JobError("Enter the owner's ZIP code as 5 digits.");
+}
+
+/** The owner's phone written one way (left as typed if it isn't valid, for checkNew to reject). */
+function tidyOwner<T extends NewJob>(job: T): T {
+  const phone = job.owner.phone && tidyPhone(job.owner.phone);
+  if (phone) job.owner = { ...job.owner, phone };
+  return job;
 }
 
 function checkAnswer(q: Question, value: unknown) {

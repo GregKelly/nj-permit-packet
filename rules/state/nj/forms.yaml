@@ -17,7 +17,7 @@ forms:
     signer: electrical
     included: Any electrical item
     assumptions: [A-2]
-    notes: Form has "Sign and Seal" and a Licensed/Exempt checkbox. Who signs it on HVAC swaps is Q-3 (see HV-01).
+    notes: Form has "Sign and Seal" and a Licensed/Exempt checkbox. On HVAC swaps, whether it is needed and who signs it is Q-3 (see HV-01).
   - id: F130
     name: Plumbing Subcode Technical Section
     signer: plumbing

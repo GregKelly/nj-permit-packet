@@ -8,7 +8,7 @@ import { FIXTURE_TYPES, PROPERTY_FACTS, UNKNOWN, WORK_ITEM_KINDS, type FactSpec 
 import type { JobRecord, RawFacts, TeamTrade } from '../../../src/jobs/types';
 import { HOME_TYPE_LABELS } from '../../../src/parcel/units';
 import { factLabel, humanize, KIND_LABELS, TRADE_LABELS, valueLabel } from '../../lib/labels';
-import { editJob } from './actions';
+import { addSubToJob, editJob } from './actions';
 
 type Item = Record<string, unknown> & { id: string; kind: string; label: string };
 type State = { raw: RawFacts; team: JobRecord['team']; home_type: string };
@@ -46,6 +46,7 @@ export function FactsEditor({ jobId, initial, subs }: { jobId: number; initial: 
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sent = useRef(JSON.stringify(initial));
   const [adding, setAdding] = useState('');
+  const [newSub, setNewSub] = useState<TeamTrade | null>(null);
 
   // An answer given on the server (an inline question) changes the facts: take them, unless an edit is waiting.
   const initialJson = JSON.stringify(initial);
@@ -130,13 +131,7 @@ export function FactsEditor({ jobId, initial, subs }: { jobId: number; initial: 
           {COST_KEYS.map((k) => (
             <div key={k}>
               <label htmlFor={`cost-${k}`}>{TRADE_LABELS[k]}</label>
-              <input
-                id={`cost-${k}`}
-                type="number"
-                min={0}
-                value={state.raw.costs[k] ?? ''}
-                onChange={(e) => change({ ...state, raw: { ...state.raw, costs: { ...state.raw.costs, [k]: e.target.value === '' ? null : Number(e.target.value) } } })}
-              />
+              <MoneyInput id={`cost-${k}`} value={state.raw.costs[k] ?? null} onChange={(n) => change({ ...state, raw: { ...state.raw, costs: { ...state.raw.costs, [k]: n } } })} />
             </div>
           ))}
         </div>
@@ -181,15 +176,19 @@ export function FactsEditor({ jobId, initial, subs }: { jobId: number; initial: 
             );
           })}
         </div>
-        <h3>Subcontractors on this job</h3>
+        <h3>Who signs each trade&apos;s section</h3>
         <div className="grid2">
           {TEAM.map((t) => (
             <div key={t}>
               <label htmlFor={`team-${t}`}>{TRADE_LABELS[t]}</label>
               <select
                 id={`team-${t}`}
-                value={state.team[t] ?? ''}
-                onChange={(e) => change({ ...state, team: { ...state.team, [t]: e.target.value === '' ? null : Number(e.target.value) } }, 0)}
+                value={newSub === t ? 'new' : (state.team[t] ?? '')}
+                onChange={(e) => {
+                  if (e.target.value === 'new') return setNewSub(t);
+                  setNewSub(null);
+                  change({ ...state, team: { ...state.team, [t]: e.target.value === '' ? null : Number(e.target.value) } }, 0);
+                }}
               >
                 <option value="">None</option>
                 {subs
@@ -200,10 +199,12 @@ export function FactsEditor({ jobId, initial, subs }: { jobId: number; initial: 
                       {s.note ? ` (${s.note})` : ''}
                     </option>
                   ))}
+                <option value="new">Add a new subcontractor…</option>
               </select>
             </div>
           ))}
         </div>
+        {newSub && <NewSubForm jobId={jobId} trade={newSub} onDone={() => setNewSub(null)} />}
       </div>
 
       <div className="panel">
@@ -321,3 +322,66 @@ const FIXTURE_LABELS: Record<string, string> = {
   floor_drain: 'Floor drain',
   hose_bibb: 'Hose bibb',
 };
+
+/** A dollar amount: shown as $12,500, typed with or without the $ and commas. */
+function MoneyInput({ id, value, onChange }: { id: string; value: number | null; onChange: (n: number | null) => void }) {
+  const [typing, setTyping] = useState<string | null>(null);
+  return (
+    <input
+      id={id}
+      type="text"
+      inputMode="decimal"
+      placeholder="$"
+      value={typing ?? (value == null ? '' : `$${value.toLocaleString('en-US')}`)}
+      onFocus={() => setTyping(value == null ? '' : value.toLocaleString('en-US'))}
+      onBlur={() => setTyping(null)}
+      onChange={(e) => {
+        setTyping(e.target.value);
+        const digits = e.target.value.replace(/[$,\s]/g, '');
+        const n = Number(digits);
+        if (digits === '') onChange(null);
+        else if (Number.isFinite(n) && n >= 0) onChange(n);
+      }}
+    />
+  );
+}
+
+/** Review screen: add a sub to the directory without going back to Setup, and put them on this job. */
+function NewSubForm({ jobId, trade, onDone }: { jobId: number; trade: TeamTrade; onDone: () => void }) {
+  const [sub, setSub] = useState({ name: '', license: '', expires: '' });
+  const [error, setError] = useState<string | null>(null);
+  const [saving, startSaving] = useTransition();
+  const save = () =>
+    startSaving(async () => {
+      const message = await addSubToJob(jobId, trade, sub);
+      setError(message);
+      if (!message) onDone();
+    });
+  return (
+    <div className="item">
+      <strong>New {TRADE_LABELS[trade].toLowerCase()} subcontractor</strong>
+      <p className="muted small">Saved to your subcontractors in Setup too, where you can add their address and phone later.</p>
+      {error && <div className="banner bad">{error}</div>}
+      <div className="grid2">
+        <div>
+          <label htmlFor="new-sub-name">Company name</label>
+          <input id="new-sub-name" type="text" value={sub.name} onChange={(e) => setSub({ ...sub, name: e.target.value })} />
+        </div>
+        <div>
+          <label htmlFor="new-sub-license">License number</label>
+          <input id="new-sub-license" type="text" value={sub.license} onChange={(e) => setSub({ ...sub, license: e.target.value })} />
+        </div>
+        <div>
+          <label htmlFor="new-sub-expires">License expires</label>
+          <input id="new-sub-expires" type="date" value={sub.expires} onChange={(e) => setSub({ ...sub, expires: e.target.value })} />
+        </div>
+      </div>
+      <button type="button" onClick={save} disabled={saving}>
+        {saving ? 'Saving…' : 'Add to this job'}
+      </button>{' '}
+      <button type="button" className="secondary" onClick={onDone}>
+        Cancel
+      </button>
+    </div>
+  );
+}

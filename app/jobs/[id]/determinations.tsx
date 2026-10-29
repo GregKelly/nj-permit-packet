@@ -25,9 +25,11 @@ export function DeterminationsView({ d }: { d: Determinations }) {
         <div className="big">{o.title}</div>
       </div>
 
-      {d.flags.map((f) => (
-        <div key={f.id} className={`banner ${f.blocks_printing ? 'bad' : 'warn'}`}>
+      {/* One rule can warn once per trade (LC-02 for both the electrician and the plumber), so the id alone isn't a unique key. */}
+      {d.flags.map((f, i) => (
+        <div key={`${f.id}-${i}`} className={`banner ${f.blocks_printing ? 'bad' : 'warn'}`}>
           {f.message} <span className="muted small">({f.id}{f.blocks_printing ? ', blocks printing' : ''})</span>
+          {f.id === 'LC-02' && <div className="small">Pick one under &ldquo;Who signs each trade&apos;s section&rdquo; on the left (your business, if you hold the license), or add a new sub there.</div>}
         </div>
       ))}
 

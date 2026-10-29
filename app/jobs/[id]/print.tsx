@@ -15,7 +15,7 @@ export function PrintStep({ v }: { v: JobView }) {
           <div className="panel">
             {n?.approved ? (
               <>
-                {n.paragraphs.length ? n.paragraphs.map((p, i) => <p key={i}>{p}</p>) : <p className="muted">Using the plain list of work items.</p>}
+                {n.paragraphs.length ? n.paragraphs.map((p, i) => <p key={i}>{p}</p>) : <p className="muted">No paragraph: the scope page shows only the list of work items.</p>}
                 <form action={reopenScope.bind(null, v.id)}>
                   <Submit className="secondary">Edit the scope of work</Submit>
                 </form>
@@ -35,8 +35,9 @@ export function PrintStep({ v }: { v: JobView }) {
                   <textarea name="narrative" aria-label="Scope of work" rows={10} defaultValue={n?.paragraphs.join('\n\n') ?? ''} />
                   <Submit>Approve this scope of work</Submit>
                   <Submit className="secondary" name="plain" value="yes">
-                    Use the plain list instead
+                    Skip the paragraph: use a list of work items
                   </Submit>
+                  <p className="muted small">The scope page always lists each work item by trade, with its cost. This leaves out the paragraph above that list.</p>
                 </form>
               </>
             )}
@@ -56,7 +57,7 @@ export function PrintStep({ v }: { v: JobView }) {
           <iframe className="pdf" src={`/jobs/${v.id}/packet`} title="Permit packet" />
         </>
       ) : (
-        <p className="muted">Approve the scope of work (or choose the plain list) first.</p>
+        <p className="muted">Approve the scope of work (or choose the list of work items) first.</p>
       )}
     </>
   );

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { connection } from 'next/server';
+import { PATTERNS } from '../../../src/jobs/contact';
 import { JobError, type JobView } from '../../../src/jobs/service';
 import { HOME_TYPE_LABELS } from '../../../src/parcel/units';
 import { jobs, store, today } from '../../lib/app';
@@ -77,7 +78,12 @@ function QuestionsStep({ v, subs }: { v: JobView; subs: Parameters<typeof Questi
 
 function ReviewStep({ v, subs }: { v: JobView; subs: Parameters<typeof QuestionsForm>[0]['subs'] }) {
   const { job } = v;
-  const options: SubOption[] = subs.map((s) => ({ id: s.id, trade: s.trade, name: s.name, note: s.expires < today() ? `license expired ${s.expires}` : null }));
+  const options: SubOption[] = subs.map((s) => ({
+    id: s.id,
+    trade: s.trade,
+    name: s.self ? `Your business (${s.name})` : s.name,
+    note: s.expires < today() ? `license expired ${s.expires}` : null,
+  }));
   return (
     <>
       {job.not_covered.length > 0 && (
@@ -154,10 +160,10 @@ function ReviewStep({ v, subs }: { v: JobView; subs: Parameters<typeof Questions
 function OwnerSite({ v }: { v: JobView }) {
   const { site, owner } = v.job;
   const a = owner.address;
-  const field = (name: string, label: string, value?: string) => (
+  const field = (name: string, label: string, value?: string, check?: { pattern: string; title: string }) => (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input id={name} type="text" name={name} defaultValue={value ?? ''} />
+      <input id={name} type="text" name={name} defaultValue={value ?? ''} {...check} />
     </div>
   );
   return (
@@ -170,17 +176,17 @@ function OwnerSite({ v }: { v: JobView }) {
       <form action={editOwnerSite.bind(null, v.id)}>
         <div className="grid2">
           {field('street', 'Work-site street', site.street)}
-          {field('zip', 'Work-site ZIP', site.zip)}
+          {field('zip', 'Work-site ZIP', site.zip, PATTERNS.zip)}
           {field('block', 'Block', site.block)}
           {field('lot', 'Lot', site.lot)}
           {field('qualifier', 'Qualifier', site.qualifier)}
           {field('owner_name', 'Owner name', owner.name)}
-          {field('owner_phone', 'Owner phone', owner.phone)}
+          {field('owner_phone', 'Owner phone', owner.phone, PATTERNS.phone)}
           {field('owner_email', 'Owner email', owner.email)}
           {field('owner_street', 'Owner mailing street', a?.street)}
           {field('owner_city', 'City', a?.city)}
           {field('owner_state', 'State', a?.state)}
-          {field('owner_zip', 'ZIP', a?.zip)}
+          {field('owner_zip', 'ZIP', a?.zip, PATTERNS.zip)}
         </div>
         <Submit className="secondary">Save site and owner</Submit>
       </form>

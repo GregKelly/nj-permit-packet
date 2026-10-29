@@ -28,10 +28,15 @@ create table if not exists packets (job_id integer primary key references jobs (
 create table if not exists parcel_cache (url text primary key, fetched text not null, body text not null);
 `;
 
-/** A directory entry as saved: the packet's Subcontractor plus an id and whether it's the usual one for its trade. */
+/**
+ * A directory entry as saved: the packet's Subcontractor plus an id and whether it's the usual one for its trade.
+ * `self` marks one of the contractor's own trade licenses: only the trade, license and expiry are saved, and the
+ * name, address, phone, email and FEIN are always the profile's, so the business signs that trade's section.
+ */
 export interface SavedSub extends Subcontractor {
   id: number;
   usual: boolean;
+  self?: boolean;
 }
 
 export class Store {
@@ -60,7 +65,12 @@ export class Store {
 
   listSubs(): SavedSub[] {
     const rows = this.db.prepare('select id, usual, data from subcontractors order by trade, id').all() as { id: number; usual: number; data: string }[];
-    return rows.map((r) => ({ ...JSON.parse(r.data), id: r.id, usual: r.usual === 1 }));
+    const p = this.getProfile();
+    return rows.map((r) => {
+      const data = JSON.parse(r.data);
+      const business = data.self ? { name: p?.name ?? 'Your business', address: p?.address, phone: p?.phone, email: p?.email, fein: p?.fein } : {};
+      return JSON.parse(JSON.stringify({ ...data, ...business, id: r.id, usual: r.usual === 1 })); // drops undefined fields
+    });
   }
 
   getSub(id: number): SavedSub | null {
@@ -68,9 +78,9 @@ export class Store {
   }
 
   /** Add (no id) or update a sub. Marking one usual unmarks the others of its trade. Returns its id. */
-  saveSub(sub: Subcontractor & { id?: number; usual?: boolean }): number {
+  saveSub(sub: (Subcontractor & { id?: number; usual?: boolean; self?: false }) | (Pick<Subcontractor, 'trade' | 'license' | 'expires'> & { id?: number; usual?: boolean; self: true })): number {
     const { id, usual = false, ...data } = sub;
-    const json = JSON.stringify(data);
+    const json = JSON.stringify(data.self ? { trade: data.trade, license: data.license, expires: data.expires, self: true } : data);
     let saved: number;
     if (id === undefined) {
       saved = Number(this.db.prepare('insert into subcontractors (trade, usual, data) values (?, ?, ?)').run(data.trade, usual ? 1 : 0, json).lastInsertRowid);
@@ -90,7 +100,7 @@ export class Store {
   packetProfile(): PacketProfile {
     const applicant = this.getProfile();
     if (!applicant) throw new Error('Set up your business details first.');
-    return { applicant, subcontractors: this.listSubs().map(({ id: _id, usual: _usual, ...s }) => s) };
+    return { applicant, subcontractors: this.listSubs().map(({ id: _id, usual: _usual, self: _self, ...s }) => s) };
   }
 
   /** The directory as name matching needs it (keys are sub ids). */
