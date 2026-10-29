@@ -16,7 +16,7 @@ The point of the app is the paperwork. It fills in **the State of New Jersey's o
 
 ![The official New Jersey Construction Permit Application (F100), page 1, filled in: work site, owner, contractor, type of work, and cost by trade](docs/images/forms/f100-page1.jpg)
 
-**[Open the complete sample packet (PDF, 9 pages)](docs/sample-packet-J-01.pdf)** to see every page. More pages are shown [below](#the-forms-filled-in).
+**[Open the complete sample packet (PDF, 9 pages)](docs/sample-packet-J-01.pdf)** to see every page. The pages are also shown, in print order, [below](#the-forms-filled-in).
 
 ---
 
@@ -54,57 +54,73 @@ When any of these is wrong, the application is rejected or sent back with questi
 
 ## What you get
 
-For each job, one PDF packet, printed on paper:
+For each job, one PDF packet, printed on paper. The pages come in this order:
 
-| Page(s) | What it is |
+| Packet page | What it is |
 |---|---|
-| **Cover checklist** (keep it, don't submit it) | The job in brief, the steps in order, a table of who signs where, anything still to fill in by hand, what to attach (plans, zoning approval), reviewer tips, and the assumptions the packet relies on |
-| **F100** | The state's permit application form, filled in |
-| **Technical sections** (F110, F120, F130, F145, F370 as needed) | The official building, electrical, plumbing, HVAC and fuel-fired-appliance forms, filled in |
-| **Owner authorization** | A page for the property owner to sign, giving the contractor permission to apply |
-| **Scope of work** | A plain description of the work for the plan reviewer, with costs by trade |
+| 1. **Cover checklist** (keep it, don't submit it) | The job in brief, the steps in order, a table of who signs where, anything still to fill in by hand, what to attach (plans, zoning approval), reviewer tips, and the assumptions the packet relies on |
+| 2 to 4. **F100** | The state's permit application form, filled in |
+| 5. **Owner authorization** | A page for the property owner to sign, giving the contractor permission to apply |
+| 6 and on. **Technical sections** (F110, F120, F130, F145, F370, as the job needs) | The official building, electrical, plumbing, HVAC and fuel-fired-appliance forms, filled in |
+| Last. **Scope of work** | A plain description of the work for the plan reviewer, with costs by trade |
 
-The forms are the State of New Jersey's own PDFs. The app only fills in the boxes; it does not redraw or alter the forms.
+The forms are the State of New Jersey's own PDFs. The app only fills in the boxes; it does not redraw or alter the forms. The cover checklist, owner authorization and scope of work are the three pages the app writes itself.
 
 ### The forms, filled in
 
-Every page below comes from one sample packet: a $48,000 kitchen remodel with a wall removal, for a made-up contractor and made-up owners. You can open the whole thing as a PDF: **[docs/sample-packet-J-01.pdf](docs/sample-packet-J-01.pdf)**. (You can rebuild it yourself, free, with `npm run packet -- J-01`.)
+Every page below comes from one sample packet, in the order it prints: a $48,000 kitchen remodel with a wall removal, for a made-up contractor and made-up owners. You can open the whole thing as a PDF: **[docs/sample-packet-J-01.pdf](docs/sample-packet-J-01.pdf)**. (You can rebuild it yourself, free, with `npm run packet -- J-01`.)
 
 **What the app fills in:** the property (block, lot, address), the owner, the contractor and their registration numbers, the type of work, the estimated cost split by trade, a description of each trade's work, quantities (such as 18 devices on the electrical form), the right boxes ticked, and the licensed subcontractor's name, license and expiry on their own section.
 
 **What it deliberately leaves blank:** signatures and dates (they have to be done in ink by the right person), the shaded **office use only** areas such as fees and inspections, and details only the licensed sub knows. The cover checklist lists anything the sub still has to fill in.
 
-**F100: Construction Permit Application, page 2.** The certification. The contractor signs the Agent Section; the app has already ticked "contractor" and filled in the agent's name, address and phone.
+#### Page 1: Cover checklist
 
-![F100 page 2, the certification in lieu of oath, with the Agent Section filled in and signature lines left blank](docs/images/forms/f100-page2.jpg)
-
-**F110: Building subcode technical section.** Signed by the contractor.
-
-![F110 building technical section, filled in with the work site, owner, contractor, description of work, rehabilitation ticked, and a $39,000 estimate](docs/images/forms/f110-building.jpg)
-
-**F120: Electrical subcode technical section.** Filled in with the electrician's name and license; the electrician signs it.
-
-![F120 electrical technical section, filled in with the electrician's details, a description of the work, 18 devices, and a $5,500 estimate](docs/images/forms/f120-electrical.jpg)
-
-**F130: Plumbing subcode technical section.** Filled in with the plumber's name and license; the plumber signs it.
-
-![F130 plumbing technical section, filled in with the plumber's details, a description of the work, a sink and dishwasher counted, and a $3,500 estimate](docs/images/forms/f130-plumbing.jpg)
-
-The packet also includes two pages the app writes itself, not state forms:
-
-**Owner authorization.** Lets the contractor apply on the owner's behalf. The owner signs it.
-
-![Owner authorization page naming the property, the owner, the contractor and the work, with signature lines](docs/images/forms/owner-authorization.jpg)
-
-**Scope of work.** A plain description of the work for the plan reviewer, grouped by trade, with costs. The AI can draft the opening paragraph; this version uses the plain list.
-
-![Scope of work page grouped by building, electrical and plumbing, with costs, plus ordinary maintenance items that need no permit](docs/images/forms/scope-of-work.jpg)
-
-**Cover checklist.** The first page of the packet. It is for the contractor to keep, not to submit: who signs where, what to attach, what is still blank, and which assumptions the packet relies on.
+The first page of the packet. It is for the contractor to keep, not to submit: who signs where, what to attach, what is still blank, and which assumptions the packet relies on.
 
 ![Cover checklist: the job, steps in order, who signs where, what to attach, reviewer tips and assumptions](docs/images/forms/cover-checklist.jpg)
 
-One thing you may notice: in some PDF viewers, the unfilled dropdown boxes in section VII of F100 page 1 show the state form's own placeholder text ("Select Group"). That text comes from the state's form, not from the app.
+#### Pages 2 to 4: F100, Construction Permit Application
+
+The F100 runs three pages. They are numbered here by their place in the packet; the state's own form numbers them F100-1, F100-2 and F100-3.
+
+**Page 2** is the image at the top of this README: the work site, owner, contractor, type of work and cost by trade. One thing you may notice: in some PDF viewers, the unfilled dropdown boxes in section VII show the state form's own placeholder text ("Select Group"). That text comes from the state's form, not from the app.
+
+**Page 3** is the certification. The contractor signs the Agent Section; the app has already ticked "contractor" and filled in the agent's name, address and phone.
+
+![F100 page 3 of the packet, the certification in lieu of oath, with the Agent Section filled in and signature lines left blank](docs/images/forms/f100-page2.jpg)
+
+**Page 4** is the prior-approvals checklist and other boxes for office use only. It is left blank for the construction office.
+
+#### Page 5: Owner authorization
+
+Lets the contractor apply on the owner's behalf. The owner signs it.
+
+![Owner authorization page naming the property, the owner, the contractor and the work, with signature lines](docs/images/forms/owner-authorization.jpg)
+
+#### Page 6: F110, Building subcode technical section
+
+Signed by the contractor.
+
+![F110 building technical section, filled in with the work site, owner, contractor, description of work, rehabilitation ticked, and a $39,000 estimate](docs/images/forms/f110-building.jpg)
+
+#### Page 7: F120, Electrical subcode technical section
+
+Filled in with the electrician's name and license; the electrician signs it.
+
+![F120 electrical technical section, filled in with the electrician's details, a description of the work, 18 devices, and a $5,500 estimate](docs/images/forms/f120-electrical.jpg)
+
+#### Page 8: F130, Plumbing subcode technical section
+
+Filled in with the plumber's name and license; the plumber signs it.
+
+![F130 plumbing technical section, filled in with the plumber's details, a description of the work, a sink and dishwasher counted, and a $3,500 estimate](docs/images/forms/f130-plumbing.jpg)
+
+#### Page 9: Scope of work
+
+A plain description of the work for the plan reviewer, grouped by trade, with costs. The AI can draft an opening paragraph; this version uses the plain list.
+
+![Scope of work page grouped by building, electrical and plumbing, with costs, plus ordinary maintenance items that need no permit](docs/images/forms/scope-of-work.jpg)
 
 ## How it works
 
