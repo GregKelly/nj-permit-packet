@@ -8,6 +8,8 @@
 >
 > **Change after approval** (owner decision 2026-10-26, homeowner build): **HO-F3**'s HIC entry "Exempt: owner, N.J.A.C. 5:23-2.15(b)8.ii" doesn't fit the HIC box on any form, so each form gets the longest wording that fits: the full text, else "Exempt: owner, 5:23-2.15(b)8.ii" (F130, F145), else "Exempt: owner" (F120). The wordings are in `rules/state/nj/homeowner.yaml`.
 
+> **Change after approval** (owner decision 2026-10-28, M4 review): **Q-3** is reworded to also ask whether F120 is needed at all on a like-for-like A/C or furnace swap, since state rules let the HVACR contractor reconnect a replacement to its existing dedicated disconnect (`docs/research-notes.md`, "HVACR contractors and electrical work"). No determination changes: J-08 still includes F120, signed by the electrician, until the office answers.
+
 This is the human-readable version of the rule data the engine will run. Once you've approved it, each row becomes a record in a rules file (state rules and Maplewood rules kept separate). Rule IDs (e.g. `KB-04`) will carry through to the code and the test suite, so a test failure points back to a row here.
 
 **Legend**
@@ -324,7 +326,7 @@ Resolved by owner (2026-10-22):
 Questions for the Maplewood Construction Office (add to the existing call list):
 
 - **Q-2.** When is an unsealed contractor sketch accepted (wall moves, basement finish), and when must plans be sealed?
-- **Q-3.** For an A/C or furnace swap, who signs F120: an electrician, or the HVACR contractor?
+- **Q-3.** For a like-for-like A/C or furnace swap that reconnects to the existing dedicated disconnect (25 tons or less, 240 volts or less; N.J.A.C. 13:32A-1.2 and 1.3), is an F120 needed at all? If it is, who signs it: an electrician, or the HVACR contractor? *(Reworded 2026-10-28; was: "For an A/C or furnace swap, who signs F120: an electrician, or the HVACR contractor?")*
 - **Q-4.** Do they want F370 on every fuel-fired replacement, and F390/F392 on basement finishes?
 - **Q-5.** Do they want a plumbing riser diagram for relocated or added fixtures?
 - **Q-6.** Make-up air for range hoods over 400 cfm: what do they need to see?

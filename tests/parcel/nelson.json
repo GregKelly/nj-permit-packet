@@ -1,0 +1,231 @@
+{
+ "objectIdFieldName": "OBJECTID",
+ "uniqueIdField": {
+  "name": "OBJECTID",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "fields": [
+  {
+   "name": "PROP_LOC",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_LOC",
+   "sqlType": "sqlTypeOther",
+   "length": 25,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "MUN_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "MUN_NAME",
+   "sqlType": "sqlTypeOther",
+   "length": 40,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLBLOCK",
+   "type": "esriFieldTypeString",
+   "alias": "PCLBLOCK",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLLOT",
+   "type": "esriFieldTypeString",
+   "alias": "PCLLOT",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLQCODE",
+   "type": "esriFieldTypeString",
+   "alias": "PCLQCODE",
+   "sqlType": "sqlTypeOther",
+   "length": 11,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PROP_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_CLASS",
+   "sqlType": "sqlTypeOther",
+   "length": 3,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "YR_CONSTR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "YR_CONSTR",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "DWELL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "DWELL",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "PROP_LOC": "21 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "126",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "22 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "466",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1929,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "14 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "464",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "10 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "462",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "18 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "465",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "25 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "127",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "29 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "128",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "17 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "125",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "30 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "469",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "15 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "123",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1928,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "26 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "468",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1929,
+    "DWELL": 4
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "13 NELSON PLACE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.03",
+    "PCLLOT": "122",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  }
+ ]
+}

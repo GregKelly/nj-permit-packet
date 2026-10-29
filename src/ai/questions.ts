@@ -4,6 +4,7 @@
 // If the call fails or its answer fails the checks, the built-in wording is used.
 
 import { readFileSync } from 'node:fs';
+import { projectPath } from '../paths';
 import type { JobFacts, Question } from '../engine';
 import { UNKNOWN } from '../engine/facts';
 import { answerValues, checkQuestions } from './checks';
@@ -11,7 +12,7 @@ import { AiError, send, totalUsage, type CallOptions, type Usage } from './clien
 import { meaningFor } from './meanings';
 import { QuestionsOutput } from './schema';
 
-const PROMPT = readFileSync(new URL('./prompts/questions.md', import.meta.url), 'utf8');
+const PROMPT = readFileSync(projectPath('src', 'ai', 'prompts', 'questions.md'), 'utf8');
 
 export interface WordedQuestion {
   key: string;

@@ -148,6 +148,8 @@ export function CoverChecklist({ job, d, prepared }: { job: PacketJob; d: Determ
           </>
         )}
 
+        <NotInPacket items={job.not_in_packet} />
+
         {d.tips.length > 0 && (
           <>
             <Text style={s.h2}>Reviewer tips</Text>
@@ -167,5 +169,20 @@ export function CoverChecklist({ job, d, prepared }: { job: PacketJob; d: Determ
         ))}
       </Sheet>
     </Document>
+  );
+}
+
+/** Work the app couldn't classify and the contractor removed, so it isn't silently dropped (M4 plan, decision 3). */
+export function NotInPacket({ items }: { items?: string[] }) {
+  if (!items?.length) return null;
+  return (
+    <>
+      <Text style={s.h2}>Not in this packet: ask the construction office</Text>
+      {items.map((w) => (
+        <Bullet key={w} mark="[ ]">
+          "{w}": Permit Packet can't classify this work. Ask the construction office whether it needs a permit before doing it.
+        </Bullet>
+      ))}
+    </>
   );
 }

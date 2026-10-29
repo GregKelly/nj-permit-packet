@@ -1,0 +1,1971 @@
+{
+ "objectIdFieldName": "OBJECTID",
+ "uniqueIdField": {
+  "name": "OBJECTID",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "fields": [
+  {
+   "name": "PROP_LOC",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_LOC",
+   "sqlType": "sqlTypeOther",
+   "length": 25,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "MUN_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "MUN_NAME",
+   "sqlType": "sqlTypeOther",
+   "length": 40,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLBLOCK",
+   "type": "esriFieldTypeString",
+   "alias": "PCLBLOCK",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLLOT",
+   "type": "esriFieldTypeString",
+   "alias": "PCLLOT",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLQCODE",
+   "type": "esriFieldTypeString",
+   "alias": "PCLQCODE",
+   "sqlType": "sqlTypeOther",
+   "length": 11,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PROP_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_CLASS",
+   "sqlType": "sqlTypeOther",
+   "length": 3,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "YR_CONSTR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "YR_CONSTR",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "DWELL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "DWELL",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "PROP_LOC": "1653-55 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.04",
+    "PCLLOT": "162",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1657 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.04",
+    "PCLLOT": "160",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1955,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1841 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1851-57 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "6",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1970,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1906-14 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "276",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1920,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1793-95 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "274",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1977,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1882 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.03",
+    "PCLLOT": "178",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1950,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1895-97 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "238",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1982 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "407",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1969,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1777 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "266",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "1",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1929-31 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.03",
+    "PCLLOT": "412",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1607 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "4",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1935,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1453 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "238",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1916-28 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.01",
+    "PCLLOT": "233",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1703-05 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "20",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1802-16 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.07",
+    "PCLLOT": "151",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1961,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1772-80 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.01",
+    "PCLLOT": "113",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1628-34 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "106",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1539 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.05",
+    "PCLLOT": "360",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1835-39 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "459",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1753 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "254",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1824 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.07",
+    "PCLLOT": "149",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1953,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1755 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "255",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1962 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.02",
+    "PCLLOT": "302",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1961,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1555 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "20",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1561 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "19.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1918,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1633 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.04",
+    "PCLLOT": "144",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 2012,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1842 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.05",
+    "PCLLOT": "160",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1647 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.04",
+    "PCLLOT": "164",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1707-21 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "103",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1941,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1451 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "237",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1545 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.05",
+    "PCLLOT": "353",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1972,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1779 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "267",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1963,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1848-52 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.05",
+    "PCLLOT": "167",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1781-83 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "268",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1789 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "272",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1938,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1791 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "273",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1885 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "233",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1891 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "236",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1712 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.04",
+    "PCLLOT": "143",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1931,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1955-59 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.02",
+    "PCLLOT": "467",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1985,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1603 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "5",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1947,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1609-19 SPRINGFIELD AVE.",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1956,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1669 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "3",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1673 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "5",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1675 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "6",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "2008-2014 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "387",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1918,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1949-53 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.02",
+    "PCLLOT": "464",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1752-68 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.02",
+    "PCLLOT": "118",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.06",
+    "PCLLOT": "161",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1813 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "448",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1913,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1540 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.02",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1443 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "236",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1951,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1667 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "1",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1549 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "20.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1571 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "17",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "1",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1573 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "16",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1886,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1782-92 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.01",
+    "PCLLOT": "107",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1958,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1457 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "238.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1922,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1465 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "239",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1935,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1552 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "82",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1929,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1899 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "240",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1785-87 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "270",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1860 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.05",
+    "PCLLOT": "165",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4C",
+    "YR_CONSTR": 2010,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1875 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "18",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1877-79 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "19",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1955,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1881-83 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "21",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1924,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1469 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "246.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1964,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1473 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "247",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1978,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1479 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.01",
+    "PCLLOT": "259",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1546 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "81",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1558 SPRINGFIELD AVE REAR",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "84.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1560-62 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "86",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1961,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1558 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "84",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1495 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.06",
+    "PCLLOT": "414",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1891,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1564 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "88",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1568-76 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "90",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1958,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1521-1527 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.05",
+    "PCLLOT": "363",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1529-33 SPRINGFIELD AVE.",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "45.05",
+    "PCLLOT": "358",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1563 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "18",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1888,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1981-87 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "522",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1970,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1989-99 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "526",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1975,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1597 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.05",
+    "PCLLOT": "6",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1910,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1718-20 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "30.04",
+    "PCLLOT": "141",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1935,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1775 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "264",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1969-73 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "499",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1964,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1767-71 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "261",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1958,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1844-46 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.05",
+    "PCLLOT": "169",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1866-72 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.03",
+    "PCLLOT": "181",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1757-61 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "256",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1949,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1830-40 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.05",
+    "PCLLOT": "170",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1951,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1763-65 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.06",
+    "PCLLOT": "259",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1955,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1797-1803 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "440",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1920,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1796-1800 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.07",
+    "PCLLOT": "155",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1959,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1729 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "114",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1731 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "115",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1733-35 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "116",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1737-39 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "118",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1961,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1743 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "120",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1745 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "121",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1921,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1747 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.10",
+    "PCLLOT": "122",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1966,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1818-20 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.07",
+    "PCLLOT": "150",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1886-1900 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "22.02",
+    "PCLLOT": "255",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1951,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1874-76 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.03",
+    "PCLLOT": "180",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1807 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "444",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1938,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1878-80 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "28.03",
+    "PCLLOT": "179",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1809 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "446",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1815-17 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "449",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1923,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1968-72 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.02",
+    "PCLLOT": "304",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1945,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1905-09 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "243",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1911-17 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "246",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1926,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1819-33 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.01",
+    "PCLLOT": "451",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1970,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1843-45 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "2",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1847-49 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "4",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1859-61 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "10",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1930-38 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.01",
+    "PCLLOT": "256",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1958,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1942-48 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.01",
+    "PCLLOT": "257",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1990,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1863 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "12",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1946,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1873 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.12",
+    "PCLLOT": "13",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1940,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1958 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.02",
+    "PCLLOT": "301",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1979,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1901-03 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "241",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1978 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "406",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 1959,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1919-23 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "250",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1921,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1984 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "409",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1966,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1925-27 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.07",
+    "PCLLOT": "253",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1962,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1988 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "411",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1992-98 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "413",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1933-43 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.03",
+    "PCLLOT": "414",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "2000-06 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "417",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1947,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15F",
+    "YR_CONSTR": 0,
+    "DWELL": null
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "2016-28 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "21.07",
+    "PCLLOT": "384",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1972,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1975 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "502",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1925,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1977 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "503",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1979 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.01",
+    "PCLLOT": "503.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1614-18 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "114",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 1966,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1584-96 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "31.34",
+    "PCLLOT": "98",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15D",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-19",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0019",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-1",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0002",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-4",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0001",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-15",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0016",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-13",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0014",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-16",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0013",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-7",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0008",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-10",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0007",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-18",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0017",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-17",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0018",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-14",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0015",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-12",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0011",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-9",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0010",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-8",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0009",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-5",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0006",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-6",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0005",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-3",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0004",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-2",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0003",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1677 SPRINGFIELD AVE-11",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "49.14",
+    "PCLLOT": "7",
+    "PCLQCODE": "C0012",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 2006,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "2017 SPRINGFIELD AVENUE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "29.04",
+    "PCLLOT": "536",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "1",
+    "YR_CONSTR": 1927,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "1442-1490 SPRINGFIELD AVE",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "44.02",
+    "PCLLOT": "50",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,735 @@
+{
+ "objectIdFieldName": "OBJECTID",
+ "uniqueIdField": {
+  "name": "OBJECTID",
+  "isSystemMaintained": true
+ },
+ "globalIdFieldName": "",
+ "geometryType": "esriGeometryPolygon",
+ "spatialReference": {
+  "wkid": 102100,
+  "latestWkid": 3857
+ },
+ "fields": [
+  {
+   "name": "PROP_LOC",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_LOC",
+   "sqlType": "sqlTypeOther",
+   "length": 25,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "MUN_NAME",
+   "type": "esriFieldTypeString",
+   "alias": "MUN_NAME",
+   "sqlType": "sqlTypeOther",
+   "length": 40,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLBLOCK",
+   "type": "esriFieldTypeString",
+   "alias": "PCLBLOCK",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLLOT",
+   "type": "esriFieldTypeString",
+   "alias": "PCLLOT",
+   "sqlType": "sqlTypeOther",
+   "length": 10,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PCLQCODE",
+   "type": "esriFieldTypeString",
+   "alias": "PCLQCODE",
+   "sqlType": "sqlTypeOther",
+   "length": 11,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "PROP_CLASS",
+   "type": "esriFieldTypeString",
+   "alias": "PROP_CLASS",
+   "sqlType": "sqlTypeOther",
+   "length": 3,
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "YR_CONSTR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "YR_CONSTR",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  },
+  {
+   "name": "DWELL",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "DWELL",
+   "sqlType": "sqlTypeOther",
+   "domain": null,
+   "defaultValue": null
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "PROP_LOC": "57-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "4.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "50-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "169.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "59-63 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "6",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15C",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "89-95 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "44",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1946,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "30 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "179",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1946,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "54B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "12",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "35 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "85",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "36 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "176",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1946,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "14-22 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "183",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "72A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "21",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "37-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "86",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "37-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "86.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15F",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "17-21 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "80",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "6-10 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "189",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1952,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "60A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "16",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "60B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "17",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "67-87 NEWARK WAY REAR",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "167.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "44A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "172.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "67-69 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "49",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1960,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "48-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "171",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "90 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "46.05",
+    "PCLLOT": "42.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1956,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "101-103 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "42",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "13-15 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "111",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4A",
+    "YR_CONSTR": 1951,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "38 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "174.02",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "55-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "3.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "44 B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "172.02",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "40 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "173",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "55-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "3",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "15F",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "48-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "170",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "57-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "4",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "97-99 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "43",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "32-34 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "177",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1947,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "68A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "19",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "68B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "20",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "25-31 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "82",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1928,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "39 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "87",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 2
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "26-28 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "180",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1941,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "43-51 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "88",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 0,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "65 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "10",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1929,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "54A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "12.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "58B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "15.02",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "64A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "18",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "38A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "174.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "50-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "169",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "52-A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "167",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "52-B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "167.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "71-87 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "48.47",
+    "PCLLOT": "48",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "4B",
+    "YR_CONSTR": 1946,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "64B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "18.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "72B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "21.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "76A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "22",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "76B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "22.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "78B NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "23.02",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "78A NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "47.01",
+    "PCLLOT": "23.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1942,
+    "DWELL": 1
+   }
+  },
+  {
+   "attributes": {
+    "PROP_LOC": "114 NEWARK WAY",
+    "MUN_NAME": "MAPLEWOOD TWP",
+    "PCLBLOCK": "46.07",
+    "PCLLOT": "51.01",
+    "PCLQCODE": " ",
+    "PROP_CLASS": "2",
+    "YR_CONSTR": 1969,
+    "DWELL": 2
+   }
+  }
+ ]
+}

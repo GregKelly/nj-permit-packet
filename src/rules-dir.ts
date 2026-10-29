@@ -2,8 +2,9 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { compileRules, type RuleSet, type RuleSource } from './engine';
+import { projectPath } from './paths';
 
-export const RULES_DIR = new URL('../rules/', import.meta.url).pathname;
+export const RULES_DIR = projectPath('rules');
 
 export function readRuleSources(dir = RULES_DIR): RuleSource[] {
   const out: RuleSource[] = [];

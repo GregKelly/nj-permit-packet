@@ -6,6 +6,7 @@ import type { Determinations } from '../../engine';
 import { oneLine } from '../entries';
 import type { PacketJob } from '../types';
 import { Bullet, footerText, s, Sheet } from './common';
+import { NotInPacket } from './cover';
 
 export function NoPermit({ job, d, prepared }: { job: PacketJob; d: Determinations; prepared: string }) {
   const site = { street: job.facts.property.address, city: String(job.facts.property.municipality), state: 'NJ', zip: job.site.zip };
@@ -52,6 +53,8 @@ export function NoPermit({ job, d, prepared }: { job: PacketJob; d: Determinatio
             ))}
           </>
         )}
+
+        <NotInPacket items={job.not_in_packet} />
 
         {d.tips.length > 0 && (
           <>

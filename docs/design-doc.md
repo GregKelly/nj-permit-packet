@@ -68,10 +68,10 @@ flowchart LR
 | `ai/` | Three Claude API calls: extract, phrase questions, write scope. | Anthropic SDK, fact schema |
 | `packet/` | Fill official PDFs, render generated pages, merge into one printable PDF. | pdf-lib, @react-pdf/renderer |
 | `parcel/` | Address → block/lot/class/year built via NJOGIS ArcGIS service; returns candidates for the contractor to pick. | HTTP |
-| `db/` | Profile, subcontractor directory, jobs. | better-sqlite3 |
+| `db/` | Profile, subcontractor directory, jobs. | Node's built-in SQLite (`node:sqlite`) |
 | `app/` | Next.js UI and server routes that call the above. | All of the above |
 
-One Next.js project, with the folder boundaries above enforced by a lint rule: `engine/` may not import from anything but `rules/` types. That keeps the engine testable on its own and portable if the UI changes.
+One Next.js project, with the folder boundaries above enforced by a test (`tests/app.test.ts`, "the engine stays separate"; M4 plan, decision 8): `engine/` may not import from anything but its own files and its parsing libraries. That keeps the engine testable on its own and portable if the UI changes.
 
 ## 4. Key interfaces
 
@@ -176,7 +176,7 @@ Model: start with `claude-sonnet-5-5` for all three, configurable per call. Eval
 | Fees | Not calculated | Estimate from Maplewood ordinance | Fee boxes are office use only; ordinance is ambiguous in 9 places; a wrong estimate costs trust. Schedule kept for v2 |
 | Build order | Engine first, UI last | Full app first | Core value is the determinations; engine can be proven correct before anything else exists |
 | App framework | Next.js (one project, UI + server) | Separate API + SPA; CLI only | One project to run locally; server code keeps the API key off the browser. Trade-off: heavier than strictly needed |
-| Storage | SQLite (better-sqlite3, plain SQL) | JSON files; Postgres; an ORM | Single local file, real queries, no server. Plain SQL keeps concepts minimal for a small schema |
+| Storage | SQLite (Node's built-in `node:sqlite`, plain SQL; M4 plan, decision 9) | JSON files; Postgres; an ORM | Single local file, real queries, no server. Plain SQL keeps concepts minimal for a small schema |
 | Generated pages | @react-pdf/renderer | Headless browser (Playwright) print; drawing with pdf-lib | Pure JS, no browser install; easier layout than drawing text by hand |
 
 ## 7. Testing strategy
