@@ -96,10 +96,11 @@ Across a test set of about 10 realistic jobs covering all four project types, in
 
 ## Next steps
 
-1. Confirm with Maplewood's Construction and Zoning divisions:
-   - whether interior remodels need a zoning permit
-   - whether licensed trades must sign their own technical sections
-2. Draft the v1 rules table for the four project types and review it.
-3. Write about 10 realistic test jobs.
-4. Build a working local prototype that produces a printed packet.
-5. Show outputs to contractors and gather feedback.
+The rules table, test jobs, design and a working local app (M1 to M4) are done. Next:
+
+1. Check whether the single-trade contractor is the bigger user (see Key risks):
+   - request Maplewood's residential permit records (OPRA) and count trade-only permits against general-contractor jobs
+   - talk to two or three contractors, at least one single-trade contractor, using the app or a printed packet
+2. Put the open construction-office questions (rules table §6, including Q-3) to Maplewood in the same contact.
+3. If trade-only jobs dominate, revise this brief's primary user and write a rules addendum.
+4. Plan and build M5 (polish from contractor feedback).

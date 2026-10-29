@@ -8,3 +8,5 @@ next-env.d.ts
 *.tsbuildinfo
 # Local app data (profile, subcontractors, jobs): never committed
 data/
+# macOS Finder files
+.DS_Store
