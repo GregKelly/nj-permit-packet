@@ -330,7 +330,7 @@ Documents, if you want to go deeper:
 
 Your business details, your subcontractor directory, the owner's name, phone and email, and your saved jobs stay on your computer, in a local database file (`data/permit-packet.db`). The API key is used only by the part of the app running on your machine, never by the web page itself.
 
-**Cost.** The app, the test suite, the sample packets and the rules are free. Using the AI costs a few cents per job: about **8 cents** for the whole path from description to scope of work, on the Claude Sonnet 5.5 model the app uses. You pay Anthropic directly through your own API account. If you don't set a key, nothing is spent and the AI features turn off, but you can still enter job facts by hand and print a packet.
+**Cost.** The app, the test suite, the sample packets and the rules are free. Using the AI costs **about 3 to 7 cents per job** for the whole path from description to scope of work, on the Claude Sonnet 5.5 model the app uses. That range comes from the cost the app records on each real job (a kitchen remodel came to 7.1 cents, a furnace and AC swap to 2.6 cents). The Job page shows the running total for each job ("AI cost so far"). These are estimates from list prices, not an invoice, and a single job pays full price for the AI's instructions, so it costs more than the 2-cent average the evals measured when they ran many jobs back to back. You pay Anthropic directly through your own API account. If you don't set a key, nothing is spent and the AI features turn off, but you can still enter job facts by hand and print a packet.
 
 ## Troubleshooting
 
