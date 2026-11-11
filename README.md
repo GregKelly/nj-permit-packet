@@ -289,7 +289,7 @@ Run these from the project folder.
 | `npm run extract -- J-03` | Reads one description and shows the facts it found, with a score |
 | `npm run ask -- J-03` | Same, then shows the follow-up questions as a contractor would see them |
 | `npm run scope -- J-01` | Drafts the scope of work; then `npm run packet -- J-01 --narrative` puts it in the packet |
-| `npm run eval` | The AI quality tests. Can cost **$10 to $30** for a full run. Never run by `npm test`. Use `-- --dry-run` first, and `-- --rescore` to regrade saved answers for free. |
+| `npm run eval` | The AI quality tests. A full three-model run cost about **$5**; a single-model run about **$1.50**. Never run by `npm test`. Use `-- --dry-run` first, and `-- --rescore` to regrade saved answers for free. |
 
 ## Where things are
 
